@@ -1,0 +1,40 @@
+
+[table=2]
+[cell][code]res://actors/[/code][/cell][cell]All actor scenes, organized into subfolders.[/cell]
+[cell][code]res://autoload/[/code][/cell][cell][code]autoload[/code][/cell]
+[cell][code]res://build/[/code][/cell][cell]This is where the exports will be created.[/cell]
+[cell][code]res://editor_scripts/[/code][/cell][cell]Tool scripts that run in-editor.[/cell]
+[cell][code]res://fonts/[/code][/cell][cell]All fonts.[/cell]
+[cell][code]res://music/[/code][/cell][cell]All music.[/cell]
+[cell][code]res://node_types/[/code][/cell][cell]Scripts which create new global [code]Node[/code] types using [code]class_name[/code].[/cell]
+[cell][code]res://particles/[/code][/cell][cell]Textures related to basic particle effects.[/cell]
+[cell][code]res://resource_types/[/code][/cell][cell]Scripts which create new global [code]Resource[/code] types using [code]class_name[/code].[/cell]
+[cell][code]res://scenes/[/code][/cell][cell]All "game scenes" go here. Main menu, gameplay, game over, etc...[/cell]
+[cell][code]res://sfx/[/code][/cell][cell]All sound effects.[/cell]
+[cell][code]res://textures/[/code][/cell][cell]All globally needed textures.[/cell]
+[cell][code]res://util_scripts/[/code][/cell][cell]Scripts which create new global [code]RefCounted[/code] types using [code]class_name[/code].[/cell]
+[/table]
+
+[font s=24]Actors[/font]
+
+An "actor" is a scene/script that represents a logical entity within the game's design. Obvious examples are player and NPC characters, projectiles, item pickups, doors, etc. Non-obvious examples might be spawners, timers, or event triggers.
+
+There should be no loose files in the [code]res://actors/[/code] folder. Each actor should be contained within a subfolder, e.g. [code]res://actors/player_character/[/code].
+
+Each actor should contain any assets related to it. Its scene file, script, spritesheets, animations, and nested scenes should all be in the actor's folder. The only exception is sound effects, which belong in [code]res://sfx/[/code].
+
+[font s=24]Scenes[/font]
+
+A "scene" in this case is a root scene as defined by the game logic. These are typically used with [code]SceneGirl[/code].
+
+Similar to actors, each scene should be fully self-contained within a subfolder, e.g. [code]res://scenes/main_menu/[/code].
+
+[font s=24]Node types, Resource types, and Util scripts[/font]
+
+The only files that should be present in these folders are individual script files which define new global types using [code]class_name[/code].
+
+If the script needs to be attached to a scene to work, it's probably an actor.
+
+[code]res://node_types/[/code] is for global classes which extend any kind of [code]Node[/code]. Similarly, [code]res://resource_types/[/code] is for [code]Resource[/code] classes, and [code]res://util_scripts/[/code] is for all other [code]RefCounted[/code] classes.
+
+Functionally, all three of these folders should be treated the same, they just deal with different base types.

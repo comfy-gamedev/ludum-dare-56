@@ -1,0 +1,9 @@
+
+No 3D.
+
+Reuse existing materials/shaders wherever possible.
+
+Only one fullscreen shader.
+
+Do not use [code]GPUParticles[/code].
+

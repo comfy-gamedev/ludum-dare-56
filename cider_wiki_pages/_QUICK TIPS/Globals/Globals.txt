@@ -1,0 +1,40 @@
+
+[code]Globals[/code] is an autoload singleton that manages global game state.
+
+If you have a value that needs to be accessed in many different unrelated places, this is where to add it.
+
+[font s=24]Adding variables[/font]
+
+To add a variable to [code]Globals[/code], create it as usual, but use a setter to emit the [code]changed[/code] signal.
+
+[[code:gd]]
+## Example variable.
+var player_health: int = 0:
+	set(v): player_health = v; changed.emit()
+[[/]]
+
+Additionally, add a line to the [code]reset()[/code] method to reset the variable:
+
+[[code:gd]]
+## Reset all variables to their default state.
+func reset():
+	player_health = 0
+[[/]]
+
+[font s=24]Using variables[/font]
+
+Simply access the variable directly:
+
+[[code:gd]]
+Globals.player_health
+[[/]]
+
+You can also connect to the [code]changed[/code] signal if needed:
+
+[[code:gd]]
+func _ready() -> void:
+	Globals.changed.connect(_on_globals_changed)
+
+func _on_globals_changed() -> void:
+	healthbar.value = Globals.player_health
+[[/]]

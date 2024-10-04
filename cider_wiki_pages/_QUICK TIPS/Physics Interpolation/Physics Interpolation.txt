@@ -1,0 +1,10 @@
+
+Use [code]MotionInterpolator[/code] with default settings.
+
+It must be a child of the physics object.
+
+Children of the [code]MotionInterpolator[/code] will have their positions interpolated.
+
+Use a [code]RemoteTransform[/code] to affect other nodes.
+
+[[img:img_1.webp]]

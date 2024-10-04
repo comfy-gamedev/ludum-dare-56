@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d7688ndeh5ol"]
+
+[ext_resource type="Script" path="res://addons/test_camera/test_camera_3d.gd" id="1_l0r5u"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_174pf"]
+sky_top_color = Color(0.54902, 0.584314, 0.631373, 1)
+sky_horizon_color = Color(0.687255, 0.688329, 0.691093, 1)
+ground_horizon_color = Color(0.687255, 0.688329, 0.691093, 1)
+
+[sub_resource type="Sky" id="Sky_0k04r"]
+sky_material = SubResource("ProceduralSkyMaterial_174pf")
+
+[sub_resource type="Environment" id="Environment_jh5la"]
+background_mode = 2
+sky = SubResource("Sky_0k04r")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestCamera3D" type="Node3D"]
+script = ExtResource("1_l0r5u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70711, -0.612371, 0.353551, -1.49013e-08, 0.499998, 0.866027, -0.707104, -0.612376, 0.353553, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jh5la")
+
+[node name="CameraGimbal" type="Node3D" parent="."]
+
+[node name="Camera" type="Camera3D" parent="CameraGimbal"]

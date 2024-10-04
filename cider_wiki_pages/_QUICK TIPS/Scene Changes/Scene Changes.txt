@@ -1,0 +1,19 @@
+
+[font s=24]Changing scenes[/font]
+
+Always use [code]SceneGirl[/code]:
+
+[[code:gd]]
+SceneGirl.change_scene("res://scenes/gameplay/gameplay.tscn")
+[[/]]
+
+[font s=24]Loading screen[/font]
+
+Customize the loading screen here: [url]res://autoload/scene_girl/default_loading_screen.tscn[/url]
+
+
+[font s=24]Transitions[/font]
+
+Customize the DEFAULT transitions here: [url]res://autoload/scene_girl/default_scene_transition.tscn[/url]
+
+To use custom transitions for a specific scene, add a [code]AnimationPlayer[/code] node to that scene, and name it [code]"SceneTransition"[/code]. Then create an [code]"in"[/code] and [code]"out"[/code] animation.

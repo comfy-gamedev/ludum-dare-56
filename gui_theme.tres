@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cy6gwsvlnrel7"]
+
+[ext_resource type="FontFile" uid="uid://dv4y6a2mw7r2y" path="res://fonts/Silver_nodescent.ttf" id="1_pi0t0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_js7gm"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejf61"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.298039, 0.298039, 0.298039, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dttv6"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.298039, 0.298039, 0.298039, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3mof"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2yd22"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.298039, 0.298039, 0.298039, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[resource]
+Control/font_sizes/font_size = 38
+Control/fonts/font = ExtResource("1_pi0t0")
+MainMenuButton/base_type = &"Button"
+MainMenuButton/styles/disabled = SubResource("StyleBoxEmpty_js7gm")
+MainMenuButton/styles/focus = SubResource("StyleBoxFlat_ejf61")
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_dttv6")
+MainMenuButton/styles/normal = SubResource("StyleBoxEmpty_w3mof")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_2yd22")

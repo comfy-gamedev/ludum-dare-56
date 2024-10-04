@@ -1,0 +1,49 @@
+An easy template for creating state machine driven scripts is available.
+
+To use the template, create the script as you normally would, but select the template from the drop-down:
+
+[[img:img_1.webp]]
+
+The [code]_always_process()[/code] and [code]_always_physics_process()[/code] methods take the place of the usual process methods. These will always be called no matter what state the machine is in, or even if there is no active state.
+
+[[code:gd]]
+func _always_process(delta: float) -> void:
+	pass
+
+func _always_physics_process(delta: float) -> void:
+	pass
+[[/]]
+
+[font s=24]Creating states[/font]
+
+Each state is defined by the presence of any of these four methods:
+
+[[code:gd]]
+#region State STATENAME
+func _state_STATENAME_enter() -> void:
+	pass
+
+func _state_STATENAME_process(delta: float) -> void:
+	pass
+
+func _state_STATENAME_physics_process(delta: float) -> void:
+	pass
+
+func _state_STATENAME_exit() -> void:
+	pass
+#endregion
+[[/]]
+
+Where [code]STATENAME[/code] is replaced with the name of the state.
+
+All of these methods are optional, no errors will occur if they are not implemented.
+
+[font s=24]Changing states[/font]
+
+There are no predefined transitions, just use [code]_goto[/code] to switch states:
+
+[[code:gd]]
+_goto("idle")
+[[/]]
+
+NOTE: This will immediately switch states and call their exit/enter functions! It's recommended that you immediately [code]return[/code] from the current state function you're in!

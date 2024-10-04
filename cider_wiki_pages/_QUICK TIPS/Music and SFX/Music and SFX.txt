@@ -1,0 +1,27 @@
+
+[font s=24]Sound effects[/font]
+
+To play a simple sound effect, use:
+
+[[code:gd]]
+MusicMan.sfx(preload("res://sfx/bloop.wav"))
+[[/]]
+
+By default, each sound effect has no polyphony, or in other words, the sound will restart if played again while it is currently playing.
+
+To control polyphony, pass an [code]owner[/code] and [code]max_polyphony[/code] parameter:
+
+[[code:gd]]
+MusicMan.sfx(preload("res://sfx/bloop.wav"), null, 14)
+[[/]]
+
+
+[font s=24]Music[/font]
+
+Always use [code]MusicMan[/code] to play music:
+
+[[code:gd]]
+MusicMan.music(preload("res://music/main_theme.ogg"))
+[[/]]
+
+This will ensure that the music isn't interrupted if it's already playing, and will apply a crossfade.

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://c60eawv3jvb5j"]
+
+[ext_resource type="Script" path="res://autoload/scene_girl/default_loading_screen.gd" id="1_pn5vw"]
+
+[node name="DefaultLoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_pn5vw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+offset_top = -73.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Loading... 0%"

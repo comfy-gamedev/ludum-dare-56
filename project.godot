@@ -1,0 +1,55 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="GodotJamTemplate"
+config/tags=PackedStringArray("template")
+run/main_scene="res://scenes/main_menu/main_menu.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://icon.svg"
+boot_splash/minimum_display_time.release=2000
+
+[audio]
+
+buses/default_bus_layout="res://audio_bus_layout.tres"
+
+[autoload]
+
+Globals="*res://autoload/globals/globals.gd"
+SceneGirl="*res://autoload/scene_girl/scene_girl.gd"
+MusicMan="*res://autoload/music_man.gd"
+TestCamera="*res://addons/test_camera/test_camera_manager.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/cider_wiki/plugin.cfg", "res://addons/test_camera/plugin.cfg")
+
+[gui]
+
+theme/custom="res://gui_theme.tres"
+
+[importer_defaults]
+
+texture={
+"detect_3d/compress_to": 0
+}
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

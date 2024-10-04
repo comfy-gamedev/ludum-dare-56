@@ -1,0 +1,7 @@
+Class names are [code]PascalCase[/code].
+
+Everything else is [code]snake_case[/code].
+
+Private vars/funcs should have a leading [code]_[/code].
+
+In general, follow the official [url=https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html]GDScript style guide[/url]. In particular, take a look at the [url=https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order]code order[/url] guidelines.

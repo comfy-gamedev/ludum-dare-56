@@ -1,0 +1,28 @@
+
+
+[b]Is it a hitbox or other type of simple detector?[/b]
+			YES [font s=24]→[/font] [code]Area[/code]
+NO
+ [font s=24]↓[/font]
+
+[b]Is it stuck in place (walls, terrain)?[/b]
+			YES [font s=24]→[/font] [code]StaticBody[/code]
+NO
+ [font s=24]↓[/font]
+
+[b]Does it move on a track without collision (moving platform)?[/b]
+			YES [font s=24]→[/font] [code]AnimatableBody[/code]
+NO
+ [font s=24]↓[/font]
+
+[b]Does it move according to some logic (character, projectile)?[/b]
+			YES [font s=24]→[/font] [code]CharacterBody[/code]
+NO
+ [font s=24]↓[/font]
+
+[b]Does it move in a natural, physicsy manner (ragdolls, vehicles, bouncy balls)?[/b]
+			YES [font s=24]→[/font] [code]RigidBody[/code]
+NO
+ [font s=24]↓[/font]
+
+I think you're lost...

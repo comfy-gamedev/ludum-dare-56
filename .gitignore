@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+build/
+
+*.blend[0-9]
+
+# Inverse ignores
+!**/.gdignore
+
