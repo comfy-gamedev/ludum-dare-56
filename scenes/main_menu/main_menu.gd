@@ -30,4 +30,3 @@ func _on_how_to_play_button_mouse_entered() -> void:
 
 func _on_options_button_mouse_entered() -> void:
 	options_button.grab_focus()
-
