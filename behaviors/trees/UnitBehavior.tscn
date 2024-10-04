@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddf31kmkx8d28"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_smdxw"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_teprq"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_5k3od"]
+[ext_resource type="PackedScene" uid="uid://tsb6iwrtft2p" path="res://behaviors/actions/detect_target_action.tscn" id="4_j60xe"]
+
+[node name="UnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_smdxw")
+blackboard = NodePath("@Node@19619")
+actor = NodePath("..")
+
+[node name="SelectorReactiveComposite" type="Node" parent="."]
+script = ExtResource("2_teprq")
+
+[node name="SeekTargetSequence" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("3_5k3od")
+
+[node name="DetectTargetAction" parent="SelectorReactiveComposite/SeekTargetSequence" instance=ExtResource("4_j60xe")]
+
+[node name="WanderSequence" type="Node" parent="SelectorReactiveComposite"]
+script = ExtResource("3_5k3od")
