@@ -1,7 +1,7 @@
 extends Node2D
 
 var velocity := Vector2(5, 0)
-var damage := 5
+var damage := 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
