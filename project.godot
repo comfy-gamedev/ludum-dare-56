@@ -26,17 +26,19 @@ buses/default_bus_layout="res://audio_bus_layout.tres"
 Globals="*res://autoload/globals/globals.gd"
 SceneGirl="*res://autoload/scene_girl/scene_girl.gd"
 MusicMan="*res://autoload/music_man.gd"
-TestCamera="*res://addons/test_camera/test_camera_manager.gd"
+TestCamera="res://addons/test_camera/test_camera_manager.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+Fullscreener="res://autoload/fullscreener.gd"
 
 [display]
 
-window/size/viewport_width=852
-window/size/viewport_height=480
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=568
+window/size/viewport_height=320
+window/size/window_width_override=1136
+window/size/window_height_override=640
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 

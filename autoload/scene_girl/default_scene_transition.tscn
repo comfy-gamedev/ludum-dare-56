@@ -116,7 +116,7 @@ resource_local_to_scene = true
 shader = SubResource("Shader_kt24k")
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/radius = 0.5
+shader_parameter/radius = 1.0
 
 [node name="DefaultSceneTransition" type="AnimationPlayer"]
 libraries = {
@@ -127,6 +127,7 @@ speed_scale = 2.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
 material = SubResource("ShaderMaterial_luw0b")
 anchors_preset = 15
 anchor_right = 1.0
