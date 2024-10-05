@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhyrtqf8cqygs"]
+[gd_scene load_steps=8 format=3 uid="uid://dhyrtqf8cqygs"]
 
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="1_n2i6r"]
 [ext_resource type="PackedScene" uid="uid://ddf31kmkx8d28" path="res://behaviors/trees/UnitBehavior.tscn" id="1_t6j5r"]
 [ext_resource type="Texture2D" uid="uid://dxhcpl7u7wx3x" path="res://assests/wet_gobbo.png" id="2_0peo8"]
 
@@ -30,8 +31,11 @@ size = Vector2(8, 8)
 
 [node name="Goblin" type="CharacterBody2D"]
 
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("1_n2i6r")
+
 [node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("1_t6j5r")]
-blackboard = NodePath("@Node@26793")
+blackboard = NodePath("@Node@21241")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_btxmb")
