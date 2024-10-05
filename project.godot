@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="GodotJamTemplate"
+config/name="Goblin Simulator"
 config/tags=PackedStringArray("template")
-run/main_scene="res://scenes/main_menu/main_menu.tscn"
+run/main_scene="res://scenes/game_root.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time.release=2000
@@ -29,12 +29,16 @@ MusicMan="*res://autoload/music_man.gd"
 TestCamera="*res://addons/test_camera/test_camera_manager.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+Fullscreener="res://autoload/fullscreener.gd"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=720
+window/size/viewport_width=568
+window/size/viewport_height=320
+window/size/window_width_override=1136
+window/size/window_height_override=640
 window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
