@@ -12,7 +12,7 @@ config_version=5
 
 config/name="GodotJamTemplate"
 config/tags=PackedStringArray("template")
-run/main_scene="res://scenes/main_menu/main_menu.tscn"
+run/main_scene="res://scenes/game_root.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time.release=2000
@@ -32,8 +32,10 @@ BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=720
+window/size/viewport_width=852
+window/size/viewport_height=480
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
