@@ -11,6 +11,7 @@ shader_parameter/vertex_offset = Vector2(0, 0)
 [node name="GameRoot" type="Node"]
 script = ExtResource("1_waueg")
 metadata/test_camera = &"disabled"
+metadata/test_scene = "res://scenes/main_gameplay/main_gameplay.tscn"
 
 [node name="SmoothPixelSubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 2

@@ -1,6 +1,5 @@
 extends ActionLeaf
 
-@export var move_speed = 75
 @export var acceptance_radius = 25
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
@@ -25,7 +24,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			spriteNode.flip_h = false
 	
 	if current_distance_to_target > distance_to_target/2:
-		actor.velocity = move_speed * direction
+		actor.velocity = actor.movement_speed * direction
 
 	# If the distance to the target is less than the step, set the final position.
 	if current_distance_to_target <= acceptance_radius:

@@ -51,12 +51,12 @@ script = ExtResource("1_yh6ya")
 script = ExtResource("1_n2i6r")
 
 [node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("1_t6j5r")]
-blackboard = NodePath("@Node@52768")
+blackboard = NodePath("@Node@21667")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_btxmb")
 autoplay = "default"
-frame_progress = 0.634048
+frame_progress = 0.372635
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uq0tf")

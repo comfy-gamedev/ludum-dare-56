@@ -15,7 +15,7 @@ signal load_progress(value: float)
 ## Minimum time to show the loading screen for.
 ## [signal load_progress] will be simulated with fake values.
 ## Automatically set to 0.0 when running in an exported build.
-var minimum_load_time: float = 1.0
+var minimum_load_time: float = 0.0
 
 var root: Node
 var current_scene: Node
@@ -107,6 +107,8 @@ func change_scene(scene_file: String) -> void:
 	_current_transition.play("out")
 	_current_transition.animation_finished.connect(_on_out_animation_finished)
 	_current_transition.process_mode = Node.PROCESS_MODE_ALWAYS
+	if not is_instance_valid(current_scene):
+		_current_transition.seek(_current_transition.current_animation_length-0.001)
 	
 	ResourceLoader.load_threaded_request(_pending_change_scene_file)
 	
