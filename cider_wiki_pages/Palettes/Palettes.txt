@@ -1,0 +1,41 @@
+
+[font_size=24]INFO ABOUT PALETTES[/font_size]
+
+Base palette is [code]res://palette.png[/code]. DO NOT EDIT IT.
+
+Other palettes can be edited.
+
+Materials are in [code]res://materials/[/code].
+
+Each material points to the palette png it uses.
+
+
+[font_size=24]HOW TO ENABLE PALETTE SWAP FOR AN IMAGE[/font_size]
+
+STEP 1
+
+Go to your sprite image file!
+
+[[img:img_1.webp]]
+
+STEP 2
+
+Double click it and go to your Import tab!
+
+Change the Import As to Palette Sprite!
+
+DO NOT change the palette path! DONT
+
+[[img:img_2.webp]]
+
+CLICK REIMPORT!
+
+DONE
+
+
+[font_size=24]HOW TO SET A SPRITE NODE'S PALETTE[/font_size]
+
+Assign one of the [code]res://materials/team_*.tres[/code] materials to your sprite.
+
+That's it!
+
