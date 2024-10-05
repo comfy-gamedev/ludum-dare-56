@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0fwkkdoghnm6"
-path="res://.godot/imported/friendly_turret_base.png-49e44cd8adb0a458c6fdb7c393d431f1.ctex"
+uid="uid://dpb6j0k38gjse"
+path="res://.godot/imported/gob_house.png-9f30edb6cce42cee5ef5d64e4026d0b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/friendly_turret_base.png"
-dest_files=["res://.godot/imported/friendly_turret_base.png-49e44cd8adb0a458c6fdb7c393d431f1.ctex"]
+source_file="res://assests/gob_house.png"
+dest_files=["res://.godot/imported/gob_house.png-9f30edb6cce42cee5ef5d64e4026d0b7.ctex"]
 
 [params]
 

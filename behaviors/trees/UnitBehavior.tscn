@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddf31kmkx8d28"]
+[gd_scene load_steps=16 format=3 uid="uid://ddf31kmkx8d28"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_smdxw"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_teprq"]
@@ -8,15 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://bxa6gkl6odb7m" path="res://behaviors/actions/pick_random_pos_action.tscn" id="5_a283i"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="6_pywlr"]
 [ext_resource type="PackedScene" uid="uid://dqhgunc6swb3c" path="res://behaviors/actions/move_to_pos_action.tscn" id="6_wbibi"]
+[ext_resource type="PackedScene" uid="uid://crh286804k8cq" path="res://behaviors/actions/move_from_target_opponent_action.tscn" id="7_2brsq"]
 [ext_resource type="PackedScene" uid="uid://cmwkcp4ctds55" path="res://behaviors/actions/move_to_target_building_action.tscn" id="7_lkrdv"]
+[ext_resource type="PackedScene" uid="uid://bjsft772bt537" path="res://behaviors/actions/move_to_target_opponent_action.tscn" id="8_8cktc"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="8_fkgkk"]
+[ext_resource type="PackedScene" uid="uid://wcx782cjugc4" path="res://behaviors/actions/damage_target_opponent_action.tscn" id="9_sicgw"]
 [ext_resource type="PackedScene" uid="uid://dra3c7mo7wly3" path="res://behaviors/actions/move_from_target_building_action.tscn" id="10_af42a"]
 [ext_resource type="PackedScene" uid="uid://jjh26b7mnrgo" path="res://behaviors/actions/damage_target_building_action.tscn" id="10_eriru"]
 
 [node name="UnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_smdxw")
-blackboard = NodePath("@Node@17483")
-actor = NodePath("")
+blackboard = NodePath("@Node@31970")
+actor = NodePath("..")
 
 [node name="PrimarySequence" type="Node" parent="."]
 script = ExtResource("3_5k3od")
@@ -26,12 +29,24 @@ script = ExtResource("3_5k3od")
 [node name="SelectorReactiveComposite" type="Node" parent="PrimarySequence"]
 script = ExtResource("2_teprq")
 
-[node name="AttackNearestUnitSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
+[node name="DetectAndAttackNearestUnitSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
 script = ExtResource("3_5k3od")
 
-[node name="DetectTargetAction" parent="PrimarySequence/SelectorReactiveComposite/AttackNearestUnitSequence" instance=ExtResource("4_j60xe")]
+[node name="DetectTargetAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("4_j60xe")]
 
-[node name="PickRandomPosAction" parent="PrimarySequence/SelectorReactiveComposite/AttackNearestUnitSequence" instance=ExtResource("5_a283i")]
+[node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("8_8cktc")]
+
+[node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence"]
+script = ExtResource("8_fkgkk")
+
+[node name="AttackUnitSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator"]
+script = ExtResource("3_5k3od")
+
+[node name="MoveFromTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("7_2brsq")]
+
+[node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("8_8cktc")]
+
+[node name="DamageTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("9_sicgw")]
 
 [node name="BesiegeTargetBuildingSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
 script = ExtResource("3_5k3od")

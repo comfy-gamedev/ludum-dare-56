@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Building
 
 @export var team = "enemy"
@@ -6,6 +6,7 @@ class_name Building
 
 var max_health := 50
 var health := max_health
+var reach := 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhyrtqf8cqygs"]
+[gd_scene load_steps=15 format=3 uid="uid://dhyrtqf8cqygs"]
 
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="1_n2i6r"]
 [ext_resource type="PackedScene" uid="uid://ddf31kmkx8d28" path="res://behaviors/trees/UnitBehavior.tscn" id="1_t6j5r"]
@@ -50,14 +50,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq0tf"]
 size = Vector2(8, 8)
 
-[node name="Goblin" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5reyq"]
+radius = 35.0
+
+[node name="Goblin" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_yh6ya")
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("1_n2i6r")
 
 [node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("1_t6j5r")]
-blackboard = NodePath("@Node@24002")
+blackboard = NodePath("../Blackboard")
 actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -68,3 +71,9 @@ frame_progress = 0.372635
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uq0tf")
+
+[node name="EnemySeekingRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySeekingRadius"]
+shape = SubResource("CircleShape2D_5reyq")
+debug_color = Color(0.563722, 0.551862, 0.248219, 0.42)
