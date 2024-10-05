@@ -4,7 +4,9 @@ var target := Vector2(0, 0)
 
 @onready var head := $Head
 @onready var cooldown := $Timer
-var firing = false
+@export var damage = 20
+
+var firing_frames = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,24 +18,31 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
-	var targets = enemies.map(func(x): return x.global_position)
+	#var targets = enemies.map(func(x): return x.global_position)
 	
+	target = Vector2(10000, 0)
+	var target_node = null
 	var dist
 	var min_dist = 10000.0
-	for i in targets:
-		dist = global_position.distance_squared_to(i)
+	for i in enemies:
+		dist = global_position.distance_squared_to(i.global_position)
 		if dist < min_dist:
 			min_dist = dist
-			target = i
+			target = i.global_position
+			target_node = i
 	
-	head.look_at(target)
-	if min_dist < reach && cooldown.is_stopped():
+	
+	head.rotation = global_position.angle_to_point(target) + (PI/2)
+	
+	if global_position.distance_to(target) < reach && cooldown.is_stopped():
 		head.play()
-		firing = true
+		target_node.hit(damage * delta)
+		firing_frames = 1
 		queue_redraw()
-	elif firing:
-		firing = false
+	elif firing_frames >= 0:
+		firing_frames -= 1
 		queue_redraw()
 
 func _draw() -> void:
-	draw_line(global_position, target, Color.CHARTREUSE)
+	if firing_frames > 0:
+		draw_line(Vector2(0, 0), to_local(target), Color.CHARTREUSE, 2.0)

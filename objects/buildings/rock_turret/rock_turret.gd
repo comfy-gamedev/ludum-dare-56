@@ -4,13 +4,15 @@ var target := Vector2(1, 0)
 
 @onready var head := $Head
 @onready var cooldown := $Timer
+@export var damage = 10
+
 var rock_scene = preload("res://objects/buildings/rock_turret/rock.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	max_health = 50
 	health = max_health
-	reach = 50
+	reach = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -33,5 +35,6 @@ func _process(delta: float) -> void:
 		var rock = rock_scene.instantiate()
 		get_parent().add_child(rock)
 		rock.global_position = global_position
-		rock.velocity = (target - global_position).normalized() * 25
+		rock.velocity = (target - global_position).normalized() * 50
+		rock.damage = damage
 		cooldown.start()

@@ -4,9 +4,9 @@ class_name Building
 @export var team: Enums.Team = Enums.Team.RED
 @export var building_type = "turret"
 
-var max_health := 50
+@export var max_health := 50
 var health := max_health
-var reach := 50
+@export var reach := 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
