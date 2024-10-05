@@ -35,7 +35,8 @@ position = Vector2(533, 135)
 position = Vector2(769, 141)
 
 [node name="Goblin2" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(774, 436)
+position = Vector2(651, 255)
+team = 1
 
 [node name="Goblin3" parent="." instance=ExtResource("3_em8p7")]
 position = Vector2(499, 447)
