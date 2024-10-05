@@ -15,7 +15,7 @@ position = Vector2(590, 198)
 script = ExtResource("1_lrklj")
 
 [node name="Goblin" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(381, 437)
+position = Vector2(384, 290)
 
 [node name="RockTurret" parent="." instance=ExtResource("4_i7urn")]
 position = Vector2(329, 142)
@@ -27,7 +27,7 @@ position = Vector2(533, 135)
 position = Vector2(769, 141)
 
 [node name="Goblin2" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(774, 436)
+position = Vector2(777, 289)
 
 [node name="Goblin3" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(499, 447)
+position = Vector2(502, 300)
