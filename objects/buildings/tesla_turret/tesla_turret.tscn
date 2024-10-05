@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://brfcq7g5e0ywk"]
+
+[ext_resource type="Script" path="res://objects/buildings/tesla_turret/tesla_turret.gd" id="1_11oyd"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_lgqhc"]
+[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="3_tpgmq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxqon"]
+size = Vector2(16, 16)
+
+[node name="TeslaTurret" type="Node2D" groups=["Building"]]
+script = ExtResource("1_11oyd")
+
+[node name="Base" type="Sprite2D" parent="."]
+material = ExtResource("2_lgqhc")
+texture = ExtResource("3_tpgmq")
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_sxqon")
+
+[node name="VisibilityTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="VisibilityTimer" to="." method="_on_visibility_timer_timeout"]
