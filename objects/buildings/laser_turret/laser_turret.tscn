@@ -71,7 +71,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roauy"]
 size = Vector2(16, 16)
 
-[node name="LaserTurret" type="Node2D"]
+[node name="LaserTurret" type="Node2D" groups=["Building"]]
 script = ExtResource("1_t5703")
 
 [node name="Base" type="Sprite2D" parent="."]

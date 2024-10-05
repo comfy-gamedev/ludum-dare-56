@@ -15,7 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): x.team != team)
+	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
 	var targets = enemies.map(func(x): return x.global_position)
 	
 	var dist

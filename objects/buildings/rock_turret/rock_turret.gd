@@ -14,9 +14,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): x.team != team)
+	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
 	var targets = enemies.map(func(x): return x.global_position)
 	
+	target = Vector2(10000, 0)
 	var dist
 	var min_dist = 10000.0
 	for i in targets:
@@ -25,9 +26,12 @@ func _process(delta: float) -> void:
 			min_dist = dist
 			target = i
 	
-	head.look_at(target)
-	if min_dist < reach && cooldown.is_stopped():
+	head.rotation = global_position.angle_to_point(target) + (PI/2)
+	
+	if global_position.distance_to(target) < reach && cooldown.is_stopped():
 		head.play()
 		var rock = rock_scene.instantiate()
-		rock.velocity = (target - global_position).normalized() * 5
+		get_parent().add_child(rock)
+		rock.global_position = global_position
+		rock.velocity = (target - global_position).normalized() * 25
 		cooldown.start()

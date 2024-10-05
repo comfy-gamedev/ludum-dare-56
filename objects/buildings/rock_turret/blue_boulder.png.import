@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hri0avg4s103"
-path="res://.godot/imported/blue_boulder.png-f1be985d2d0e4d76ee25111973ae778c.ctex"
+path="res://.godot/imported/blue_boulder.png-ad15fd21fe89a610ce93259ecd32c923.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/blue_boulder.png"
-dest_files=["res://.godot/imported/blue_boulder.png-f1be985d2d0e4d76ee25111973ae778c.ctex"]
+source_file="res://objects/buildings/rock_turret/blue_boulder.png"
+dest_files=["res://.godot/imported/blue_boulder.png-ad15fd21fe89a610ce93259ecd32c923.ctex"]
 
 [params]
 
