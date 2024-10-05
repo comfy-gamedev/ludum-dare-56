@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bno2s46dn5rxo"]
+[gd_scene load_steps=6 format=3 uid="uid://bno2s46dn5rxo"]
 
 [ext_resource type="Script" path="res://objects/buildings/farm/farm.gd" id="1_38mek"]
 [ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="1_xaqkv"]
+[ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="3_m0mjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqwp"]
 size = Vector2(16, 16)
+
+[sub_resource type="Curve" id="Curve_0vwe3"]
+_data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Farm" type="Node2D" groups=["Building"]]
 script = ExtResource("1_38mek")
@@ -21,5 +26,14 @@ shape = SubResource("RectangleShape2D_5tqwp")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+lifetime_randomness = 0.5
+texture = ExtResource("3_m0mjl")
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, -98)
+scale_amount_curve = SubResource("Curve_0vwe3")
+color = Color(0.501961, 0.501961, 0.501961, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
