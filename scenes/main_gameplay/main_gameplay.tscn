@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=7 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="3_em8p7"]
-[ext_resource type="PackedScene" uid="uid://w6bucvl4x4ao" path="res://objects/units/dry_gobbo/dry_gobbo.tscn" id="4_6y5or"]
 [ext_resource type="PackedScene" uid="uid://bp7t5y8tu3dde" path="res://objects/buildings/rock_turret/rock_turret.tscn" id="4_i7urn"]
+[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="5_ojahq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y87ti"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.814742, 0.522822, 0.223638, 1)
 
 [node name="MainGameplay" type="Node2D"]
 script = ExtResource("1_wt4mr")
@@ -16,11 +23,7 @@ position = Vector2(590, 198)
 script = ExtResource("1_lrklj")
 
 [node name="Goblin" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(384, 290)
-
-[node name="DryGobbo" parent="." instance=ExtResource("4_6y5or")]
-position = Vector2(676, 115)
-team = "enemy"
+position = Vector2(381, 437)
 
 [node name="RockTurret" parent="." instance=ExtResource("4_i7urn")]
 position = Vector2(329, 142)
@@ -31,12 +34,52 @@ position = Vector2(533, 135)
 [node name="RockTurret3" parent="." instance=ExtResource("4_i7urn")]
 position = Vector2(769, 141)
 
-[node name="friendly_rockturret" parent="." instance=ExtResource("4_i7urn")]
-position = Vector2(658, 311)
-team = "friendly"
-
 [node name="Goblin2" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(777, 289)
+position = Vector2(774, 436)
 
 [node name="Goblin3" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(502, 300)
+position = Vector2(499, 447)
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="UICanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("5_ojahq")
+
+[node name="PanelContainer" type="PanelContainer" parent="UICanvasLayer/Control"]
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y87ti")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UICanvasLayer/Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
