@@ -18,3 +18,5 @@ func _process(delta: float) -> void:
 
 func hit(damage_taken: float):
 	health -= damage_taken
+	if health <= 0:
+		queue_free()

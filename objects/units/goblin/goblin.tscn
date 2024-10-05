@@ -1,30 +1,44 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhyrtqf8cqygs"]
+[gd_scene load_steps=11 format=3 uid="uid://dhyrtqf8cqygs"]
 
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="1_n2i6r"]
 [ext_resource type="PackedScene" uid="uid://ddf31kmkx8d28" path="res://behaviors/trees/UnitBehavior.tscn" id="1_t6j5r"]
 [ext_resource type="Script" path="res://objects/units/goblin/goblin.gd" id="1_yh6ya"]
 [ext_resource type="Texture2D" uid="uid://dxhcpl7u7wx3x" path="res://assests/wet_gobbo.png" id="2_0peo8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mfrhl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxr1l"]
 atlas = ExtResource("2_0peo8")
 region = Rect2(0, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f836b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhuwk"]
 atlas = ExtResource("2_0peo8")
 region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2an01"]
+atlas = ExtResource("2_0peo8")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opd8x"]
+atlas = ExtResource("2_0peo8")
+region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btxmb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mfrhl")
+"texture": SubResource("AtlasTexture_bxr1l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f836b")
+"texture": SubResource("AtlasTexture_hhuwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2an01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opd8x")
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq0tf"]
@@ -36,14 +50,13 @@ script = ExtResource("1_yh6ya")
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("1_n2i6r")
 
-[node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("1_t6j5r")]
-blackboard = NodePath("@Node@20925")
-actor = NodePath("..")
+[node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("1_t6j5r")]
+blackboard = NodePath("@Node@52768")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_btxmb")
 autoplay = "default"
-frame_progress = 0.333367
+frame_progress = 0.634048
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uq0tf")
