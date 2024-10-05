@@ -1,4 +1,5 @@
-extends CharacterBody2D
+extends Unit
+
 
 
 #const SPEED = 300.0
