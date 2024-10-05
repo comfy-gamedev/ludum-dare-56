@@ -135,7 +135,6 @@ func update_tileset() -> void:
 
 
 ## Update all displayed tiles from the dual grid.
-## It will only process fully-filled tiles from the world grid.
 func _update_tiles() -> void:
 	if debug:
 		print('Updating tiles....................')
@@ -143,8 +142,7 @@ func _update_tiles() -> void:
 	self.clear()
 	checked_cells = [true]
 	for _world_cell in world_tilemap.get_used_cells():
-		if _is_world_tile_sketched(_world_cell):
-			update_tile(_world_cell)
+		update_tile(_world_cell)
 	# checked_cells will only be used when updating
 	# the entire tilemap to avoid repeating checks.
 	# This check is skipped when updating tiles individually.
