@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://tv88k2jqdudv"
+path="res://.godot/imported/blue_barricade.png-b3d5c51bef46b8d21311a8388fddcdca.res"
+
+[deps]
+
+source_file="res://objects/buildings/barricade/blue_barricade.png"
+dest_files=["res://.godot/imported/blue_barricade.png-b3d5c51bef46b8d21311a8388fddcdca.res"]
+
+[params]
+
+palette_image="res://palette.png"

@@ -1,12 +1,14 @@
 extends Node2D
 class_name Building
 
-@export var team: Enums.Team = Enums.Team.RED
+@export var team: Enums.Team = Enums.Team.BLUE
 @export var building_type = "turret"
 
 @export var max_health := 50
 var health := max_health
 @export var reach := 50
+
+var red_material = preload("res://materials/team_red.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

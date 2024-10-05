@@ -13,7 +13,8 @@ func _ready() -> void:
 	max_health = 50
 	health = max_health
 	reach = 100
-
+	if team == Enums.Team.RED:
+		$Base.material = red_material
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
