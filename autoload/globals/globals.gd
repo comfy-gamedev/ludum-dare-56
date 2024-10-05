@@ -8,17 +8,23 @@ extends Node
 ## All variables are displayed automatically.
 
 ## Emitted when any variable changes.
-signal changed
+signal changed()
+
+signal player_hotbar_changed()
+var player_hotbar: Array[Blueprint] = [null, null, null, null, null, null]:
+	set(v): player_hotbar = v; changed.emit(); player_hotbar_changed.emit()
+
+signal selected_blueprint_changed()
+var selected_blueprint: Blueprint = null:
+	set(v): selected_blueprint = v; changed.emit(); selected_blueprint_changed.emit()
 
 
-## Example variable.
-var player_health: int = 0:
-	set(v): player_health = v; changed.emit()
+
 
 
 ## Reset all variables to their default state.
 func reset():
-	player_health = 0
+	player_hotbar = [null, null, null, null, null, null]
 
 
 #region Debug overlay

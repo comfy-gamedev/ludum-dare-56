@@ -69,6 +69,9 @@ func _exit_tree() -> void:
 	if RenderingServer.frame_pre_draw.is_connected(_on_rendering_server_frame_pre_draw):
 		RenderingServer.frame_pre_draw.disconnect(_on_rendering_server_frame_pre_draw)
 
+func _propagate_input_event(event: InputEvent) -> bool:
+	return true
+
 func _get_configuration_warnings() -> PackedStringArray:
 	var first_subviewport: SubViewport = null
 	for c in get_children():
