@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wcx782cjugc4"]
+
+[ext_resource type="Script" path="res://behaviors/actions/damage_target_opponent_action.gd" id="1_f73m1"]
+
+[node name="DamageTargetOpponentAction" type="Node"]
+script = ExtResource("1_f73m1")

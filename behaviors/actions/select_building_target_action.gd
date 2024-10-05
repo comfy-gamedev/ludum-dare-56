@@ -7,6 +7,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	
 	if enemy_buildings.size() > 0:
 		blackboard.set_value("target_building", enemy_buildings.pick_random())
-		return SUCCESS
-	else:
-		return FAILURE
+		
+	return SUCCESS
+	#else:
+		#return FAILURE

@@ -44,14 +44,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b4mhs"]
 size = Vector2(8, 8)
 
-[node name="DryGobbo" type="CharacterBody2D"]
+[node name="DryGobbo" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_ak2s8")
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_vkgbm")
 
 [node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_u3un6")]
-blackboard = NodePath("@Node@42270")
+blackboard = NodePath("@Node@17490")
 actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

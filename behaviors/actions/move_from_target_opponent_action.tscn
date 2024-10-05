@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://crh286804k8cq"]
+
+[ext_resource type="Script" path="res://behaviors/actions/move_from_target_opponent_action.gd" id="1_b3vbc"]
+
+[node name="MoveFromTargetOpponentAction" type="Node"]
+script = ExtResource("1_b3vbc")

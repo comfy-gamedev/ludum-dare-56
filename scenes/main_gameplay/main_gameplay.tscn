@@ -19,7 +19,7 @@ script = ExtResource("1_lrklj")
 position = Vector2(384, 290)
 
 [node name="DryGobbo" parent="." instance=ExtResource("4_6y5or")]
-position = Vector2(671, 76)
+position = Vector2(676, 115)
 team = "enemy"
 
 [node name="RockTurret" parent="." instance=ExtResource("4_i7urn")]
