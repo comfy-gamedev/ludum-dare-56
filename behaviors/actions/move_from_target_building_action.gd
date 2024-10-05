@@ -6,6 +6,9 @@ extends ActionLeaf
 # This action causes the actor to move away from a target pos (new_pos in blackboard).
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var target_building = blackboard.get_value("target_building")
+	if not is_instance_valid(target_building):
+		return FAILURE
+		
 	var target_pos = target_building.global_position
 	var delta = get_physics_process_delta_time()
 	

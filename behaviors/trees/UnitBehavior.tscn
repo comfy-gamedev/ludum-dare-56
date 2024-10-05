@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddf31kmkx8d28"]
+[gd_scene load_steps=13 format=3 uid="uid://ddf31kmkx8d28"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_smdxw"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_teprq"]
@@ -11,10 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://cmwkcp4ctds55" path="res://behaviors/actions/move_to_target_building_action.tscn" id="7_lkrdv"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="8_fkgkk"]
 [ext_resource type="PackedScene" uid="uid://dra3c7mo7wly3" path="res://behaviors/actions/move_from_target_building_action.tscn" id="10_af42a"]
+[ext_resource type="PackedScene" uid="uid://jjh26b7mnrgo" path="res://behaviors/actions/damage_target_building_action.tscn" id="10_eriru"]
 
 [node name="UnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_smdxw")
-blackboard = NodePath("@Node@49596")
+blackboard = NodePath("@Node@49730")
 actor = NodePath("..")
 
 [node name="PrimarySequence" type="Node" parent="."]
@@ -46,6 +47,8 @@ script = ExtResource("3_5k3od")
 [node name="MoveFromTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("10_af42a")]
 
 [node name="MoveToTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("7_lkrdv")]
+
+[node name="DamageTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("10_eriru")]
 
 [node name="WanderSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
 script = ExtResource("3_5k3od")

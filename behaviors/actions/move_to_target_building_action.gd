@@ -5,6 +5,9 @@ extends ActionLeaf
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var target_building = blackboard.get_value("target_building")
+	if not is_instance_valid(target_building):
+		return FAILURE
+		
 	var target_pos = target_building.global_position
 	var distance_to_target = actor.position.distance_to(target_pos)
 	var delta = get_physics_process_delta_time()
