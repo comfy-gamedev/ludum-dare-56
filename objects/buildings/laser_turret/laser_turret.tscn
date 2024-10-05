@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_h5lkj"]
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_soqlp"]
 [ext_resource type="Texture2D" uid="uid://0eayt8vm13h8" path="res://objects/buildings/laser_turret/turret_magic.png" id="3_xrsmv"]
-[ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="5_yj33s"]
+[ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="5_brfac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5v1p"]
 atlas = ExtResource("3_xrsmv")
@@ -73,13 +73,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roauy"]
 size = Vector2(16, 16)
 
-[sub_resource type="Curve" id="Curve_t6fib"]
+[sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="LaserTurret" type="Node2D" groups=["Building"]]
 z_index = 1
 script = ExtResource("1_t5703")
+reach = 100
 
 [node name="Base" type="Sprite2D" parent="."]
 z_index = -1
@@ -97,12 +98,5 @@ wait_time = 0.2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_roauy")
 
-[node name="Smoke" type="CPUParticles2D" parent="."]
-emitting = false
-lifetime_randomness = 0.5
-texture = ExtResource("5_yj33s")
-emission_shape = 1
-emission_sphere_radius = 8.0
-gravity = Vector2(0, -98)
-scale_amount_curve = SubResource("Curve_t6fib")
-color = Color(0.501961, 0.501961, 0.501961, 1)
+[node name="Smoke" parent="." instance=ExtResource("5_brfac")]
+scale_amount_curve = SubResource("Curve_jetkp")

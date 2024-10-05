@@ -18,12 +18,15 @@ func _process(delta: float) -> void:
 		var p = get_viewport().canvas_transform.inverse() * get_viewport().get_mouse_position()
 		p = p.snappedf(8)
 		blueprint_preview.global_position = p
-	
-	if Globals.selected_blueprint and Input.is_action_just_pressed("build_plueprint"):
-		assert(is_instance_valid(blueprint_preview))
-		var s = Globals.selected_blueprint.spawned_scene.instantiate()
-		s.position = blueprint_preview.position
-		add_child(s)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("build_plueprint"):
+		if Globals.selected_blueprint:
+			assert(is_instance_valid(blueprint_preview))
+			get_viewport().set_input_as_handled()
+			var s = Globals.selected_blueprint.spawned_scene.instantiate()
+			s.position = blueprint_preview.position
+			add_child(s)
 
 
 func _on_globals_selected_blueprint_changed() -> void:

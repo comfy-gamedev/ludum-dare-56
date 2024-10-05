@@ -9,21 +9,8 @@ var targets: Array[Vector2] = []
 var laser_visible = false
 @onready var visibility_timer := $VisibilityTimer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	max_health = 500
-	health = max_health
-	reach = 100
-	if team == Enums.Team.RED:
-		$Base.material = red_material
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if health < max_health / 2.0:
-		smoke.emitting = true
-	else:
-		smoke.emitting = false
-	
 	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
 	if !enemies:
 		return
