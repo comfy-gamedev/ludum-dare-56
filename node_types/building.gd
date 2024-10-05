@@ -9,7 +9,7 @@ var health := max_health
 @export var reach := 50
 
 var red_material = preload("res://materials/team_red.tres")
-@onready var smoke = $Smoke
+@onready var smoke := $Smoke
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

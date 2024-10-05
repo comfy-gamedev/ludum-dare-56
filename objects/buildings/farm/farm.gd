@@ -1,5 +1,7 @@
 extends Building
 
+var squish_amount = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	max_health = 50
@@ -10,10 +12,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if health < max_health / 2.0:
+		smoke.emitting = true
+	else:
+		smoke.emitting = false
+	
+	scale = Vector2(1, 1) + (Vector2(abs(cos(squish_amount) / 2), abs(sin(squish_amount))) * (squish_amount / 8))
+	squish_amount -= delta * 4
+	squish_amount = max(squish_amount, 0)
 
 func _on_timer_timeout() -> void:
-	#gain money/mana
-	#play squish animation? put a floating +1 in front of it? play fireworks?
-	pass # Replace with function body.
+	Globals.player_money += 1
+	squish_amount = 2 * PI

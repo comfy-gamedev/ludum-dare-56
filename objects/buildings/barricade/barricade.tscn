@@ -26,6 +26,7 @@ texture = ExtResource("2_65mxi")
 shape = SubResource("RectangleShape2D_1wllb")
 
 [node name="Smoke" type="CPUParticles2D" parent="."]
+emitting = false
 lifetime_randomness = 0.5
 texture = ExtResource("4_8evx8")
 emission_shape = 1

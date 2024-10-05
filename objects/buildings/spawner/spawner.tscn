@@ -94,6 +94,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="Smoke" type="CPUParticles2D" parent="."]
+emitting = false
 lifetime_randomness = 0.5
 texture = ExtResource("4_qkeeo")
 emission_shape = 1

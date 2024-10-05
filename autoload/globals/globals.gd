@@ -12,13 +12,13 @@ signal changed
 
 
 ## Example variable.
-var player_health: int = 0:
-	set(v): player_health = v; changed.emit()
+var player_money: int = 5:
+	set(v): player_money = v; changed.emit()
 
 
 ## Reset all variables to their default state.
 func reset():
-	player_health = 0
+	player_money = 5
 
 
 #region Debug overlay

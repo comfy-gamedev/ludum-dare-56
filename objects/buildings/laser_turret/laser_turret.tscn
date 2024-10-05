@@ -98,6 +98,7 @@ wait_time = 0.2
 shape = SubResource("RectangleShape2D_roauy")
 
 [node name="Smoke" type="CPUParticles2D" parent="."]
+emitting = false
 lifetime_randomness = 0.5
 texture = ExtResource("5_yj33s")
 emission_shape = 1

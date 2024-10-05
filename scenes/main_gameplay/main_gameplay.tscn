@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=11 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" path="res://game_ui_theme.tres" id="5_ojahq"]
 [ext_resource type="PackedScene" uid="uid://ddewpo8jj227y" path="res://objects/buildings/buffer/buffer.tscn" id="6_oa7ct"]
 [ext_resource type="PackedScene" uid="uid://do8m0remgx4og" path="res://objects/buildings/repairer/repairer.tscn" id="7_o026d"]
+[ext_resource type="PackedScene" uid="uid://bno2s46dn5rxo" path="res://objects/buildings/farm/farm.tscn" id="8_8k7f1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y87ti"]
 content_margin_left = 2.0
@@ -127,3 +128,6 @@ team = 1
 [node name="Repairer" parent="." instance=ExtResource("7_o026d")]
 position = Vector2(412, 202)
 team = 1
+
+[node name="Farm" parent="." instance=ExtResource("8_8k7f1")]
+position = Vector2(456, 137)

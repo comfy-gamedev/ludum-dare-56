@@ -31,6 +31,7 @@ one_shot = true
 shape = SubResource("RectangleShape2D_0ajw1")
 
 [node name="Smoke" type="CPUParticles2D" parent="."]
+emitting = false
 lifetime_randomness = 0.5
 texture = ExtResource("4_vdalb")
 emission_shape = 1

@@ -36,6 +36,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Smoke" type="CPUParticles2D" parent="."]
+emitting = false
 lifetime_randomness = 0.5
 texture = ExtResource("4_oxpad")
 emission_shape = 1
