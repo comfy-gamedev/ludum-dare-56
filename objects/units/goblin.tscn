@@ -35,7 +35,7 @@ size = Vector2(8, 8)
 script = ExtResource("1_n2i6r")
 
 [node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("1_t6j5r")]
-blackboard = NodePath("@Node@17476")
+blackboard = NodePath("@Node@18883")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_btxmb")

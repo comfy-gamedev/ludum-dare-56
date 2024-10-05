@@ -10,8 +10,8 @@
 
 [node name="UnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_smdxw")
-blackboard = NodePath("@Node@17473")
-actor = NodePath("..")
+blackboard = NodePath("@Node@19034")
+actor = NodePath("")
 
 [node name="SelectorReactiveComposite" type="Node" parent="."]
 script = ExtResource("2_teprq")
