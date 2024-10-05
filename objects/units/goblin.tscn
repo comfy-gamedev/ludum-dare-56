@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://dhyrtqf8cqygs"]
+[gd_scene load_steps=7 format=3 uid="uid://dhyrtqf8cqygs"]
 
-[node name="Goblin" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://ddf31kmkx8d28" path="res://behaviors/trees/UnitBehavior.tscn" id="1_t6j5r"]
+[ext_resource type="Texture2D" uid="uid://dxhcpl7u7wx3x" path="res://assests/wet_gobbo.png" id="2_0peo8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfrhl"]
+atlas = ExtResource("2_0peo8")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f836b"]
+atlas = ExtResource("2_0peo8")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btxmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfrhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f836b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq0tf"]
+size = Vector2(8, 8)
+
+[node name="Goblin" type="CharacterBody2D"]
+
+[node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("1_t6j5r")]
+blackboard = NodePath("@Node@26793")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_btxmb")
+autoplay = "default"
+frame_progress = 0.333367
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uq0tf")
