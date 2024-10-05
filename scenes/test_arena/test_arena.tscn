@@ -6,8 +6,8 @@
 [node name="TestArena" type="Node2D"]
 
 [node name="DryGobbo" parent="." instance=ExtResource("1_vryih")]
-position = Vector2(120, 59)
+position = Vector2(15, 18)
 team = "enemy"
 
 [node name="Goblin" parent="." instance=ExtResource("2_1rurq")]
-position = Vector2(150, 68)
+position = Vector2(45, 27)
