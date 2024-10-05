@@ -2,17 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="1_swpu4"]
 [ext_resource type="Script" path="res://objects/buildings/buffer/buffer.gd" id="1_u0i3h"]
-[ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="3_exy2s"]
+[ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_o2odo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfc65"]
 size = Vector2(16, 16)
 
-[sub_resource type="Curve" id="Curve_fxjtn"]
+[sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Buffer" type="Node2D" groups=["Building"]]
 script = ExtResource("1_u0i3h")
+building_type = 3
+reach = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
@@ -27,14 +29,7 @@ shape = SubResource("RectangleShape2D_wfc65")
 wait_time = 2.0
 autostart = true
 
-[node name="Smoke" type="CPUParticles2D" parent="."]
-emitting = false
-lifetime_randomness = 0.5
-texture = ExtResource("3_exy2s")
-emission_shape = 1
-emission_sphere_radius = 8.0
-gravity = Vector2(0, -98)
-scale_amount_curve = SubResource("Curve_fxjtn")
-color = Color(0.501961, 0.501961, 0.501961, 1)
+[node name="Smoke" parent="." instance=ExtResource("3_o2odo")]
+scale_amount_curve = SubResource("Curve_jetkp")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

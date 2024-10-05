@@ -1,0 +1,92 @@
+[gd_scene load_steps=16 format=3 uid="uid://dc6tramyh408m"]
+
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_cgljb"]
+[ext_resource type="Script" path="res://node_types/spawner.gd" id="1_jwde8"]
+[ext_resource type="Script" path="res://node_types/building.gd" id="1_lemn3"]
+[ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="2_m4gnq"]
+[ext_resource type="Texture2D" uid="uid://dpb6j0k38gjse" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_rw1h5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_567ru"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovqrc"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5cug"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hew7c"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rf6u"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtmjx"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvyfv"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8f2k"]
+atlas = ExtResource("2_rw1h5")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4tcq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_567ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovqrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5cug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hew7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rf6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtmjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvyfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8f2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db0o8"]
+size = Vector2(16, 16)
+
+[node name="SpawnerGoblin" type="Node2D" groups=["Building"]]
+script = ExtResource("1_lemn3")
+building_type = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("1_cgljb")
+sprite_frames = SubResource("SpriteFrames_g4tcq")
+autoplay = "default"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_db0o8")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("1_jwde8")
+spawn_scene = ExtResource("2_m4gnq")

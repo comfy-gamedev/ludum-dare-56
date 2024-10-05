@@ -2,21 +2,8 @@ extends Building
 
 @export var radius = 100
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	max_health = 50
-	health = max_health
-	reach = 100
-	if team == Enums.Team.RED:
-		$Sprite2D.material = red_material
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if health < max_health / 2.0:
-		smoke.emitting = true
-	else:
-		smoke.emitting = false
-	
 	if radius < reach:
 		radius += delta * 100
 		queue_redraw()
