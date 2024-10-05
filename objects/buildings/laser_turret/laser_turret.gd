@@ -1,16 +1,17 @@
 extends Building
 
-var target := Vector2(1, 0)
+var target := Vector2(0, 0)
 
 @onready var head := $Head
 @onready var cooldown := $Timer
-var rock_scene = preload("res://objects/buildings/rock_turret/rock.tscn")
+var firing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	max_health = 50
 	health = max_health
-	reach = 50
+	reach = 100
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,6 +29,11 @@ func _process(delta: float) -> void:
 	head.look_at(target)
 	if min_dist < reach && cooldown.is_stopped():
 		head.play()
-		var rock = rock_scene.instantiate()
-		rock.velocity = (target - global_position).normalized() * 5
-		cooldown.start()
+		firing = true
+		queue_redraw()
+	elif firing:
+		firing = false
+		queue_redraw()
+
+func _draw() -> void:
+	draw_line(global_position, target, Color.CHARTREUSE)

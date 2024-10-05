@@ -10,9 +10,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	position += velocity * delta
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Dude"):
+	if body.is_in_group("Unit"):
 		body.hit(damage)
 		queue_free()
