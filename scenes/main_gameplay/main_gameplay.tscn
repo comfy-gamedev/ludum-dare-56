@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=8 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
-[ext_resource type="Script" path="res://scenes/main_gameplay/character.gd" id="3_ksi3j"]
-[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="4_kqmhi"]
-[ext_resource type="Script" path="res://node_types/motion_interpolator_2d.gd" id="5_drh8x"]
+[ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin.tscn" id="3_em8p7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fenso"]
 normal = Vector2(1, 0)
@@ -16,9 +14,6 @@ normal = Vector2(-1, 0)
 normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4kntg"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5boca"]
-radius = 33.9559
 
 [node name="MainGameplay" type="Node2D"]
 script = ExtResource("1_wt4mr")
@@ -47,24 +42,5 @@ position = Vector2(480, 360)
 [node name="CameraShake" type="Node" parent="Camera2D"]
 script = ExtResource("1_lrklj")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(478, 356)
-texture = ExtResource("4_kqmhi")
-
-[node name="BouncingCharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(478, 360)
-script = ExtResource("3_ksi3j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncingCharacterBody2D"]
-shape = SubResource("CircleShape2D_5boca")
-
-[node name="MotionInterpolator2D" type="Node2D" parent="BouncingCharacterBody2D"]
-process_priority = 1
-process_physics_priority = 1
-script = ExtResource("5_drh8x")
-
-[node name="Sprite" type="Sprite2D" parent="BouncingCharacterBody2D/MotionInterpolator2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_kqmhi")
-
-[connection signal="bounce" from="BouncingCharacterBody2D" to="." method="_on_bouncing_character_body_2d_bounce"]
+[node name="Goblin" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(478, 361)
