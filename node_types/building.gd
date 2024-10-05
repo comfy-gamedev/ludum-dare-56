@@ -1,7 +1,7 @@
 extends Node2D
 class_name Building
 
-@export var team = "enemy"
+@export var team: Enums.Team = Enums.Team.RED
 @export var building_type = "turret"
 
 var max_health := 50
