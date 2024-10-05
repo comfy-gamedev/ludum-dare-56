@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf44e83jh5ng4"]
+
+[ext_resource type="Texture2D" uid="uid://c4838mobnf774" path="res://scenes/win_screen/won.png" id="1_75y5c"]
+
+[node name="WinScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(284, 160)
+texture = ExtResource("1_75y5c")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 26.0
+text = "Oh hey, you won"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 338.0
+offset_top = 199.0
+offset_right = 476.0
+offset_bottom = 223.0
+text = "Score? Time?"
