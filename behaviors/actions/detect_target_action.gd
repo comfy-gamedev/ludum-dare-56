@@ -2,4 +2,11 @@ extends ActionLeaf
 
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-	return FAILURE
+	var opponents = blackboard.get_value("nearby_opponents")
+	
+	if opponents and opponents.size() > 0:
+		var target_opponent = opponents.pick_random()
+		blackboard.set_value("target_opponent", target_opponent)
+		return SUCCESS
+	else:
+		return FAILURE

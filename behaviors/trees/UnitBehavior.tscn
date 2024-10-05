@@ -15,8 +15,8 @@
 
 [node name="UnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_smdxw")
-blackboard = NodePath("@Node@21986")
-actor = NodePath("")
+blackboard = NodePath("@Node@38747")
+actor = NodePath("..")
 
 [node name="PrimarySequence" type="Node" parent="."]
 script = ExtResource("3_5k3od")
