@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://behaviors/actions/move_to_target_building_action.gd" id="1_a7rfm"]
 
-[node name="BesiegeTargetBuildingAction" type="Node"]
+[node name="MoveToTargetBuildingAction" type="Node"]
 script = ExtResource("1_a7rfm")
