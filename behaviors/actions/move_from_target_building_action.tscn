@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dra3c7mo7wly3"]
+
+[ext_resource type="Script" path="res://behaviors/actions/move_from_target_building_action.gd" id="1_mubu5"]
+
+[node name="MoveFromTargetBuildingAction" type="Node"]
+script = ExtResource("1_mubu5")
