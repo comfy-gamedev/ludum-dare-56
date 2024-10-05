@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wllb"]
 size = Vector2(16, 16)
 
-[node name="Barricade" type="Node2D"]
+[node name="Barricade" type="Node2D" groups=["Turret"]]
 script = ExtResource("1_grudr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

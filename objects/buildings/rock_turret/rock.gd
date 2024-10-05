@@ -1,7 +1,7 @@
 extends Node2D
 
-var max_health := 200
-var health := max_health
+var velocity := 1.0
+var damage := 5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func hit(damage_taken: float):
-	health -= damage_taken
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Dude"):
+		body.hit(damage)
+		queue_free()
