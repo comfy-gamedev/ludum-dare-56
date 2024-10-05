@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmanbeyfk6rs3"]
+
+[ext_resource type="Script" path="res://objects/buildings/sniper_turret/sniper_turret.gd" id="1_rogei"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_fnj8w"]
+[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="3_c6j7t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nawv2"]
+size = Vector2(16, 16)
+
+[node name="SniperTurret" type="Node2D" groups=["Building"]]
+script = ExtResource("1_rogei")
+
+[node name="Base" type="Sprite2D" parent="."]
+material = ExtResource("2_fnj8w")
+texture = ExtResource("3_c6j7t")
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_nawv2")

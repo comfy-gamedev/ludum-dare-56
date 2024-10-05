@@ -71,7 +71,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xn2ci"]
 size = Vector2(16, 16)
 
-[node name="Spawner" type="Node2D"]
+[node name="Spawner" type="Node2D" groups=["Building"]]
 script = ExtResource("1_utbmi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
