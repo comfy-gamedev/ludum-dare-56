@@ -1,16 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddf31kmkx8d28"]
+[gd_scene load_steps=8 format=3 uid="uid://ddf31kmkx8d28"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_smdxw"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="2_teprq"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_5k3od"]
 [ext_resource type="PackedScene" uid="uid://tsb6iwrtft2p" path="res://behaviors/actions/detect_target_action.tscn" id="4_j60xe"]
 [ext_resource type="PackedScene" uid="uid://bxa6gkl6odb7m" path="res://behaviors/actions/pick_random_pos_action.tscn" id="5_a283i"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="6_pywlr"]
 [ext_resource type="PackedScene" uid="uid://dqhgunc6swb3c" path="res://behaviors/actions/move_to_pos_action.tscn" id="6_wbibi"]
 
 [node name="UnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_smdxw")
-blackboard = NodePath("@Node@20605")
-actor = NodePath("")
+blackboard = NodePath("@Node@17473")
+actor = NodePath("..")
 
 [node name="SelectorReactiveComposite" type="Node" parent="."]
 script = ExtResource("2_teprq")
@@ -27,4 +28,8 @@ script = ExtResource("3_5k3od")
 
 [node name="PickRandomPosAction" parent="SelectorReactiveComposite/WanderSequence" instance=ExtResource("5_a283i")]
 
-[node name="MoveToPosAction" parent="SelectorReactiveComposite/WanderSequence" instance=ExtResource("6_wbibi")]
+[node name="TimeLimiterDecorator" type="Node" parent="SelectorReactiveComposite/WanderSequence"]
+script = ExtResource("6_pywlr")
+wait_time = 2.0
+
+[node name="MoveToPosAction" parent="SelectorReactiveComposite/WanderSequence/TimeLimiterDecorator" instance=ExtResource("6_wbibi")]
