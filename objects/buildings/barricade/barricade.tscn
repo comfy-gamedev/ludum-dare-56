@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqap550sohsst"]
+[gd_scene load_steps=7 format=3 uid="uid://cqap550sohsst"]
 
 [ext_resource type="Script" path="res://objects/buildings/barricade/barricade.gd" id="1_grudr"]
 [ext_resource type="Texture2D" uid="uid://tv88k2jqdudv" path="res://objects/buildings/barricade/blue_barricade.png" id="2_65mxi"]
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_av71w"]
+[ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="4_8evx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wllb"]
 size = Vector2(16, 16)
+
+[sub_resource type="Curve" id="Curve_ewkyy"]
+_data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Barricade" type="Node2D" groups=["Building"]]
 script = ExtResource("1_grudr")
@@ -19,3 +24,12 @@ texture = ExtResource("2_65mxi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_1wllb")
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+lifetime_randomness = 0.5
+texture = ExtResource("4_8evx8")
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, -98)
+scale_amount_curve = SubResource("Curve_ewkyy")
+color = Color(0.501961, 0.501961, 0.501961, 1)

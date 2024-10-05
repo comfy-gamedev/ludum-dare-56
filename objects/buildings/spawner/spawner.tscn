@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://dh8jtff8th7oy"]
+[gd_scene load_steps=16 format=3 uid="uid://dh8jtff8th7oy"]
 
 [ext_resource type="Texture2D" uid="uid://dpb6j0k38gjse" path="res://objects/buildings/spawner/gob_house.png" id="1_tvwod"]
 [ext_resource type="Script" path="res://objects/buildings/spawner/spawner.gd" id="1_utbmi"]
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_8jb20"]
+[ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="4_qkeeo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_567ru"]
 atlas = ExtResource("1_tvwod")
@@ -71,6 +72,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xn2ci"]
 size = Vector2(16, 16)
 
+[sub_resource type="Curve" id="Curve_jetkp"]
+_data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Spawner" type="Node2D" groups=["Building"]]
 script = ExtResource("1_utbmi")
 
@@ -87,5 +92,14 @@ shape = SubResource("RectangleShape2D_xn2ci")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+lifetime_randomness = 0.5
+texture = ExtResource("4_qkeeo")
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, -98)
+scale_amount_curve = SubResource("Curve_jetkp")
+color = Color(0.501961, 0.501961, 0.501961, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
