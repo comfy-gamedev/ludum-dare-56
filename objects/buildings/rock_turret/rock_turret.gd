@@ -16,6 +16,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var enemies := get_tree().get_nodes_in_group("Unit")
 	var target = enemies.map(func(x): return x.global_position).max()
+	
+	if health <= 0:
+		self.queue_free()
 
 func hit(damage_taken: float):
 	health -= damage_taken
