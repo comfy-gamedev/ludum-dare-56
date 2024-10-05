@@ -8,9 +8,11 @@
 size = Vector2(16, 16)
 
 [node name="TeslaTurret" type="Node2D" groups=["Building"]]
+z_index = 1
 script = ExtResource("1_11oyd")
 
 [node name="Base" type="Sprite2D" parent="."]
+z_index = -1
 material = ExtResource("2_lgqhc")
 texture = ExtResource("3_tpgmq")
 
