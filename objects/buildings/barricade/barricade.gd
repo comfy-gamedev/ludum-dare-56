@@ -10,4 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if health < max_health / 2.0:
+		smoke.emitting = true
+	else:
+		smoke.emitting = false

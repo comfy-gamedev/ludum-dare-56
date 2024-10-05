@@ -18,13 +18,14 @@ signal selected_blueprint_changed()
 var selected_blueprint: Blueprint = null:
 	set(v): selected_blueprint = v; changed.emit(); selected_blueprint_changed.emit()
 
-
-
+var player_money: int = 5:
+	set(v): player_money = v; changed.emit()
 
 
 ## Reset all variables to their default state.
 func reset():
 	player_hotbar = [null, null, null, null, null, null]
+	player_money = 5
 
 
 #region Debug overlay

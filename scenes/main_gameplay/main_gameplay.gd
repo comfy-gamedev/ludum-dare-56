@@ -11,8 +11,7 @@ func _ready() -> void:
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
 
 func _process(delta: float) -> void:
-	var buildings = get_tree().get_nodes_in_group("Building").filter(func(x): return x.team == Enums.Team.BLUE)
-	if not buildings:
+	if !get_tree().get_nodes_in_group("Building").filter(func(x): return x.team == Enums.Team.BLUE):
 		SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 	
 	if is_instance_valid(blueprint_preview):

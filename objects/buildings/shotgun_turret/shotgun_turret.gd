@@ -19,6 +19,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if health < max_health / 2.0:
+		smoke.emitting = true
+	else:
+		smoke.emitting = false
+	
 	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
 	if !enemies:
 		return
