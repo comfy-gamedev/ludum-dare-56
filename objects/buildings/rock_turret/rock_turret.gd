@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var team = "enemy"
+@export var building_type = "turret"
+
 var max_health := 50
 var health := max_health
 var target := Vector2(1, 0)
