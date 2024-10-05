@@ -11,4 +11,3 @@ signal event(what: StringName, data: Variant)
 ## Emits [signal event] with the given params.
 func emit(what: StringName, data: Variant = null) -> void:
 	event.emit(what, data)
-

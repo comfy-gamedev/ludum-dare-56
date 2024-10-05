@@ -32,8 +32,8 @@ func _ready():
 	
 	if not visual_instances.is_empty():
 		get_tree().root.add_child(load(TEST_CAMERA_3D).instantiate())
-		
 		return
 	
-	get_tree().root.add_child(load(TEST_CAMERA_2D).instantiate())
+	if get_tree().current_scene.get_meta("test_camera", "") != &"disabled":
+		get_tree().root.add_child(load(TEST_CAMERA_2D).instantiate())
 	

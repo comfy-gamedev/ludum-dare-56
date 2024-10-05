@@ -14,7 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var enemies := get_tree().get_nodes_in_group("Dude")
+	var enemies := get_tree().get_nodes_in_group("Unit")
 	var target = enemies.map(func(x): return x.global_position).max()
 
 func hit(damage_taken: float):
