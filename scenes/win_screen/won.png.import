@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpb6j0k38gjse"
-path="res://.godot/imported/gob_house.png-9f30edb6cce42cee5ef5d64e4026d0b7.ctex"
+uid="uid://c4838mobnf774"
+path="res://.godot/imported/won.png-564f9001d1a2ed48c6abcee8082833a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/gob_house.png"
-dest_files=["res://.godot/imported/gob_house.png-9f30edb6cce42cee5ef5d64e4026d0b7.ctex"]
+source_file="res://scenes/win_screen/won.png"
+dest_files=["res://.godot/imported/won.png-564f9001d1a2ed48c6abcee8082833a0.ctex"]
 
 [params]
 

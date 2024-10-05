@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddewpo8jj227y"]
+
+[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="1_swpu4"]
+[ext_resource type="Script" path="res://objects/buildings/buffer/buffer.gd" id="1_u0i3h"]
+[ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="3_exy2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfc65"]
+size = Vector2(16, 16)
+
+[sub_resource type="Curve" id="Curve_fxjtn"]
+_data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Buffer" type="Node2D" groups=["Building"]]
+script = ExtResource("1_u0i3h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_swpu4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_wfc65")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime_randomness = 0.5
+texture = ExtResource("3_exy2s")
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2(0, -98)
+scale_amount_curve = SubResource("Curve_fxjtn")
+color = Color(0.501961, 0.501961, 0.501961, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

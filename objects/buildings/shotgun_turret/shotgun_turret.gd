@@ -4,7 +4,8 @@ var target := Vector2(1, 0)
 
 @onready var head := $Head
 @onready var cooldown := $Timer
-@export var damage = 10
+@export var damage = 6
+@export var pellets = 5
 
 var rock_scene = preload("res://objects/buildings/rock_turret/rock.tscn")
 
@@ -41,10 +42,13 @@ func _process(delta: float) -> void:
 	
 	if global_position.distance_to(target) < reach && cooldown.is_stopped():
 		head.play()
-		var rock = rock_scene.instantiate()
-		get_parent().add_child(rock)
-		rock.global_position = global_position
-		rock.velocity = (target - global_position).normalized() * 50
-		rock.damage = damage
-		rock.team = team
+		var angle_offset = -PI/6
+		for i in pellets:
+			var rock = rock_scene.instantiate()
+			get_parent().add_child(rock)
+			rock.global_position = global_position
+			rock.velocity = (target - global_position).normalized().rotated(angle_offset) * 50
+			angle_offset += PI/12
+			rock.damage = damage
+			rock.team = team
 		cooldown.start()

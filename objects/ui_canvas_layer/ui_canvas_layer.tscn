@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://bocnscn2kxeon"]
+
+[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_p3r35"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y87ti"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.814742, 0.522822, 0.223638, 1)
+
+[node name="UICanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p3r35")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -20.0
+offset_right = 55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y87ti")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="Control/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2

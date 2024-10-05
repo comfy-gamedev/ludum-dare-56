@@ -3,7 +3,7 @@ class_name Unit
 
 @export var team = Enums.Team.BLUE: set = set_team
 @export var unit_type = "melee" # | "siege" | "ranged"
-@export var max_health := 50
+@export var max_health := 50.0
 @export var attack_points = 10
 @export var movement_speed = 75
 

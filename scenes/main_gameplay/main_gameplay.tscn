@@ -1,20 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=11 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
+[ext_resource type="PackedScene" uid="uid://bocnscn2kxeon" path="res://objects/ui_canvas_layer/ui_canvas_layer.tscn" id="2_xxslg"]
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="3_em8p7"]
 [ext_resource type="PackedScene" uid="uid://bp7t5y8tu3dde" path="res://objects/buildings/rock_turret/rock_turret.tscn" id="4_i7urn"]
-[ext_resource type="Theme" path="res://game_ui_theme.tres" id="5_ojahq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y87ti"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.814742, 0.522822, 0.223638, 1)
+[ext_resource type="PackedScene" uid="uid://ddewpo8jj227y" path="res://objects/buildings/buffer/buffer.tscn" id="6_oa7ct"]
+[ext_resource type="PackedScene" uid="uid://do8m0remgx4og" path="res://objects/buildings/repairer/repairer.tscn" id="7_o026d"]
+[ext_resource type="PackedScene" uid="uid://bno2s46dn5rxo" path="res://objects/buildings/farm/farm.tscn" id="8_8k7f1"]
 
 [node name="MainGameplay" type="Node2D"]
 script = ExtResource("1_wt4mr")
+
+[node name="UICanvasLayer" parent="." instance=ExtResource("2_xxslg")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(590, 198)
@@ -23,7 +21,7 @@ position = Vector2(590, 198)
 script = ExtResource("1_lrklj")
 
 [node name="Goblin" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(381, 437)
+position = Vector2(399, 296)
 
 [node name="RockTurret" parent="." instance=ExtResource("4_i7urn")]
 position = Vector2(329, 142)
@@ -39,48 +37,42 @@ position = Vector2(651, 255)
 team = 1
 
 [node name="Goblin3" parent="." instance=ExtResource("3_em8p7")]
-position = Vector2(499, 447)
+position = Vector2(496, 304)
 
-[node name="UICanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+[node name="Goblin4" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(445, 271)
 
-[node name="Control" type="Control" parent="UICanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("5_ojahq")
+[node name="Goblin5" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(338, 268)
 
-[node name="PanelContainer" type="PanelContainer" parent="UICanvasLayer/Control"]
-layout_mode = 0
-offset_right = 110.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_y87ti")
+[node name="Goblin6" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(545, 274)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UICanvasLayer/Control/PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 2
+[node name="Goblin7" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(351, 322)
 
-[node name="ColorRect" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="Goblin8" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(443, 326)
 
-[node name="ColorRect2" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="Goblin9" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(492, 260)
 
-[node name="ColorRect3" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="Goblin10" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(397, 263)
 
-[node name="ColorRect4" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="Goblin11" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(483, 339)
 
-[node name="ColorRect5" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="Goblin12" parent="." instance=ExtResource("3_em8p7")]
+position = Vector2(394, 332)
 
-[node name="ColorRect6" type="ColorRect" parent="UICanvasLayer/Control/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
+[node name="Buffer" parent="." instance=ExtResource("6_oa7ct")]
+position = Vector2(433, 227)
+team = 1
+
+[node name="Repairer" parent="." instance=ExtResource("7_o026d")]
+position = Vector2(412, 202)
+team = 1
+
+[node name="Farm" parent="." instance=ExtResource("8_8k7f1")]
+position = Vector2(456, 137)

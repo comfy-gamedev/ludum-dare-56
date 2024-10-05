@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://dpb6j0k38gjse"
+path="res://.godot/imported/gob_house.png-a3bd6c1ac8ba835260b74d4afcc5b6ca.res"
+
+[deps]
+
+source_file="res://objects/buildings/spawner/gob_house.png"
+dest_files=["res://.godot/imported/gob_house.png-a3bd6c1ac8ba835260b74d4afcc5b6ca.res"]
+
+[params]
+
+palette_image="res://palette.png"

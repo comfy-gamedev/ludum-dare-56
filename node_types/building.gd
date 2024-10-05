@@ -1,12 +1,15 @@
 extends Node2D
 class_name Building
 
-@export var team: Enums.Team = Enums.Team.RED
+@export var team: Enums.Team = Enums.Team.BLUE
 @export var building_type = "turret"
 
-var max_health := 50
+@export var max_health := 50
 var health := max_health
-var reach := 50
+@export var reach := 50
+
+var red_material = preload("res://materials/team_red.tres")
+@onready var smoke := $Smoke
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +18,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if health < max_health / 2.0:
+		smoke.emitting = true
+	else:
+		smoke.emitting = false
 
 func hit(damage_taken: float):
 	health -= damage_taken

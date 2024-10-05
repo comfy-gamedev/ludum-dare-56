@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjiw5nd1xocui"]
+[gd_scene load_steps=10 format=3 uid="uid://bjiw5nd1xocui"]
 
 [ext_resource type="Script" path="res://objects/buildings/rock_turret/rock.gd" id="1_7t7py"]
 [ext_resource type="Texture2D" uid="uid://hri0avg4s103" path="res://objects/buildings/rock_turret/blue_boulder.png" id="2_e764y"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_wu2ca"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2b1r3"]
 atlas = ExtResource("2_e764y")
@@ -46,6 +47,7 @@ radius = 4.0
 script = ExtResource("1_7t7py")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_wu2ca")
 sprite_frames = SubResource("SpriteFrames_rk174")
 autoplay = "default"
 
