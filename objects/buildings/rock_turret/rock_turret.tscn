@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp7t5y8tu3dde"]
+
+[ext_resource type="Script" path="res://objects/buildings/rock_turret/rock_turret.gd" id="1_gtfb7"]
+[ext_resource type="Texture2D" uid="uid://mvqy3dkl1rix" path="res://assests/enemy_turret_base.png" id="2_pla6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2w2u"]
+size = Vector2(16, 16)
+
+[node name="RockTurret" type="Node2D" groups=["Turret"]]
+script = ExtResource("1_gtfb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pla6w")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_a2w2u")

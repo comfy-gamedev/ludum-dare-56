@@ -1,7 +1,11 @@
 extends Node2D
 
-var max_health := 200
+@export var team = "enemy"
+@export var building_type = "turret"
+
+var max_health := 50
 var health := max_health
+var target := Vector2(1, 0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +14,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var enemies := get_tree().get_nodes_in_group("Unit")
+	var target = enemies.map(func(x): return x.global_position).max()
 
 func hit(damage_taken: float):
 	health -= damage_taken

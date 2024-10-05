@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Goblin Simulator"
+config/name="GodotJamTemplate"
 config/tags=PackedStringArray("template")
-run/main_scene="res://scenes/game_root.tscn"
+run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time.release=2000
@@ -27,16 +27,24 @@ Globals="*res://autoload/globals/globals.gd"
 SceneGirl="*res://autoload/scene_girl/scene_girl.gd"
 MusicMan="*res://autoload/music_man.gd"
 TestCamera="*res://addons/test_camera/test_camera_manager.gd"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [display]
 
-window/size/viewport_width=1280
+window/size/viewport_width=960
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/cider_wiki/plugin.cfg", "res://addons/smooth_pixel_subviewport_container/plugin.cfg", "res://addons/test_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/cider_wiki/plugin.cfg", "res://addons/smooth_pixel_subviewport_container/plugin.cfg", "res://addons/test_camera/plugin.cfg")
+
+[global_group]
+
+Projectile=""
+Unit=""
+Building=""
 
 [gui]
 
