@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	var targets = enemies.map(func(x): return x.global_position)
 	
 	var dist
-	var min_dist
+	var min_dist = 1000.0
 	for i in targets:
 		dist = global_position.distance_squared_to(i)
 		if dist < min_dist:
