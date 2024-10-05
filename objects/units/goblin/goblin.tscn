@@ -50,8 +50,9 @@ script = ExtResource("1_yh6ya")
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("1_n2i6r")
 
-[node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("1_t6j5r")]
-blackboard = NodePath("@Node@21667")
+[node name="UnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("1_t6j5r")]
+blackboard = NodePath("@Node@23255")
+actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_btxmb")

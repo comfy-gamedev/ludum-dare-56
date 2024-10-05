@@ -1,7 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp7t5y8tu3dde"]
+[gd_scene load_steps=14 format=3 uid="uid://bp7t5y8tu3dde"]
 
 [ext_resource type="Script" path="res://objects/buildings/rock_turret/rock_turret.gd" id="1_gtfb7"]
-[ext_resource type="Texture2D" uid="uid://mvqy3dkl1rix" path="res://assests/enemy_turret_base.png" id="2_pla6w"]
+[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_qsx8c"]
+[ext_resource type="Texture2D" uid="uid://b81secgbpnx6o" path="res://objects/buildings/rock_turret/turret_boulder.png" id="3_twau5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh8oa"]
+atlas = ExtResource("3_twau5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_332gr"]
+atlas = ExtResource("3_twau5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgmlh"]
+atlas = ExtResource("3_twau5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv0g6"]
+atlas = ExtResource("3_twau5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvffo"]
+atlas = ExtResource("3_twau5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olf5f"]
+atlas = ExtResource("3_twau5")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk43f"]
+atlas = ExtResource("3_twau5")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyskq"]
+atlas = ExtResource("3_twau5")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_urffi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh8oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_332gr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgmlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv0g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvffo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olf5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk43f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyskq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2w2u"]
 size = Vector2(16, 16)
@@ -9,10 +74,16 @@ size = Vector2(16, 16)
 [node name="RockTurret" type="Node2D" groups=["Building"]]
 script = ExtResource("1_gtfb7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pla6w")
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_qsx8c")
+
+[node name="Head" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_urffi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_a2w2u")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
