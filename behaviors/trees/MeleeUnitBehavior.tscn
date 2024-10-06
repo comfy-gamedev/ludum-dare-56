@@ -18,7 +18,7 @@
 
 [node name="MeleeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_nc440")
-blackboard = NodePath("@Node@17475")
+blackboard = NodePath("@Node@48034")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]
@@ -36,6 +36,8 @@ script = ExtResource("2_347q6")
 
 [node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("6_18e1b")]
 
+[node name="DamageTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("9_3jusp")]
+
 [node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence"]
 script = ExtResource("7_0o4cw")
 
@@ -52,6 +54,8 @@ script = ExtResource("2_347q6")
 script = ExtResource("2_347q6")
 
 [node name="MoveToTargetBuildingAction2" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence" instance=ExtResource("10_01a8v")]
+
+[node name="DamageTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence" instance=ExtResource("12_25kvt")]
 
 [node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence"]
 script = ExtResource("7_0o4cw")

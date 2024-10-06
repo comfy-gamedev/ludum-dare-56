@@ -7,7 +7,7 @@ extends Node2D
 @export var max_health := 50
 @export var reach := 0
 
-var health := max_health
+@onready var health := max_health
 
 const TEAM_MATERIALS = [
 	preload("res://materials/team_blue.tres"),

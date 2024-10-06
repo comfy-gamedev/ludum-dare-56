@@ -72,14 +72,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_db0o8"]
-size = Vector2(16, 16)
-
 [sub_resource type="Curve" id="Curve_k1008"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="SpawnerGoblin" type="Node2D" groups=["Building"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db0o8"]
+size = Vector2(16, 16)
+
+[node name="SpawnerGoblin" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_lemn3")
 building_type = 4
 
@@ -87,11 +87,6 @@ building_type = 4
 material = ExtResource("1_cgljb")
 sprite_frames = SubResource("SpriteFrames_g4tcq")
 autoplay = "default"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_db0o8")
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("1_jwde8")
@@ -101,3 +96,6 @@ spawn_scene = ExtResource("2_m4gnq")
 
 [node name="Smoke" parent="." instance=ExtResource("7_gckdg")]
 scale_amount_curve = SubResource("Curve_k1008")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_db0o8")
