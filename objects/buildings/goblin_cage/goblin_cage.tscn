@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddirig8exg3qy"]
+
+[ext_resource type="Script" path="res://objects/buildings/goblin_cage/goblin_cage.gd" id="1_rx3p3"]
+[ext_resource type="Texture2D" uid="uid://dkic6doc52oby" path="res://icon.png" id="2_jbff5"]
+[ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="3_uostu"]
+[ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="4_fvvpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq77e"]
+size = Vector2(16, 16)
+
+[node name="GoblinCage" type="StaticBody2D" groups=["Building"]]
+script = ExtResource("1_rx3p3")
+building_type = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jbff5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xq77e")
+
+[node name="Healthbar" parent="." instance=ExtResource("3_uostu")]
+
+[node name="Smoke" parent="." instance=ExtResource("4_fvvpn")]

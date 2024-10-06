@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://d36xtchr1hs8o"]
+
+[ext_resource type="Script" path="res://objects/units/goblin/goblin.gd" id="1_ermbh"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_6r64d"]
+[ext_resource type="PackedScene" uid="uid://ddf31kmkx8d28" path="res://behaviors/trees/MeleeUnitBehavior.tscn" id="3_erlo5"]
+[ext_resource type="Material" uid="uid://dbneyw5mid3p8" path="res://materials/team_red.tres" id="4_51ew1"]
+[ext_resource type="Texture2D" uid="uid://dxhcpl7u7wx3x" path="res://assests/wet_gobbo.png" id="5_bti25"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxr1l"]
+atlas = ExtResource("5_bti25")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhuwk"]
+atlas = ExtResource("5_bti25")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2an01"]
+atlas = ExtResource("5_bti25")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opd8x"]
+atlas = ExtResource("5_bti25")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_btxmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxr1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhuwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2an01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opd8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq0tf"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5reyq"]
+radius = 35.0
+
+[node name="GiantGoblin" type="CharacterBody2D" groups=["Unit"]]
+script = ExtResource("1_ermbh")
+max_health = 250.0
+attack_points = 25
+movement_speed = 25
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("2_6r64d")
+
+[node name="MeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_erlo5")]
+blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("4_51ew1")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_btxmb")
+autoplay = "default"
+frame_progress = 0.372635
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uq0tf")
+
+[node name="EnemySeekingRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySeekingRadius"]
+shape = SubResource("CircleShape2D_5reyq")
+debug_color = Color(0.563722, 0.551862, 0.248219, 0.42)

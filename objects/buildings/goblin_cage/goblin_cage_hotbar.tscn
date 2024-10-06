@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpgndtvfvogc6"]
+
+[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="1_ngqbw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ldwt"]
+atlas = ExtResource("1_ngqbw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gqyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ldwt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="GoblinCageHotbar" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8gqyy")
+autoplay = "default"
