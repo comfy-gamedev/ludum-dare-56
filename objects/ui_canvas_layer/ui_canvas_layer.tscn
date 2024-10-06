@@ -71,7 +71,7 @@ texture = ExtResource("7_0jdgk")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2eb6r")
 autoplay = "default"
-frame_progress = 0.886303
+frame_progress = 0.766341
 
 [node name="HotbarPanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
