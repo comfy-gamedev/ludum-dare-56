@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://cvadm2rfv2sie"
+path="res://.godot/imported/rat_friend.png-817ed8d11ca6b29d69064bd8a52dc7e8.res"
+
+[deps]
+
+source_file="res://objects/units/rat/rat_friend.png"
+dest_files=["res://.godot/imported/rat_friend.png-817ed8d11ca6b29d69064bd8a52dc7e8.res"]
+
+[params]
+
+palette_image="res://palette.png"

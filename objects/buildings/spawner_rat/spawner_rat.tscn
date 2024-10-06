@@ -1,0 +1,100 @@
+[gd_scene load_steps=19 format=3 uid="uid://xd3tbhjjo3gt"]
+
+[ext_resource type="Script" path="res://node_types/building.gd" id="1_0uyvp"]
+[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_3ioub"]
+[ext_resource type="Material" path="res://materials/invalid.tres" id="2_bgcsc"]
+[ext_resource type="PackedScene" uid="uid://brfxkbq7b4brm" path="res://objects/spawner_node/spawner.tscn" id="3_fe2g0"]
+[ext_resource type="PackedScene" uid="uid://cctuk3jdnuphy" path="res://objects/units/rat/rat.tscn" id="4_kkqcb"]
+[ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_g3dgd"]
+[ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="6_jae82"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_567ru"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovqrc"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5cug"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hew7c"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rf6u"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtmjx"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvyfv"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8f2k"]
+atlas = ExtResource("2_3ioub")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k3ebj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_567ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovqrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5cug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hew7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rf6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtmjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvyfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8f2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve" id="Curve_agecb"]
+_data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxus5"]
+size = Vector2(16, 16)
+
+[node name="SpawnerRat" type="StaticBody2D" groups=["Building"]]
+script = ExtResource("1_0uyvp")
+building_type = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_bgcsc")
+sprite_frames = SubResource("SpriteFrames_k3ebj")
+autoplay = "default"
+
+[node name="Spawner" parent="." instance=ExtResource("3_fe2g0")]
+spawn_scene = ExtResource("4_kkqcb")
+
+[node name="Healthbar" parent="." instance=ExtResource("5_g3dgd")]
+
+[node name="Smoke" parent="." instance=ExtResource("6_jae82")]
+scale_amount_curve = SubResource("Curve_agecb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hxus5")

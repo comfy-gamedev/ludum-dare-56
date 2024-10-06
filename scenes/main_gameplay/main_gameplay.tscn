@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
 [ext_resource type="Shader" path="res://materials/expensive_palette_swap.gdshader" id="2_tu80g"]
-[ext_resource type="PackedScene" uid="uid://mfvkdqbf5p8r" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="2_v66b6"]
+[ext_resource type="PackedScene" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="2_v66b6"]
 [ext_resource type="PackedScene" uid="uid://bocnscn2kxeon" path="res://objects/ui_canvas_layer/ui_canvas_layer.tscn" id="2_xxslg"]
 [ext_resource type="Texture2D" uid="uid://bgrp5vhsqt8cu" path="res://palette.png" id="4_aaujl"]
 [ext_resource type="Texture2D" uid="uid://bvt4rkp8euckn" path="res://palette_night.png" id="4_cm3ds"]
