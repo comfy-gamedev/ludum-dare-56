@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://534gvcjjuiqm"]
+
+[ext_resource type="Material" path="res://materials/invalid.tres" id="1_8xtoy"]
+[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="1_fpytm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qaer"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1kxy"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xlx6"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkt03"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mak48"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk83g"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vepc0"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgi68"]
+atlas = ExtResource("1_fpytm")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1c8a3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qaer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1kxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xlx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkt03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mak48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk83g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vepc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgi68")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SpawnerMageHotbar" type="AnimatedSprite2D"]
+material = ExtResource("1_8xtoy")
+sprite_frames = SubResource("SpriteFrames_1c8a3")
+autoplay = "default"

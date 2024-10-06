@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://cctuk3jdnuphy"]
+
+[ext_resource type="Script" path="res://objects/units/rat/rat.gd" id="1_nwvp7"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_m0snn"]
+[ext_resource type="PackedScene" uid="uid://cwgjmu72i5ar8" path="res://behaviors/trees/SapperMeleeUnitBehavior.tscn" id="3_t3dac"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="4_nacag"]
+[ext_resource type="Texture2D" uid="uid://cvadm2rfv2sie" path="res://objects/units/rat/rat_friend.png" id="5_3ysjb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veb4n"]
+atlas = ExtResource("5_3ysjb")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv6t5"]
+atlas = ExtResource("5_3ysjb")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq4sf"]
+atlas = ExtResource("5_3ysjb")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1vuc"]
+atlas = ExtResource("5_3ysjb")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4av7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veb4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv6t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq4sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1vuc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq0tf"]
+size = Vector2(8, 8)
+
+[node name="Rat" type="CharacterBody2D" groups=["Unit"]]
+script = ExtResource("1_nwvp7")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("2_m0snn")
+
+[node name="SapperMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_t3dac")]
+blackboard = NodePath("@Node@37685")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("4_nacag")
+sprite_frames = SubResource("SpriteFrames_4av7i")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uq0tf")
