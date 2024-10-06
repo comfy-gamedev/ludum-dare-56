@@ -13,7 +13,7 @@
 
 [node name="SiegeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_kbvtf")
-blackboard = NodePath("@Node@56220")
+blackboard = NodePath("@Node@17482")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]

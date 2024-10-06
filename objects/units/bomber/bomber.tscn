@@ -45,6 +45,7 @@ animations = [{
 size = Vector2(8, 8)
 
 [node name="Bomber" type="CharacterBody2D" groups=["Unit"]]
+input_pickable = true
 script = ExtResource("1_xpofu")
 
 [node name="Blackboard" type="Node" parent="."]
@@ -61,3 +62,5 @@ frame_progress = 0.281243
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_exrij")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

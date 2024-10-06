@@ -11,3 +11,9 @@ func besiege():
 			#bomb_explosion.get_node("SFX").play()
 			
 	self.queue_free()
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#print("HI??")
+	if event.is_action_pressed("build_blueprint"): # and event is InputEventMouseButton:
+		besiege()
