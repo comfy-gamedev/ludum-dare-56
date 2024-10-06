@@ -1,17 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://d320so74fmvcx"]
+[gd_scene load_steps=4 format=3 uid="uid://d320so74fmvcx"]
 
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="2_1rurq"]
 [ext_resource type="PackedScene" uid="uid://bmulu8vonwlpq" path="res://objects/units/mage/mage.tscn" id="2_4poop"]
+[ext_resource type="PackedScene" uid="uid://bp7t5y8tu3dde" path="res://objects/buildings/rock_turret/rock_turret.tscn" id="3_e12si"]
 
 [node name="TestArena" type="Node2D"]
 
 [node name="Goblin" parent="." instance=ExtResource("2_1rurq")]
-position = Vector2(45, 27)
+position = Vector2(362, 204)
 
 [node name="Goblin2" parent="." instance=ExtResource("2_1rurq")]
-position = Vector2(87, 69)
+position = Vector2(110, 50)
 team = 1
 
 [node name="Mage" parent="." instance=ExtResource("2_4poop")]
-position = Vector2(91, 28)
+position = Vector2(156, 63)
+
+[node name="RockTurret" parent="." instance=ExtResource("3_e12si")]
+position = Vector2(11, 88)
 team = 1

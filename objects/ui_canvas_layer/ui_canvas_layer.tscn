@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bocnscn2kxeon"]
+[gd_scene load_steps=13 format=3 uid="uid://bocnscn2kxeon"]
 
-[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_p3r35"]
+[ext_resource type="Theme" uid="uid://dfvv45ijqvgye" path="res://game_ui_theme.tres" id="1_p3r35"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/hotbar_panel_container.gd" id="2_dxr6g"]
 [ext_resource type="Texture2D" uid="uid://bkv53svq3e1in" path="res://objects/ui_canvas_layer/highlight.png" id="3_2owqa"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/start_battle_button.gd" id="4_62fux"]
 [ext_resource type="Texture2D" uid="uid://dapommrfopadf" path="res://assests/cool_sun.png" id="4_jxjrt"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/clock.gd" id="5_a6p7n"]
 [ext_resource type="Texture2D" uid="uid://cvpdalfh22x7a" path="res://objects/ui_canvas_layer/clock.png" id="7_0jdgk"]
+[ext_resource type="Script" path="res://objects/ui_canvas_layer/mana_label.gd" id="8_6u28w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvwse"]
 atlas = ExtResource("4_jxjrt")
@@ -128,3 +129,13 @@ offset_right = 526.0
 offset_bottom = 303.0
 text = "START BATTLE"
 script = ExtResource("4_62fux")
+
+[node name="ManaLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 285.0
+offset_right = 109.0
+offset_bottom = 310.0
+theme_override_font_sizes/font_size = 28
+text = "Mana : 0"
+script = ExtResource("8_6u28w")

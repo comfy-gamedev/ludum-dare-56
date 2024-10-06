@@ -48,8 +48,9 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("build_plueprint"):
-		if Globals.selected_blueprint:
+		if Globals.selected_blueprint && Globals.player_money >= Globals.selected_blueprint.cost:
 			assert(is_instance_valid(blueprint_preview))
+			Globals.player_money -= Globals.selected_blueprint.cost
 			get_viewport().set_input_as_handled()
 			if grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size):
 				var s = Globals.selected_blueprint.spawned_scene.instantiate()

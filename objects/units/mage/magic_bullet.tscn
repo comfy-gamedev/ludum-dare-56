@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2ucthodfoalv"]
+
+[ext_resource type="Script" path="res://objects/units/mage/magic_bullet.gd" id="1_pnhu7"]
+[ext_resource type="Texture2D" uid="uid://co37etkegljwk" path="res://assests/magic_bullet.png" id="2_lxbgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6lbh"]
+atlas = ExtResource("2_lxbgi")
+region = Rect2(0, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaixb"]
+atlas = ExtResource("2_lxbgi")
+region = Rect2(4, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml2fn"]
+atlas = ExtResource("2_lxbgi")
+region = Rect2(8, 0, 4, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrcv3"]
+atlas = ExtResource("2_lxbgi")
+region = Rect2(12, 0, 4, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hd32g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6lbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaixb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml2fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrcv3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkcnc"]
+radius = 3.0
+
+[node name="MagicBullet" type="Area2D" groups=["Projectile"]]
+script = ExtResource("1_pnhu7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hd32g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mkcnc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
