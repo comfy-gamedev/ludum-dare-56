@@ -97,25 +97,74 @@ theme_override_constants/separation = 2
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
+[node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect"]
+z_index = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_constants/outline_size = 3
+
 [node name="ColorRect2" type="ColorRect" parent="Control/HotbarPanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect2"]
+z_index = 1
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_constants/outline_size = 3
 
 [node name="ColorRect3" type="ColorRect" parent="Control/HotbarPanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
+[node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect3"]
+z_index = 1
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_constants/outline_size = 3
+
 [node name="ColorRect4" type="ColorRect" parent="Control/HotbarPanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect4"]
+z_index = 1
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_constants/outline_size = 3
 
 [node name="ColorRect5" type="ColorRect" parent="Control/HotbarPanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 
+[node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect5"]
+z_index = 1
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_constants/outline_size = 3
+
 [node name="ColorRect6" type="ColorRect" parent="Control/HotbarPanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect6"]
+z_index = 1
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 15.0
+theme_override_constants/outline_size = 3
 
 [node name="Hightlight" type="Sprite2D" parent="Control/HotbarPanelContainer"]
 position = Vector2(10, 10)
