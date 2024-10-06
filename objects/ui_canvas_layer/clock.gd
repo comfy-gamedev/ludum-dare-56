@@ -1,6 +1,6 @@
 extends Control
 
-@onready var sun: Sprite2D = $Sun
+@onready var sun: Node2D = $Sun
 
 @onready var _initial_position = position
 

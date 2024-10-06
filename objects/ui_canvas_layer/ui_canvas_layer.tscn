@@ -1,12 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://bocnscn2kxeon"]
+[gd_scene load_steps=12 format=3 uid="uid://bocnscn2kxeon"]
 
 [ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_p3r35"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/hotbar_panel_container.gd" id="2_dxr6g"]
 [ext_resource type="Texture2D" uid="uid://bkv53svq3e1in" path="res://objects/ui_canvas_layer/highlight.png" id="3_2owqa"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/start_battle_button.gd" id="4_62fux"]
+[ext_resource type="Texture2D" uid="uid://dapommrfopadf" path="res://assests/cool_sun.png" id="4_jxjrt"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/clock.gd" id="5_a6p7n"]
-[ext_resource type="Texture2D" uid="uid://dkic6doc52oby" path="res://icon.png" id="5_vbo1d"]
 [ext_resource type="Texture2D" uid="uid://cvpdalfh22x7a" path="res://objects/ui_canvas_layer/clock.png" id="7_0jdgk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvwse"]
+atlas = ExtResource("4_jxjrt")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o507d"]
+atlas = ExtResource("4_jxjrt")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2eb6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvwse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o507d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y87ti"]
 content_margin_left = 2.0
@@ -45,8 +67,11 @@ script = ExtResource("5_a6p7n")
 layout_mode = 2
 texture = ExtResource("7_0jdgk")
 
-[node name="Sun" type="Sprite2D" parent="Control/Clock"]
-texture = ExtResource("5_vbo1d")
+[node name="Sun" type="AnimatedSprite2D" parent="Control/Clock"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_2eb6r")
+autoplay = "default"
+frame_progress = 0.886303
 
 [node name="HotbarPanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
