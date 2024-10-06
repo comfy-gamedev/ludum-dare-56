@@ -71,14 +71,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2w2u"]
-size = Vector2(16, 16)
-
 [sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="RockTurret" type="Node2D" groups=["Building"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2blcu"]
+size = Vector2(16, 16)
+
+[node name="RockTurret" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_gtfb7")
 reach = 100
 
@@ -89,11 +89,6 @@ texture = ExtResource("2_qsx8c")
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_urffi")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_a2w2u")
-
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
@@ -101,3 +96,6 @@ one_shot = true
 scale_amount_curve = SubResource("Curve_jetkp")
 
 [node name="Healthbar" parent="." instance=ExtResource("6_5p1n8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2blcu")
