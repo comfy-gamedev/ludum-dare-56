@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfy0wu4jkyynk"]
+
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_rvnls"]
+[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_q7h75"]
+
+[node name="RepairerHotbar" type="Sprite2D"]
+material = ExtResource("1_rvnls")
+texture = ExtResource("2_q7h75")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
