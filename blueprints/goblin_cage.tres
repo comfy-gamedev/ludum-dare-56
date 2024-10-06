@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://c1d1847aurbhm"]
 
-[ext_resource type="PackedScene" uid="uid://vwlenfcqd4kw" path="res://objects/buildings/autocannon_turret/autocannon_hotbar.tscn" id="1_cxana"]
+[ext_resource type="PackedScene" uid="uid://dpgndtvfvogc6" path="res://objects/buildings/goblin_cage/goblin_cage_hotbar.tscn" id="1_gsgoe"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_n0l81"]
 [ext_resource type="PackedScene" uid="uid://ddirig8exg3qy" path="res://objects/buildings/goblin_cage/goblin_cage.tscn" id="3_b4qdw"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("2_n0l81")
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_b4qdw")
-hotbar_scene = ExtResource("1_cxana")
+hotbar_scene = ExtResource("1_gsgoe")
 cost = 1

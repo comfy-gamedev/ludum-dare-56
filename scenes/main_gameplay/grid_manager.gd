@@ -31,9 +31,9 @@ func unreveal(team: Enums.Team) -> void:
 func to_grid(pos: Vector2) -> Vector2i:
 	return Vector2i((pos / CELL_SIZE).floor())
 
-func add_castle(pos: Vector2, radius: int, team: Enums.Team) -> void:
+func add_castle(pos: Vector2, radius: int, team: Enums.Team, id: int = -1) -> void:
 	var p = to_grid(pos)
-	var c = CastleGrid.new(p, radius, team)
+	var c = CastleGrid.new(p, radius, team, id)
 	castles.append(c)
 	var revealed = team in revealed
 	for y in range(p.y - radius, p.y + radius):
@@ -96,16 +96,21 @@ func get_available_cells(team: Enums.Team) -> Array[Vector2]:
 				result.append(Vector2(cp) * CELL_SIZE)
 	return result
 
+func remove_castle(id: int) -> void:
+	castles = castles.filter(func(x): return x.id != id)
+
 class CastleGrid extends RefCounted:
 	var center: Vector2i
 	var radius: int
 	var cells: Dictionary
 	var team: Enums.Team
+	var id: int
 	
-	func _init(c: Vector2i, r: int, t: Enums.Team) -> void:
+	func _init(c: Vector2i, r: int, t: Enums.Team, i: int = -1) -> void:
 		center = c
 		radius = r
 		team = t
+		id = i
 	
 
 class GridCell extends RefCounted:
