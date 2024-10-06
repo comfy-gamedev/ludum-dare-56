@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddewpo8jj227y"]
+[gd_scene load_steps=7 format=3 uid="uid://ddewpo8jj227y"]
 
 [ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="1_swpu4"]
 [ext_resource type="Script" path="res://objects/buildings/buffer/buffer.gd" id="1_u0i3h"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_o2odo"]
+[ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="4_bcyxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfc65"]
 size = Vector2(16, 16)
@@ -31,5 +32,7 @@ autostart = true
 
 [node name="Smoke" parent="." instance=ExtResource("3_o2odo")]
 scale_amount_curve = SubResource("Curve_jetkp")
+
+[node name="Healthbar" parent="." instance=ExtResource("4_bcyxl")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

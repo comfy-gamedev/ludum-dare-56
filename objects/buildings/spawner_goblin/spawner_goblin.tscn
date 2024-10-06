@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc6tramyh408m"]
+[gd_scene load_steps=19 format=3 uid="uid://dc6tramyh408m"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_cgljb"]
 [ext_resource type="Script" path="res://node_types/spawner.gd" id="1_jwde8"]
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_lemn3"]
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="2_m4gnq"]
-[ext_resource type="Texture2D" uid="uid://dpb6j0k38gjse" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_rw1h5"]
+[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_rw1h5"]
+[ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="6_mpjmi"]
+[ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="7_gckdg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_567ru"]
 atlas = ExtResource("2_rw1h5")
@@ -73,6 +75,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_db0o8"]
 size = Vector2(16, 16)
 
+[sub_resource type="Curve" id="Curve_k1008"]
+_data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="SpawnerGoblin" type="Node2D" groups=["Building"]]
 script = ExtResource("1_lemn3")
 building_type = 4
@@ -90,3 +96,8 @@ shape = SubResource("RectangleShape2D_db0o8")
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("1_jwde8")
 spawn_scene = ExtResource("2_m4gnq")
+
+[node name="Healthbar" parent="." instance=ExtResource("6_mpjmi")]
+
+[node name="Smoke" parent="." instance=ExtResource("7_gckdg")]
+scale_amount_curve = SubResource("Curve_k1008")

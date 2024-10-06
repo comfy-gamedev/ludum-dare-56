@@ -5,6 +5,9 @@ extends Node2D
 
 var t: float = 0.0
 
+func _ready() -> void:
+	Globals.phase_changed.connect(_on_globals_phase_changed)
+
 func _process(delta: float) -> void:
 	t += delta
 	if t >= spawn_interval:
@@ -16,3 +19,6 @@ func spawn() -> void:
 	get_parent().get_parent().add_child(spawnee)
 	spawnee.global_position = global_position
 	spawnee.team = get_parent().team
+
+func _on_globals_phase_changed() -> void:
+	t = 0

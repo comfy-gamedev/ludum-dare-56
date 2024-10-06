@@ -10,6 +10,8 @@ extends Node
 ## Emitted when any variable changes.
 signal changed()
 
+const DAY_DURATION = 15.0
+
 signal player_hotbar_changed()
 var player_hotbar: Array[Blueprint] = [null, null, null, null, null, null]:
 	set(v): player_hotbar = v; changed.emit(); player_hotbar_changed.emit()
@@ -24,6 +26,9 @@ var player_money: int = 5:
 signal phase_changed()
 var phase: Enums.Phase = Enums.Phase.BUILD:
 	set(v): phase = v; changed.emit(); phase_changed.emit()
+
+
+var day_time: float = 0.0
 
 
 ## Reset all variables to their default state.
