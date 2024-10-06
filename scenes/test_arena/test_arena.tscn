@@ -7,7 +7,7 @@
 [node name="TestArena" type="Node2D"]
 
 [node name="Goblin" parent="." instance=ExtResource("2_1rurq")]
-position = Vector2(45, 27)
+position = Vector2(362, 204)
 
 [node name="Goblin2" parent="." instance=ExtResource("2_1rurq")]
 position = Vector2(110, 50)
