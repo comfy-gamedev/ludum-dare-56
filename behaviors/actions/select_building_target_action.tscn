@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpmnjf33tpiyk"]
+[gd_scene load_steps=2 format=3 uid="uid://cqhep0qccb8fw"]
 
 [ext_resource type="Script" path="res://behaviors/actions/select_building_target_action.gd" id="1_q6x0m"]
 
