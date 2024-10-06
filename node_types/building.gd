@@ -9,13 +9,25 @@ extends Node2D
 
 var health := max_health
 
+const TEAM_MATERIALS = [
+	preload("res://materials/team_blue.tres"),
+	preload("res://materials/team_red.tres"),
+]
+
 func _ready() -> void:
 	_update_team_material()
+	process_mode = PROCESS_MODE_DISABLED
 
 func hit(damage_taken: float):
 	health -= damage_taken
 	if health <= 0:
 		queue_free()
+
+func on_night() -> void:
+	process_mode = PROCESS_MODE_DISABLED
+
+func on_day() -> void:
+	process_mode = PROCESS_MODE_INHERIT
 
 func set_team(v: Enums.Team) -> void:
 	if team == v:
@@ -25,11 +37,10 @@ func set_team(v: Enums.Team) -> void:
 		_update_team_material()
 
 func _update_team_material():
-	var sprite = get_node_or_null(^"AnimatedSprite2D")
+	var sprites = (
+		find_children("*", "Sprite2D", true, true) +
+		find_children("*", "AnimatedSprite2D", true, true))
 	
-	if sprite:
-		match team:
-			Enums.Team.BLUE:
-				sprite.material = preload("res://materials/team_blue.tres")
-			Enums.Team.RED:
-				sprite.material = preload("res://materials/team_red.tres")
+	for sprite: CanvasItem in sprites:
+		if sprite.material in TEAM_MATERIALS:
+			sprite.material = TEAM_MATERIALS[team]

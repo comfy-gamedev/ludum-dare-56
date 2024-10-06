@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://byhy28k1iynxf"]
+
+[ext_resource type="Script" path="res://objects/buildings/castle/castle.gd" id="1_qb6m3"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_d24nf"]
+[ext_resource type="Texture2D" uid="uid://dkic6doc52oby" path="res://icon.png" id="2_dy6f0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c23tv"]
+size = Vector2(30, 30)
+
+[node name="Castle" type="Node2D" groups=["Building", "Castle"]]
+script = ExtResource("1_qb6m3")
+building_type = 1
+max_health = 1000
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = ExtResource("2_d24nf")
+position = Vector2(8, 8)
+texture = ExtResource("2_dy6f0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_c23tv")

@@ -49,6 +49,7 @@ enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/cider
 Projectile=""
 Unit=""
 Building=""
+Castle=""
 
 [gui]
 

@@ -2,8 +2,8 @@ class_name Enums
 extends Node
 
 enum Team {
-	BLUE,
-	RED,
+	BLUE = 0,
+	RED = 1,
 }
 
 enum BuildingType {

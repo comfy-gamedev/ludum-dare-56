@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://dkic6doc52oby"
+path="res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.res"
+
+[deps]
+
+source_file="res://icon.png"
+dest_files=["res://.godot/imported/icon.png-487276ed1e3a0c39cad0279d744ee560.res"]
+
+[params]
+
+palette_image="res://palette.png"

@@ -10,6 +10,7 @@ func _ready() -> void:
 	hb[0] = preload("res://blueprints/goblin_spawner.tres")
 	Globals.player_hotbar = hb
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
+	Globals.phase_changed.connect(_on_globals_phase_changed)
 	night_effect.transition(1.0)
 
 func _process(delta: float) -> void:
@@ -23,15 +24,21 @@ func _process(delta: float) -> void:
 		Enums.Team.RED: [],
 	}
 	
-	for b in get_tree().get_nodes_in_group("Building"):
+	for b in get_tree().get_nodes_in_group("Castle"):
 		team_buildings[b.team].append(b)
 	
 	if team_buildings[Enums.Team.RED].size() == 0:
 		SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
 	elif team_buildings[Enums.Team.BLUE].size() == 0:
 		SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
+	
+	if Globals.phase == Enums.Phase.FIGHT:
+		Globals.day_time += delta
+		if Globals.day_time >= Globals.DAY_DURATION:
+			Globals.phase = Enums.Phase.BUILD
+	
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("build_plueprint"):
 		if Globals.selected_blueprint:
 			assert(is_instance_valid(blueprint_preview))
@@ -49,3 +56,19 @@ func _on_globals_selected_blueprint_changed() -> void:
 		blueprint_preview.scale = Vector2.ONE
 		blueprint_preview.modulate = Color(1, 1, 1, 0.5)
 		add_child(blueprint_preview)
+
+func _on_day_timer_timeout() -> void:
+	Globals.phase = Enums.Phase.BUILD
+
+func _on_globals_phase_changed() -> void:
+	match Globals.phase:
+		Enums.Phase.BUILD:
+			for u in get_tree().get_nodes_in_group("Unit"):
+				u.queue_free()
+			for b: Building in get_tree().get_nodes_in_group("Building"):
+				b.on_night()
+		Enums.Phase.FIGHT:
+			for b: Building in get_tree().get_nodes_in_group("Building"):
+				b.on_day()
+			Globals.day_time = 0.0
+			Globals.selected_blueprint = null
