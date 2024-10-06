@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=10 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bocnscn2kxeon" path="res://objects/ui_canvas_layer/ui_canvas_layer.tscn" id="2_xxslg"]
 [ext_resource type="Texture2D" uid="uid://bgrp5vhsqt8cu" path="res://palette.png" id="4_aaujl"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="8_intth"]
-[ext_resource type="PackedScene" uid="uid://byhy28k1iynxf" path="res://objects/buildings/castle/castle.tscn" id="10_3a70s"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/grid_manager.gd" id="11_fkpbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8m7g"]
@@ -43,10 +42,3 @@ script = ExtResource("1_lrklj")
 
 [node name="GridManager" type="Node2D" parent="."]
 script = ExtResource("11_fkpbp")
-
-[node name="Castle" parent="." instance=ExtResource("10_3a70s")]
-position = Vector2(45, 94)
-
-[node name="Castle2" parent="." instance=ExtResource("10_3a70s")]
-position = Vector2(172, 89)
-team = 1
