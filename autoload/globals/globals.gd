@@ -21,11 +21,17 @@ var selected_blueprint: Blueprint = null:
 var player_money: int = 5:
 	set(v): player_money = v; changed.emit()
 
+signal phase_changed()
+var phase: Enums.Phase = Enums.Phase.BUILD:
+	set(v): phase = v; changed.emit(); phase_changed.emit()
+
 
 ## Reset all variables to their default state.
 func reset():
 	player_hotbar = [null, null, null, null, null, null]
+	selected_blueprint = null
 	player_money = 5
+	phase = Enums.Phase.BUILD
 
 
 #region Debug overlay
