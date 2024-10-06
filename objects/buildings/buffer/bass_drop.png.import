@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://h28svlncv874"
+path="res://.godot/imported/bass_drop.png-017113aa9487662005b7df2f4616dbd2.res"
+
+[deps]
+
+source_file="res://objects/buildings/buffer/bass_drop.png"
+dest_files=["res://.godot/imported/bass_drop.png-017113aa9487662005b7df2f4616dbd2.res"]
+
+[params]
+
+palette_image="res://palette.png"
