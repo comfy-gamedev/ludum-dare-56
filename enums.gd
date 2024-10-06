@@ -14,3 +14,8 @@ enum BuildingType {
 	SPAWNER,
 	PRODUCTION,
 }
+
+enum Phase {
+	BUILD,
+	FIGHT,
+}
