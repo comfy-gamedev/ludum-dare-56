@@ -20,13 +20,20 @@ signal selected_blueprint_changed()
 var selected_blueprint: Blueprint = null:
 	set(v): selected_blueprint = v; changed.emit(); selected_blueprint_changed.emit()
 
-var player_income: int = 5
-var player_money: int = 5:
-	set(v): player_money = v; changed.emit()
+var blue_income: int = 5
+var blue_money: int = 0:
+	set(v): blue_money = v; changed.emit()
+
+var red_income: int = 5
+var red_money: int = 0:
+	set(v): red_money = v; changed.emit()
 
 signal phase_changed()
 var phase: Enums.Phase = Enums.Phase.BUILD:
 	set(v): phase = v; changed.emit(); phase_changed.emit()
+
+var cpu_acting: bool = false:
+	set(v): cpu_acting = v; changed.emit()
 
 
 var day_time: float = 0.0
@@ -36,7 +43,8 @@ var day_time: float = 0.0
 func reset():
 	player_hotbar = [null, null, null, null, null, null]
 	selected_blueprint = null
-	player_money = 5
+	blue_money = 0
+	red_money = 0
 	phase = Enums.Phase.BUILD
 
 

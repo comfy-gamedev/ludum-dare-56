@@ -9,5 +9,11 @@ func _process(delta: float) -> void:
 	squish_amount = max(squish_amount, 0)
 
 func _on_timer_timeout() -> void:
-	Globals.player_money += 1
+	match team:
+		Enums.Team.BLUE:
+			Globals.blue_money += 1
+		Enums.Team.RED:
+			Globals.red_money += 1
+		_:
+			breakpoint
 	squish_amount = 2 * PI

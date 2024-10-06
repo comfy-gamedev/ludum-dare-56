@@ -35,13 +35,15 @@ func _ready() -> void:
 	red_castle.bp_size = Vector2i(2, 2)
 	add_child(red_castle)
 	grid_manager.place_building(red_castle.position, Vector2i(2, 2), red_castle, Enums.Team.RED)
+	
+	Globals.phase = Enums.Phase.BUILD
 
 func _process(delta: float) -> void:
 	if is_instance_valid(blueprint_preview):
 		var p = get_viewport().canvas_transform.inverse() * get_viewport().get_mouse_position()
 		p = (p + grid_manager.CELL_SIZE / 2.0).snapped(grid_manager.CELL_SIZE) - grid_manager.CELL_SIZE / 2.0
 		blueprint_preview.global_position = p
-		var can_place = Globals.player_money >= Globals.selected_blueprint.cost and grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size, Enums.Team.BLUE)
+		var can_place = Globals.blue_money >= Globals.selected_blueprint.cost and grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size, Enums.Team.BLUE)
 		var mat = preload("res://materials/team_blue.tres") if can_place else preload("res://materials/invalid.tres")
 		var sprs = blueprint_preview.find_children("*", "Sprite2D") + blueprint_preview.find_children("*", "AnimatedSprite2D")
 		if blueprint_preview is Sprite2D or blueprint_preview is AnimatedSprite2D:
@@ -67,7 +69,6 @@ func _process(delta: float) -> void:
 		Globals.day_time += delta
 		if Globals.day_time >= Globals.DAY_DURATION:
 			Globals.phase = Enums.Phase.BUILD
-			Globals.player_money += Globals.player_income
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -75,8 +76,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Globals.selected_blueprint:
 			assert(is_instance_valid(blueprint_preview))
 			get_viewport().set_input_as_handled()
-			if Globals.player_money >= Globals.selected_blueprint.cost and grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size, Enums.Team.BLUE):
-				Globals.player_money -= Globals.selected_blueprint.cost
+			if Globals.blue_money >= Globals.selected_blueprint.cost and grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size, Enums.Team.BLUE):
+				Globals.blue_money -= Globals.selected_blueprint.cost
 				var s = Globals.selected_blueprint.spawned_scene.instantiate()
 				s.position = blueprint_preview.position
 				s.bp_size = Globals.selected_blueprint.size
@@ -108,6 +109,8 @@ func _on_globals_phase_changed() -> void:
 				u.queue_free()
 			for b: Building in get_tree().get_nodes_in_group("Building"):
 				b.on_night()
+			Globals.blue_money += Globals.blue_income
+			Globals.red_money += Globals.red_income
 		Enums.Phase.FIGHT:
 			for b: Building in get_tree().get_nodes_in_group("Building"):
 				b.on_day()

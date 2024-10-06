@@ -15,7 +15,7 @@ func _on_timer_timeout() -> void:
 	
 	#var target_dist = 10000
 	var dist
-	var min_dist = 10000.0
+	var min_dist = 1e+08
 	for i in buildings:
 		dist = global_position.distance_squared_to(i.global_position)
 		if dist < min_dist:

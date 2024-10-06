@@ -88,6 +88,14 @@ func place_building(pos: Vector2, size: Vector2i, building: Variant, team: Enums
 					break
 			assert(found)
 
+func get_available_cells(team: Enums.Team) -> Array[Vector2]:
+	var result: Array[Vector2]
+	for c in castles:
+		for cp in c.cells:
+			if c.cells[cp].occupant == null:
+				result.append(Vector2(cp) * CELL_SIZE)
+	return result
+
 class CastleGrid extends RefCounted:
 	var center: Vector2i
 	var radius: int
