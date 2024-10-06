@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CpuAIParams" load_steps=16 format=3 uid="uid://cgjad3y325tr"]
+
+[ext_resource type="Script" path="res://resource_types/blueprint.gd" id="1_ubo1j"]
+[ext_resource type="Resource" uid="uid://dc7xp3gt516pl" path="res://blueprints/buffer.tres" id="2_hsyul"]
+[ext_resource type="Resource" uid="uid://bvivbfs3npp08" path="res://blueprints/barricade.tres" id="3_fseti"]
+[ext_resource type="Resource" uid="uid://dt351erqq21h1" path="res://blueprints/repairer.tres" id="4_pblwi"]
+[ext_resource type="Resource" uid="uid://btu1nx75yo7h4" path="res://blueprints/farm.tres" id="5_1c3u5"]
+[ext_resource type="Script" path="res://resource_types/cpu_ai_params.gd" id="6_gqlam"]
+[ext_resource type="Resource" uid="uid://dvv0y8046s6eb" path="res://blueprints/goblin_spawner.tres" id="7_oe2or"]
+[ext_resource type="Resource" path="res://blueprints/rat_spawner.tres" id="8_e2sk7"]
+[ext_resource type="Resource" path="res://blueprints/mage_spawner.tres" id="9_dyta8"]
+[ext_resource type="Resource" uid="uid://b0sxuofdu6j8d" path="res://blueprints/autocannon.tres" id="10_ylcse"]
+[ext_resource type="Resource" uid="uid://c8y4n18yl1fdb" path="res://blueprints/laser_turret.tres" id="11_idms7"]
+[ext_resource type="Resource" uid="uid://cyawrd6olq32q" path="res://blueprints/rock_turret.tres" id="12_ihvf6"]
+[ext_resource type="Resource" uid="uid://dntp4y0ncidxq" path="res://blueprints/shotgun_turret.tres" id="13_v7xph"]
+[ext_resource type="Resource" uid="uid://d3pa6e2ix0ep1" path="res://blueprints/sniper_turret.tres" id="14_7d85d"]
+[ext_resource type="Resource" uid="uid://cj2lbultlmbvb" path="res://blueprints/tesla_turret.tres" id="15_hfotm"]
+
+[resource]
+script = ExtResource("6_gqlam")
+fortification_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("2_hsyul"), ExtResource("3_fseti"), ExtResource("4_pblwi")])
+turret_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("10_ylcse"), ExtResource("11_idms7"), ExtResource("12_ihvf6"), ExtResource("13_v7xph"), ExtResource("14_7d85d"), ExtResource("15_hfotm")])
+production_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("5_1c3u5")])
+spawner_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("7_oe2or"), ExtResource("8_e2sk7"), ExtResource("9_dyta8")])
+militarism = 0.0
+economics = 0.0
+aggression = 0.0
+organization = 0.5

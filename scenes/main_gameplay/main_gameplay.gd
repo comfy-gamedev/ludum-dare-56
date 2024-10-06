@@ -14,7 +14,9 @@ var blueprint_preview: Node2D = null
 func _ready() -> void:
 	var hb = Globals.player_hotbar
 	hb[0] = preload("res://blueprints/goblin_spawner.tres")
+	hb[1] = preload("res://blueprints/rock_turret.tres")
 	Globals.player_hotbar = hb
+	Globals.blue_income = 3
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 	night_effect.transition(1.0)

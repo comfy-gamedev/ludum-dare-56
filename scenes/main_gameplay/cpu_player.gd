@@ -4,9 +4,8 @@ extends Node
 @export var params: CpuAIParams
 @export var grid: GridManager
 
-
-
 func _ready() -> void:
+	Globals.red_income = params.passive_income
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 
 func build_phase() -> void:
@@ -66,7 +65,7 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 	return true
 
 func _can_afford(bp: Blueprint) -> bool:
-	return bp != null and Globals.red_money > bp.cost
+	return bp != null and Globals.red_money >= bp.cost
 
 func _choose(a, b, f: float) -> Variant:
 	if not a:
