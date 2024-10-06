@@ -13,10 +13,8 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		actor.get_parent().add_child(bullet)
 		bullet.global_position = actor.global_position
 		bullet.velocity = (target_opponent.global_position - actor.global_position).normalized() * 50
-		bullet.damage = 25 #actor.attack_points
+		bullet.damage = actor.attack_points
 		bullet.team = actor.team
-		print("shoooot")
-		#cooldown.start()
 	else:
 		return SUCCESS
 	

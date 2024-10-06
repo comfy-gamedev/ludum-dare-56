@@ -21,3 +21,6 @@ position = Vector2(156, 63)
 [node name="RockTurret" parent="." instance=ExtResource("3_e12si")]
 position = Vector2(11, 88)
 team = 1
+
+[node name="Mage2" parent="." instance=ExtResource("2_4poop")]
+position = Vector2(237, 242)
