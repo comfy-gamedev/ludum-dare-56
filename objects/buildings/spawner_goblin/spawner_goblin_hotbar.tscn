@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cfyaaj57q6v5v"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_arx0m"]
-[ext_resource type="Texture2D" uid="uid://dpb6j0k38gjse" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_0oikb"]
+[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_0oikb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_567ru"]
 atlas = ExtResource("2_0oikb")
