@@ -1,71 +1,71 @@
 [gd_scene load_steps=19 format=3 uid="uid://xd3tbhjjo3gt"]
 
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_0uyvp"]
-[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_3ioub"]
-[ext_resource type="Material" path="res://materials/invalid.tres" id="2_bgcsc"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_yh0pr"]
 [ext_resource type="PackedScene" uid="uid://brfxkbq7b4brm" path="res://objects/spawner_node/spawner.tscn" id="3_fe2g0"]
+[ext_resource type="Texture2D" uid="uid://cmxcwu2yi1up6" path="res://assests/rat_spawner.png" id="3_utkis"]
 [ext_resource type="PackedScene" uid="uid://cctuk3jdnuphy" path="res://objects/units/rat/rat.tscn" id="4_kkqcb"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_g3dgd"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="6_jae82"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_567ru"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccllf"]
+atlas = ExtResource("3_utkis")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovqrc"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh06f"]
+atlas = ExtResource("3_utkis")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5cug"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxvgp"]
+atlas = ExtResource("3_utkis")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hew7c"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbdtg"]
+atlas = ExtResource("3_utkis")
 region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2rf6u"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_53g2p"]
+atlas = ExtResource("3_utkis")
 region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtmjx"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3xy8"]
+atlas = ExtResource("3_utkis")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rvyfv"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gu2g"]
+atlas = ExtResource("3_utkis")
 region = Rect2(96, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8f2k"]
-atlas = ExtResource("2_3ioub")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xdi8"]
+atlas = ExtResource("3_utkis")
 region = Rect2(112, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k3ebj"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rgh8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_567ru")
+"texture": SubResource("AtlasTexture_ccllf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ovqrc")
+"texture": SubResource("AtlasTexture_bh06f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u5cug")
+"texture": SubResource("AtlasTexture_cxvgp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hew7c")
+"texture": SubResource("AtlasTexture_cbdtg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2rf6u")
+"texture": SubResource("AtlasTexture_53g2p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qtmjx")
+"texture": SubResource("AtlasTexture_g3xy8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rvyfv")
+"texture": SubResource("AtlasTexture_4gu2g")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m8f2k")
+"texture": SubResource("AtlasTexture_6xdi8")
 }],
 "loop": true,
 "name": &"default",
@@ -84,8 +84,8 @@ script = ExtResource("1_0uyvp")
 building_type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_bgcsc")
-sprite_frames = SubResource("SpriteFrames_k3ebj")
+material = ExtResource("2_yh0pr")
+sprite_frames = SubResource("SpriteFrames_0rgh8")
 autoplay = "default"
 
 [node name="Spawner" parent="." instance=ExtResource("3_fe2g0")]
