@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bocnscn2kxeon"]
 
-[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_p3r35"]
+[ext_resource type="Theme" path="res://game_ui_theme.tres" id="1_p3r35"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/hotbar_panel_container.gd" id="2_dxr6g"]
 [ext_resource type="Texture2D" uid="uid://bkv53svq3e1in" path="res://objects/ui_canvas_layer/highlight.png" id="3_2owqa"]
 
