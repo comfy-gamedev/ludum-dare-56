@@ -52,7 +52,7 @@ script = ExtResource("1_nwvp7")
 script = ExtResource("2_m0snn")
 
 [node name="SapperMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_t3dac")]
-blackboard = NodePath("@Node@37685")
+blackboard = NodePath("@Node@24195")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("4_nacag")

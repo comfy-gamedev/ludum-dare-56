@@ -29,6 +29,6 @@ void fragment() {
 	} else if (pal == 2) {
 		COLOR = vec4(texture(output_palettes[2], uv).rgb, 1.0);
 	} else {
-		COLOR = vec4(texture(output_palettes[3], vec2((float(id) + 0.5) / float(palette_width), 0.5)).rgb, 1.0);
+		COLOR = vec4(texture(output_palettes[3], uv).rgb, 1.0);
 	}
 }
