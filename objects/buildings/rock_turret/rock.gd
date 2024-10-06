@@ -14,6 +14,6 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Unit"):
+	if body.is_in_group("Unit") and team != body.team:
 		body.hit(damage)
 		queue_free()

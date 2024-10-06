@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgu5g76vrnjo8"]
+[gd_scene load_steps=15 format=3 uid="uid://dgu5g76vrnjo8"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_3g1kh"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_0uvcu"]
@@ -7,18 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://tsb6iwrtft2p" path="res://behaviors/actions/detect_target_action.tscn" id="5_jvx6o"]
 [ext_resource type="PackedScene" uid="uid://bjsft772bt537" path="res://behaviors/actions/move_to_target_opponent_action.tscn" id="6_uh754"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="7_c6d31"]
-[ext_resource type="PackedScene" uid="uid://crh286804k8cq" path="res://behaviors/actions/move_from_target_opponent_action.tscn" id="8_0wnov"]
-[ext_resource type="PackedScene" uid="uid://wcx782cjugc4" path="res://behaviors/actions/damage_target_opponent_action.tscn" id="9_u1g1p"]
+[ext_resource type="PackedScene" uid="uid://db5bj0rjs8v16" path="res://behaviors/actions/range_attack_action.tscn" id="8_0v81s"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/delayer.gd" id="8_81vgy"]
 [ext_resource type="PackedScene" uid="uid://cmwkcp4ctds55" path="res://behaviors/actions/move_to_target_building_action.tscn" id="10_s3uwr"]
-[ext_resource type="PackedScene" uid="uid://dra3c7mo7wly3" path="res://behaviors/actions/move_from_target_building_action.tscn" id="11_hlj0l"]
-[ext_resource type="PackedScene" uid="uid://jjh26b7mnrgo" path="res://behaviors/actions/damage_target_building_action.tscn" id="12_2pr7s"]
+[ext_resource type="PackedScene" uid="uid://d1yqcvg6l2we7" path="res://behaviors/actions/range_attack_building_action.tscn" id="11_w4y64"]
 [ext_resource type="PackedScene" uid="uid://bxa6gkl6odb7m" path="res://behaviors/actions/pick_random_pos_action.tscn" id="13_yqi3a"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="14_j5ict"]
 [ext_resource type="PackedScene" uid="uid://dqhgunc6swb3c" path="res://behaviors/actions/move_to_pos_action.tscn" id="15_semsf"]
 
 [node name="RangedUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_3g1kh")
-blackboard = NodePath("@Node@32915")
+blackboard = NodePath("@Node@33713")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]
@@ -35,6 +34,7 @@ script = ExtResource("2_0uvcu")
 [node name="DetectTargetAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("5_jvx6o")]
 
 [node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("6_uh754")]
+acceptance_radius = 70
 
 [node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence"]
 script = ExtResource("7_c6d31")
@@ -42,16 +42,17 @@ script = ExtResource("7_c6d31")
 [node name="AttackUnitSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator"]
 script = ExtResource("2_0uvcu")
 
-[node name="MoveFromTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("8_0wnov")]
+[node name="DelayDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence"]
+script = ExtResource("8_81vgy")
+wait_time = 2.0
 
-[node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("6_uh754")]
-
-[node name="DamageTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("9_u1g1p")]
+[node name="RangeAttackAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence/DelayDecorator" instance=ExtResource("8_0v81s")]
 
 [node name="BesiegeTargetBuildingSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
 script = ExtResource("2_0uvcu")
 
 [node name="MoveToTargetBuildingAction2" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence" instance=ExtResource("10_s3uwr")]
+acceptance_radius = 70
 
 [node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence"]
 script = ExtResource("7_c6d31")
@@ -59,11 +60,11 @@ script = ExtResource("7_c6d31")
 [node name="AttackBuildingSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator"]
 script = ExtResource("2_0uvcu")
 
-[node name="MoveFromTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("11_hlj0l")]
+[node name="DelayDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence"]
+script = ExtResource("8_81vgy")
+wait_time = 2.0
 
-[node name="MoveToTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("10_s3uwr")]
-
-[node name="DamageTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("12_2pr7s")]
+[node name="RangeAttackBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence/DelayDecorator" instance=ExtResource("11_w4y64")]
 
 [node name="WanderSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
 script = ExtResource("2_0uvcu")
