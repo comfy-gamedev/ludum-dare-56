@@ -57,13 +57,13 @@ func _process(delta: float) -> void:
 		Enums.Team.RED: [],
 	}
 	
-	for b in get_tree().get_nodes_in_group("Castle"):
+	var castles = get_tree().get_nodes_in_group("Castle")
+	if !castles.any(func(x): return x.team == Enums.Team.RED):
+		SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
+	elif !castles.any(func(x): return x.team == Enums.Team.BLUE):
+		SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
+	for b in castles:
 		team_buildings[b.team].append(b)
-	
-	#if team_buildings[Enums.Team.RED].size() == 0:
-		#SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
-	#elif team_buildings[Enums.Team.BLUE].size() == 0:
-		#SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 	
 	if Globals.phase == Enums.Phase.FIGHT:
 		Globals.day_time += delta
@@ -107,6 +107,8 @@ func _on_globals_phase_changed() -> void:
 		Enums.Phase.BUILD:
 			for u in get_tree().get_nodes_in_group("Unit"):
 				u.queue_free()
+			for p in get_tree().get_nodes_in_group("Projectile"):
+				p.queue_free()
 			for b: Building in get_tree().get_nodes_in_group("Building"):
 				b.on_night()
 			Globals.blue_money += Globals.blue_income
