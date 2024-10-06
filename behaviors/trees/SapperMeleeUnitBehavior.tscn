@@ -14,8 +14,8 @@
 
 [node name="SapperMeleeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_88dtr")
-blackboard = NodePath("@Node@35458")
-actor = NodePath("..")
+blackboard = NodePath("@Node@32465")
+actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]
 script = ExtResource("2_w1kc8")
