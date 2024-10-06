@@ -112,6 +112,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect2"]
 z_index = 1
+layout_mode = 0
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 50.0
@@ -124,6 +125,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect3"]
 z_index = 1
+layout_mode = 0
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 50.0
@@ -136,6 +138,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect4"]
 z_index = 1
+layout_mode = 0
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 50.0
@@ -148,6 +151,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect5"]
 z_index = 1
+layout_mode = 0
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 50.0
@@ -160,6 +164,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/HotbarPanelContainer/HBoxContainer/ColorRect6"]
 z_index = 1
+layout_mode = 0
 offset_left = 10.0
 offset_top = 3.0
 offset_right = 50.0
