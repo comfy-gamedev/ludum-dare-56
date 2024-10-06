@@ -1,6 +1,6 @@
 extends Control
 
-@onready var sun: Sprite2D = $Sun
+@onready var sun: Node2D = $Sun
 
 @onready var _initial_position = position
 
@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	
 	var t = Globals.day_time / Globals.DAY_DURATION * PI
 	sun.position = Vector2(
-		80.0 + cos(t) * 64.0,
+		80.0 + -cos(t) * 64.0,
 		48.0 + -sin(t) * 32.0)
 
 func _on_globals_phase_changed() -> void:
