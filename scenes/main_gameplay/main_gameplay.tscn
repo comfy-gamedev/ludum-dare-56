@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=16 format=4 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c1t4vjpoq4nyb" path="res://assests/grass_dirt_tileset.png" id="8_dc1hf"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="8_intth"]
 [ext_resource type="Script" path="res://node_types/tile_map_dual.gd" id="9_n2ni1"]
+[ext_resource type="PackedScene" uid="uid://6yp0y823pq1k" path="res://objects/buildings/autocannon_turret/autocannon_turret.tscn" id="10_c52nh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pm2j0"]
 texture = ExtResource("2_sjdvw")
@@ -96,3 +97,10 @@ position = Vector2(590, 198)
 
 [node name="CameraShake" type="Node" parent="Camera2D"]
 script = ExtResource("1_lrklj")
+
+[node name="AutocannonTurret" parent="." instance=ExtResource("10_c52nh")]
+position = Vector2(425, 122)
+
+[node name="AutocannonTurret2" parent="." instance=ExtResource("10_c52nh")]
+position = Vector2(554, 121)
+team = 1
