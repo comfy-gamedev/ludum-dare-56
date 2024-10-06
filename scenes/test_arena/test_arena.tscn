@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d320so74fmvcx"]
+[gd_scene load_steps=3 format=3 uid="uid://d320so74fmvcx"]
 
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="2_1rurq"]
+[ext_resource type="PackedScene" uid="uid://bmulu8vonwlpq" path="res://objects/units/mage/mage.tscn" id="2_4poop"]
 
 [node name="TestArena" type="Node2D"]
 
@@ -9,4 +10,8 @@ position = Vector2(45, 27)
 
 [node name="Goblin2" parent="." instance=ExtResource("2_1rurq")]
 position = Vector2(87, 69)
+team = 1
+
+[node name="Mage" parent="." instance=ExtResource("2_4poop")]
+position = Vector2(91, 28)
 team = 1
