@@ -17,7 +17,7 @@
 
 [node name="RangedUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_3g1kh")
-blackboard = NodePath("@Node@33713")
+blackboard = NodePath("@Node@17476")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]
@@ -34,7 +34,6 @@ script = ExtResource("2_0uvcu")
 [node name="DetectTargetAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("5_jvx6o")]
 
 [node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("6_uh754")]
-acceptance_radius = 70
 
 [node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence"]
 script = ExtResource("7_c6d31")
