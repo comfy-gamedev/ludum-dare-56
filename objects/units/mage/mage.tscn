@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://bmulu8vonwlpq"]
+
+[ext_resource type="Script" path="res://objects/units/mage/mage.gd" id="1_guaxv"]
+[ext_resource type="Texture2D" uid="uid://dvdpjnnspkf81" path="res://assests/robe_gobbo.png" id="1_p3ehu"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_40l0s"]
+[ext_resource type="PackedScene" uid="uid://dgu5g76vrnjo8" path="res://behaviors/trees/RangedUnitBehavior.tscn" id="3_al0aq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhstl"]
+atlas = ExtResource("1_p3ehu")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1ebo"]
+atlas = ExtResource("1_p3ehu")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgh55"]
+atlas = ExtResource("1_p3ehu")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vaigv"]
+atlas = ExtResource("1_p3ehu")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7gtv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhstl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1ebo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgh55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vaigv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdjg2"]
+size = Vector2(8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6d8we"]
+radius = 48.0104
+
+[node name="Mage" type="CharacterBody2D" groups=["Unit"]]
+script = ExtResource("1_guaxv")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("2_40l0s")
+
+[node name="RangedUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_al0aq")]
+blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s7gtv")
+autoplay = "default"
+frame_progress = 0.0176529
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kdjg2")
+
+[node name="EnemySeekingRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySeekingRadius"]
+shape = SubResource("CircleShape2D_6d8we")
+debug_color = Color(0.513282, 0.570181, 0.254154, 0.42)
