@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	print("1234", "HITT ???")
 	if (body.is_in_group("Unit") or body.is_in_group("Building")) and team != body.team:
 		body.hit(damage)
 		queue_free()
