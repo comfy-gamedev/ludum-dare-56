@@ -67,6 +67,7 @@ func _process(delta: float) -> void:
 		Globals.day_time += delta
 		if Globals.day_time >= Globals.DAY_DURATION:
 			Globals.phase = Enums.Phase.BUILD
+			Globals.player_money += Globals.player_income
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -99,8 +100,6 @@ func _on_globals_selected_blueprint_changed() -> void:
 	else:
 		grid_manager.unreveal(Enums.Team.BLUE)
 
-func _on_day_timer_timeout() -> void:
-	Globals.phase = Enums.Phase.BUILD
 
 func _on_globals_phase_changed() -> void:
 	match Globals.phase:
