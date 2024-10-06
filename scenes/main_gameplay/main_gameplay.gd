@@ -3,21 +3,33 @@ extends Node2D
 var blueprint_preview: Node2D = null
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
+@onready var night_effect: ColorRect = $EffectsCanvasLayer/NightEffect
 
 func _ready() -> void:
 	var hb = Globals.player_hotbar
 	hb[0] = preload("res://blueprints/goblin_spawner.tres")
 	Globals.player_hotbar = hb
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
+	night_effect.transition(1.0)
 
 func _process(delta: float) -> void:
-	if !get_tree().get_nodes_in_group("Building").filter(func(x): return x.team == Enums.Team.BLUE):
-		SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
-	
 	if is_instance_valid(blueprint_preview):
 		var p = get_viewport().canvas_transform.inverse() * get_viewport().get_mouse_position()
-		p = p.snappedf(8)
+		p = p.snappedf(16)
 		blueprint_preview.global_position = p
+	
+	var team_buildings = {
+		Enums.Team.BLUE: [],
+		Enums.Team.RED: [],
+	}
+	
+	for b in get_tree().get_nodes_in_group("Building"):
+		team_buildings[b.team].append(b)
+	
+	if team_buildings[Enums.Team.RED].size() == 0:
+		SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
+	elif team_buildings[Enums.Team.BLUE].size() == 0:
+		SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("build_plueprint"):
@@ -27,7 +39,6 @@ func _input(event: InputEvent) -> void:
 			var s = Globals.selected_blueprint.spawned_scene.instantiate()
 			s.position = blueprint_preview.position
 			add_child(s)
-
 
 func _on_globals_selected_blueprint_changed() -> void:
 	if is_instance_valid(blueprint_preview):

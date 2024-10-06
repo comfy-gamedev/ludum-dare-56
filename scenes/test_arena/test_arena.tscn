@@ -1,13 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://d320so74fmvcx"]
 
-[ext_resource type="PackedScene" uid="uid://w6bucvl4x4ao" path="res://objects/units/dry_gobbo/dry_gobbo.tscn" id="1_vryih"]
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="2_1rurq"]
+[ext_resource type="PackedScene" uid="uid://bmulu8vonwlpq" path="res://objects/units/mage/mage.tscn" id="2_4poop"]
 
 [node name="TestArena" type="Node2D"]
 
-[node name="DryGobbo" parent="." instance=ExtResource("1_vryih")]
-position = Vector2(15, 18)
-team = "enemy"
-
 [node name="Goblin" parent="." instance=ExtResource("2_1rurq")]
 position = Vector2(45, 27)
+
+[node name="Goblin2" parent="." instance=ExtResource("2_1rurq")]
+position = Vector2(87, 69)
+team = 1
+
+[node name="Mage" parent="." instance=ExtResource("2_4poop")]
+position = Vector2(91, 28)
+team = 1
