@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://d02i7ms25visy"]
+[gd_scene load_steps=5 format=3 uid="uid://d02i7ms25visy"]
 
 [ext_resource type="Script" path="res://objects/night_light/night_light.gd" id="1_cmpoc"]
 [ext_resource type="Script" path="res://objects/night_light/light.gd" id="2_ku0qf"]
+
+[sub_resource type="Gradient" id="Gradient_afjwi"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.453608, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pra1k"]
+gradient = SubResource("Gradient_afjwi")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="NightLight" type="Node2D"]
 process_priority = 1
@@ -13,3 +24,8 @@ follow_viewport_enabled = true
 [node name="Light" type="Node2D" parent="CanvasLayer"]
 visibility_layer = 2
 script = ExtResource("2_ku0qf")
+texture = SubResource("GradientTexture2D_pra1k")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
