@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://dj216tfhn1wdq"]
+
+[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="1_86hc3"]
+[ext_resource type="Material" path="res://materials/invalid.tres" id="1_g66yc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3kjd"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1fje"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnu3l"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utlwr"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxs37"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sibt7"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atsam"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jl8s"]
+atlas = ExtResource("1_86hc3")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00dgb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3kjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1fje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnu3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utlwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxs37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sibt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atsam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jl8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="SpawnerSnakeHotbar" type="AnimatedSprite2D"]
+material = ExtResource("1_g66yc")
+sprite_frames = SubResource("SpriteFrames_00dgb")
+autoplay = "default"
