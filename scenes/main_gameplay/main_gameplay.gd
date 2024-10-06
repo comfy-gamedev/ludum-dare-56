@@ -25,12 +25,14 @@ func _ready() -> void:
 	var blue_castle = CASTLE.instantiate()
 	blue_castle.team = Enums.Team.BLUE
 	blue_castle.position = blue_castle_position - grid_manager.CELL_SIZE / 2.0
+	blue_castle.bp_size = Vector2i(2, 2)
 	add_child(blue_castle)
 	grid_manager.place_building(blue_castle.position, Vector2i(2, 2), blue_castle, Enums.Team.BLUE)
 
 	var red_castle = CASTLE.instantiate()
 	red_castle.team = Enums.Team.RED
 	red_castle.position = red_castle_position - grid_manager.CELL_SIZE / 2.0
+	red_castle.bp_size = Vector2i(2, 2)
 	add_child(red_castle)
 	grid_manager.place_building(red_castle.position, Vector2i(2, 2), red_castle, Enums.Team.RED)
 
@@ -76,8 +78,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				Globals.player_money -= Globals.selected_blueprint.cost
 				var s = Globals.selected_blueprint.spawned_scene.instantiate()
 				s.position = blueprint_preview.position
+				s.bp_size = Globals.selected_blueprint.size
 				add_child(s)
-				grid_manager.place_building(s.position, Globals.selected_blueprint.size, s, Enums.Team.BLUE)
+				grid_manager.place_building(s.position, s.bp_size, s, Enums.Team.BLUE)
 	if event.is_action_pressed("cancel_blueprint"):
 		if Globals.selected_blueprint:
 			get_viewport().set_input_as_handled()

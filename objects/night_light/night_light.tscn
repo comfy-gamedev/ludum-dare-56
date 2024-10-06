@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d02i7ms25visy"]
+
+[ext_resource type="Script" path="res://objects/night_light/night_light.gd" id="1_cmpoc"]
+[ext_resource type="Script" path="res://objects/night_light/light.gd" id="2_ku0qf"]
+
+[node name="NightLight" type="Node2D"]
+process_priority = 1
+script = ExtResource("1_cmpoc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Light" type="Node2D" parent="CanvasLayer"]
+visibility_layer = 2
+script = ExtResource("2_ku0qf")

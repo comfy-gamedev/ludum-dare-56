@@ -145,6 +145,7 @@ position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_c23tv")
 
 [node name="Healthbar" parent="." instance=ExtResource("4_eoyoi")]
+position = Vector2(8, 8)
 size = 32
 
 [node name="Smoke" parent="." instance=ExtResource("5_lgokp")]
