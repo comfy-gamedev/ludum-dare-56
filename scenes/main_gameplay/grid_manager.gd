@@ -64,8 +64,9 @@ func can_place_building(pos: Vector2, size: Vector2i, team: Enums.Team) -> bool:
 				if c.team != team:
 					continue
 				if pp in c.cells:
-					found = true
-					break
+					if c.cells[pp].occupant == null:
+						found = true
+						break
 			if not found:
 				return false
 	return true

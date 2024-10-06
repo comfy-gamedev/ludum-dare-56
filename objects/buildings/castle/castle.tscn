@@ -136,6 +136,7 @@ max_health = 1000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_d24nf")
+position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_2klvi")
 autoplay = "default"
 
