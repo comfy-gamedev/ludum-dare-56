@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://bvivbfs3npp08"]
 
-[ext_resource type="PackedScene" uid="uid://c0oin2432ebdd" path="res://objects/buildings/barricade/barricade_hotbar.tscn" id="1_j6uuh"]
+[ext_resource type="PackedScene" path="res://objects/buildings/barricade/barricade_hotbar.tscn" id="1_j6uuh"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_82l87"]
 [ext_resource type="PackedScene" uid="uid://cqap550sohsst" path="res://objects/buildings/barricade/barricade.tscn" id="3_a7s0y"]
 

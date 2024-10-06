@@ -26,10 +26,11 @@ buses/default_bus_layout="res://audio_bus_layout.tres"
 Globals="*res://autoload/globals/globals.gd"
 SceneGirl="*res://autoload/scene_girl/scene_girl.gd"
 MusicMan="*res://autoload/music_man.gd"
-TestCamera="*res://addons/test_camera/test_camera_manager.gd"
+TestCamera="res://addons/test_camera/test_camera_manager.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 Fullscreener="res://autoload/fullscreener.gd"
+Debug="res://autoload/debug.gd"
 
 [display]
 

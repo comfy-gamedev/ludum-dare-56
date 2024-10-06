@@ -36,6 +36,7 @@ var cpu_acting: bool = false:
 	set(v): cpu_acting = v; changed.emit()
 
 
+
 var day_time: float = 0.0
 
 
