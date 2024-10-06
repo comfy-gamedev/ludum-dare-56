@@ -1,4 +1,4 @@
-extends Node
+extends PhysicsBody2D
 class_name Unit
 
 @export var team = Enums.Team.BLUE: set = set_team
@@ -16,7 +16,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if team == Enums.Team.BLUE:
+		collision_layer = 0b01000
+		collision_mask = 0b00100
+	elif team == Enums.Team.RED:
+		collision_layer = 0b10000
+		collision_mask = 0b00010
 
 func hit(damage_taken: float):
 	health -= damage_taken

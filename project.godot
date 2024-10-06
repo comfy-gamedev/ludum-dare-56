@@ -105,6 +105,13 @@ cancel_blueprint={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="Blue Buildings"
+2d_physics/layer_3="Red Buildings"
+2d_physics/layer_4="Blue Units"
+2d_physics/layer_5="Red Units"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
