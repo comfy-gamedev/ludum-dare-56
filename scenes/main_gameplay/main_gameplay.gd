@@ -1,9 +1,12 @@
 extends Node2D
 
+const CASTLE = preload("res://objects/buildings/castle/castle.tscn")
+
 var blueprint_preview: Node2D = null
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
 @onready var night_effect: ColorRect = $EffectsCanvasLayer/NightEffect
+@onready var grid_manager: GridManager = $GridManager
 
 func _ready() -> void:
 	var hb = Globals.player_hotbar
@@ -12,6 +15,11 @@ func _ready() -> void:
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 	night_effect.transition(1.0)
+	
+	grid_manager.add_castle(Vector2(
+	
+	CASTLE.instantiate()
+	grid_manager.place_building(s.position, Globals.selected_blueprint.size, s)
 
 func _process(delta: float) -> void:
 	if is_instance_valid(blueprint_preview):
@@ -43,9 +51,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Globals.selected_blueprint:
 			assert(is_instance_valid(blueprint_preview))
 			get_viewport().set_input_as_handled()
-			var s = Globals.selected_blueprint.spawned_scene.instantiate()
-			s.position = blueprint_preview.position
-			add_child(s)
+			if grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size):
+				var s = Globals.selected_blueprint.spawned_scene.instantiate()
+				s.position = blueprint_preview.position
+				add_child(s)
+				grid_manager.place_building(s.position, Globals.selected_blueprint.size, s)
 
 func _on_globals_selected_blueprint_changed() -> void:
 	if is_instance_valid(blueprint_preview):
