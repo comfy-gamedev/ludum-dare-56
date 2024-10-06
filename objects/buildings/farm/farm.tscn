@@ -69,24 +69,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqwp"]
-size = Vector2(16, 16)
-
 [sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Farm" type="Node2D" groups=["Building"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqwp"]
+size = Vector2(16, 16)
+
+[node name="Farm" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_38mek")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4pqok")
 autoplay = "default"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_5tqwp")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -96,5 +91,8 @@ autostart = true
 scale_amount_curve = SubResource("Curve_jetkp")
 
 [node name="Healthbar" parent="." instance=ExtResource("4_11nuh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5tqwp")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="4_m5bob"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_ysh4s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxqon"]
-size = Vector2(16, 16)
-
 [sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="TeslaTurret" type="Node2D" groups=["Building"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxqon"]
+size = Vector2(16, 16)
+
+[node name="TeslaTurret" type="StaticBody2D" groups=["Building"]]
 z_index = 1
 script = ExtResource("1_11oyd")
 max_health = 500
@@ -29,11 +29,6 @@ texture = ExtResource("3_tpgmq")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_sxqon")
-
 [node name="VisibilityTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -42,5 +37,8 @@ one_shot = true
 scale_amount_curve = SubResource("Curve_jetkp")
 
 [node name="Healthbar" parent="." instance=ExtResource("5_ysh4s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sxqon")
 
 [connection signal="timeout" from="VisibilityTimer" to="." method="_on_visibility_timer_timeout"]

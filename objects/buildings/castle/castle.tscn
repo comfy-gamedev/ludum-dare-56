@@ -129,7 +129,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c23tv"]
 size = Vector2(30, 30)
 
-[node name="Castle" type="Node2D" groups=["Building", "Castle"]]
+[node name="Castle" type="StaticBody2D" groups=["Building", "Castle"]]
 script = ExtResource("1_qb6m3")
 building_type = 1
 max_health = 1000
@@ -139,9 +139,7 @@ material = ExtResource("2_d24nf")
 sprite_frames = SubResource("SpriteFrames_2klvi")
 autoplay = "default"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_c23tv")
 

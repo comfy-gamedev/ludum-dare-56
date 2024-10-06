@@ -71,14 +71,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_roauy"]
-size = Vector2(16, 16)
-
 [sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="LaserTurret" type="Node2D" groups=["Building"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_roauy"]
+size = Vector2(16, 16)
+
+[node name="LaserTurret" type="StaticBody2D" groups=["Building"]]
 z_index = 1
 script = ExtResource("1_t5703")
 reach = 100
@@ -94,12 +94,10 @@ sprite_frames = SubResource("SpriteFrames_744ee")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_roauy")
-
 [node name="Smoke" parent="." instance=ExtResource("5_brfac")]
 scale_amount_curve = SubResource("Curve_jetkp")
 
 [node name="Healthbar" parent="." instance=ExtResource("6_oue6e")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_roauy")
