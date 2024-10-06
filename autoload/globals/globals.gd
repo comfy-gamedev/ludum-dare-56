@@ -20,6 +20,7 @@ signal selected_blueprint_changed()
 var selected_blueprint: Blueprint = null:
 	set(v): selected_blueprint = v; changed.emit(); selected_blueprint_changed.emit()
 
+var player_income: int = 5
 var player_money: int = 5:
 	set(v): player_money = v; changed.emit()
 

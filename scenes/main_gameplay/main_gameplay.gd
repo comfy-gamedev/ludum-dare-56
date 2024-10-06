@@ -101,6 +101,7 @@ func _on_globals_selected_blueprint_changed() -> void:
 
 func _on_day_timer_timeout() -> void:
 	Globals.phase = Enums.Phase.BUILD
+	Globals.player_money += Globals.player_income
 
 func _on_globals_phase_changed() -> void:
 	match Globals.phase:
