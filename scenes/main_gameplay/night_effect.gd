@@ -15,8 +15,7 @@ func set_time(v: float) -> void:
 	time = v
 	(material as ShaderMaterial).set_shader_parameter("lower_bound", 1.0 - time)
 	(material as ShaderMaterial).set_shader_parameter("lightmap", lightmap)
-	if is_zero_approx(time):
-		visible = false
+	visible = not is_zero_approx(time)
 
 func transition(t: float) -> Signal:
 	return create_tween().tween_property(self, "time", t, 1.0).finished
