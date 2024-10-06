@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://15isdohdsx04"]
 
-[ext_resource type="PackedScene" uid="uid://cfyaaj57q6v5v" path="res://objects/buildings/spawner_goblin/spawner_goblin_hotbar.tscn" id="1_01ym6"]
+[ext_resource type="PackedScene" uid="uid://o52p8ng3jrfn" path="res://objects/buildings/farm/farm_hotbar.tscn" id="1_3pxto"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_fcx4f"]
 [ext_resource type="PackedScene" uid="uid://bno2s46dn5rxo" path="res://objects/buildings/farm/farm.tscn" id="3_ggpvi"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("2_fcx4f")
 size = Vector2i(2, 2)
 spawned_scene = ExtResource("3_ggpvi")
-hotbar_scene = ExtResource("1_01ym6")
+hotbar_scene = ExtResource("1_3pxto")
 cost = 2

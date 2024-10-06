@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkvr5umf3aray"]
+
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_7kirx"]
+[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_5jxet"]
+[ext_resource type="Texture2D" uid="uid://b81secgbpnx6o" path="res://objects/buildings/rock_turret/turret_boulder.png" id="3_jsnr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpytg"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61ob7"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq8up"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2qtt"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wsdh"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fer6d"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kmkt"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmb5p"]
+atlas = ExtResource("3_jsnr5")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8rsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpytg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61ob7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq8up")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2qtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wsdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fer6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kmkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmb5p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="RockHotbar" type="Sprite2D"]
+material = ExtResource("1_7kirx")
+texture = ExtResource("2_5jxet")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w8rsw")
+autoplay = "default"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://vwlenfcqd4kw"]
+
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_p0mql"]
+[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_fm0q4"]
+
+[node name="AutocannonHotbar" type="Sprite2D"]
+material = ExtResource("1_p0mql")
+texture = ExtResource("2_fm0q4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -5,6 +5,7 @@ extends PanelContainer
 var current_hotbar: Array[Blueprint] = [null, null, null, null, null, null]
 
 var hotbar_nodes: Array[Node] = [null, null, null, null, null, null]
+var hotbar_costs: Array[Node] = [null, null, null, null, null, null]
 
 @onready var hightlight: Sprite2D = $Hightlight
 
@@ -26,6 +27,13 @@ func _ready() -> void:
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 	for i in 6:
 		color_rects[i].gui_input.connect(_on_color_rect_gui_input.bind(i))
+	
+	hotbar_costs[0] = $HBoxContainer/ColorRect/Label
+	hotbar_costs[1] = $HBoxContainer/ColorRect2/Label
+	hotbar_costs[2] = $HBoxContainer/ColorRect3/Label
+	hotbar_costs[3] = $HBoxContainer/ColorRect4/Label
+	hotbar_costs[4] = $HBoxContainer/ColorRect5/Label
+	hotbar_costs[5] = $HBoxContainer/ColorRect6/Label
 
 func _input(event: InputEvent) -> void:
 	if disabled:
@@ -57,10 +65,12 @@ func _on_globals_player_hotbar_changed() -> void:
 			if is_instance_valid(hotbar_nodes[i]):
 				hotbar_nodes[i].queue_free()
 				hotbar_nodes[i] = null
+				hotbar_costs[i].text = ""
 			current_hotbar[i] = Globals.player_hotbar[i]
 			if current_hotbar[i]:
 				hotbar_nodes[i] = current_hotbar[i].hotbar_scene.instantiate()
 				hotbar_nodes[i].position = Vector2(10 + 20 * i, 10)
+				hotbar_costs[i].text = str(current_hotbar[i].cost)
 				add_child(hotbar_nodes[i])
 
 func _on_globals_phase_changed() -> void:

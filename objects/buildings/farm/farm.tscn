@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bno2s46dn5rxo"]
+[gd_scene load_steps=17 format=3 uid="uid://bno2s46dn5rxo"]
 
 [ext_resource type="Script" path="res://objects/buildings/farm/farm.gd" id="1_38mek"]
 [ext_resource type="Texture2D" uid="uid://4u8ue3jy5r4" path="res://objects/buildings/farm/gob_cauldron.png" id="2_5nn1q"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_wdgld"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_fvenh"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="4_11nuh"]
 
@@ -69,24 +70,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqwp"]
-size = Vector2(16, 16)
-
 [sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Farm" type="Node2D" groups=["Building"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqwp"]
+size = Vector2(16, 16)
+
+[node name="Farm" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_38mek")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_wdgld")
 sprite_frames = SubResource("SpriteFrames_4pqok")
 autoplay = "default"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_5tqwp")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -96,5 +93,8 @@ autostart = true
 scale_amount_curve = SubResource("Curve_jetkp")
 
 [node name="Healthbar" parent="." instance=ExtResource("4_11nuh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5tqwp")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
