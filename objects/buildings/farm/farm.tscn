@@ -1,8 +1,72 @@
-[gd_scene load_steps=6 format=3 uid="uid://bno2s46dn5rxo"]
+[gd_scene load_steps=15 format=3 uid="uid://bno2s46dn5rxo"]
 
 [ext_resource type="Script" path="res://objects/buildings/farm/farm.gd" id="1_38mek"]
-[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="1_xaqkv"]
+[ext_resource type="Texture2D" uid="uid://4u8ue3jy5r4" path="res://objects/buildings/farm/gob_cauldron.png" id="2_5nn1q"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_fvenh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cpri"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dlgn"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it2yc"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pntmn"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qcbm"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg2k2"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e12cc"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l66pw"]
+atlas = ExtResource("2_5nn1q")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4pqok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cpri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dlgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it2yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pntmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qcbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg2k2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e12cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l66pw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tqwp"]
 size = Vector2(16, 16)
@@ -14,9 +78,9 @@ point_count = 2
 [node name="Farm" type="Node2D" groups=["Building"]]
 script = ExtResource("1_38mek")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("1_xaqkv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4pqok")
+autoplay = "default"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
