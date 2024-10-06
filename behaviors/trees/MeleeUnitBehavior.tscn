@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_nc440"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_347q6"]
-[ext_resource type="PackedScene" path="res://behaviors/actions/select_building_target_action.tscn" id="3_vekjf"]
+[ext_resource type="PackedScene" uid="uid://cqhep0qccb8fw" path="res://behaviors/actions/select_building_target_action.tscn" id="3_vekjf"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="4_crpfx"]
 [ext_resource type="PackedScene" uid="uid://tsb6iwrtft2p" path="res://behaviors/actions/detect_target_action.tscn" id="5_jguiy"]
 [ext_resource type="PackedScene" path="res://behaviors/actions/move_to_target_opponent_action.tscn" id="6_18e1b"]
@@ -18,7 +18,7 @@
 
 [node name="MeleeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_nc440")
-blackboard = NodePath("@Node@24192")
+blackboard = NodePath("@Node@30132")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]

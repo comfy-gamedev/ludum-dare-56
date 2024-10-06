@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://do8m0remgx4og"]
+[gd_scene load_steps=8 format=3 uid="uid://do8m0remgx4og"]
 
 [ext_resource type="Script" path="res://objects/buildings/repairer/repairer.gd" id="1_u3vx5"]
 [ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_dk0hd"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_j6rgb"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_irwpv"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="4_wltjw"]
 
@@ -19,6 +20,7 @@ reach = 100
 
 [node name="Base" type="Sprite2D" parent="."]
 z_index = -1
+material = ExtResource("2_j6rgb")
 texture = ExtResource("2_dk0hd")
 
 [node name="Head" type="AnimatedSprite2D" parent="."]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_88dtr"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_w1kc8"]
-[ext_resource type="PackedScene" path="res://behaviors/actions/select_building_target_action.tscn" id="3_4u1ri"]
+[ext_resource type="PackedScene" uid="uid://cqhep0qccb8fw" path="res://behaviors/actions/select_building_target_action.tscn" id="3_4u1ri"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="4_3ohy5"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="8_xushh"]
 [ext_resource type="PackedScene" path="res://behaviors/actions/move_to_target_building_action.tscn" id="10_3srbx"]
@@ -14,7 +14,7 @@
 
 [node name="SapperMeleeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_88dtr")
-blackboard = NodePath("@Node@32465")
+blackboard = NodePath("@Node@29084")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]

@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	
 	target = Vector2(10000, 0)
 	var dist
-	var min_dist = 10000.0
+	var min_dist = 100000000.0
 	for i in targets:
 		dist = global_position.distance_squared_to(i)
 		if dist < min_dist:

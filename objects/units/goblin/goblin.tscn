@@ -54,9 +54,8 @@ script = ExtResource("1_yh6ya")
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("1_n2i6r")
 
-[node name="MeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("1_t6j5r")]
+[node name="MeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("1_t6j5r")]
 blackboard = NodePath("../Blackboard")
-actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("4_exgka")
@@ -68,6 +67,8 @@ frame_progress = 0.372635
 shape = SubResource("RectangleShape2D_uq0tf")
 
 [node name="EnemySeekingRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySeekingRadius"]
 shape = SubResource("CircleShape2D_5reyq")

@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 	targets = [Vector2(10000, 0)]
 	var target_node = null
 	var dist
-	var min_dist = 10000.0
+	var min_dist = 100000000.0
 	for i in enemies:
 		dist = global_position.distance_squared_to(i.global_position)
 		if dist < min_dist:

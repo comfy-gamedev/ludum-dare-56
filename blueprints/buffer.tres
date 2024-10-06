@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_0ee8v")
-size = Vector2i(2, 2)
+size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_5jjqm")
 hotbar_scene = ExtResource("1_3vu3q")
 cost = 2
