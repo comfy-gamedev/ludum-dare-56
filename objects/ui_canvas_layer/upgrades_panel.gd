@@ -31,12 +31,26 @@ const BLUEPRINTS = [
 	%UpgradePanel3,
 ]
 
+@onready var crowns = [
+	$CrownGauge/CrownWidget1,
+	$CrownGauge/CrownWidget2,
+	$CrownGauge/CrownWidget3,
+	$CrownGauge/CrownWidget4,
+	$CrownGauge/CrownWidget5,
+	$CrownGauge/CrownWidget6,
+	$CrownGauge/CrownWidget7,
+	$CrownGauge/CrownWidget8,
+	$CrownGauge/CrownWidget9,
+	$CrownGauge/CrownWidget10,
+]
+
 @onready var overlay: ColorRect = $Overlay
 @onready var description: Label = $Description
 @onready var sorry: Label = $Sorry
 
 func _ready() -> void:
-	$StampCounter/GreyRect.position = Vector2(4 + (Globals.game_level * 14), 0)
+	for i in range(Globals.game_level):
+		crowns[i].active = true
 	
 	for p in panels:
 		p.chosen.connect(_on_panel_chosen.bind(p))

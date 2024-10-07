@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrades_panel.gd" id="2_6putl"]
 [ext_resource type="PackedScene" uid="uid://qgwug1connkg" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
 [ext_resource type="Texture2D" uid="uid://ddeilepg346ni" path="res://objects/ui_canvas_layer/arrow.png" id="5_in80y"]
-[ext_resource type="Texture2D" uid="uid://cetl7sh81tda" path="res://assests/stamps.png" id="6_3yngm"]
+[ext_resource type="PackedScene" uid="uid://cu62tejwqhpaq" path="res://objects/ui_canvas_layer/crown_widget.tscn" id="6_cmc1p"]
 
 [node name="UpgradesPanel" type="NinePatchRect"]
 anchors_preset = 8
@@ -25,8 +25,6 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
 script = ExtResource("2_6putl")
 
 [node name="Label" type="Label" parent="."]
@@ -172,29 +170,61 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Back"
 
-[node name="StampCounter" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 265.0
-offset_top = -61.0
-offset_right = 265.0
-offset_bottom = -61.0
+[node name="CrownGauge" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_top = -45.0
+offset_right = 47.5
+offset_bottom = -17.0
+grow_horizontal = 2
+texture = ExtResource("1_5mrpr")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="OrangeRect" type="ColorRect" parent="StampCounter"]
-layout_mode = 0
-offset_right = 148.0
-offset_bottom = 32.0
-color = Color(0.87451, 0.443137, 0.14902, 1)
+[node name="CrownWidget1" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(10, 10)
+frame_progress = 0.520049
 
-[node name="GreyRect" type="ColorRect" parent="StampCounter"]
-layout_mode = 0
-offset_right = 148.0
-offset_bottom = 32.0
-color = Color(0.34902, 0.337255, 0.321569, 1)
+[node name="CrownWidget2" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(18, 18)
+frame_progress = 0.664971
 
-[node name="Stamps" type="Sprite2D" parent="StampCounter"]
-position = Vector2(74, 16)
-scale = Vector2(2, 2)
-texture = ExtResource("6_3yngm")
+[node name="CrownWidget3" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(26, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget4" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(34, 18)
+frame_progress = 0.664971
+
+[node name="CrownWidget5" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(42, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget6" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(50, 18)
+frame_progress = 0.664971
+
+[node name="CrownWidget7" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(58, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget8" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(66, 18)
+frame_progress = 0.664971
+
+[node name="CrownWidget9" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(74, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget10" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
+position = Vector2(82, 18)
+frame_progress = 0.664971
 
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Overlay/CancelButton" to="." method="_on_cancel_button_pressed"]
