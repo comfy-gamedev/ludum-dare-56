@@ -7,7 +7,12 @@ class_name Unit
 @export var attack_points = 10
 @export var movement_speed = 75
 
-var health := max_health
+@onready var health := max_health
+
+@onready var base_speed = movement_speed
+@onready var base_attack = attack_points
+@onready var base_health = health
+@onready var base_max_health = max_health
 
 var push_area: Area2D
 
