@@ -14,31 +14,20 @@ var rd_t: float = 0.0
 func _process(delta: float) -> void:
 	rd_t += delta
 	
-	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
-	if !enemies:
-		laser_visible = false
+	target_node = get_closest_enemy_unit()
+	
+	laser_visible = target_node != null
+	
+	if not target_node:
 		queue_redraw()
 		return
 	
-	target_node = null
-	var dist
-	var min_dist = 100000000.0
-	for i in enemies:
-		dist = global_position.distance_squared_to(i.global_position)
-		if dist < min_dist:
-			min_dist = dist
-			target_node = i
+	target_node.hit(damage * delta)
 	
 	head.rotation = global_position.angle_to_point(target_node.global_position) + (PI/2)
+	head.play()
 	
-	if global_position.distance_to(target_node.global_position) < reach && cooldown.is_stopped():
-		head.play()
-		target_node.hit(damage * delta)
-		laser_visible = true
-		_maybe_queue_redraw()
-	else:
-		laser_visible = false
-		queue_redraw()
+	_maybe_queue_redraw()
 
 func _maybe_queue_redraw() -> void:
 	if rd_t >= 0.1:

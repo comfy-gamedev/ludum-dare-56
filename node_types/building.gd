@@ -67,9 +67,16 @@ func set_reach(v: float) -> void:
 
 func on_night() -> void:
 	process_mode = PROCESS_MODE_DISABLED
+	detected_friendly_buildings = []
+	detected_friendly_units = []
+	detected_enemy_buildings = []
+	detected_enemy_units = []
 
 func on_day() -> void:
 	process_mode = PROCESS_MODE_INHERIT
+	if detection_area:
+		remove_child(detection_area)
+		add_child(detection_area)
 
 func set_team(v: Enums.Team) -> void:
 	if team == v:
@@ -78,6 +85,10 @@ func set_team(v: Enums.Team) -> void:
 	if is_inside_tree():
 		_update_team_material()
 	_update_collision_bits()
+
+func get_closest_enemy_unit() -> Node2D:
+	detected_enemy_units.sort_custom(func (a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
+	return detected_enemy_units[0] if detected_enemy_units else null
 
 func _update_team_material():
 	var sprites = (
@@ -103,7 +114,7 @@ func _update_reach() -> void:
 			var shape = CollisionShape2D.new()
 			shape.shape = CircleShape2D.new()
 			detection_area.add_child(shape)
-			detection_area.collision_layer = 0
+			detection_area.collision_layer = 1
 			detection_area.collision_mask = 0b11110
 			detection_area.body_entered.connect(_on_detection_area_body_entered)
 			detection_area.body_exited.connect(_on_detection_area_body_exited)
