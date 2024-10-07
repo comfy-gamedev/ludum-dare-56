@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://kyc5x2g5hal0"]
+[gd_scene load_steps=30 format=3 uid="uid://kyc5x2g5hal0"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_74cr7"]
 [ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_1pidl"]
+[ext_resource type="Texture2D" uid="uid://s1grv07ptu1x" path="res://objects/buildings/shotgun_turret/turret_shotgun.png" id="3_01xje"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rbrkp"]
 atlas = ExtResource("2_1pidl")
@@ -123,6 +124,70 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph3mo"]
+atlas = ExtResource("3_01xje")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbk2o"]
+atlas = ExtResource("3_01xje")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgk5b"]
+atlas = ExtResource("3_01xje")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqugk"]
+atlas = ExtResource("3_01xje")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7y2n"]
+atlas = ExtResource("3_01xje")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c3x3"]
+atlas = ExtResource("3_01xje")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65byt"]
+atlas = ExtResource("3_01xje")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1kyb"]
+atlas = ExtResource("3_01xje")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_un1jt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph3mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbk2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgk5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqugk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7y2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c3x3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65byt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1kyb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="ShotgunHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_74cr7")
 sprite_frames = SubResource("SpriteFrames_wyook")
@@ -130,3 +195,6 @@ autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_un1jt")
+autoplay = "default"

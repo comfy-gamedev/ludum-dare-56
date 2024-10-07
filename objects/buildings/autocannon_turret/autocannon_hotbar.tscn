@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://vwlenfcqd4kw"]
+[gd_scene load_steps=30 format=3 uid="uid://vwlenfcqd4kw"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_p0mql"]
 [ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_e5mw7"]
+[ext_resource type="Texture2D" uid="uid://b7o2uatd1mjhc" path="res://objects/buildings/autocannon_turret/turret_autocannon.png" id="3_e4a7t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dli8c"]
 atlas = ExtResource("2_e5mw7")
@@ -123,9 +124,77 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aoux"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2vqt"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysksd"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iopdi"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16q5v"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg3ma"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfvpq"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4rfj"]
+atlas = ExtResource("3_e4a7t")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eeq1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2aoux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2vqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysksd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iopdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16q5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg3ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfvpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4rfj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="AutocannonHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_p0mql")
 sprite_frames = SubResource("SpriteFrames_oi4le")
 autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_eeq1j")
+autoplay = "default"

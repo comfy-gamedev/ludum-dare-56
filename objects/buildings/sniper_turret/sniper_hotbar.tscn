@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://c2344dq1j50f3"]
+[gd_scene load_steps=30 format=3 uid="uid://c2344dq1j50f3"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_mbtxi"]
 [ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_daoih"]
+[ext_resource type="Texture2D" uid="uid://yrfb0lrgmepw" path="res://objects/buildings/sniper_turret/turret_sniper.png" id="3_ps7yf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3pw2n"]
 atlas = ExtResource("2_daoih")
@@ -123,6 +124,70 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfkrm"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur2ka"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pkrv"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf0mb"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1obu2"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stmmi"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upa6s"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o42o"]
+atlas = ExtResource("3_ps7yf")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1i5a3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfkrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur2ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pkrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf0mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1obu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stmmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upa6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o42o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="SniperHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_mbtxi")
 sprite_frames = SubResource("SpriteFrames_8nn1j")
@@ -130,3 +195,6 @@ autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_1i5a3")
+autoplay = "default"
