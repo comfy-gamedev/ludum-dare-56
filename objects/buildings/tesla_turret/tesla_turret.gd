@@ -31,19 +31,22 @@ func _process(delta: float) -> void:
 	if global_position.distance_to(targets[0]) < reach && cooldown.is_stopped():
 		head.play()
 		var current = 0
+		var last_pos = target_node.global_position
 		enemies.erase(target_node)
 		while enemies.size() > 0:
 			target_node.hit(damage)
+			target_node = null
 			current += 1
 			#if randf() > .75:
 				#break
-			min_dist = 10000.0
+			min_dist = 10000000.0
 			for i in enemies:
 				dist = global_position.distance_squared_to(i.global_position)
 				if dist < min_dist:
 					min_dist = dist
 					target_node = i
-			if global_position.distance_to(target_node.global_position) < reach / 2.0:
+			if target_node && global_position.distance_to(last_pos) < reach / 2.0:
+				last_pos = target_node.global_position
 				targets.append(target_node.global_position)
 				enemies.erase(target_node)
 			else:

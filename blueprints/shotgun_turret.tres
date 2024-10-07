@@ -8,7 +8,7 @@
 script = ExtResource("2_hhd1a")
 category = 0
 name = "ShotgunTurret"
-description = "Indescribable."
+description = "Just throw a bunch of rocks at em."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_ap0nd")
 hotbar_scene = ExtResource("1_xxvfq")

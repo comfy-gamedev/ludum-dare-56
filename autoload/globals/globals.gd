@@ -13,7 +13,7 @@ signal changed()
 const DAY_DURATION = 25.0
 
 signal player_hotbar_changed()
-var player_hotbar: Array[Blueprint] = [preload("res://blueprints/goblin_spawner.tres"), preload("res://blueprints/rock_turret.tres"), null, null, null, null]:
+var player_hotbar: Array[Blueprint] = [preload("res://blueprints/goblin_spawner.tres"), preload("res://blueprints/rock_turret.tres"), preload("res://blueprints/tesla_turret.tres"), null, null, null]:
 	set(v): player_hotbar = v; changed.emit(); player_hotbar_changed.emit()
 
 signal selected_blueprint_changed()

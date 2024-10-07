@@ -8,7 +8,7 @@
 script = ExtResource("2_0ee8v")
 category = 1
 name = "Buffer"
-description = "Indescribable."
+description = "Energize your little guys with an electric cymbol solo."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_5jjqm")
 hotbar_scene = ExtResource("1_3vu3q")

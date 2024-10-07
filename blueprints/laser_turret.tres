@@ -8,7 +8,7 @@
 script = ExtResource("2_y3dl6")
 category = 0
 name = "LaserTurret"
-description = "Indescribable."
+description = "The goblins figured out Light Amplification by Stimulated Emission of Radiation."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_7vl1p")
 hotbar_scene = ExtResource("1_2bwwc")
