@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://bjljhbxns7gfl"]
+[gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://bu7scxrkiehfk"]
 
 [ext_resource type="PackedScene" uid="uid://dp6wcq8ronlt8" path="res://objects/buildings/spawner_bomber/spawner_bomber_hotbar.tscn" id="1_x1s6i"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_4tmrm"]
