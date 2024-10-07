@@ -94,6 +94,8 @@ func _ready() -> void:
 	
 	Globals.blue_money = Globals.blue_starting_mana
 	Globals.red_money = Globals.red_starting_mana
+	Globals.blue_temp_income = Globals.blue_income
+	Globals.red_temp_income = Globals.red_income
 	
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
 	Globals.phase_changed.connect(_on_globals_phase_changed)
@@ -149,6 +151,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				s.position = blueprint_preview.position
 				s.bp_size = Globals.selected_blueprint.size
 				add_child(s)
+				MusicMan.sfx(preload("res://assests/SFX/build-building.wav"), "build")
 				grid_manager.place_building(s.position, s.bp_size, s, Enums.Team.BLUE)
 	if event.is_action_pressed("cancel_blueprint"):
 		if Globals.selected_blueprint:
@@ -184,8 +187,10 @@ func _on_globals_phase_changed() -> void:
 				p.queue_free()
 			for b in get_tree().get_nodes_in_group("Building"):
 				b.on_night()
-			Globals.blue_money += Globals.blue_income
-			Globals.red_money += Globals.red_income
+			Globals.blue_money += Globals.blue_temp_income
+			Globals.red_money += Globals.red_temp_income
+			Globals.blue_temp_income = 0
+			Globals.red_temp_income = 0
 			
 			var castles = get_tree().get_nodes_in_group("Castle")
 			if !castles.any(func(x): return x.team == Enums.Team.RED):
@@ -213,3 +218,5 @@ func _on_globals_phase_changed() -> void:
 			Globals.day_time = 0.0
 			Globals.selected_blueprint = null
 			Globals.rounds += 1
+			Globals.blue_temp_income = Globals.blue_income
+			Globals.red_temp_income = Globals.red_income
