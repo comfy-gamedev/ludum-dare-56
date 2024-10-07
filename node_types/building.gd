@@ -18,8 +18,17 @@ var bp_size: Vector2i = Vector2i(1, 1) # set by blueprint
 
 @onready var health := max_health
 
+func get_target_point(global_from: Vector2) -> Vector2:
+	var rec = Rect2(
+		Vector2(0, 0),
+		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE)
+	var c = rec.get_center() + global_position
+	c += rec.size.length() * (global_from - c).normalized()
+	return c
+
 func _ready() -> void:
 	_update_team_material()
+	_update_collision_bits()
 	process_mode = PROCESS_MODE_DISABLED
 	var light = NIGHT_LIGHT.instantiate()
 	light.radius = Vector2(bp_size).length() * 16
@@ -29,13 +38,14 @@ func _ready() -> void:
 	
 	if light.sub_viewport == null:
 		light.queue_free()
-		
+
+func _update_collision_bits() -> void:
 	if team == Enums.Team.BLUE:
-		collision_layer = 0b0010
-		collision_mask = 0b10000
+		collision_layer = 0b00010
+		collision_mask =  0b10100
 	elif team == Enums.Team.RED:
-		collision_layer = 0b0100
-		collision_mask = 0b01000
+		collision_layer = 0b00100
+		collision_mask =  0b01010
 
 func hit(damage_taken: float):
 	health -= damage_taken
@@ -54,6 +64,7 @@ func set_team(v: Enums.Team) -> void:
 	team = v
 	if is_inside_tree():
 		_update_team_material()
+	_update_collision_bits()
 
 func _update_team_material():
 	var sprites = (

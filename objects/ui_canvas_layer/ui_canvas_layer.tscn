@@ -195,3 +195,14 @@ offset_bottom = 310.0
 theme_override_font_sizes/font_size = 28
 text = "Mana : 0"
 script = ExtResource("8_6u28w")
+
+[node name="FFButton" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 483.0
+offset_top = 283.0
+offset_right = 526.0
+offset_bottom = 303.0
+text = "FF >>"
+
+[connection signal="pressed" from="Control/FFButton" to="." method="_on_ff_button_pressed"]

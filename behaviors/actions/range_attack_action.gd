@@ -10,11 +10,11 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		
 	if actor.global_position.distance_to(target_opponent.global_position) < range: #&& cooldown.is_stopped():
 		var bullet = bullet_scene.instantiate()
-		actor.get_parent().add_child(bullet)
 		bullet.global_position = actor.global_position
 		bullet.velocity = (target_opponent.global_position - actor.global_position).normalized() * 50
 		bullet.damage = actor.attack_points
 		bullet.team = actor.team
+		actor.get_parent().add_child(bullet)
 	else:
 		return SUCCESS
 	

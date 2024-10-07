@@ -15,7 +15,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ts50w")
 script = ExtResource("1_te6vx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(156, 131)
+position = Vector2(284, 160)
 ignore_rotation = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

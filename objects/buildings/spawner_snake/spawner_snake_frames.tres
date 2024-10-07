@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c3obvaatig1lf"]
+
+[ext_resource type="Texture2D" uid="uid://d8304sdhmuaw" path="res://assests/snake_spawner.png" id="1_58xsy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mhho"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mr7x"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv31p"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft3kd"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x70q1"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmnib"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yhg3"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbwcl"]
+atlas = ExtResource("1_58xsy")
+region = Rect2(112, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mhho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mr7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv31p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft3kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x70q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmnib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yhg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbwcl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

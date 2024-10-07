@@ -1,24 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxdjbb5utcr7v"]
+[gd_scene load_steps=7 format=3 uid="uid://bxdjbb5utcr7v"]
 
 [ext_resource type="Script" path="res://objects/buildings/extender/extender.gd" id="1_jsqf6"]
-[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="1_nsame"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="2_i0v66"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_mpary"]
+[ext_resource type="SpriteFrames" uid="uid://b2xeom5gen7p6" path="res://objects/buildings/extender/extender_frames.tres" id="3_p3inl"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_rd1yy"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_egbs3"]
-atlas = ExtResource("1_nsame")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rcqax"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_egbs3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvjur"]
 size = Vector2(16, 16)
@@ -28,7 +14,8 @@ script = ExtResource("1_jsqf6")
 building_type = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_rcqax")
+material = ExtResource("2_mpary")
+sprite_frames = ExtResource("3_p3inl")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

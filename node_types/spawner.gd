@@ -16,9 +16,9 @@ func _process(delta: float) -> void:
 
 func spawn() -> void:
 	var spawnee = spawn_scene.instantiate()
-	get_parent().get_parent().add_child(spawnee)
 	spawnee.global_position = global_position
 	spawnee.team = get_parent().team
+	get_parent().get_parent().add_child(spawnee)
 
 func _on_globals_phase_changed() -> void:
 	t = 0
