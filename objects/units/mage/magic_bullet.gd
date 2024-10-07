@@ -29,5 +29,4 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if (body.is_in_group("Unit") or body.is_in_group("Building")) and team != body.team:
 		body.hit(damage)
-		print("Magic bullet ", self.team, " hit layer ", body.collision_layer)
 		queue_free()

@@ -17,8 +17,8 @@
 
 [node name="RangedUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_3g1kh")
-blackboard = NodePath("@Node@17506")
-actor = NodePath("")
+blackboard = NodePath("@Node@26839")
+actor = NodePath("..")
 
 [node name="PrimarySequence" type="Node" parent="."]
 script = ExtResource("2_0uvcu")
