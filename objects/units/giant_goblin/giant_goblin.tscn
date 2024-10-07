@@ -57,8 +57,9 @@ movement_speed = 25
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_6r64d")
 
-[node name="BigMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_s20q5")]
+[node name="BigMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_s20q5")]
 blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("4_51ew1")

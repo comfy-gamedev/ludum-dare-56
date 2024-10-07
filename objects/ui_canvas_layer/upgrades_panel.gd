@@ -58,6 +58,13 @@ func _reroll() -> void:
 		u.blueprint = bp
 		possible_upgrades.append(u)
 	possible_upgrades.shuffle()
+	possible_upgrades.resize(2)
+	
+	match randi_range(0,0):
+		0:
+			var u = UpgradePlayer.new()
+			u.kind = UpgradePlayer.Kind.values().pick_random()
+			possible_upgrades.append(u)
 	
 	for i in panels.size():
 		panels[i].show()
