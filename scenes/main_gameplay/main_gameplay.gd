@@ -77,10 +77,10 @@ func _ready() -> void:
 			Enums.BlueprintCategory.PRODUCTION:
 				cpu.params.production_blueprints.append(bp)
 	
-	cpu.params.aggression = randf_range(-1.0, 1.0)
-	cpu.params.economics = randf_range(-1.0, 1.0)
-	cpu.params.militarism = randf_range(-1.0, 1.0)
-	cpu.params.organization = randf_range(0.0, 1.0)
+	cpu.params.aggression = randf_range(-0.8, 0.8)
+	cpu.params.economics = randf_range(-0.8, 0.8)
+	cpu.params.militarism = randf_range(-0.8, 0.8)
+	cpu.params.organization = randf_range(0.2, 0.8)
 	
 	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level % 10 == 0 else 0)
 	cpu.params.passive_income = 2 + ((2 * Globals.game_level) / 3)
