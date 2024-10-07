@@ -7,6 +7,7 @@ extends Control
 
 func _ready() -> void:
 	start_game_button.grab_focus()
+	MusicMan.music(preload("res://assests/Music/battle-time.ogg"), 0.5, 0.0)
 
 
 func _on_start_game_button_pressed() -> void:
@@ -16,6 +17,7 @@ func _on_start_game_button_pressed() -> void:
 
 
 func _on_how_to_play_button_pressed() -> void:
+	MusicMan.music(preload("res://assests/Music/building-time.ogg"), 0.5, 0.0)
 	SceneGirl.change_scene("res://scenes/help_screen/help_scene.tscn")
 
 func _on_options_button_pressed() -> void:
