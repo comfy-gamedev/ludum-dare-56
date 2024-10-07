@@ -3,13 +3,10 @@ extends Unit
 var bomb_explosion_scene = preload("res://objects/units/bomber/bomb_explosion.tscn")
 
 func besiege():
-	for n in 3:
-		var bomb_explosion: Node2D = bomb_explosion_scene.instantiate()
-		get_tree().get_root().add_child(bomb_explosion)
-		bomb_explosion.position = self.global_position
-		#if n == 0:
-			#bomb_explosion.get_node("SFX").play()
-			
+	var bomb_explosion: Node2D = bomb_explosion_scene.instantiate()
+	get_parent().add_child(bomb_explosion)
+	bomb_explosion.global_position = self.global_position
+	
 	self.queue_free()
 
 
