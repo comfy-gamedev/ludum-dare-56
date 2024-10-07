@@ -1,73 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bs0ckeudjjvom"]
+[gd_scene load_steps=3 format=3 uid="uid://bs0ckeudjjvom"]
 
-[ext_resource type="Material" path="res://materials/invalid.tres" id="1_5u242"]
-[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_ikwk1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ogxvw"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovrwp"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0l770"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2h1j"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yrf42"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i34dp"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qvpa6"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_snpdc"]
-atlas = ExtResource("2_ikwk1")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j4axo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ogxvw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovrwp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0l770")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k2h1j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yrf42")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i34dp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qvpa6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_snpdc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
+[ext_resource type="Material" uid="uid://dfiasj8skcdni" path="res://materials/invalid.tres" id="1_5u242"]
+[ext_resource type="SpriteFrames" uid="uid://1clap7m4r8p2" path="res://objects/buildings/spawner_rat/spawner_rat_frames.tres" id="2_u6pl5"]
 
 [node name="SpawnerRatHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_5u242")
-sprite_frames = SubResource("SpriteFrames_j4axo")
+sprite_frames = ExtResource("2_u6pl5")
 autoplay = "default"
