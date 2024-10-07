@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://ckxl836rilysq"
+path="res://.godot/imported/bomb_spawner.png-7fa2be72c51db36b739a6a69a4334d93.res"
+
+[deps]
+
+source_file="res://assests/bomb_spawner.png"
+dest_files=["res://.godot/imported/bomb_spawner.png-7fa2be72c51db36b739a6a69a4334d93.res"]
+
+[params]
+
+palette_image="res://palette.png"

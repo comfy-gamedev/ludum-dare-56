@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cs46v42adj8ib"]
+
+[ext_resource type="Texture2D" uid="uid://dg0nis1w8xci5" path="res://assests/bomb_explosion.png" id="1_ny00r"]
+[ext_resource type="Script" path="res://objects/units/bomber/bomb_explosion.gd" id="2_h5c0g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_burmj"]
+particles_animation = true
+particles_anim_h_frames = 16
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ymjkd"]
+_data = [Vector2(0.464435, 0.210526), 0.0, 0.0, 0, 0, Vector2(0.852162, 0.536842), -1.47266, -1.47266, 0, 0, Vector2(0.998605, 0.326316), -1.93522, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_h4bgn"]
+_data = [Vector2(0.0041841, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.554111, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4q1a"]
+radius = 30.0167
+
+[node name="bomb_explosion" type="CPUParticles2D"]
+z_index = 100
+material = SubResource("CanvasItemMaterial_burmj")
+amount = 4
+speed_scale = 1.5
+texture = ExtResource("1_ny00r")
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector2(0, 0)
+anim_speed_min = 2.0
+anim_speed_max = 5.0
+anim_speed_curve = SubResource("Curve_ymjkd")
+anim_offset_curve = SubResource("Curve_h4bgn")
+script = ExtResource("2_h5c0g")
+
+[node name="bomb_explosion_radius_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bomb_explosion_radius_area"]
+shape = SubResource("CircleShape2D_f4q1a")
+
+[node name="particle_shutoff" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="queue_free_bomb_explosion" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="particle_shutoff" to="." method="set_emitting" binds= [false]]
+[connection signal="timeout" from="queue_free_bomb_explosion" to="." method="queue_free"]

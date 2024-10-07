@@ -26,6 +26,10 @@ func _ready() -> void:
 	light.sub_viewport = $"../LightsSubViewport" # TODO: BAD VERY BAD OMG
 	light.position = (Vector2(-1, -1) + Vector2(bp_size)) * GridManager.CELL_SIZE / 2.0
 	add_child(light)
+	
+	if light.sub_viewport == null:
+		light.queue_free()
+		
 	if team == Enums.Team.BLUE:
 		collision_layer = 0b0010
 		collision_mask = 0b10000

@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4fedx0v1ihs8"]
+
+[ext_resource type="Texture2D" uid="uid://bpatwe60100nl" path="res://assests/bomb_gobbo.png" id="1_bv2pn"]
+[ext_resource type="Script" path="res://objects/units/bomber/bomber.gd" id="1_xpofu"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_cmgnw"]
+[ext_resource type="PackedScene" uid="uid://cfia6n6w1v7b3" path="res://behaviors/trees/SiegeUnitBehavior.tscn" id="3_rl6le"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq8m8"]
+atlas = ExtResource("1_bv2pn")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqqnp"]
+atlas = ExtResource("1_bv2pn")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncin8"]
+atlas = ExtResource("1_bv2pn")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5avok"]
+atlas = ExtResource("1_bv2pn")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gpteo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq8m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqqnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncin8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5avok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exrij"]
+size = Vector2(8, 8)
+
+[node name="Bomber" type="CharacterBody2D" groups=["Unit"]]
+input_pickable = true
+script = ExtResource("1_xpofu")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("2_cmgnw")
+
+[node name="SiegeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_rl6le")]
+blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gpteo")
+autoplay = "default"
+frame_progress = 0.281243
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_exrij")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
