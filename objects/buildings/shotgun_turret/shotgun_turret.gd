@@ -1,7 +1,5 @@
 extends Building
 
-var target := Vector2(1, 0)
-
 @onready var head := $Head
 @onready var cooldown := $Timer
 @export var damage = 6
@@ -11,30 +9,21 @@ var rock_scene = preload("res://objects/buildings/rock_turret/rock.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
-	if !enemies:
+	var target_unit = get_closest_enemy_unit()
+	
+	if not target_unit:
 		return
-	var targets = enemies.map(func(x): return x.global_position)
 	
-	target = Vector2(10000, 0)
-	var dist
-	var min_dist = 100000000.0
-	for i in targets:
-		dist = global_position.distance_squared_to(i)
-		if dist < min_dist:
-			min_dist = dist
-			target = i
+	head.rotation = global_position.angle_to_point(target_unit.global_position) + (PI/2)
 	
-	head.rotation = global_position.angle_to_point(target) + (PI/2)
-	
-	if global_position.distance_to(target) < reach && cooldown.is_stopped():
+	if cooldown.is_stopped():
 		head.play()
 		var angle_offset = -PI/6
 		for i in pellets:
 			var rock = rock_scene.instantiate()
 			get_parent().add_child(rock)
 			rock.global_position = global_position
-			rock.velocity = (target - global_position).normalized().rotated(angle_offset) * 50
+			rock.velocity = (target_unit.global_position - global_position).normalized().rotated(angle_offset) * 50
 			angle_offset += PI/12
 			rock.damage = damage
 			rock.team = team

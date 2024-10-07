@@ -3,34 +3,27 @@ extends Building
 @export var radius = 100
 @export var heal_strength = 5
 
-var target: Node2D = null
+var target_building: Node2D = null
 @onready var head := $Head
 @onready var visibility_timer = $VisibilityTimer
 var laser_visible = false
 
 func _on_timer_timeout() -> void:
-	var buildings := get_tree().get_nodes_in_group("Building").filter(func(x): return x.team == team && x != self && x.health != x.max_health)
-	if !buildings:
+	var healable_buildings = detected_friendly_buildings.filter(func(x): return x != self and x.health < x.max_health)
+	healable_buildings.sort_custom(func (a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
+	
+	target_building = healable_buildings[0] if healable_buildings else null
+	
+	if not target_building:
 		return
 	
-	#var target_dist = 10000
-	var dist
-	var min_dist = 1e+08
-	for i in buildings:
-		dist = global_position.distance_squared_to(i.global_position)
-		if dist < min_dist:
-			min_dist = dist
-			target = i
-	
-	head.rotation = global_position.angle_to_point(target.global_position) + (PI/2)
-	
-	if global_position.distance_to(target.global_position) < reach:
-		head.play()
-		laser_visible = true
-		queue_redraw()
-		visibility_timer.start()
-		target.health += heal_strength
-		target.health = min(target.health, target.max_health)
+	head.rotation = global_position.angle_to_point(target_building.global_position) + (PI/2)
+	head.play()
+	laser_visible = true
+	visibility_timer.start()
+	target_building.health += heal_strength
+	target_building.health = min(target_building.health, target_building.max_health)
+	queue_redraw()
 
 
 func _on_visibility_timer_timeout() -> void:
@@ -39,4 +32,4 @@ func _on_visibility_timer_timeout() -> void:
 
 func _draw() -> void:
 	if laser_visible:
-		draw_line(Vector2(0, 0), to_local(target.global_position), Color.MEDIUM_SEA_GREEN, 1.5)
+		draw_line(Vector2(0, 0), to_local(target_building.global_position), Color.MEDIUM_SEA_GREEN, 1.5)

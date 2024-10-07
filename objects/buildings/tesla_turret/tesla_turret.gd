@@ -11,11 +11,9 @@ var laser_visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	detected_enemy_units.sort_custom(func (a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
-	
 	targets = []
 	
-	var target_node = detected_enemy_units[0] if detected_enemy_units else null
+	var target_node = get_closest_enemy_unit()
 	
 	head.rotation = global_position.angle_to_point(target_node.global_position) + (PI/2) if target_node else 0.0
 	

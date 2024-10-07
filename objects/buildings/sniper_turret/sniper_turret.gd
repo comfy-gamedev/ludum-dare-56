@@ -10,19 +10,12 @@ var rock_scene = preload("res://objects/buildings/rock_turret/rock.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
-	if !enemies:
-		return
-	var targets = enemies.map(func(x): return x.global_position)
+	var target_unit = get_closest_enemy_unit()
 	
-	target = Vector2(10000, 0)
-	var dist
-	var min_dist = 100000000.0
-	for i in targets:
-		dist = global_position.distance_squared_to(i)
-		if dist < min_dist:
-			min_dist = dist
-			target = i
+	if not target_unit:
+		return
+	
+	target = target_unit.global_position
 	
 	head.rotation = global_position.angle_to_point(target) + (PI/2)
 	
