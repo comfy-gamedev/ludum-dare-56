@@ -12,4 +12,4 @@ description = "Snakes just hate people. Let em loose and they'll act on those ur
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_up6bx")
 hotbar_scene = ExtResource("1_81p3b")
-cost = 2
+cost = 3

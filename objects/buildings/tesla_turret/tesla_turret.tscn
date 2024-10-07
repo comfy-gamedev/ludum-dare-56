@@ -201,7 +201,9 @@ size = Vector2(16, 16)
 [node name="TeslaTurret" type="StaticBody2D" groups=["Building"]]
 z_index = 1
 script = ExtResource("1_11oyd")
-max_health = 500
+damage = 10
+building_type = 2
+max_health = 75
 reach = 100
 
 [node name="Base" type="AnimatedSprite2D" parent="."]

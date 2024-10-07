@@ -200,6 +200,8 @@ size = Vector2(16, 16)
 
 [node name="SniperTurret" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_rogei")
+building_type = 2
+max_health = 70
 reach = 200
 
 [node name="Base" type="AnimatedSprite2D" parent="."]
@@ -213,7 +215,7 @@ rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_12hbf")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Smoke" parent="." instance=ExtResource("4_m7l85")]

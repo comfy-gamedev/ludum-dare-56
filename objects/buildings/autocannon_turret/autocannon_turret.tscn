@@ -200,9 +200,10 @@ size = Vector2(16, 16)
 
 [node name="AutocannonTurret" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_vsm5t")
-damage = 6
+damage = 8
 building_type = 2
-reach = 100
+max_health = 100
+reach = 150
 
 [node name="Base" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_lvcvf")

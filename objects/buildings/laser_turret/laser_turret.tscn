@@ -201,6 +201,9 @@ size = Vector2(16, 16)
 [node name="LaserTurret" type="StaticBody2D" groups=["Building"]]
 z_index = 1
 script = ExtResource("1_t5703")
+damage = 30
+building_type = 2
+max_health = 70
 reach = 100
 
 [node name="Base" type="AnimatedSprite2D" parent="."]

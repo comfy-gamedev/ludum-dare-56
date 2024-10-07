@@ -132,7 +132,7 @@ size = Vector2(30, 30)
 [node name="Castle" type="StaticBody2D" groups=["Building", "Castle"]]
 script = ExtResource("1_qb6m3")
 building_type = 1
-max_health = 1000
+max_health = 1500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_d24nf")

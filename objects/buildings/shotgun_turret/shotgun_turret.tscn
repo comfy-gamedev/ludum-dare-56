@@ -200,6 +200,9 @@ size = Vector2(16, 16)
 
 [node name="ShotgunTurret" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_upytn")
+damage = 10
+pellets = 7
+max_health = 75
 reach = 100
 
 [node name="Base" type="AnimatedSprite2D" parent="."]

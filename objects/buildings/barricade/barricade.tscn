@@ -15,7 +15,7 @@ size = Vector2(16, 16)
 
 [node name="Barricade" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_grudr")
-max_health = 200
+max_health = 400
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("2_av71w")

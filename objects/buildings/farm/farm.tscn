@@ -79,6 +79,7 @@ size = Vector2(16, 16)
 
 [node name="Farm" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_38mek")
+building_type = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_wdgld")

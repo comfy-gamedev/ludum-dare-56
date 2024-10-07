@@ -50,6 +50,7 @@ radius = 35.0
 
 [node name="Goblin" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_yh6ya")
+attack_points = 8
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("1_n2i6r")

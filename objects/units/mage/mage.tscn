@@ -49,6 +49,7 @@ radius = 48.0104
 
 [node name="Mage" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_guaxv")
+attack_points = 15
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_40l0s")

@@ -8,7 +8,7 @@
 script = ExtResource("2_jsaws")
 category = 1
 name = "Extender"
-description = "Goblins taking up all the good building spots? Just make more!"
+description = "Goblin huts taking up all the good building spots? Just make more!"
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_t8q7h")
 hotbar_scene = ExtResource("1_gd8l6")

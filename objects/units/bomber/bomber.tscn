@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bpatwe60100nl" path="res://assests/bomb_gobbo.png" id="1_bv2pn"]
 [ext_resource type="Script" path="res://objects/units/bomber/bomber.gd" id="1_xpofu"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_cmgnw"]
-[ext_resource type="PackedScene" uid="uid://cymj167olto5p" path="res://behaviors/trees/SiegeUnitBehavior.tscn" id="3_rl6le"]
+[ext_resource type="PackedScene" path="res://behaviors/trees/SiegeUnitBehavior.tscn" id="3_rl6le"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wq8m8"]
 atlas = ExtResource("1_bv2pn")
@@ -49,6 +49,7 @@ size = Vector2(12, 12)
 
 [node name="Bomber" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_xpofu")
+max_health = 55.0
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_cmgnw")

@@ -18,12 +18,12 @@ func _process(delta: float) -> void:
 	
 	if cooldown.is_stopped():
 		head.play()
-		var angle_offset = -PI/6
+		var angle_offset = -PI/4
 		for i in pellets:
 			var rock = rock_scene.instantiate()
 			get_parent().add_child(rock)
 			rock.global_position = global_position
-			rock.velocity = (target_unit.global_position - global_position).normalized().rotated(angle_offset) * 50
+			rock.velocity = (target_unit.global_position - global_position).normalized().rotated(angle_offset) * 100
 			angle_offset += PI/12
 			rock.damage = damage
 			rock.team = team

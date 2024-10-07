@@ -201,6 +201,8 @@ size = Vector2(16, 16)
 [node name="Repairer" type="StaticBody2D" groups=["Building"]]
 z_index = 1
 script = ExtResource("1_u3vx5")
+heal_strength = 7
+max_health = 70
 reach = 100
 
 [node name="Base" type="AnimatedSprite2D" parent="."]
