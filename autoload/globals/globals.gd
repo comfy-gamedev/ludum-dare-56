@@ -36,7 +36,7 @@ var phase: Enums.Phase = Enums.Phase.STANDBY:
 	set(v): phase = v; changed.emit(); phase_changed.emit()
 
 signal rounds_changed()
-var rounds: int = 1:
+var rounds: int = 0:
 	set(v): rounds = v; changed.emit(); rounds_changed.emit()
 
 var cpu_acting: bool = false:
@@ -63,7 +63,7 @@ func reset():
 	day_time = 0.0
 	cpu_acting = false
 	phase = Enums.Phase.STANDBY
-	rounds = 1
+	rounds = 0
 
 
 #region Debug overlay

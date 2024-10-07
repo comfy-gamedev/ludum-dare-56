@@ -55,7 +55,7 @@ movement_speed = 125
 script = ExtResource("2_m0snn")
 
 [node name="SapperMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_t3dac")]
-blackboard = NodePath("@Node@32905")
+blackboard = NodePath("@Node@17477")
 actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

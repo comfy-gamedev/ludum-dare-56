@@ -82,7 +82,7 @@ func _ready() -> void:
 	cpu.params.militarism = randf_range(-1.0, 1.0)
 	cpu.params.organization = randf_range(0.0, 1.0)
 	
-	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level == 9 else 0)
+	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level % 10 == 0 else 0)
 	cpu.params.passive_income = 2 + ((2 * Globals.game_level) / 3)
 	
 	add_child(cpu)
@@ -180,9 +180,12 @@ func _on_globals_phase_changed() -> void:
 			
 			var castles = get_tree().get_nodes_in_group("Castle")
 			if !castles.any(func(x): return x.team == Enums.Team.RED):
-				SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
+				if Globals.game_level >= 10:
+					SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
+				else:
+					SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
-				Globals.rounds = 1
+				Globals.rounds = 0
 			elif !castles.any(func(x): return x.team == Enums.Team.BLUE):
 				SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
@@ -196,4 +199,5 @@ func _on_globals_phase_changed() -> void:
 				b.on_day()
 			Globals.day_time = 0.0
 			Globals.selected_blueprint = null
+			print(Globals.rounds)
 			Globals.rounds += 1
