@@ -12,23 +12,24 @@ const TEAM_MATERIALS = [
 @export var building_type: Enums.BuildingType = Enums.BuildingType.UNSPECIFIED
 
 @export var max_health := 50
-@export var reach := 0
+@export var reach := 0: set = set_reach
 
 var bp_size: Vector2i = Vector2i(1, 1) # set by blueprint
 
-@onready var health := max_health
+var detection_area: Area2D
 
-func get_target_point(global_from: Vector2) -> Vector2:
-	var rec = Rect2(
-		Vector2(0, 0),
-		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE)
-	var c = rec.get_center() + global_position
-	c += rec.size.length() * (global_from - c).normalized()
-	return c
+var detected_friendly_buildings: Array[Node2D] = []
+var detected_friendly_units: Array[Node2D] = []
+var detected_enemy_buildings: Array[Node2D] = []
+var detected_enemy_units: Array[Node2D] = []
+
+@onready var health := max_health
 
 func _ready() -> void:
 	_update_team_material()
 	_update_collision_bits()
+	_update_reach()
+	
 	process_mode = PROCESS_MODE_DISABLED
 	var light = NIGHT_LIGHT.instantiate()
 	light.radius = Vector2(bp_size).length() * 16
@@ -38,6 +39,7 @@ func _ready() -> void:
 	
 	if light.sub_viewport == null:
 		light.queue_free()
+	
 
 func _update_collision_bits() -> void:
 	if team == Enums.Team.BLUE:
@@ -51,6 +53,17 @@ func hit(damage_taken: float):
 	health -= damage_taken
 	if health <= 0:
 		queue_free()
+
+func get_target_point(global_from: Vector2) -> Vector2:
+	var rec = Rect2(
+		Vector2(0, 0),
+		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE)
+	var c = rec.get_center() + global_position
+	c += rec.size.length() * (global_from - c).normalized()
+	return c
+
+func set_reach(v: float) -> void:
+	reach = v
 
 func on_night() -> void:
 	process_mode = PROCESS_MODE_DISABLED
@@ -74,3 +87,49 @@ func _update_team_material():
 	for sprite: CanvasItem in sprites:
 		if sprite.material in TEAM_MATERIALS:
 			sprite.material = TEAM_MATERIALS[team]
+
+func _update_reach() -> void:
+	if reach == 0.0:
+		if is_instance_valid(detection_area):
+			detection_area.queue_free()
+			detection_area = null
+		detected_friendly_buildings = []
+		detected_friendly_units = []
+		detected_enemy_buildings = []
+		detected_enemy_units = []
+	else:
+		if not is_instance_valid(detection_area):
+			detection_area = Area2D.new()
+			var shape = CollisionShape2D.new()
+			shape.shape = CircleShape2D.new()
+			detection_area.add_child(shape)
+			detection_area.collision_layer = 0
+			detection_area.collision_mask = 0b11110
+			detection_area.body_entered.connect(_on_detection_area_body_entered)
+			detection_area.body_exited.connect(_on_detection_area_body_exited)
+			add_child(detection_area, false, Node.INTERNAL_MODE_BACK)
+		detection_area.get_child(0).shape.radius = reach
+
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Building"):
+		if body.team != team:
+			detected_enemy_buildings.append(body)
+		else:
+			detected_friendly_buildings.append(body)
+	elif body.is_in_group("Unit"):
+		if body.team != team:
+			detected_enemy_units.append(body)
+		else:
+			detected_friendly_units.append(body)
+
+func _on_detection_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Building"):
+		if body.team != team:
+			detected_enemy_buildings.erase(body)
+		else:
+			detected_friendly_buildings.erase(body)
+	elif body.is_in_group("Unit"):
+		if body.team != team:
+			detected_enemy_units.erase(body)
+		else:
+			detected_friendly_units.erase(body)

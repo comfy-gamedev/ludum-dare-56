@@ -11,60 +11,56 @@ var laser_visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
-	if !enemies:
-		return
+	detected_enemy_units.sort_custom(func (a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
 	
-	targets = [Vector2(10000, 0)]
-	var target_node = null
-	var dist
-	var min_dist = 100000000.0
-	for i in enemies:
-		dist = global_position.distance_squared_to(i.global_position)
-		if dist < min_dist:
-			min_dist = dist
-			target_node = i
-	targets[0] = target_node.global_position
+	targets = []
 	
-	head.rotation = global_position.angle_to_point(targets[0]) + (PI/2)
+	var target_node = detected_enemy_units[0] if detected_enemy_units else null
 	
-	if global_position.distance_to(targets[0]) < reach && cooldown.is_stopped():
-		head.play()
-		var current = 0
-		var last_pos = target_node.global_position
-		enemies.erase(target_node)
-		while enemies.size() > 0:
+	head.rotation = global_position.angle_to_point(target_node.global_position) + (PI/2) if target_node else 0.0
+	
+	if target_node and cooldown.is_stopped():
+		var qp = PhysicsShapeQueryParameters2D.new()
+		qp.shape = CircleShape2D.new()
+		qp.shape.radius = reach / 2.0
+		qp.collision_mask = 0b11000
+		qp.collide_with_bodies = true
+		qp.collide_with_areas = false
+		
+		while target_node:
 			target_node.hit(damage)
-			target_node = null
-			current += 1
-			#if randf() > .75:
-				#break
-			min_dist = 10000000.0
-			for i in enemies:
-				dist = global_position.distance_squared_to(i.global_position)
-				if dist < min_dist:
-					min_dist = dist
-					target_node = i
-			if target_node && global_position.distance_to(last_pos) < reach / 2.0:
-				last_pos = target_node.global_position
-				targets.append(target_node.global_position)
-				enemies.erase(target_node)
-			else:
-				break
 			
+			targets.append(to_local(target_node.global_position))
+			qp.exclude += [target_node.get_rid()]
+			
+			qp.transform.origin = target_node.global_position
+			
+			var qr = get_world_2d().direct_space_state.intersect_shape(qp).filter(func (r): return r.collider.team != team)
+			qr.sort_custom(func (a, b): return a.collider.global_position.distance_to(global_position) < b.collider.global_position.distance_to(global_position))
+			
+			target_node = qr[0].collider if qr else null
+		
+		head.play()
 		laser_visible = true
 		visibility_timer.start()
-		queue_redraw()
 		cooldown.start()
+		queue_redraw()
+
+func _draw_bzzt(to: Array[Vector2], color: Color) -> void:
+	var a = Vector2.ZERO
+	for v in to:
+		var n = maxf(1, roundi(v.distance_to(a) / 8.0))
+		for i in range(1, n+1):
+			var b = a + (v - a) * float(i) / float(n)
+			b += Vector2.from_angle(randf_range(0.0, TAU)) * 4.0
+			draw_line(a, b, color, 2.0)
+			a = b
 
 func _draw() -> void:
 	if laser_visible:
-		for i in range(targets.size()):
-			if i == 0:
-				draw_line(Vector2(0, 0), to_local(targets[i]), Color.CYAN, 1.0)
-			else:
-				draw_line(to_local(targets[i-1]), to_local(targets[i]), Color.CYAN, 1.0)
-
+		_draw_bzzt(targets, Color("76428a"))
+		_draw_bzzt(targets, Color("639bff"))
+		_draw_bzzt(targets, Color("5fcde4"))
 
 func _on_visibility_timer_timeout() -> void:
 	laser_visible = false
