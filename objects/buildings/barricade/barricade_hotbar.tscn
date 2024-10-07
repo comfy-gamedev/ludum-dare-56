@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0oin2432ebdd"]
+[gd_scene load_steps=3 format=3 uid="uid://erwbvktcuvx7"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_miwmp"]
-[ext_resource type="Texture2D" uid="uid://tv88k2jqdudv" path="res://objects/buildings/barricade/blue_barricade.png" id="2_3auii"]
+[ext_resource type="Texture2D" uid="uid://bd3xsh43jbcfn" path="res://assests/blue_barricade.png" id="2_u2y1r"]
 
 [node name="BarricadeHotbar" type="Sprite2D"]
 material = ExtResource("1_miwmp")
-texture = ExtResource("2_3auii")
+texture = ExtResource("2_u2y1r")
