@@ -48,14 +48,14 @@ size = Vector2(8, 8)
 [node name="Rat" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_nwvp7")
 max_health = 10.0
-attack_points = 2
+attack_points = 5
 movement_speed = 125
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_m0snn")
 
 [node name="SapperMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_t3dac")]
-blackboard = NodePath("@Node@65919")
+blackboard = NodePath("@Node@17477")
 actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

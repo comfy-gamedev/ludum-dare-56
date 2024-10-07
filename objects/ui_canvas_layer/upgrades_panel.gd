@@ -5,6 +5,7 @@ signal done()
 const BLUEPRINTS = [
 	preload("res://blueprints/autocannon.tres"),
 	preload("res://blueprints/barricade.tres"),
+	preload("res://blueprints/bomber_spawner.tres"),
 	preload("res://blueprints/buffer.tres"),
 	preload("res://blueprints/extender.tres"),
 	preload("res://blueprints/farm.tres"),
@@ -70,7 +71,7 @@ func _reroll() -> void:
 	
 	var dcFound = false
 	for b in Globals.player_hotbar:
-		if b.cost > 1:
+		if b != null && b.cost > 1:
 			dcFound = true
 			break
 	if dcFound:

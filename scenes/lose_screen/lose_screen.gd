@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	Globals.reset()
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 
