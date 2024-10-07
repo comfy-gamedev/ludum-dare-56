@@ -209,6 +209,7 @@ autoplay = "default"
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
+rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_urffi")
 
 [node name="Timer" type="Timer" parent="."]
