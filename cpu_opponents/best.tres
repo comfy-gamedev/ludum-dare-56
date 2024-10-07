@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CpuAIParams" load_steps=8 format=3 uid="uid://dkao3fjbjt8j3"]
+
+[ext_resource type="Script" path="res://resource_types/blueprint.gd" id="1_pt24u"]
+[ext_resource type="Resource" uid="uid://dc7xp3gt516pl" path="res://blueprints/buffer.tres" id="2_apl4g"]
+[ext_resource type="Resource" uid="uid://btu1nx75yo7h4" path="res://blueprints/farm.tres" id="5_kf05c"]
+[ext_resource type="Script" path="res://resource_types/cpu_ai_params.gd" id="6_urv7p"]
+[ext_resource type="Resource" uid="uid://dbgm0canyj0bk" path="res://blueprints/rat_spawner.tres" id="8_wosje"]
+[ext_resource type="Resource" uid="uid://d3pa6e2ix0ep1" path="res://blueprints/sniper_turret.tres" id="14_5n4iw"]
+[ext_resource type="Resource" uid="uid://cj2lbultlmbvb" path="res://blueprints/tesla_turret.tres" id="15_nt2wb"]
+
+[resource]
+script = ExtResource("6_urv7p")
+fortification_blueprints = Array[ExtResource("1_pt24u")]([ExtResource("2_apl4g")])
+turret_blueprints = Array[ExtResource("1_pt24u")]([ExtResource("14_5n4iw"), ExtResource("15_nt2wb")])
+production_blueprints = Array[ExtResource("1_pt24u")]([ExtResource("5_kf05c")])
+spawner_blueprints = Array[ExtResource("1_pt24u")]([ExtResource("8_wosje"), null])
+starting_money = 15
+passive_income = 10
+militarism = 1.0
+economics = 0.0
+aggression = 0.5
+organization = 1.0
