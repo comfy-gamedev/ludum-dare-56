@@ -27,14 +27,14 @@ offset_left = 338.0
 offset_top = 199.0
 offset_right = 476.0
 offset_bottom = 223.0
-text = "Score? Time?"
+text = "Battles: 10 probably"
 
 [node name="Button" type="Button" parent="."]
 offset_left = 183.0
 offset_top = 218.0
 offset_right = 313.0
 offset_bottom = 250.0
-text = "Play Again?"
+text = "Continue"
 
 [node name="Button2" type="Button" parent="."]
 offset_left = 198.0
