@@ -36,7 +36,7 @@ func _ready() -> void:
 	
 	# Player Setup
 	
-	Globals.blue_money = 0
+	Globals.blue_money = Globals.blue_starting_mana
 	
 	# Enemy Setup
 	

@@ -20,10 +20,12 @@ signal selected_blueprint_changed()
 var selected_blueprint: Blueprint = null:
 	set(v): selected_blueprint = v; changed.emit(); selected_blueprint_changed.emit()
 
-var blue_income: int = 5
+var blue_starting_mana: int = 0
+var blue_income: int = 4
 var blue_money: int = 0:
 	set(v): blue_money = v; changed.emit()
 
+var red_starting_mana: int = 0
 var red_income: int = 5
 var red_money: int = 0:
 	set(v): red_money = v; changed.emit()
@@ -39,14 +41,18 @@ var game_level: int = 0
 
 var day_time: float = 0.0
 
+func _ready() -> void:
+	reset()
 
 ## Reset all variables to their default state.
 func reset():
 	player_hotbar = [preload("res://blueprints/goblin_spawner.tres"), preload("res://blueprints/rock_turret.tres"), null, null, null, null]
 	selected_blueprint = null
+	blue_starting_mana = 0
 	blue_income = 4
 	blue_money = 0
-	red_income = 3
+	red_starting_mana = 0
+	red_income = 4
 	red_money = 0
 	game_level = 0
 	day_time = 0.0

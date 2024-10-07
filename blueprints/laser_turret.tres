@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://c8y4n18yl1fdb"]
 
-[ext_resource type="PackedScene" uid="uid://d381oaaud30ae" path="res://objects/buildings/laser_turret/laser_hotbar.tscn" id="1_2bwwc"]
+[ext_resource type="PackedScene" path="res://objects/buildings/laser_turret/laser_hotbar.tscn" id="1_2bwwc"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_y3dl6"]
 [ext_resource type="PackedScene" uid="uid://ekkaj235yoyt" path="res://objects/buildings/laser_turret/laser_turret.tscn" id="3_7vl1p"]
 

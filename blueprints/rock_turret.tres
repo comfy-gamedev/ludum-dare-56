@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://cyawrd6olq32q"]
 
-[ext_resource type="PackedScene" uid="uid://dkvr5umf3aray" path="res://objects/buildings/rock_turret/rock_hotbar.tscn" id="1_x55c3"]
+[ext_resource type="PackedScene" path="res://objects/buildings/rock_turret/rock_hotbar.tscn" id="1_x55c3"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_vssft"]
 [ext_resource type="PackedScene" uid="uid://bp7t5y8tu3dde" path="res://objects/buildings/rock_turret/rock_turret.tscn" id="3_6ab8i"]
 

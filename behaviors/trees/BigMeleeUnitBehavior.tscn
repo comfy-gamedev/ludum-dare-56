@@ -1,0 +1,83 @@
+[gd_scene load_steps=16 format=3 uid="uid://dijfue61t875n"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_71dqb"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_p1evj"]
+[ext_resource type="PackedScene" uid="uid://cqhep0qccb8fw" path="res://behaviors/actions/select_building_target_action.tscn" id="3_iptg5"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="4_6o781"]
+[ext_resource type="PackedScene" uid="uid://tsb6iwrtft2p" path="res://behaviors/actions/detect_target_action.tscn" id="5_oe7rx"]
+[ext_resource type="PackedScene" path="res://behaviors/actions/move_to_target_opponent_action.tscn" id="6_u8nfe"]
+[ext_resource type="PackedScene" path="res://behaviors/actions/damage_target_opponent_action.tscn" id="7_q1ibw"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="8_qnj1i"]
+[ext_resource type="PackedScene" path="res://behaviors/actions/move_from_target_opponent_action.tscn" id="9_5q0d4"]
+[ext_resource type="PackedScene" path="res://behaviors/actions/move_to_target_building_action.tscn" id="10_ai2mf"]
+[ext_resource type="PackedScene" path="res://behaviors/actions/damage_target_building_action.tscn" id="11_d2cp6"]
+[ext_resource type="PackedScene" path="res://behaviors/actions/move_from_target_building_action.tscn" id="12_yaqcs"]
+[ext_resource type="PackedScene" uid="uid://bxa6gkl6odb7m" path="res://behaviors/actions/pick_random_pos_action.tscn" id="13_dpijt"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="14_crd61"]
+[ext_resource type="PackedScene" uid="uid://dqhgunc6swb3c" path="res://behaviors/actions/move_to_pos_action.tscn" id="15_lvkd8"]
+
+[node name="BigMeleeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_71dqb")
+blackboard = NodePath("@Node@17505")
+actor = NodePath("")
+
+[node name="PrimarySequence" type="Node" parent="."]
+script = ExtResource("2_p1evj")
+
+[node name="SelectBuildingTargetAction" parent="PrimarySequence" instance=ExtResource("3_iptg5")]
+
+[node name="SelectorReactiveComposite" type="Node" parent="PrimarySequence"]
+script = ExtResource("4_6o781")
+
+[node name="DetectAndAttackNearestUnitSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
+script = ExtResource("2_p1evj")
+
+[node name="DetectTargetAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("5_oe7rx")]
+
+[node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("6_u8nfe")]
+
+[node name="DamageTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("7_q1ibw")]
+
+[node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence"]
+script = ExtResource("8_qnj1i")
+
+[node name="AttackUnitSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator"]
+script = ExtResource("2_p1evj")
+
+[node name="MoveFromTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("9_5q0d4")]
+
+[node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("6_u8nfe")]
+
+[node name="DamageTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("7_q1ibw")]
+
+[node name="BesiegeTargetBuildingSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
+script = ExtResource("2_p1evj")
+
+[node name="MoveToTargetBuildingAction2" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence" instance=ExtResource("10_ai2mf")]
+acceptance_radius = 24
+
+[node name="DamageTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence" instance=ExtResource("11_d2cp6")]
+
+[node name="UntilFailDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence"]
+script = ExtResource("8_qnj1i")
+
+[node name="AttackBuildingSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator"]
+script = ExtResource("2_p1evj")
+
+[node name="MoveFromTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("12_yaqcs")]
+
+[node name="MoveToTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("10_ai2mf")]
+acceptance_radius = 24
+
+[node name="DamageTargetBuildingAction" parent="PrimarySequence/SelectorReactiveComposite/BesiegeTargetBuildingSequence/UntilFailDecorator/AttackBuildingSequence" instance=ExtResource("11_d2cp6")]
+
+[node name="WanderSequence" type="Node" parent="PrimarySequence/SelectorReactiveComposite"]
+script = ExtResource("2_p1evj")
+
+[node name="PickRandomPosAction" parent="PrimarySequence/SelectorReactiveComposite/WanderSequence" instance=ExtResource("13_dpijt")]
+
+[node name="TimeLimiterDecorator" type="Node" parent="PrimarySequence/SelectorReactiveComposite/WanderSequence"]
+script = ExtResource("14_crd61")
+wait_time = 2.0
+
+[node name="MoveToPosAction" parent="PrimarySequence/SelectorReactiveComposite/WanderSequence/TimeLimiterDecorator" instance=ExtResource("15_lvkd8")]
