@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bsgl0as645loj"]
+
+[ext_resource type="Texture2D" uid="uid://b6hteimgcg6li" path="res://assests/bramble_patch.png" id="1_dxln6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g82i"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqbn"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n3f5"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4r2w"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14n1n"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7prh"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2n6e"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry36d"]
+atlas = ExtResource("1_dxln6")
+region = Rect2(112, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g82i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtqbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n3f5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4r2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14n1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7prh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2n6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry36d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
