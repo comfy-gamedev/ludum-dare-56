@@ -70,7 +70,7 @@ func _reroll() -> void:
 	
 	var dcFound = false
 	for b in Globals.player_hotbar:
-		if b.cost > 1:
+		if b != null && b.cost > 1:
 			dcFound = true
 			break
 	if dcFound:

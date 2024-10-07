@@ -180,7 +180,7 @@ func _on_globals_phase_changed() -> void:
 			
 			var castles = get_tree().get_nodes_in_group("Castle")
 			if !castles.any(func(x): return x.team == Enums.Team.RED):
-				if Globals.game_level >= 10:
+				if Globals.game_level == 10:
 					SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
 				else:
 					SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
