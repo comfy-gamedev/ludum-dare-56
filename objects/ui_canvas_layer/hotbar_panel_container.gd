@@ -102,7 +102,7 @@ func _on_globals_phase_changed() -> void:
 		Enums.Phase.BUILD:
 			pass
 		Enums.Phase.FIGHT:
-			target = _initial_position + Vector2(0, 20)
+			target = _initial_position + Vector2(0, 24)
 			ease = Tween.EASE_IN
 	
 	create_tween().set_ease(ease).set_trans(Tween.TRANS_BACK) \
