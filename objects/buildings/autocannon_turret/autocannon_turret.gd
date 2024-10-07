@@ -30,9 +30,9 @@ func _process(delta: float) -> void:
 	if global_position.distance_to(target) < reach && cooldown.is_stopped():
 		head.play()
 		var rock = rock_scene.instantiate()
-		get_parent().add_child(rock)
 		rock.global_position = global_position
 		rock.velocity = (target - global_position).normalized().rotated(randf_range(-PI/6, PI/6)) * 150
 		rock.damage = damage
 		rock.team = team
+		get_parent().add_child(rock)
 		cooldown.start()

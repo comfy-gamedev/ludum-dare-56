@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://my74i1pshoe"]
+
+[ext_resource type="Texture2D" uid="uid://c5djscedgaicd" path="res://assests/robe_spawner.png" id="1_i72gi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyhmt"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0uo0"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quvsg"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5nrq"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q658e"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t23ks"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dolh"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulhh6"]
+atlas = ExtResource("1_i72gi")
+region = Rect2(112, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyhmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0uo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quvsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5nrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q658e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t23ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dolh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulhh6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://addons/smooth_pixel_subviewport_container/smooth_pixel_subviewport_container.gdshader" id="2_n2ft6"]
 [ext_resource type="Script" path="res://addons/smooth_pixel_subviewport_container/smooth_pixel_subviewport_container.gd" id="3_3bd26"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lip7e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bul01"]
 shader = ExtResource("2_n2ft6")
 shader_parameter/vertex_offset = null
 
@@ -16,7 +16,7 @@ metadata/test_scene = "res://scenes/main_gameplay/main_gameplay.tscn"
 [node name="SmoothPixelSubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 2
 texture_repeat = 1
-material = SubResource("ShaderMaterial_lip7e")
+material = SubResource("ShaderMaterial_bul01")
 offset_right = 512.0
 offset_bottom = 512.0
 script = ExtResource("3_3bd26")

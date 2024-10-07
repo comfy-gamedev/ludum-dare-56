@@ -1,20 +1,69 @@
-[gd_scene load_steps=9 format=3 uid="uid://41vn2oygejwv"]
+[gd_scene load_steps=16 format=3 uid="uid://41vn2oygejwv"]
 
 [ext_resource type="Script" path="res://node_types/unit.gd" id="1_d76ug"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_t0cm7"]
 [ext_resource type="PackedScene" uid="uid://c8qvbe6qpagvn" path="res://behaviors/trees/AntipersonelUnitBehavior.tscn" id="3_ly4ob"]
 [ext_resource type="Material" uid="uid://dbneyw5mid3p8" path="res://materials/team_red.tres" id="4_ebccs"]
-[ext_resource type="Texture2D" uid="uid://c7lc46m6g41vv" path="res://icon.svg" id="5_qcwlv"]
+[ext_resource type="Texture2D" uid="uid://d3306xenjl0mr" path="res://assests/snake_friend.png" id="5_lc5n7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbtte"]
-atlas = ExtResource("5_qcwlv")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_leuga"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqqix"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v3f8"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8pa2"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inhy7"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcxn0"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbb4k"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmvk3"]
+atlas = ExtResource("5_lc5n7")
+region = Rect2(56, 0, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_btxmb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wbtte")
+"texture": SubResource("AtlasTexture_leuga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqqix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v3f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8pa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inhy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcxn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbb4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmvk3")
 }],
 "loop": true,
 "name": &"default",
@@ -33,7 +82,7 @@ movement_speed = 125
 script = ExtResource("2_t0cm7")
 
 [node name="AntipersonelUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_ly4ob")]
-blackboard = NodePath("@Node@96386")
+blackboard = NodePath("@Node@54950")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("4_ebccs")

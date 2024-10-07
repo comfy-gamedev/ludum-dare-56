@@ -36,15 +36,11 @@ func _ready() -> void:
 	
 	# Player Setup
 	
-	var hb = Globals.player_hotbar
-	hb[0] = preload("res://blueprints/goblin_spawner.tres")
-	hb[1] = preload("res://blueprints/rock_turret.tres")
-	hb[2] = preload("res://blueprints/bomber_spawner.tres")
-	Globals.player_hotbar = hb
-	Globals.blue_income = 3
-	
+	Globals.blue_money = 0
 	
 	# Enemy Setup
+	
+	Globals.red_money = 0
 	
 	var cpu = CpuPlayer.new()
 	cpu.team = Enums.Team.RED
@@ -87,7 +83,7 @@ func _ready() -> void:
 	cpu.params.organization = randf_range(0.0, 1.0)
 	
 	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1)
-	cpu.params.passive_income = 2 + Globals.game_level / 2 + randi_range(0, 1)
+	cpu.params.passive_income = 2 + Globals.game_level / 3
 	
 	add_child(cpu)
 	

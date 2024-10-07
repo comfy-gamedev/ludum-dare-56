@@ -35,5 +35,5 @@ func _process(delta: float) -> void:
 		queue_redraw()
 
 func _draw() -> void:
-	if laser_visible:
+	if target_node and laser_visible:
 		draw_line(Vector2(0, 0), to_local(target_node.global_position), Color.CHARTREUSE, 2.0)

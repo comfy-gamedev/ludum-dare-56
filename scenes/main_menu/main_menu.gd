@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_start_game_button_pressed() -> void:
+	Globals.reset()
 	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
 
 

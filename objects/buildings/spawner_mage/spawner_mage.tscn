@@ -1,76 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjqxtggqxqdg6"]
+[gd_scene load_steps=10 format=3 uid="uid://bjqxtggqxqdg6"]
 
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_swfqn"]
-[ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_6eghb"]
-[ext_resource type="Material" path="res://materials/invalid.tres" id="2_k27f1"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_em71q"]
+[ext_resource type="SpriteFrames" uid="uid://my74i1pshoe" path="res://objects/buildings/spawner_mage/spawner_mage_frames.tres" id="3_ek1vt"]
 [ext_resource type="PackedScene" uid="uid://brfxkbq7b4brm" path="res://objects/spawner_node/spawner.tscn" id="3_ith2t"]
 [ext_resource type="PackedScene" uid="uid://bmulu8vonwlpq" path="res://objects/units/mage/mage.tscn" id="4_ip785"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_qn6tp"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="6_jkx0y"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_567ru"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovqrc"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5cug"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hew7c"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2rf6u"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qtmjx"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rvyfv"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(96, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8f2k"]
-atlas = ExtResource("2_6eghb")
-region = Rect2(112, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uw23o"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_567ru")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovqrc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u5cug")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hew7c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2rf6u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qtmjx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rvyfv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m8f2k")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [sub_resource type="Curve" id="Curve_thgsu"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -84,8 +20,8 @@ script = ExtResource("1_swfqn")
 building_type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_k27f1")
-sprite_frames = SubResource("SpriteFrames_uw23o")
+material = ExtResource("2_em71q")
+sprite_frames = ExtResource("3_ek1vt")
 autoplay = "default"
 
 [node name="Spawner" parent="." instance=ExtResource("3_ith2t")]

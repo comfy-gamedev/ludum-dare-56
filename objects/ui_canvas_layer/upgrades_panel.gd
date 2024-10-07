@@ -3,22 +3,22 @@ extends Control
 signal done()
 
 const BLUEPRINTS = [
-	#preload("res://blueprints/autocannon.tres"),
+	preload("res://blueprints/autocannon.tres"),
 	preload("res://blueprints/barricade.tres"),
 	preload("res://blueprints/buffer.tres"),
 	preload("res://blueprints/extender.tres"),
-	#preload("res://blueprints/farm.tres"),
-	#preload("res://blueprints/goblin_cage.tres"),
-	#preload("res://blueprints/goblin_spawner.tres"),
-	#preload("res://blueprints/laser_turret.tres"),
-	#preload("res://blueprints/mage_spawner.tres"),
-	#preload("res://blueprints/rat_spawner.tres"),
-	#preload("res://blueprints/repairer.tres"),
-	#preload("res://blueprints/rock_turret.tres"),
-	#preload("res://blueprints/shotgun_turret.tres"),
-	#preload("res://blueprints/snake_spawner.tres"),
-	#preload("res://blueprints/sniper_turret.tres"),
-	#preload("res://blueprints/tesla_turret.tres"),
+	preload("res://blueprints/farm.tres"),
+	preload("res://blueprints/goblin_cage.tres"),
+	preload("res://blueprints/goblin_spawner.tres"),
+	preload("res://blueprints/laser_turret.tres"),
+	preload("res://blueprints/mage_spawner.tres"),
+	preload("res://blueprints/rat_spawner.tres"),
+	preload("res://blueprints/repairer.tres"),
+	preload("res://blueprints/rock_turret.tres"),
+	preload("res://blueprints/shotgun_turret.tres"),
+	preload("res://blueprints/snake_spawner.tres"),
+	preload("res://blueprints/sniper_turret.tres"),
+	preload("res://blueprints/tesla_turret.tres"),
 ]
 
 @export var ui_canvas_layer: UICanvasLayer
