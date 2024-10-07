@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_nyf60")
+category = 2
 name = "GoblinSpawner"
 description = "Indescribable."
 size = Vector2i(1, 1)

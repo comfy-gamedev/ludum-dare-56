@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=15 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -12,8 +12,6 @@
 [ext_resource type="Script" path="res://scenes/main_gameplay/lights_sub_viewport.gd" id="7_6niea"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="8_intth"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/grid_manager.gd" id="11_fkpbp"]
-[ext_resource type="Script" path="res://scenes/main_gameplay/cpu_player.gd" id="13_1p4mj"]
-[ext_resource type="Resource" uid="uid://smhq81j2ql85" path="res://cpu_opponents/alice.tres" id="14_andgb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8m7g"]
 shader = ExtResource("2_tu80g")
@@ -60,8 +58,3 @@ script = ExtResource("1_lrklj")
 
 [node name="GridManager" type="Node2D" parent="."]
 script = ExtResource("11_fkpbp")
-
-[node name="CpuPlayer" type="Node" parent="." node_paths=PackedStringArray("grid")]
-script = ExtResource("13_1p4mj")
-params = ExtResource("14_andgb")
-grid = NodePath("../GridManager")

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_q7uau")
+category = 2
 name = "MageSpawner"
 description = "Indescribable."
 size = Vector2i(1, 1)

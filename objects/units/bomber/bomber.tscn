@@ -53,8 +53,9 @@ script = ExtResource("1_xpofu")
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_cmgnw")
 
-[node name="SiegeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_rl6le")]
+[node name="SiegeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_rl6le")]
 blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gpteo")

@@ -15,6 +15,13 @@ enum BuildingType {
 	PRODUCTION,
 }
 
+enum BlueprintCategory {
+	TURRET,
+	FORTIFICATION,
+	SPAWNER,
+	PRODUCTION,
+}
+
 enum Phase {
 	STANDBY,
 	BUILD,

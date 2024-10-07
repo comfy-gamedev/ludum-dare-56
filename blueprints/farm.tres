@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_fcx4f")
+category = 3
 name = "Farm"
 description = "Indescribable."
 size = Vector2i(1, 1)
