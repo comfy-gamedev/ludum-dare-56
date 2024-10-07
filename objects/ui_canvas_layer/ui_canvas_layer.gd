@@ -12,7 +12,7 @@ var upgrades_panel: Control
 @onready var hotbar_panel_container: PanelContainer = $Control/HotbarPanelContainer
 @onready var start_battle_button: Button = $Control/StartBattleButton
 @onready var ff_button: Button = $Control/FFButton
-@onready var mana_label: Label = $Control/ManaLabel
+@onready var mana_label: Control = $Control/ManaLabel
 @onready var round_label: Label = $Control/RoundLabel
 
 func _ready() -> void:
