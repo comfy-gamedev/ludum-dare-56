@@ -60,6 +60,11 @@ func _draw() -> void:
 		_draw_bzzt(targets, Color("639bff"))
 		_draw_bzzt(targets, Color("5fcde4"))
 
+func on_night() -> void:
+	super()
+	laser_visible = false
+	queue_redraw()
+
 func _on_visibility_timer_timeout() -> void:
 	laser_visible = false
 	queue_redraw()
