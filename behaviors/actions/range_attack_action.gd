@@ -15,8 +15,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		bullet.damage = actor.attack_points
 		bullet.team = actor.team
 		actor.get_parent().add_child(bullet)
+		#return RUNNING
 	else:
-		return SUCCESS
+		return FAILURE
 	
 	if is_instance_valid(target_opponent):
 		return SUCCESS
