@@ -9,11 +9,30 @@ class_name Unit
 
 var health := max_health
 
+var push_area: Area2D
+
+@export var push_shape = preload("res://assests/push_shape.tres")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_team_material()
 	_update_collision_bits()
+	
+	push_area = Area2D.new()
+	var pa_shape = CollisionShape2D.new()
+	pa_shape.shape = push_shape
+	push_area.add_child(pa_shape)
+	push_area.collision_layer = 0
+	push_area.collision_mask = 0b11000
+	push_area.input_pickable = false
+	
+	add_child(push_area, false, Node.INTERNAL_MODE_BACK)
 
+func _physics_process(delta: float) -> void:
+	for b in push_area.get_overlapping_bodies():
+		var v = global_position - b.global_position
+		if not v.is_zero_approx():
+			global_position += v.normalized() * (2.0 / v.length())
 
 func _update_collision_bits() -> void:
 	if team == Enums.Team.BLUE:
