@@ -8,7 +8,6 @@ const TEAM_MATERIALS = [
 	preload("res://materials/team_red.tres"),
 ]
 
-const sfx = preload("res://assests/SFX/retro_mouse_critter_squeak_04.wav")
 
 @export var team: Enums.Team = Enums.Team.BLUE: set = set_team
 @export var building_type: Enums.BuildingType = Enums.BuildingType.UNSPECIFIED
