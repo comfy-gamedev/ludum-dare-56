@@ -91,6 +91,8 @@ func place_building(pos: Vector2, size: Vector2i, building: Variant, team: Enums
 func get_available_cells(team: Enums.Team) -> Array[Vector2]:
 	var result: Array[Vector2]
 	for c in castles:
+		if c.team != team:
+			continue
 		for cp in c.cells:
 			if c.cells[cp].occupant == null:
 				result.append(Vector2(cp) * CELL_SIZE)
