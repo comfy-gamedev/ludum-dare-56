@@ -12,9 +12,13 @@ var upgrades_panel: Control
 @onready var hotbar_panel_container: PanelContainer = $Control/HotbarPanelContainer
 @onready var start_battle_button: Button = $Control/StartBattleButton
 @onready var ff_button: Button = $Control/FFButton
+@onready var mana_label: Label = $Control/ManaLabel
+@onready var round_label: Label = $Control/RoundLabel
 
 func _ready() -> void:
 	if is_upgrade_screen:
+		mana_label.hide()
+		round_label.hide()
 		upgrades_panel = UPGRADES_PANEL.instantiate()
 		upgrades_panel.ui_canvas_layer = self
 		upgrades_panel.hotbar = hotbar_panel_container

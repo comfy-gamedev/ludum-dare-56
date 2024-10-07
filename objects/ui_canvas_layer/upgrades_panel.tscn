@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrades_panel.gd" id="2_6putl"]
 [ext_resource type="PackedScene" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
 [ext_resource type="Texture2D" uid="uid://ddeilepg346ni" path="res://objects/ui_canvas_layer/arrow.png" id="5_in80y"]
-[ext_resource type="PackedScene" uid="uid://cu62tejwqhpaq" path="res://objects/ui_canvas_layer/crown_widget.tscn" id="6_cmc1p"]
+[ext_resource type="PackedScene" path="res://objects/ui_canvas_layer/crown_widget.tscn" id="6_cmc1p"]
 
 [node name="UpgradesPanel" type="NinePatchRect"]
 anchors_preset = 8
@@ -225,6 +225,25 @@ frame_progress = 0.664971
 [node name="CrownWidget10" parent="CrownGauge" instance=ExtResource("6_cmc1p")]
 position = Vector2(82, 18)
 frame_progress = 0.664971
+
+[node name="Label" type="Label" parent="CrownGauge"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 43.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+text = "+X"
 
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Overlay/CancelButton" to="." method="_on_cancel_button_pressed"]

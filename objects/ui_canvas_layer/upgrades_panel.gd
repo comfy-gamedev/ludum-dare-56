@@ -48,10 +48,16 @@ const BLUEPRINTS = [
 @onready var overlay: ColorRect = $Overlay
 @onready var description: Label = $Description
 @onready var sorry: Label = $Sorry
+@onready var plus_label: Label = $CrownGauge/Label
 
 func _ready() -> void:
-	for i in range(Globals.game_level):
+	for i in range(min(Globals.game_level,10)):
 		crowns[i].active = true
+	
+	if Globals.game_level < 10:
+		plus_label.hide()
+	else:
+		plus_label.text = "+" + str(Globals.game_level - 10)
 	
 	for p in panels:
 		p.chosen.connect(_on_panel_chosen.bind(p))
