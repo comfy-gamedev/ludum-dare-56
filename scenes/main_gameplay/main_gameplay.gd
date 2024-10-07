@@ -82,8 +82,8 @@ func _ready() -> void:
 	cpu.params.militarism = randf_range(-1.0, 1.0)
 	cpu.params.organization = randf_range(0.0, 1.0)
 	
-	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1)
-	cpu.params.passive_income = 2 + Globals.game_level / 2
+	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level == 9 else 0)
+	cpu.params.passive_income = 2 + ((2 * Globals.game_level) / 3)
 	
 	add_child(cpu)
 	

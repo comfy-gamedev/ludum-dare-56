@@ -39,10 +39,6 @@ signal rounds_changed()
 var rounds: int = 1:
 	set(v): rounds = v; changed.emit(); rounds_changed.emit()
 
-signal battles_changed()
-var battles: int = 0:
-	set(v): battles = v; changed.emit(); battles_changed.emit()
-
 var cpu_acting: bool = false:
 	set(v): cpu_acting = v; changed.emit()
 
@@ -67,6 +63,7 @@ func reset():
 	day_time = 0.0
 	cpu_acting = false
 	phase = Enums.Phase.STANDBY
+	rounds = 1
 
 
 #region Debug overlay
