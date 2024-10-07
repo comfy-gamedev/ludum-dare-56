@@ -26,8 +26,6 @@ var detected_enemy_units: Array[Node2D] = []
 
 @onready var health := max_health
 
-@onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
-
 func _ready() -> void:
 	_update_team_material()
 	_update_collision_bits()
