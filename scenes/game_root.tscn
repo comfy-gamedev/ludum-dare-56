@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://du76xo7bhdfk2"]
+[gd_scene load_steps=7 format=3 uid="uid://du76xo7bhdfk2"]
 
 [ext_resource type="Script" path="res://scenes/game_root.gd" id="1_waueg"]
 [ext_resource type="Shader" path="res://addons/smooth_pixel_subviewport_container/smooth_pixel_subviewport_container.gdshader" id="2_n2ft6"]
 [ext_resource type="Script" path="res://addons/smooth_pixel_subviewport_container/smooth_pixel_subviewport_container.gd" id="3_3bd26"]
+[ext_resource type="Texture2D" uid="uid://d0qdc4fpkw8f6" path="res://assests/mute.png" id="4_01nil"]
+[ext_resource type="Script" path="res://scenes/mute_button.gd" id="5_l41li"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_127ip"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1vs4"]
 shader = ExtResource("2_n2ft6")
 shader_parameter/vertex_offset = null
 
@@ -16,7 +18,7 @@ metadata/test_scene = "res://scenes/main_gameplay/main_gameplay.tscn"
 [node name="SmoothPixelSubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 2
 texture_repeat = 1
-material = SubResource("ShaderMaterial_127ip")
+material = SubResource("ShaderMaterial_s1vs4")
 offset_right = 512.0
 offset_bottom = 512.0
 script = ExtResource("3_3bd26")
@@ -29,3 +31,29 @@ canvas_item_default_texture_filter = 0
 physics_object_picking = true
 canvas_cull_mask = 4294967293
 render_target_update_mode = 4
+
+[node name="PermanentCanvasLayer" type="CanvasLayer" parent="SmoothPixelSubViewportContainer/SubViewport"]
+layer = 50
+
+[node name="Control" type="Control" parent="SmoothPixelSubViewportContainer/SubViewport/PermanentCanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MuteButton" type="Button" parent="SmoothPixelSubViewportContainer/SubViewport/PermanentCanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+focus_mode = 0
+toggle_mode = true
+icon = ExtResource("4_01nil")
+flat = true
+script = ExtResource("5_l41li")

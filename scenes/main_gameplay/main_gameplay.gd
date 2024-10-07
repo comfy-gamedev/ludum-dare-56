@@ -6,6 +6,7 @@ const BP_LEVELS = [
 	{ min_lvl = 2, cat = "production", bp = preload("res://blueprints/farm.tres") },
 	{ min_lvl = 3, cat = "fortification", bp = preload("res://blueprints/repairer.tres") },
 	{ min_lvl = 1, cat = "fortification", bp = preload("res://blueprints/barricade.tres") },
+	{ min_lvl = 2, cat = "fortification", bp = preload("res://blueprints/brambles.tres") },
 	{ min_lvl = 6, cat = "fortification", bp = preload("res://blueprints/autocannon.tres") },
 	{ min_lvl = 5, cat = "fortification", bp = preload("res://blueprints/buffer.tres") },
 	{ min_lvl = 4, cat = "fortification", bp = preload("res://blueprints/extender.tres") },
@@ -173,7 +174,7 @@ func _on_globals_phase_changed() -> void:
 				u.queue_free()
 			for p in get_tree().get_nodes_in_group("Projectile"):
 				p.queue_free()
-			for b: Building in get_tree().get_nodes_in_group("Building"):
+			for b in get_tree().get_nodes_in_group("Building"):
 				b.on_night()
 			Globals.blue_money += Globals.blue_income
 			Globals.red_money += Globals.red_income
@@ -195,7 +196,7 @@ func _on_globals_phase_changed() -> void:
 				Globals.phase = Enums.Phase.STANDBY
 			
 		Enums.Phase.FIGHT:
-			for b: Building in get_tree().get_nodes_in_group("Building"):
+			for b in get_tree().get_nodes_in_group("Building"):
 				b.on_day()
 			Globals.day_time = 0.0
 			Globals.selected_blueprint = null

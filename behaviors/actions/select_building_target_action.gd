@@ -3,7 +3,7 @@ extends ActionLeaf
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var buildings := get_tree().get_nodes_in_group("Building")
-	var enemy_buildings = buildings.filter(func(x): return x.team != actor.team)
+	var enemy_buildings = buildings.filter(func(x): return x.team != actor.team and x.is_targetable())
 	
 	if enemy_buildings.size() > 0:
 		var target

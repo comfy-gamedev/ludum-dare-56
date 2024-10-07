@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://boga5bbny5l4n"]
+
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_jdxvs"]
+[ext_resource type="SpriteFrames" uid="uid://bsgl0as645loj" path="res://objects/buildings/brambles/brambles_frames.tres" id="2_ulj4h"]
+
+[node name="BramblesHotbar" type="AnimatedSprite2D"]
+material = ExtResource("1_jdxvs")
+sprite_frames = ExtResource("2_ulj4h")
+autoplay = "default"

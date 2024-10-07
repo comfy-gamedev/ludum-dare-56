@@ -76,7 +76,6 @@ size = Vector2(8, 8)
 [node name="Snake" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_d76ug")
 max_health = 30.0
-movement_speed = 125
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_t0cm7")
