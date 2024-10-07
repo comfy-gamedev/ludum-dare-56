@@ -37,7 +37,7 @@ func _ready() -> void:
 ##
 ## [param stream]: the music stream to play.
 ## [param xfade]: crossfade duration in seconds.
-func music(stream: AudioStream, xfade: float = 1.0) -> void:
+func music(stream: AudioStream, volume: float = 1.0, xfade: float = 1.0) -> void:
 	if _player_music_front.playing and _player_music_front.stream == stream:
 		return
 	
@@ -57,14 +57,14 @@ func music(stream: AudioStream, xfade: float = 1.0) -> void:
 		
 		_music_xfade_tween = create_tween()
 		_music_xfade_tween.set_parallel(true)
-		_music_xfade_tween.tween_property(self, "_player_music_front_volume_linear", 1.0, xfade)
+		_music_xfade_tween.tween_property(self, "_player_music_front_volume_linear", volume, xfade)
 		_music_xfade_tween.tween_property(self, "_player_music_back_volume_linear", 0.0, xfade)
 		
 		await _music_xfade_tween.finished
 		
 		_music_xfade_tween = null
 	
-	_player_music_front_volume_linear = 1.0
+	_player_music_front_volume_linear = volume
 	_player_music_back_volume_linear = 0.0
 	
 	_player_music_back.playing = false
