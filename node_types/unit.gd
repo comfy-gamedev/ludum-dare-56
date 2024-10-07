@@ -1,6 +1,8 @@
 extends PhysicsBody2D
 class_name Unit
 
+const sfx = preload("res://assests/SFX/retro_mouse_critter_squeak_04.wav")
+
 @export var team = Enums.Team.BLUE: set = set_team
 @export var unit_type = "melee" # | "siege" | "ranged"
 @export var max_health := 50.0
@@ -57,6 +59,7 @@ func _update_collision_bits() -> void:
 
 func hit(damage_taken: float):
 	health -= damage_taken
+	MusicMan.sfx(sfx)
 	if health <= 0:
 		queue_free()
 

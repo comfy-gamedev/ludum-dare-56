@@ -8,6 +8,8 @@ const TEAM_MATERIALS = [
 	preload("res://materials/team_red.tres"),
 ]
 
+const sfx = preload("res://assests/SFX/retro_mouse_critter_squeak_04.wav")
+
 @export var team: Enums.Team = Enums.Team.BLUE: set = set_team
 @export var building_type: Enums.BuildingType = Enums.BuildingType.UNSPECIFIED
 
@@ -24,6 +26,8 @@ var detected_enemy_buildings: Array[Node2D] = []
 var detected_enemy_units: Array[Node2D] = []
 
 @onready var health := max_health
+
+@onready var audio_player : AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	_update_team_material()
@@ -51,6 +55,7 @@ func _update_collision_bits() -> void:
 
 func hit(damage_taken: float):
 	health -= damage_taken
+	MusicMan.sfx(sfx)
 	if health <= 0:
 		queue_free()
 
