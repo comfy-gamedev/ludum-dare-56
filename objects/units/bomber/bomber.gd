@@ -1,7 +1,6 @@
 extends Unit
 
 var bomb_explosion_scene = preload("res://objects/units/bomber/bomb_explosion.tscn")
-@onready var click_collision_shape_2d: CollisionShape2D = $ClickCollisionShape2D
 
 func besiege():
 	for n in 3:
