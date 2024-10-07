@@ -28,6 +28,8 @@ const BP_LEVELS = [
 
 var blueprint_preview: Node2D = null
 
+var red_castle: Node
+
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
 @onready var night_effect: ColorRect = $EffectsCanvasLayer/NightEffect
 @onready var grid_manager = $GridManager
@@ -103,7 +105,7 @@ func _ready() -> void:
 	add_child(blue_castle)
 	grid_manager.place_building(blue_castle.position, Vector2i(2, 2), blue_castle, Enums.Team.BLUE)
 
-	var red_castle = CASTLE.instantiate()
+	red_castle = CASTLE.instantiate()
 	red_castle.team = Enums.Team.RED
 	red_castle.position = red_castle_position - grid_manager.CELL_SIZE / 2.0
 	red_castle.bp_size = Vector2i(2, 2)
@@ -150,8 +152,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			Globals.selected_blueprint = null
 	if OS.has_feature("debug"):
 		if event.is_action_pressed("debug_2"):
-			SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
-			Globals.phase = Enums.Phase.STANDBY
+			red_castle.queue_free()
+			await get_tree().process_frame
+			Globals.phase = Enums.Phase.BUILD
 
 func _on_globals_selected_blueprint_changed() -> void:
 	if is_instance_valid(blueprint_preview):

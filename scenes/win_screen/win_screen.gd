@@ -1,18 +1,14 @@
-extends Node2D
+extends Control
+
+@onready var mesh_instance_3d: MeshInstance3D = $Node3D/MeshInstance3D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	mesh_instance_3d.material_override.uv1_offset.y -= delta * 0.05
 
 
 func _on_button_pressed() -> void:
-	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
+	SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
 
 
 func _on_button_2_pressed() -> void:

@@ -1,46 +1,158 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf44e83jh5ng4"]
+[gd_scene load_steps=19 format=3 uid="uid://cf44e83jh5ng4"]
 
-[ext_resource type="Texture2D" uid="uid://c4838mobnf774" path="res://scenes/win_screen/won.png" id="1_75y5c"]
+[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_fh865"]
 [ext_resource type="Script" path="res://scenes/win_screen/win_screen.gd" id="1_i7s50"]
+[ext_resource type="Shader" path="res://materials/expensive_palette_swap.gdshader" id="3_p37em"]
 [ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="3_se08j"]
+[ext_resource type="PackedScene" uid="uid://bt8p4a8oaj6cp" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="3_t3rq1"]
+[ext_resource type="Texture2D" uid="uid://bvt4rkp8euckn" path="res://palette_night.png" id="4_la8ut"]
+[ext_resource type="Texture2D" uid="uid://b5jl3r10ypjqm" path="res://palette_night_transition2.png" id="5_5yhsq"]
+[ext_resource type="Texture2D" uid="uid://d0gdncj3ujd12" path="res://palette_night_transition.png" id="6_pyb3y"]
+[ext_resource type="Texture2D" uid="uid://bgrp5vhsqt8cu" path="res://palette.png" id="7_um10a"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="8_kl7jn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rlvsa"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4u6ct"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_rlvsa")
+uv1_scale = Vector3(0.5, 1, 1)
+uv1_offset = Vector3(0.265, -1.965, 0)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_kiklx"]
+size = Vector2(5.68, 6.4)
+
+[sub_resource type="Environment" id="Environment_cdtpj"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3wn8"]
+shader = ExtResource("3_p37em")
+shader_parameter/lower_bound = 0.0
+shader_parameter/output_palettes = Array[Texture2D]([ExtResource("4_la8ut"), ExtResource("5_5yhsq"), ExtResource("6_pyb3y"), ExtResource("7_um10a")])
+
+[sub_resource type="Gradient" id="Gradient_2w26q"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1k1g"]
+gradient = SubResource("Gradient_2w26q")
+fill_to = Vector2(0, 1)
 
 [sub_resource type="Curve" id="Curve_l4lqs"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.133588, 0.849057), 0.0, 0.0, 0, 0, Vector2(0.263359, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="WinScreen" type="Node2D"]
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fh865")
 script = ExtResource("1_i7s50")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(284, 160)
-texture = ExtResource("1_75y5c")
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.866025, -0.5, 0, 0.404509, 0.700629, 0.587785, -0.293893, -0.509037, 0.809017, 0.135, 1.36, -0.48)
+material_override = SubResource("StandardMaterial3D_4u6ct")
+mesh = SubResource("QuadMesh_kiklx")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.509)
+environment = SubResource("Environment_cdtpj")
+
+[node name="EffectsCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="NightEffect" type="ColorRect" parent="EffectsCanvasLayer"]
+material = SubResource("ShaderMaterial_a3wn8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_kl7jn")
+lightmap = SubResource("GradientTexture2D_x1k1g")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(568, 320)
+
+[node name="BackgroundCanvasLayer" parent="SubViewport" instance=ExtResource("3_t3rq1")]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 66.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 26.0
-text = "Oh hey, you won"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = 30.0
+offset_right = 180.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 76
+text = "Congratulations!"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 338.0
-offset_top = 199.0
-offset_right = 476.0
-offset_bottom = 223.0
-text = "Battles: 10 probably"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -25.5
+offset_right = 251.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 38
+text = "You conquered the lands!
+Your little guys reign supreme!"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-offset_left = 183.0
-offset_top = 218.0
-offset_right = 313.0
-offset_bottom = 250.0
-text = "Continue"
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -85.0
+offset_right = 75.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 198.0
-offset_top = 268.0
-offset_right = 308.0
-offset_bottom = 300.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "Keep Going!"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
 text = "Main Menu"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -156,5 +268,5 @@ linear_accel_max = -50.0
 scale_amount_curve = SubResource("Curve_l4lqs")
 color = Color(0, 1, 0, 1)
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
