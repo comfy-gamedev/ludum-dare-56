@@ -1,10 +1,132 @@
-[gd_scene load_steps=3 format=3 uid="uid://kyc5x2g5hal0"]
+[gd_scene load_steps=20 format=3 uid="uid://kyc5x2g5hal0"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_74cr7"]
-[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_xttuf"]
+[ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_1pidl"]
 
-[node name="ShotgunHotbar" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbrkp"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2d2f"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64l0r"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m73ad"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uul2"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xuuu"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geoth"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75j6n"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76tlp"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6twqe"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbdql"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwlay"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlkjm"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02skp"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fxif"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7n0u"]
+atlas = ExtResource("2_1pidl")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyook"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbrkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2d2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64l0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m73ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uul2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xuuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geoth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75j6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76tlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6twqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbdql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwlay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlkjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02skp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fxif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7n0u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ShotgunHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_74cr7")
-texture = ExtResource("2_xttuf")
+sprite_frames = SubResource("SpriteFrames_wyook")
+autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)

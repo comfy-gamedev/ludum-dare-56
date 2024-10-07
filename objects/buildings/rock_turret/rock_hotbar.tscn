@@ -1,8 +1,128 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkvr5umf3aray"]
+[gd_scene load_steps=30 format=3 uid="uid://dkvr5umf3aray"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_7kirx"]
-[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_5jxet"]
+[ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_0xtkr"]
 [ext_resource type="Texture2D" uid="uid://b81secgbpnx6o" path="res://objects/buildings/rock_turret/turret_boulder.png" id="3_jsnr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi4fb"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l43ch"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogtvq"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08dwu"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7j3i"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lr7m"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq8fd"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsaku"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xcfk"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25f6n"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5ffa"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llkbx"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv48j"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovfxu"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh7gi"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkwv6"]
+atlas = ExtResource("2_0xtkr")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eyt02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi4fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l43ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogtvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08dwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7j3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lr7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq8fd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsaku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xcfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25f6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5ffa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llkbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv48j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovfxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh7gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkwv6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpytg"]
 atlas = ExtResource("3_jsnr5")
@@ -68,10 +188,12 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="RockHotbar" type="Sprite2D"]
+[node name="RockHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_7kirx")
-texture = ExtResource("2_5jxet")
+sprite_frames = SubResource("SpriteFrames_eyt02")
+autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_w8rsw")
 autoplay = "default"
