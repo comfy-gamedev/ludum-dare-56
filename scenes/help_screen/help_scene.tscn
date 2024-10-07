@@ -15,18 +15,27 @@ theme_override_constants/separation = 40
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "HELP"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+text = "How to Play"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/font_size = 28
-text = "Goal: Kill ten different enemy castles
+text = "Defeat 10 enemy goblin strongholds to become the biggest little guy!
 
-How To Play: Select a building on your hotbar, place it by your castle, and pay its cost in mana
+Spend mana to place buildings during the night and watch your forces fight during the day! Defeating a stronghold within 10 round lets you select a new building or upgrade and continue the fight onward!
 
-Tips: Keep a balance of turrets and spawners"
+Try to keep a balance between defensive fortifications and aggressive unit spawners!"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
