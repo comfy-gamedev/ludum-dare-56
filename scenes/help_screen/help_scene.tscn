@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://h6dkd6aqquax"]
+[gd_scene load_steps=13 format=3 uid="uid://h6dkd6aqquax"]
 
+[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_a5xqm"]
 [ext_resource type="Script" path="res://scenes/help_screen/help_scene.gd" id="1_cgh5u"]
 [ext_resource type="PackedScene" uid="uid://bt8p4a8oaj6cp" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="2_0t4tw"]
 [ext_resource type="Shader" path="res://materials/expensive_palette_swap.gdshader" id="3_b4muj"]
@@ -23,7 +24,14 @@ shader_parameter/lower_bound = 0.0
 shader_parameter/output_palettes = Array[Texture2D]([ExtResource("4_kea3k"), ExtResource("5_6qipb"), ExtResource("6_gcvuq"), ExtResource("7_xgdbr")])
 shader_parameter/lightmap = SubResource("GradientTexture2D_2kkpp")
 
-[node name="HelpScene" type="Node2D"]
+[node name="HelpScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a5xqm")
 script = ExtResource("1_cgh5u")
 
 [node name="BackgroundCanvasLayer" parent="." instance=ExtResource("2_0t4tw")]
@@ -58,6 +66,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 38
 text = "How to Play"
 horizontal_alignment = 1
 
@@ -68,7 +77,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 3
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 19
 text = "Defeat 10 enemy goblin strongholds to become the biggest little guy!
 
 Spend mana to place buildings during the night and watch your forces fight during the day! Defeating a stronghold within 10 round lets you select a new building or upgrade and continue the fight onward!
@@ -77,8 +86,12 @@ Try to keep a balance between defensive fortifications and aggressive unit spawn
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(120, 20)
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/Button" to="." method="_on_button_pressed"]

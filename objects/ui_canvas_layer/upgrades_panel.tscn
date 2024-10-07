@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cfdr3q2h3sx5t" path="res://objects/ui_canvas_layer/window1.png" id="1_5mrpr"]
 [ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_yw8gc"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrades_panel.gd" id="2_6putl"]
-[ext_resource type="PackedScene" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
+[ext_resource type="PackedScene" uid="uid://c2d6jckjqmfhs" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
 [ext_resource type="Texture2D" uid="uid://ddeilepg346ni" path="res://objects/ui_canvas_layer/arrow.png" id="5_in80y"]
 [ext_resource type="PackedScene" uid="uid://cxuqj4y61ir8x" path="res://objects/crown_gauge/crown_gauge.tscn" id="6_5hl4i"]
 
@@ -13,9 +13,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -129.0
+offset_left = -162.0
 offset_top = -99.0
-offset_right = 130.0
+offset_right = 163.0
 offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -28,16 +28,40 @@ patch_margin_bottom = 4
 script = ExtResource("2_6putl")
 metadata/_edit_vertical_guides_ = [-56.0]
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 4.0
-offset_bottom = 31.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = 1.0
+offset_right = 52.0
+offset_bottom = 41.0
 grow_horizontal = 2
-text = "VICTORY!
-Choose an upgrade!"
+alignment = 1
+
+[node name="VictoryLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "VICTORY!"
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Choose an upgrade!"
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_top = 19.0
+offset_right = -4.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "(X more)"
+horizontal_alignment = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -72,13 +96,14 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
+offset_left = 61.0
 offset_top = -79.0
-offset_right = -8.0
+offset_right = -61.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 autowrap_mode = 2
+visible_characters_behavior = 1
 
 [node name="Sorry" type="Label" parent="."]
 visible = false
@@ -118,9 +143,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -123.5
-offset_right = 142.0
+offset_left = -176.5
+offset_top = -110.5
+offset_right = 176.5
 offset_bottom = 122.5
 grow_horizontal = 2
 grow_vertical = 2
