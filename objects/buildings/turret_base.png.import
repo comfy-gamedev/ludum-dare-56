@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://ckfn56kjbbse1"
+path="res://.godot/imported/turret_base.png-800d789d718f88e7f770a0e923d2dc7b.res"
+
+[deps]
+
+source_file="res://objects/buildings/turret_base.png"
+dest_files=["res://.godot/imported/turret_base.png-800d789d718f88e7f770a0e923d2dc7b.res"]
+
+[params]
+
+palette_image="res://palette.png"

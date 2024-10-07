@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daxdi4j8sr73q"
-path="res://.godot/imported/turret_base_guideless.png-89eed915dbde0becc52f97740f769404.ctex"
+uid="uid://bycvawnm7a2f2"
+path="res://.godot/imported/turret_tesla.png-f3b22f968cb67434d858e68d5eb63cfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/turret_base_guideless.png"
-dest_files=["res://.godot/imported/turret_base_guideless.png-89eed915dbde0becc52f97740f769404.ctex"]
+source_file="res://assests/turret_tesla.png"
+dest_files=["res://.godot/imported/turret_tesla.png-f3b22f968cb67434d858e68d5eb63cfa.ctex"]
 
 [params]
 

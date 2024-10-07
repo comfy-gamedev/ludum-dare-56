@@ -1,10 +1,132 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmt3v01oym0d7"]
+[gd_scene load_steps=20 format=3 uid="uid://bmt3v01oym0d7"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_v6m8x"]
-[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_uksh6"]
+[ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_qjgnu"]
 
-[node name="TeslaHotbar" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujxnx"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay4il"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hqhe"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb4t5"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gpkh"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fysvq"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e3fl"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nbdf"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6iq6"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqlo7"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id5xx"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6rew"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhpbn"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q45ig"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb02u"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq17a"]
+atlas = ExtResource("2_qjgnu")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k7hpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujxnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay4il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hqhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb4t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gpkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fysvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e3fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nbdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6iq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqlo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id5xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6rew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhpbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q45ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb02u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq17a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="TeslaHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_v6m8x")
-texture = ExtResource("2_uksh6")
+sprite_frames = SubResource("SpriteFrames_k7hpc")
+autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)

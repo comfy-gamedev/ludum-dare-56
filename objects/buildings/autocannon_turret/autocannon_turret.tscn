@@ -1,10 +1,130 @@
-[gd_scene load_steps=8 format=3 uid="uid://6yp0y823pq1k"]
+[gd_scene load_steps=25 format=3 uid="uid://6yp0y823pq1k"]
 
 [ext_resource type="Script" path="res://objects/buildings/autocannon_turret/autocannon_turret.gd" id="1_vsm5t"]
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_lvcvf"]
-[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="3_1xjvt"]
+[ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="3_7pjqa"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="4_f748i"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_beh4c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vktce"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mh2m"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj0v4"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfd5q"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg07y"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uohd8"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc801"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbs2f"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb1r5"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c7wv"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ax4p"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qnut"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8igg5"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfo1k"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk5gg"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqwms"]
+atlas = ExtResource("3_7pjqa")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ge1wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vktce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mh2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj0v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfd5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg07y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uohd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc801")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbs2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb1r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c7wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ax4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qnut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8igg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfo1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk5gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqwms")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -15,14 +135,17 @@ size = Vector2(16, 16)
 
 [node name="AutocannonTurret" type="StaticBody2D" groups=["Building"]]
 script = ExtResource("1_vsm5t")
+damage = 6
 building_type = 2
 reach = 100
 
-[node name="Base" type="Sprite2D" parent="."]
+[node name="Base" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_lvcvf")
-texture = ExtResource("3_1xjvt")
+sprite_frames = SubResource("SpriteFrames_ge1wn")
+autoplay = "default"
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.125

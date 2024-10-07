@@ -1,10 +1,131 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfy0wu4jkyynk"]
+[gd_scene load_steps=20 format=3 uid="uid://dfy0wu4jkyynk"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_rvnls"]
-[ext_resource type="Texture2D" uid="uid://c0fwkkdoghnm6" path="res://objects/buildings/friendly_turret_base.png" id="2_q7h75"]
+[ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_3uakm"]
 
-[node name="RepairerHotbar" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ots2q"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jdqd"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpjlf"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33qbh"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxtr4"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4a54"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1cjj"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbf25"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnrov"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dmqw"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8nir"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvuvg"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p53x"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mops3"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv25q"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiasb"]
+atlas = ExtResource("2_3uakm")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aukyw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ots2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jdqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpjlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33qbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxtr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4a54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1cjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbf25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnrov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dmqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8nir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvuvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p53x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mops3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv25q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiasb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="RepairerHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_rvnls")
-texture = ExtResource("2_q7h75")
+sprite_frames = SubResource("SpriteFrames_aukyw")
+autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
