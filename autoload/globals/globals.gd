@@ -20,10 +20,11 @@ signal selected_blueprint_changed()
 var selected_blueprint: Blueprint = null:
 	set(v): selected_blueprint = v; changed.emit(); selected_blueprint_changed.emit()
 
+signal blue_money_changed()
 var blue_starting_mana: int = 0
 var blue_income: int = 4
 var blue_money: int = 0:
-	set(v): blue_money = v; changed.emit()
+	set(v): blue_money = v; changed.emit(); blue_money_changed.emit()
 
 var red_starting_mana: int = 0
 var red_income: int = 5
@@ -33,6 +34,14 @@ var red_money: int = 0:
 signal phase_changed()
 var phase: Enums.Phase = Enums.Phase.STANDBY:
 	set(v): phase = v; changed.emit(); phase_changed.emit()
+
+signal rounds_changed()
+var rounds: int = 1:
+	set(v): rounds = v; changed.emit(); rounds_changed.emit()
+
+signal battles_changed()
+var battles: int = 0:
+	set(v): battles = v; changed.emit(); battles_changed.emit()
 
 var cpu_acting: bool = false:
 	set(v): cpu_acting = v; changed.emit()

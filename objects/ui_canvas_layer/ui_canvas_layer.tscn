@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bocnscn2kxeon"]
+[gd_scene load_steps=15 format=3 uid="uid://bocnscn2kxeon"]
 
 [ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_p3r35"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/ui_canvas_layer.gd" id="1_r1tpp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/clock.gd" id="5_a6p7n"]
 [ext_resource type="Texture2D" uid="uid://cvpdalfh22x7a" path="res://objects/ui_canvas_layer/clock.png" id="7_0jdgk"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/mana_label.gd" id="8_6u28w"]
+[ext_resource type="Script" path="res://objects/ui_canvas_layer/round_label.gd" id="10_e2a1g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvwse"]
 atlas = ExtResource("4_jxjrt")
@@ -195,6 +196,16 @@ offset_bottom = 310.0
 theme_override_font_sizes/font_size = 28
 text = "Mana : 0"
 script = ExtResource("8_6u28w")
+
+[node name="RoundLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 12.0
+offset_right = 109.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 28
+text = "Round : 0"
+script = ExtResource("10_e2a1g")
 
 [node name="FFButton" type="Button" parent="Control"]
 visible = false

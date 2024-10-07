@@ -182,7 +182,12 @@ func _on_globals_phase_changed() -> void:
 			if !castles.any(func(x): return x.team == Enums.Team.RED):
 				SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
+				Globals.rounds = 1
 			elif !castles.any(func(x): return x.team == Enums.Team.BLUE):
+				SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
+				Globals.phase = Enums.Phase.STANDBY
+			
+			if Globals.rounds >= 10:
 				SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
 			
@@ -191,3 +196,4 @@ func _on_globals_phase_changed() -> void:
 				b.on_day()
 			Globals.day_time = 0.0
 			Globals.selected_blueprint = null
+			Globals.rounds += 1
