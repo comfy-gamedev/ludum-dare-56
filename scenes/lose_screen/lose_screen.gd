@@ -11,7 +11,8 @@ func _process(delta: float) -> void:
 
 func _on_restart_button_pressed() -> void:
 	Globals.reset()
-	SceneGirl.change_scene("res://scenes/main_gameplay/main_gameplay.tscn")
+	Globals.upgrades_queued = [Enums.Upgrades.STARTER, Enums.Upgrades.FORTIFICATIONS, Enums.Upgrades.BLUEPRINTS]
+	SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
 
 
 func _on_mm_button_pressed() -> void:
