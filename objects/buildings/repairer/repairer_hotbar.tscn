@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfy0wu4jkyynk"]
+[gd_scene load_steps=30 format=3 uid="uid://dfy0wu4jkyynk"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_rvnls"]
 [ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="2_3uakm"]
+[ext_resource type="Texture2D" uid="uid://dcdtvma5neqrp" path="res://objects/buildings/repairer/turret_heal.png" id="3_u8sg3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ots2q"]
 atlas = ExtResource("2_3uakm")
@@ -123,9 +124,76 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_katak"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrxxb"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygk4s"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms5qs"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og13k"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twk4x"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7jme"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx6u2"]
+atlas = ExtResource("3_u8sg3")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c0l5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_katak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrxxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygk4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms5qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og13k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twk4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7jme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx6u2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="RepairerHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_rvnls")
 sprite_frames = SubResource("SpriteFrames_aukyw")
 autoplay = "default"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_c0l5s")
+autoplay = "default"
