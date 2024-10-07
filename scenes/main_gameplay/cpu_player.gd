@@ -41,14 +41,46 @@ func _try_place_building() -> bool:
 
 func _try_construct_blueprint(bp: Blueprint) -> bool:
 	var cells = grid.get_available_cells(team)
-	cells.shuffle()
+	#cells.shuffle()
 	
 	var chosen_cell = null
 	
-	for c in cells:
-		if grid.can_place_building(c, bp.size, team):
-			chosen_cell = c
-			break
+	#Vector2(472, 88)
+	cells.sort_custom(func(a, b): 
+		var weighted_a = 0
+		var weighted_b = 0
+		if bp.category == Enums.BlueprintCategory.TURRET || bp.category == Enums.BlueprintCategory.FORTIFICATION:
+			weighted_a -= (a / 16).x
+			weighted_a += (a / 16).y / 2
+			weighted_b -= (b / 16).x
+			weighted_b += (b / 16).y / 2
+		else:
+			weighted_a += (a / 16).x
+			weighted_a -= (a / 16).y / 2
+			weighted_b += (b / 16).x
+			weighted_b -= (b / 16).y / 2
+		
+		weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(1, 0) * 16), Vector2i(1, 1), team) else 0
+		weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(-1, 0) * 16), Vector2i(1, 1), team) else 0
+		weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(0, 1) * 16), Vector2i(1, 1), team) else 0
+		weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(0, -1) * 16), Vector2i(1, 1), team) else 0
+		
+		weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(1, 0) * 16), Vector2i(1, 1), team) else 0
+		weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(-1, 0) * 16), Vector2i(1, 1), team) else 0
+		weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(0, 1) * 16), Vector2i(1, 1), team) else 0
+		weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(0, -1) * 16), Vector2i(1, 1), team) else 0
+		
+		return weighted_a > weighted_b
+	)
+	
+	#chosen_cell = cells[0] #OPTIMAL
+	
+	var rng = RandomNumberGenerator.new()
+	var weights = []
+	for i in range(cells.size()):
+		weights.append(pow(i, params.organization + 1))
+
+	chosen_cell = cells[rng.rand_weighted(weights)]
 	
 	if chosen_cell == null:
 		return false
