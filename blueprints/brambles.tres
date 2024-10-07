@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://bl8u17jrupgwy"]
+
+[ext_resource type="PackedScene" uid="uid://boga5bbny5l4n" path="res://objects/buildings/brambles/brambles_hotbar.tscn" id="1_k312r"]
+[ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_8efqf"]
+[ext_resource type="PackedScene" uid="uid://7j0txm0hwsys" path="res://objects/buildings/brambles/brambles.tscn" id="3_yobyl"]
+
+[resource]
+script = ExtResource("2_8efqf")
+category = 1
+name = "Brambles"
+description = "Pretty flowers (❁´◡`❁)"
+size = Vector2i(1, 1)
+spawned_scene = ExtResource("3_yobyl")
+hotbar_scene = ExtResource("1_k312r")
+cost = 1

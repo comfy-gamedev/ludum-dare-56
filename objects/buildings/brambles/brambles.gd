@@ -1,5 +1,4 @@
-class_name Building
-extends PhysicsBody2D
+extends Area2D
 
 const NIGHT_LIGHT = preload("res://objects/night_light/night_light.tscn")
 
@@ -16,14 +15,12 @@ const TEAM_MATERIALS = [
 
 var bp_size: Vector2i = Vector2i(1, 1) # set by blueprint
 
-var detection_area: Area2D
+var detection_area: Area2D = self
 
-var detected_friendly_buildings: Array[Node2D] = []
-var detected_friendly_units: Array[Node2D] = []
-var detected_enemy_buildings: Array[Node2D] = []
 var detected_enemy_units: Array[Node2D] = []
 
 @onready var health := max_health
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	_update_team_material()
@@ -40,14 +37,21 @@ func _ready() -> void:
 	if light.sub_viewport == null:
 		light.queue_free()
 	
+	body_entered.connect(_on_detection_area_body_entered)
+	body_exited.connect(_on_detection_area_body_exited)
+
+func _physics_process(delta: float) -> void:
+	for e in detected_enemy_units:
+		e.slowed = true
+		hit(1)
 
 func _update_collision_bits() -> void:
 	if team == Enums.Team.BLUE:
-		collision_layer = 0b00010
-		collision_mask =  0b10100
+		collision_layer = 0b00000
+		collision_mask =  0b10000
 	elif team == Enums.Team.RED:
-		collision_layer = 0b00100
-		collision_mask =  0b01010
+		collision_layer = 0b00000
+		collision_mask =  0b01000
 
 func hit(damage_taken: float):
 	health -= damage_taken
@@ -55,7 +59,7 @@ func hit(damage_taken: float):
 		queue_free()
 
 func is_targetable() -> bool:
-	return true
+	return false
 
 func get_target_point(global_from: Vector2) -> Vector2:
 	var rec = Rect2(
@@ -70,9 +74,6 @@ func set_reach(v: float) -> void:
 
 func on_night() -> void:
 	process_mode = PROCESS_MODE_DISABLED
-	detected_friendly_buildings = []
-	detected_friendly_units = []
-	detected_enemy_buildings = []
 	detected_enemy_units = []
 
 func on_day() -> void:
@@ -89,10 +90,6 @@ func set_team(v: Enums.Team) -> void:
 		_update_team_material()
 	_update_collision_bits()
 
-func get_closest_enemy_unit() -> Node2D:
-	detected_enemy_units.sort_custom(func (a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
-	return detected_enemy_units[0] if detected_enemy_units else null
-
 func _update_team_material():
 	var sprites = (
 		find_children("*", "Sprite2D", true, true) +
@@ -103,47 +100,14 @@ func _update_team_material():
 			sprite.material = TEAM_MATERIALS[team]
 
 func _update_reach() -> void:
-	if reach == 0.0:
-		if is_instance_valid(detection_area):
-			detection_area.queue_free()
-			detection_area = null
-		detected_friendly_buildings = []
-		detected_friendly_units = []
-		detected_enemy_buildings = []
-		detected_enemy_units = []
-	else:
-		if not is_instance_valid(detection_area):
-			detection_area = Area2D.new()
-			var shape = CollisionShape2D.new()
-			shape.shape = CircleShape2D.new()
-			detection_area.add_child(shape)
-			detection_area.collision_layer = 1
-			detection_area.collision_mask = 0b11110
-			detection_area.body_entered.connect(_on_detection_area_body_entered)
-			detection_area.body_exited.connect(_on_detection_area_body_exited)
-			add_child(detection_area, false, Node.INTERNAL_MODE_BACK)
-		detection_area.get_child(0).shape.radius = reach
+	collision_shape_2d.shape.radius = reach
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Building"):
-		if body.team != team:
-			detected_enemy_buildings.append(body)
-		else:
-			detected_friendly_buildings.append(body)
-	elif body.is_in_group("Unit"):
+	if body.is_in_group("Unit"):
 		if body.team != team:
 			detected_enemy_units.append(body)
-		else:
-			detected_friendly_units.append(body)
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Building"):
-		if body.team != team:
-			detected_enemy_buildings.erase(body)
-		else:
-			detected_friendly_buildings.erase(body)
-	elif body.is_in_group("Unit"):
+	if body.is_in_group("Unit"):
 		if body.team != team:
 			detected_enemy_units.erase(body)
-		else:
-			detected_friendly_units.erase(body)

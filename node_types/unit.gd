@@ -5,7 +5,7 @@ class_name Unit
 @export var unit_type = "melee" # | "siege" | "ranged"
 @export var max_health := 50.0
 @export var attack_points = 10
-@export var movement_speed = 75
+@export var movement_speed = 75.0: get = get_movement_speed
 
 @onready var health := max_health
 
@@ -16,7 +16,12 @@ class_name Unit
 
 var push_area: Area2D
 
+var slowed: bool = false
+
 @export var push_shape = preload("res://assests/push_shape.tres")
+
+func get_movement_speed() -> float:
+	return movement_speed * 0.5 if slowed else movement_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,6 +43,9 @@ func _physics_process(delta: float) -> void:
 		var v = global_position - b.global_position
 		if not v.is_zero_approx():
 			global_position += v.normalized() * (2.0 / v.length())
+	(func ():
+		slowed = false
+	).call_deferred()
 
 func _update_collision_bits() -> void:
 	if team == Enums.Team.BLUE:
