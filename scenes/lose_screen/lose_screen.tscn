@@ -31,19 +31,18 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Gradient" id="Gradient_38snp"]
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6usce"]
-gradient = SubResource("Gradient_38snp")
-width = 2
-height = 2
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_brnti"]
 shader = ExtResource("3_oji0i")
 shader_parameter/lower_bound = 0.0
 shader_parameter/output_palettes = Array[Texture2D]([ExtResource("4_aygpc"), ExtResource("5_llgih"), ExtResource("6_4u4du"), ExtResource("7_b4lty")])
-shader_parameter/lightmap = SubResource("GradientTexture2D_6usce")
+
+[sub_resource type="Gradient" id="Gradient_kb8lo"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6usce"]
+gradient = SubResource("Gradient_kb8lo")
+width = 2
+height = 2
 
 [node name="LoseScreen" type="Control"]
 layout_mode = 3
