@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs46v42adj8ib"]
+[gd_scene load_steps=7 format=3 uid="uid://cs46v42adj8ib"]
 
 [ext_resource type="Texture2D" uid="uid://dg0nis1w8xci5" path="res://assests/bomb_explosion.png" id="1_ny00r"]
+[ext_resource type="Script" path="res://objects/units/bomber/bomb_explosion.gd" id="2_h5c0g"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_burmj"]
 particles_animation = true
@@ -16,6 +17,9 @@ point_count = 3
 _data = [Vector2(0.0041841, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.554111, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4q1a"]
+radius = 30.0167
+
 [node name="bomb_explosion" type="CPUParticles2D"]
 z_index = 100
 material = SubResource("CanvasItemMaterial_burmj")
@@ -29,6 +33,12 @@ anim_speed_min = 2.0
 anim_speed_max = 5.0
 anim_speed_curve = SubResource("Curve_ymjkd")
 anim_offset_curve = SubResource("Curve_h4bgn")
+script = ExtResource("2_h5c0g")
+
+[node name="bomb_explosion_radius_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bomb_explosion_radius_area"]
+shape = SubResource("CircleShape2D_f4q1a")
 
 [node name="particle_shutoff" type="Timer" parent="."]
 wait_time = 0.5
