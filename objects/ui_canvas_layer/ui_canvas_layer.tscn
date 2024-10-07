@@ -319,7 +319,7 @@ horizontal_alignment = 2
 position = Vector2(11, 9)
 sprite_frames = SubResource("SpriteFrames_odsgn")
 autoplay = "default"
-frame_progress = 0.0840287
+frame_progress = 0.841745
 
 [node name="RoundLabel" type="Label" parent="Control"]
 layout_mode = 0

@@ -55,8 +55,8 @@ func _update_collision_bits() -> void:
 
 func hit(damage_taken: float):
 	health -= damage_taken
-	MusicMan.sfx(sfx)
 	if health <= 0:
+		MusicMan.sfx(preload("res://assests/SFX/destroy-building.wav"), "destroy")
 		queue_free()
 
 func is_targetable() -> bool:
