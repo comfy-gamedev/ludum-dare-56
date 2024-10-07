@@ -82,7 +82,7 @@ movement_speed = 125
 script = ExtResource("2_t0cm7")
 
 [node name="AntipersonelUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_ly4ob")]
-blackboard = NodePath("@Node@17501")
+blackboard = NodePath("@Node@17499")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("4_ebccs")

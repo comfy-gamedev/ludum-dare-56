@@ -44,7 +44,7 @@ func _ready() -> void:
 
 ## Reset all variables to their default state.
 func reset():
-	player_hotbar = [preload("res://blueprints/goblin_cage.tres"), preload("res://blueprints/rock_turret.tres"), null, null, null, null]
+	player_hotbar = [preload("res://blueprints/goblin_spawner.tres"), preload("res://blueprints/rock_turret.tres"), null, null, null, null]
 	selected_blueprint = null
 	blue_income = 4
 	blue_money = 0

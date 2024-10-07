@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4e325pps7cus"]
+[gd_scene load_steps=6 format=3 uid="uid://cii1uuggvrxa0"]
 
 [ext_resource type="Texture2D" uid="uid://cfdr3q2h3sx5t" path="res://objects/ui_canvas_layer/window1.png" id="1_5mrpr"]
 [ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_yw8gc"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrades_panel.gd" id="2_6putl"]
-[ext_resource type="PackedScene" uid="uid://caicum2oeyiqg" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
+[ext_resource type="PackedScene" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
 [ext_resource type="Texture2D" uid="uid://ddeilepg346ni" path="res://objects/ui_canvas_layer/arrow.png" id="5_in80y"]
 
 [node name="UpgradesPanel" type="NinePatchRect"]

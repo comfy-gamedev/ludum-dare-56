@@ -39,6 +39,9 @@ func _ready() -> void:
 		p.chosen.connect(_on_panel_chosen.bind(p))
 		p.mouse_entered.connect(_on_panel_mouse_entered.bind(p))
 	
+	_reroll()
+
+func _reroll() -> void:
 	var possible_upgrades = []
 	for bp in BLUEPRINTS:
 		var found = false
@@ -57,13 +60,17 @@ func _ready() -> void:
 	possible_upgrades.shuffle()
 	
 	for i in panels.size():
+		panels[i].show()
 		if possible_upgrades.size() <= i:
-			panels[i].queue_free()
+			panels[i].hide()
 			continue
 		panels[i].upgrade = possible_upgrades[i]
 	if not possible_upgrades:
 		sorry.show()
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_3"):
+		_reroll()
 
 func _on_panel_chosen(panel: Node) -> void:
 	if await panel.upgrade.try_apply(ui_canvas_layer):
