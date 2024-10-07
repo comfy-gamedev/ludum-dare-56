@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cii1uuggvrxa0"]
+[gd_scene load_steps=7 format=3 uid="uid://dt185l0r0p3ff"]
 
 [ext_resource type="Texture2D" uid="uid://cfdr3q2h3sx5t" path="res://objects/ui_canvas_layer/window1.png" id="1_5mrpr"]
 [ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_yw8gc"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrades_panel.gd" id="2_6putl"]
 [ext_resource type="PackedScene" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
 [ext_resource type="Texture2D" uid="uid://ddeilepg346ni" path="res://objects/ui_canvas_layer/arrow.png" id="5_in80y"]
+[ext_resource type="Texture2D" uid="uid://cetl7sh81tda" path="res://assests/stamps.png" id="6_3yngm"]
 
 [node name="UpgradesPanel" type="NinePatchRect"]
 anchors_preset = 8
@@ -170,6 +171,28 @@ offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Back"
+
+[node name="StampCounter" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 265.0
+offset_top = -61.0
+offset_right = 265.0
+offset_bottom = -61.0
+
+[node name="OrangeRect" type="ColorRect" parent="StampCounter"]
+offset_right = 148.0
+offset_bottom = 32.0
+color = Color(0.87451, 0.443137, 0.14902, 1)
+
+[node name="GreyRect" type="ColorRect" parent="StampCounter"]
+offset_right = 148.0
+offset_bottom = 32.0
+color = Color(0.34902, 0.337255, 0.321569, 1)
+
+[node name="Stamps" type="Sprite2D" parent="StampCounter"]
+position = Vector2(74, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("6_3yngm")
 
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="Overlay/CancelButton" to="." method="_on_cancel_button_pressed"]

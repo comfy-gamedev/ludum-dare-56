@@ -35,6 +35,8 @@ const BLUEPRINTS = [
 @onready var sorry: Label = $Sorry
 
 func _ready() -> void:
+	$StampCounter/GreyRect.position = Vector2(4 + (Globals.game_level * 14), 0)
+	
 	for p in panels:
 		p.chosen.connect(_on_panel_chosen.bind(p))
 		p.mouse_entered.connect(_on_panel_mouse_entered.bind(p))

@@ -199,5 +199,4 @@ func _on_globals_phase_changed() -> void:
 				b.on_day()
 			Globals.day_time = 0.0
 			Globals.selected_blueprint = null
-			print(Globals.rounds)
 			Globals.rounds += 1
