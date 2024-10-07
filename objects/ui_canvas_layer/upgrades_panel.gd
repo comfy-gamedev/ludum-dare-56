@@ -60,11 +60,23 @@ func _reroll() -> void:
 	possible_upgrades.shuffle()
 	possible_upgrades.resize(2)
 	
-	match randi_range(0,0):
-		0:
-			var u = UpgradePlayer.new()
-			u.kind = UpgradePlayer.Kind.values().pick_random()
-			possible_upgrades.append(u)
+	var extra_upgrades = []
+	
+	var u1 = UpgradePlayer.new()
+	u1.kind = UpgradePlayer.Kind.values().pick_random()
+	extra_upgrades.append(u1)
+	
+	var dcFound = false
+	for b in Globals.player_hotbar:
+		if b.cost > 1:
+			dcFound = true
+			break
+	if dcFound:
+		var u2 = UpgradeEnhancement.new()
+		u2.kind = UpgradeEnhancement.Kind.DISCOUNT
+		extra_upgrades.append(u2)
+	
+	possible_upgrades.append(extra_upgrades.pick_random())
 	
 	for i in panels.size():
 		panels[i].show()
