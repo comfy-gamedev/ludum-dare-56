@@ -31,11 +31,11 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Gradient" id="Gradient_38snp"]
+[sub_resource type="Gradient" id="Gradient_kb8lo"]
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6usce"]
-gradient = SubResource("Gradient_38snp")
+gradient = SubResource("Gradient_kb8lo")
 width = 2
 height = 2
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl3lrfam021ul"]
+[gd_scene load_steps=4 format=3 uid="uid://dl3lrfam021ul"]
 
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_te6vx"]
+[ext_resource type="PackedScene" uid="uid://bt8p4a8oaj6cp" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="2_8epkt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts50w"]
-bg_color = Color(0.196078, 0.235294, 0.223529, 1)
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MainMenu" type="PanelContainer"]
 anchors_preset = 15
@@ -18,6 +19,8 @@ script = ExtResource("1_te6vx")
 position = Vector2(284, 160)
 ignore_rotation = false
 
+[node name="BackgroundCanvasLayer" parent="." instance=ExtResource("2_8epkt")]
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
 
@@ -30,6 +33,10 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/Title"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/font_size = 72
 text = "Tiny Turf Tussle"
 
@@ -44,6 +51,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Start Game"
 
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/MenuButtonContainer"]
@@ -53,6 +62,8 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "How To Play"
 
 [node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer/MenuButtonContainer"]

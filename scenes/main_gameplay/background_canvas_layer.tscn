@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://bt8p4a8oaj6cp"]
+[gd_scene load_steps=11 format=4 uid="uid://bt8p4a8oaj6cp"]
 
 [ext_resource type="Texture2D" uid="uid://bcdsqkhk0tmyu" path="res://assests/grass_dirt_blockout_tileset.png" id="1_fu4i3"]
 [ext_resource type="Texture2D" uid="uid://c1t4vjpoq4nyb" path="res://assests/grass_dirt_tileset.png" id="2_hjoap"]
 [ext_resource type="Script" path="res://node_types/tile_map_dual.gd" id="3_j0dyi"]
+[ext_resource type="Texture2D" uid="uid://dysr2gclbri71" path="res://assests/deco_tiles.png" id="4_wr8gd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pm2j0"]
 texture = ExtResource("1_fu4i3")
@@ -48,6 +49,22 @@ texture = ExtResource("2_hjoap")
 [sub_resource type="TileSet" id="TileSet_rlh7o"]
 sources/0 = SubResource("TileSetAtlasSource_adjnh")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_onw6l"]
+texture = ExtResource("4_wr8gd")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rbbfs"]
+sources/0 = SubResource("TileSetAtlasSource_onw6l")
+
 [node name="BackgroundCanvasLayer" type="CanvasLayer"]
 layer = -1
 follow_viewport_enabled = true
@@ -62,3 +79,7 @@ tile_map_data = PackedByteArray("AAD/////AAABAAMAAAD//wAAAAABAAAAAAAAAP//AAADAAA
 tile_set = SubResource("TileSet_rlh7o")
 script = ExtResource("3_j0dyi")
 world_tilemap = NodePath("../TileMapLayer")
+
+[node name="DecalTileLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAGAAcAAAADAAAAAAAdABAAAAADAAAAAAATAA0AAAACAAAAAAABAAgAAAACAAAAAAAgAAIAAAACAAAAAAAeAAwAAAADAAEAAAAEABIAAAADAAEAAAACAAkAAAADAAEAAAAXAAwAAAABAAEAAAANAAsAAAABAAEAAAATAAAAAAABAAEAAAAJAAMAAAABAAEAAAAhABMAAAABAAEAAAAAABMAAAABAAEAAAAaABMAAAAAAAEAAAAOAAMAAAAAAAEAAAAAAAUAAAAAAAEAAAAiABAAAAAAAAEAAAARAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAWAAMAAAAAAAAAAAAhAAAAAAAAAAAAAAAUABEAAAAAAAAAAAAcAAsAAAAAAAIAAAABAA8AAAAAAAIAAAAIAAcAAAABAAIAAAAbAAIAAAABAAIAAAAZAAQAAAABAAIAAAAhAAUAAAAAAAIAAAANABEAAAABAAAAAAAVAAgAAAABAAAAAAAOAAkAAAABAAAAAAAMAAIAAAABAAAAAAAYABIAAAACAAEAAAALAAEAAAACAAEAAAAHABEAAAACAAAAAAAcAAEAAAACAAAAAAAeAAEAAAADAAAAAAARAAoAAAAAAAEAAAD//w8AAAAAAAEAAAAZAAoAAAADAAAAAAAaAAsAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_rbbfs")
