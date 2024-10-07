@@ -15,6 +15,7 @@ func _ready() -> void:
 	var hb = Globals.player_hotbar
 	hb[0] = preload("res://blueprints/goblin_spawner.tres")
 	hb[1] = preload("res://blueprints/rock_turret.tres")
+	hb[2] = preload("res://blueprints/bomber_spawner.tres")
 	Globals.player_hotbar = hb
 	Globals.blue_income = 3
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
