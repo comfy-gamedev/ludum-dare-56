@@ -75,7 +75,7 @@ func _select_hotbar(i: int) -> void:
 func _on_globals_selected_blueprint_changed() -> void:
 	hightlight.visible = Globals.selected_blueprint != null
 	var i = Globals.player_hotbar.find(Globals.selected_blueprint)
-	hightlight.position = Vector2(10 + 20 * i, 10)
+	hightlight.position = Vector2(10 + 18 * i, 10)
 
 func _on_globals_player_hotbar_changed() -> void:
 	_update_slots()
