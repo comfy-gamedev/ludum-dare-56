@@ -32,33 +32,11 @@ const BLUEPRINTS = [
 	%UpgradePanel3,
 ]
 
-@onready var crowns = [
-	$CrownGauge/CrownWidget1,
-	$CrownGauge/CrownWidget2,
-	$CrownGauge/CrownWidget3,
-	$CrownGauge/CrownWidget4,
-	$CrownGauge/CrownWidget5,
-	$CrownGauge/CrownWidget6,
-	$CrownGauge/CrownWidget7,
-	$CrownGauge/CrownWidget8,
-	$CrownGauge/CrownWidget9,
-	$CrownGauge/CrownWidget10,
-]
-
 @onready var overlay: ColorRect = $Overlay
 @onready var description: Label = $Description
 @onready var sorry: Label = $Sorry
-@onready var plus_label: Label = $CrownGauge/Label
 
 func _ready() -> void:
-	for i in range(min(Globals.game_level,10)):
-		crowns[i].active = true
-	
-	if Globals.game_level < 10:
-		plus_label.hide()
-	else:
-		plus_label.text = "+" + str(Globals.game_level - 10)
-	
 	for p in panels:
 		p.chosen.connect(_on_panel_chosen.bind(p))
 		p.mouse_entered.connect(_on_panel_mouse_entered.bind(p))

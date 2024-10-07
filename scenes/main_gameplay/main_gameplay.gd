@@ -39,8 +39,6 @@ func _ready() -> void:
 	
 	# Player Setup
 	
-	Globals.blue_money = Globals.blue_starting_mana
-	
 	# Enemy Setup
 	
 	Globals.red_money = 0
@@ -80,16 +78,22 @@ func _ready() -> void:
 			Enums.BlueprintCategory.PRODUCTION:
 				cpu.params.production_blueprints.append(bp)
 	
+	if cpu.params.spawner_blueprints.is_empty():
+		cpu.params.spawner_blueprints.append(preload("res://blueprints/goblin_spawner.tres"))
+	
 	cpu.params.aggression = randf_range(-0.8, 0.8)
 	cpu.params.economics = randf_range(-0.8, 0.8)
 	cpu.params.militarism = randf_range(-0.8, 0.8)
 	cpu.params.organization = randf_range(0.2, 0.8)
 	
-	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level % 10 == 0 else 0)
+	cpu.params.starting_money = Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level % 10 == 0 else 0)
 	cpu.params.passive_income = 2 + ((2 * Globals.game_level) / 3)
 	
 	add_child(cpu)
 	
+	
+	Globals.blue_money = Globals.blue_starting_mana
+	Globals.red_money = Globals.red_starting_mana
 	
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
 	Globals.phase_changed.connect(_on_globals_phase_changed)
@@ -191,10 +195,12 @@ func _on_globals_phase_changed() -> void:
 				Globals.phase = Enums.Phase.STANDBY
 				Globals.rounds = 0
 			elif !castles.any(func(x): return x.team == Enums.Team.BLUE):
+				Globals.game_level -= 1
 				SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
 			
 			if Globals.rounds >= 10:
+				Globals.game_level -= 1
 				SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
 			

@@ -1,44 +1,168 @@
-[gd_scene load_steps=4 format=3 uid="uid://06rurfqkgqn7"]
+[gd_scene load_steps=19 format=3 uid="uid://06rurfqkgqn7"]
 
-[ext_resource type="Texture2D" uid="uid://csslv35y0cibr" path="res://scenes/lose_screen/lost.png" id="1_k24lp"]
+[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_2e10d"]
 [ext_resource type="Script" path="res://scenes/lose_screen/lose_screen.gd" id="1_p83n4"]
+[ext_resource type="PackedScene" uid="uid://bt8p4a8oaj6cp" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="2_qjunk"]
+[ext_resource type="Shader" path="res://materials/expensive_palette_swap.gdshader" id="3_oji0i"]
 [ext_resource type="Script" path="res://scenes/lose_screen/score_label.gd" id="3_v8lkv"]
+[ext_resource type="Texture2D" uid="uid://bvt4rkp8euckn" path="res://palette_night.png" id="4_aygpc"]
+[ext_resource type="Texture2D" uid="uid://b5jl3r10ypjqm" path="res://palette_night_transition2.png" id="5_llgih"]
+[ext_resource type="Texture2D" uid="uid://d0gdncj3ujd12" path="res://palette_night_transition.png" id="6_4u4du"]
+[ext_resource type="Texture2D" uid="uid://bgrp5vhsqt8cu" path="res://palette.png" id="7_b4lty"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="8_jp2nr"]
+[ext_resource type="PackedScene" uid="uid://cxuqj4y61ir8x" path="res://objects/crown_gauge/crown_gauge.tscn" id="11_qkdyk"]
 
-[node name="LoseScreen" type="Node2D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rlvsa"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4kt7"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_rlvsa")
+uv1_scale = Vector3(0.5, 1, 1)
+uv1_offset = Vector3(0.265, -1.965, 0)
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_r0wx8"]
+size = Vector2(5.68, 6.4)
+
+[sub_resource type="Environment" id="Environment_10xe5"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_38snp"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6usce"]
+gradient = SubResource("Gradient_38snp")
+width = 2
+height = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brnti"]
+shader = ExtResource("3_oji0i")
+shader_parameter/lower_bound = 0.0
+shader_parameter/output_palettes = Array[Texture2D]([ExtResource("4_aygpc"), ExtResource("5_llgih"), ExtResource("6_4u4du"), ExtResource("7_b4lty")])
+shader_parameter/lightmap = SubResource("GradientTexture2D_6usce")
+
+[node name="LoseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2e10d")
 script = ExtResource("1_p83n4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(284, 160)
-texture = ExtResource("1_k24lp")
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.866025, -0.5, 0, 0.404509, 0.700629, 0.587785, -0.293893, -0.509037, 0.809017, 0.135, 1.36, -0.48)
+material_override = SubResource("StandardMaterial3D_w4kt7")
+mesh = SubResource("QuadMesh_r0wx8")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.509)
+environment = SubResource("Environment_10xe5")
+current = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(568, 320)
+
+[node name="BackgroundCanvasLayer" parent="SubViewport" instance=ExtResource("2_qjunk")]
+
+[node name="EffectsCanvasLayer" type="CanvasLayer" parent="SubViewport"]
+layer = -1
+
+[node name="NightEffect" type="ColorRect" parent="SubViewport/EffectsCanvasLayer"]
+material = SubResource("ShaderMaterial_brnti")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_jp2nr")
+time = 1.0
+lightmap = SubResource("GradientTexture2D_6usce")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 9.0
-offset_top = 289.0
-offset_right = 167.0
-offset_bottom = 313.0
-text = "Dang, you lost"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 67.0
+offset_right = 166.0
+offset_bottom = 115.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 76
+text = "Game over!"
+horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 355.0
-offset_top = 11.0
-offset_right = 559.0
-offset_bottom = 35.0
-text = "Rounds Survived: 0"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = 8.0
+offset_right = 102.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 38
+text = "You won X battles."
+horizontal_alignment = 1
 script = ExtResource("3_v8lkv")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 205.0
-offset_top = 136.0
-offset_right = 315.0
-offset_bottom = 168.0
-text = "Try Again"
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -88.0
+offset_right = 75.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 241.0
-offset_top = 208.0
-offset_right = 351.0
-offset_bottom = 240.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "Restart"
+
+[node name="MMButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
 text = "Main Menu"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[node name="CrownGauge" parent="." instance=ExtResource("11_qkdyk")]
+layout_mode = 1
+offset_left = -46.0
+offset_top = 16.0
+offset_right = 46.0
+offset_bottom = 44.0
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MMButton" to="." method="_on_mm_button_pressed"]

@@ -6,6 +6,7 @@ extends Node
 @export var grid: GridManager
 
 func _ready() -> void:
+	Globals.red_starting_mana = params.starting_money
 	Globals.red_income = params.passive_income
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 

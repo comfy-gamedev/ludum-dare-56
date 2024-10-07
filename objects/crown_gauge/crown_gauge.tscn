@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxuqj4y61ir8x"]
+
+[ext_resource type="Texture2D" uid="uid://cfdr3q2h3sx5t" path="res://objects/ui_canvas_layer/window1.png" id="1_n40uv"]
+[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_y5oq4"]
+[ext_resource type="Script" path="res://objects/crown_gauge/crown_gauge.gd" id="2_g23fb"]
+[ext_resource type="PackedScene" path="res://objects/ui_canvas_layer/crown_widget.tscn" id="2_p4apd"]
+
+[node name="CrownGauge" type="NinePatchRect"]
+custom_minimum_size = Vector2(92, 28)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -284.0
+offset_right = -192.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme = ExtResource("1_y5oq4")
+texture = ExtResource("1_n40uv")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+script = ExtResource("2_g23fb")
+
+[node name="CrownWidget1" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(10, 10)
+frame_progress = 0.520049
+
+[node name="CrownWidget2" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(18, 18)
+frame_progress = 0.664971
+
+[node name="CrownWidget3" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(26, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget4" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(34, 18)
+frame_progress = 0.664971
+
+[node name="CrownWidget5" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(42, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget6" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(50, 18)
+frame_progress = 0.664971
+
+[node name="CrownWidget7" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(58, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget8" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(66, 18)
+frame_progress = 0.664971
+
+[node name="CrownWidget9" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(74, 10)
+frame_progress = 0.664971
+
+[node name="CrownWidget10" parent="." instance=ExtResource("2_p4apd")]
+position = Vector2(82, 18)
+frame_progress = 0.664971
+
+[node name="PlusLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -7.0
+offset_right = 43.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
+text = "+X"

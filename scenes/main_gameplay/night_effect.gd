@@ -8,6 +8,9 @@ extends ColorRect
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		Globals.phase_changed.connect(_on_globals_phase_changed)
+	(material as ShaderMaterial).set_shader_parameter("lower_bound", 1.0 - time)
+	(material as ShaderMaterial).set_shader_parameter("lightmap", lightmap)
+	visible = not is_zero_approx(time)
 
 func set_time(v: float) -> void:
 	if time == v:

@@ -1,23 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://cf44e83jh5ng4"]
+[gd_scene load_steps=11 format=3 uid="uid://cf44e83jh5ng4"]
 
 [ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_fh865"]
 [ext_resource type="Script" path="res://scenes/win_screen/win_screen.gd" id="1_i7s50"]
-[ext_resource type="Shader" path="res://materials/expensive_palette_swap.gdshader" id="3_p37em"]
 [ext_resource type="Texture2D" uid="uid://da8l87i1n78s2" path="res://particles/soft_circle.tres" id="3_se08j"]
 [ext_resource type="PackedScene" uid="uid://bt8p4a8oaj6cp" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="3_t3rq1"]
-[ext_resource type="Texture2D" uid="uid://bvt4rkp8euckn" path="res://palette_night.png" id="4_la8ut"]
-[ext_resource type="Texture2D" uid="uid://b5jl3r10ypjqm" path="res://palette_night_transition2.png" id="5_5yhsq"]
-[ext_resource type="Texture2D" uid="uid://d0gdncj3ujd12" path="res://palette_night_transition.png" id="6_pyb3y"]
-[ext_resource type="Texture2D" uid="uid://bgrp5vhsqt8cu" path="res://palette.png" id="7_um10a"]
-[ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="8_kl7jn"]
+[ext_resource type="PackedScene" uid="uid://cxuqj4y61ir8x" path="res://objects/crown_gauge/crown_gauge.tscn" id="5_c37t3"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rlvsa"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_otk5i"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4u6ct"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_rlvsa")
+albedo_texture = SubResource("ViewportTexture_otk5i")
 uv1_scale = Vector3(0.5, 1, 1)
 uv1_offset = Vector3(0.265, -1.965, 0)
 texture_filter = 0
@@ -29,18 +24,6 @@ size = Vector2(5.68, 6.4)
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3wn8"]
-shader = ExtResource("3_p37em")
-shader_parameter/lower_bound = 0.0
-shader_parameter/output_palettes = Array[Texture2D]([ExtResource("4_la8ut"), ExtResource("5_5yhsq"), ExtResource("6_pyb3y"), ExtResource("7_um10a")])
-
-[sub_resource type="Gradient" id="Gradient_2w26q"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1k1g"]
-gradient = SubResource("Gradient_2w26q")
-fill_to = Vector2(0, 1)
 
 [sub_resource type="Curve" id="Curve_l4lqs"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.133588, 0.849057), 0.0, 0.0, 0, 0, Vector2(0.263359, 0), 0.0, 0.0, 0, 0]
@@ -67,20 +50,6 @@ mesh = SubResource("QuadMesh_kiklx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.509)
 environment = SubResource("Environment_cdtpj")
 
-[node name="EffectsCanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="NightEffect" type="ColorRect" parent="EffectsCanvasLayer"]
-material = SubResource("ShaderMaterial_a3wn8")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("8_kl7jn")
-lightmap = SubResource("GradientTexture2D_x1k1g")
-
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(568, 320)
 
@@ -92,9 +61,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -180.0
-offset_top = 30.0
+offset_top = 59.0
 offset_right = 180.0
-offset_bottom = 78.0
+offset_bottom = 107.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
@@ -267,6 +236,13 @@ linear_accel_min = -50.0
 linear_accel_max = -50.0
 scale_amount_curve = SubResource("Curve_l4lqs")
 color = Color(0, 1, 0, 1)
+
+[node name="CrownGauge" parent="." instance=ExtResource("5_c37t3")]
+layout_mode = 1
+offset_left = -46.0
+offset_top = 16.0
+offset_right = 46.0
+offset_bottom = 44.0
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

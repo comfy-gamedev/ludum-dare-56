@@ -8,7 +8,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if not is_instance_valid(target_opponent):
 		return FAILURE
 		
-	if actor.global_position.distance_to(target_opponent.global_position) < range: #&& cooldown.is_stopped():
+	if actor.global_position.distance_to(target_opponent.get_target_point(actor.global_position)) < range: #&& cooldown.is_stopped():
 		var bullet = bullet_scene.instantiate()
 		bullet.global_position = actor.global_position
 		bullet.velocity = (target_opponent.global_position - actor.global_position).normalized() * 50

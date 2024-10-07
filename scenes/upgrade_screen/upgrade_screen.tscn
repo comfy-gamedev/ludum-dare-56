@@ -12,13 +12,14 @@
 [ext_resource type="Script" path="res://scenes/main_gameplay/lights_sub_viewport.gd" id="9_17g4m"]
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="10_7rk8l"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_g1p6q"]
+viewport_path = NodePath("LightsSubViewport")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_stsfv"]
 shader = ExtResource("2_jhlcq")
 shader_parameter/lower_bound = 0.0
 shader_parameter/output_palettes = Array[Texture2D]([ExtResource("3_o8q28"), ExtResource("4_iiv1s"), ExtResource("5_p4h2u"), ExtResource("6_c0wod")])
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_g1p6q"]
-viewport_path = NodePath("LightsSubViewport")
+shader_parameter/lightmap = SubResource("ViewportTexture_g1p6q")
 
 [node name="UpgradeScreen" type="Node2D"]
 script = ExtResource("1_u0sp3")
