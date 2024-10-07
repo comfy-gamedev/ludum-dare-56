@@ -151,7 +151,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				s.position = blueprint_preview.position
 				s.bp_size = Globals.selected_blueprint.size
 				add_child(s)
-				MusicMan.sfx(preload("res://assests/SFX/build-building.wav"), "build")
+				MusicMan.sfx(preload("res://assests/SFX/build-building2.wav"), "build")
 				grid_manager.place_building(s.position, s.bp_size, s, Enums.Team.BLUE)
 	if event.is_action_pressed("cancel_blueprint"):
 		if Globals.selected_blueprint:

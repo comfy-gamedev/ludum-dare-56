@@ -90,7 +90,7 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 	building.bp_size = bp.size
 	get_parent().add_child(building)
 	
-	MusicMan.sfx(preload("res://assests/SFX/build-building.wav"), "build")
+	MusicMan.sfx(preload("res://assests/SFX/build-building2.wav"), "build")
 	
 	grid.place_building(building.position, bp.size, building, team)
 	
