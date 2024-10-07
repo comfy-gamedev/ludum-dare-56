@@ -35,8 +35,8 @@ func _process(delta: float) -> void:
 		while enemies.size() > 0:
 			target_node.hit(damage)
 			current += 1
-			if randf() > .75:
-				break
+			#if randf() > .75:
+				#break
 			min_dist = 10000.0
 			for i in enemies:
 				dist = global_position.distance_squared_to(i.global_position)

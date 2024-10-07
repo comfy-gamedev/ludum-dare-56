@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	if !enemies:
 		return
 	
-	var target_node = null
+	target_node = null
 	var dist
 	var min_dist = 100000000.0
 	for i in enemies:
