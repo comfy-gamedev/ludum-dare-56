@@ -1,6 +1,7 @@
 class_name Blueprint
 extends Resource
 
+@export var category: Enums.BlueprintCategory
 @export var name: String = "Unnamed"
 @export_multiline var description: String = "Indescribable."
 @export var size: Vector2i = Vector2i(1, 1)

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_whoak")
+category = 1
 name = "Repairer"
 description = "Indescribable."
 size = Vector2i(1, 1)

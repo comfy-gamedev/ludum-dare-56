@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_fsrkg")
+category = 2
 name = "RatSpawner"
 description = "Indescribable."
 size = Vector2i(1, 1)

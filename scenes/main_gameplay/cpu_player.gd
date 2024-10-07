@@ -1,3 +1,4 @@
+class_name CpuPlayer
 extends Node
 
 @export var team: Enums.Team = Enums.Team.RED

@@ -10,7 +10,7 @@ extends Node
 ## Emitted when any variable changes.
 signal changed()
 
-const DAY_DURATION = 15.0
+const DAY_DURATION = 25.0
 
 signal player_hotbar_changed()
 var player_hotbar: Array[Blueprint] = [null, null, null, null, null, null]:
@@ -35,7 +35,7 @@ var phase: Enums.Phase = Enums.Phase.STANDBY:
 var cpu_acting: bool = false:
 	set(v): cpu_acting = v; changed.emit()
 
-
+var game_level: int = 0
 
 var day_time: float = 0.0
 
@@ -48,6 +48,9 @@ func reset():
 	blue_money = 0
 	red_income = 5
 	red_money = 0
+	game_level = 0
+	day_time = 0.0
+	cpu_acting = false
 	phase = Enums.Phase.STANDBY
 
 

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_0ee8v")
+category = 1
 name = "Buffer"
 description = "Indescribable."
 size = Vector2i(1, 1)

@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_jsaws")
+category = 1
 name = "Extender"
 description = "Indescribable."
 size = Vector2i(1, 1)

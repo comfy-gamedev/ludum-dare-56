@@ -2,6 +2,26 @@ extends Node2D
 
 const CASTLE = preload("res://objects/buildings/castle/castle.tscn")
 
+const BP_LEVELS = [
+	{ min_lvl = 2, cat = "production", bp = preload("res://blueprints/farm.tres") },
+	{ min_lvl = 3, cat = "fortification", bp = preload("res://blueprints/repairer.tres") },
+	{ min_lvl = 1, cat = "fortification", bp = preload("res://blueprints/barricade.tres") },
+	{ min_lvl = 6, cat = "fortification", bp = preload("res://blueprints/autocannon.tres") },
+	{ min_lvl = 5, cat = "fortification", bp = preload("res://blueprints/buffer.tres") },
+	{ min_lvl = 4, cat = "fortification", bp = preload("res://blueprints/extender.tres") },
+	{ min_lvl = 3, cat = "turret", bp = preload("res://blueprints/laser_turret.tres") },
+	{ min_lvl = 1, cat = "turret", bp = preload("res://blueprints/rock_turret.tres") },
+	{ min_lvl = 2, cat = "turret", bp = preload("res://blueprints/shotgun_turret.tres") },
+	{ min_lvl = 3, cat = "turret", bp = preload("res://blueprints/sniper_turret.tres") },
+	{ min_lvl = 4, cat = "turret", bp = preload("res://blueprints/tesla_turret.tres") },
+	{ min_lvl = 2, cat = "turret", bp = preload("res://blueprints/goblin_cage.tres") },
+	{ min_lvl = 2, cat = "spawner", bp = preload("res://blueprints/bomber_spawner.tres") },
+	{ min_lvl = 1, cat = "spawner", bp = preload("res://blueprints/goblin_spawner.tres") },
+	{ min_lvl = 1, cat = "spawner", bp = preload("res://blueprints/mage_spawner.tres") },
+	{ min_lvl = 3, cat = "spawner", bp = preload("res://blueprints/rat_spawner.tres") },
+	{ min_lvl = 4, cat = "spawner", bp = preload("res://blueprints/snake_spawner.tres") },
+]
+
 @export var blue_castle_position: Vector2 = Vector2(6, 13) * 16
 @export var red_castle_position: Vector2 = Vector2(30, 6) * 16
 
@@ -12,12 +32,66 @@ var blueprint_preview: Node2D = null
 @onready var grid_manager = $GridManager
 
 func _ready() -> void:
+	Globals.game_level += 1
+	
+	# Player Setup
+	
 	var hb = Globals.player_hotbar
 	hb[0] = preload("res://blueprints/goblin_spawner.tres")
 	hb[1] = preload("res://blueprints/rock_turret.tres")
 	hb[2] = preload("res://blueprints/bomber_spawner.tres")
 	Globals.player_hotbar = hb
 	Globals.blue_income = 3
+	
+	
+	# Enemy Setup
+	
+	var cpu = CpuPlayer.new()
+	cpu.team = Enums.Team.RED
+	cpu.grid = grid_manager
+	cpu.params = CpuAIParams.new()
+	
+	var num_blueprints = clampi(2 + Globals.game_level / 2, 2, 6)
+	var allowed_discounts = Globals.game_level / 2
+	
+	var allowed_bps = []
+	for bplvl in BP_LEVELS:
+		if bplvl.min_lvl > Globals.game_level:
+			continue
+		allowed_bps.append(bplvl.bp)
+	
+	allowed_bps.shuffle()
+	allowed_bps.resize(num_blueprints)
+	
+	for i in allowed_bps.size():
+		allowed_bps[i] = allowed_bps[i].duplicate()
+	
+	for i in allowed_discounts:
+		assert(i < allowed_bps.size())
+		allowed_bps[i].cost = maxi(allowed_bps[i].cost - 1, 1)
+	
+	for bp: Blueprint in allowed_bps:
+		match bp.category:
+			Enums.BlueprintCategory.FORTIFICATION:
+				cpu.params.fortification_blueprints.append(bp)
+			Enums.BlueprintCategory.TURRET:
+				cpu.params.turret_blueprints.append(bp)
+			Enums.BlueprintCategory.SPAWNER:
+				cpu.params.spawner_blueprints.append(bp)
+			Enums.BlueprintCategory.PRODUCTION:
+				cpu.params.production_blueprints.append(bp)
+	
+	cpu.params.aggression = randf_range(-1.0, 1.0)
+	cpu.params.economics = randf_range(-1.0, 1.0)
+	cpu.params.militarism = randf_range(-1.0, 1.0)
+	cpu.params.organization = randf_range(0.0, 1.0)
+	
+	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1)
+	cpu.params.passive_income = 2 + Globals.game_level / 2 + randi_range(0, 1)
+	
+	add_child(cpu)
+	
+	
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 	night_effect.transition(1.0)
