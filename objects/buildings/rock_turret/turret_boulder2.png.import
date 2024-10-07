@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s1grv07ptu1x"
-path="res://.godot/imported/turret_shotgun.png-6536cfa62cc64a02dc3007fbbf3d9562.ctex"
+uid="uid://c4huiy17uikbh"
+path="res://.godot/imported/turret_boulder2.png-d4b760e17beec269346a6b289fc77eea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/turret_shotgun.png"
-dest_files=["res://.godot/imported/turret_shotgun.png-6536cfa62cc64a02dc3007fbbf3d9562.ctex"]
+source_file="res://objects/buildings/rock_turret/turret_boulder2.png"
+dest_files=["res://.godot/imported/turret_boulder2.png-d4b760e17beec269346a6b289fc77eea.ctex"]
 
 [params]
 

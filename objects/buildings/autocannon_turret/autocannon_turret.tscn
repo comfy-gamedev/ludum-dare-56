@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://6yp0y823pq1k"]
+[gd_scene load_steps=35 format=3 uid="uid://6yp0y823pq1k"]
 
 [ext_resource type="Script" path="res://objects/buildings/autocannon_turret/autocannon_turret.gd" id="1_vsm5t"]
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_lvcvf"]
 [ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="3_7pjqa"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="4_f748i"]
+[ext_resource type="Texture2D" uid="uid://b7o2uatd1mjhc" path="res://objects/buildings/autocannon_turret/turret_autocannon.png" id="4_pej26"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_beh4c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vktce"]
@@ -126,6 +127,70 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxi4b"]
+atlas = ExtResource("4_pej26")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgxxq"]
+atlas = ExtResource("4_pej26")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wtkh"]
+atlas = ExtResource("4_pej26")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0i5t"]
+atlas = ExtResource("4_pej26")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyf06"]
+atlas = ExtResource("4_pej26")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66pxo"]
+atlas = ExtResource("4_pej26")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soog5"]
+atlas = ExtResource("4_pej26")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oca3x"]
+atlas = ExtResource("4_pej26")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x2edo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxi4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgxxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wtkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0i5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyf06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66pxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soog5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oca3x")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
 [sub_resource type="Curve" id="Curve_jetkp"]
 _data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -146,6 +211,8 @@ autoplay = "default"
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_x2edo")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.125

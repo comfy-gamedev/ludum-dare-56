@@ -15,10 +15,10 @@ func _on_timer_timeout() -> void:
 	var allies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team == team && global_position.distance_to(x.global_position) < reach)
 	if allies:
 		for i in allies:
-			i.movement_speed *= 2
-			i.attack_points *= 1.25
-			i.health *= 1.25
-			i.max_health *= 1.25
+			i.movement_speed += i.base_speed
+			i.attack_points += i.base_attack / 8.0
+			i.health += i.base_health / 4.0
+			i.max_health += i.base_max_health / 4.0
 	
 
 func _draw() -> void:
