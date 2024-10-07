@@ -27,3 +27,10 @@ enum Phase {
 	BUILD,
 	FIGHT,
 }
+
+enum Upgrades {
+	STARTER,
+	FORTIFICATIONS,
+	BLUEPRINTS,
+	ANYTHING,
+}

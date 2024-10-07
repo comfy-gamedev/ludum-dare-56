@@ -191,6 +191,7 @@ func _on_globals_phase_changed() -> void:
 				if Globals.game_level == 10:
 					SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
 				else:
+					Globals.upgrades_queued = [Enums.Upgrades.ANYTHING]
 					SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
 				Globals.rounds = 0

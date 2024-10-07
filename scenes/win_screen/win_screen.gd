@@ -8,6 +8,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	Globals.upgrades_queued = [Enums.Upgrades.ANYTHING, Enums.Upgrades.ANYTHING]
 	SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
 
 

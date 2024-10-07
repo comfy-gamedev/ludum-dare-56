@@ -54,9 +54,8 @@ attack_points = 15
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_40l0s")
 
-[node name="RangedUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_al0aq")]
+[node name="RangedUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_al0aq")]
 blackboard = NodePath("../Blackboard")
-actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s7gtv")

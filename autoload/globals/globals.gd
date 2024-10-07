@@ -13,7 +13,7 @@ signal changed()
 const DAY_DURATION = 25.0
 
 signal player_hotbar_changed()
-var player_hotbar: Array[Blueprint] = [preload("res://blueprints/goblin_spawner.tres"), preload("res://blueprints/rock_turret.tres"), preload("res://blueprints/tesla_turret.tres"), null, null, null]:
+var player_hotbar: Array[Blueprint] = [null, null, null, null, null, null]:
 	set(v): player_hotbar = v; changed.emit(); player_hotbar_changed.emit()
 
 signal selected_blueprint_changed()
@@ -42,6 +42,8 @@ var rounds: int = 0:
 var cpu_acting: bool = false:
 	set(v): cpu_acting = v; changed.emit()
 
+var upgrades_queued: Array[Enums.Upgrades] = [Enums.Upgrades.STARTER]
+
 var game_level: int = 0
 
 var day_time: float = 0.0
@@ -51,7 +53,7 @@ func _ready() -> void:
 
 ## Reset all variables to their default state.
 func reset():
-	player_hotbar = [preload("res://blueprints/goblin_spawner.tres"), preload("res://blueprints/rock_turret.tres"), null, null, null, null]
+	player_hotbar = [null, null, null, null, null, null]
 	selected_blueprint = null
 	blue_starting_mana = 0
 	blue_income = 4
@@ -64,6 +66,7 @@ func reset():
 	cpu_acting = false
 	phase = Enums.Phase.STANDBY
 	rounds = 0
+	upgrades_queued = [Enums.Upgrades.STARTER]
 
 
 #region Debug overlay

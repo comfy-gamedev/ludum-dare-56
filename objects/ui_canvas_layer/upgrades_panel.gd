@@ -35,6 +35,8 @@ const BLUEPRINTS = [
 @onready var overlay: ColorRect = $Overlay
 @onready var description: Label = $Description
 @onready var sorry: Label = $Sorry
+@onready var count_label: Label = $CountLabel
+@onready var skip_button: Button = $SkipButton
 
 func _ready() -> void:
 	for p in panels:
@@ -44,41 +46,63 @@ func _ready() -> void:
 	_reroll()
 
 func _reroll() -> void:
+	count_label.text = "(+%s more)" % [Globals.upgrades_queued.size() - 1]
+	count_label.visible = Globals.upgrades_queued.size() > 1
+	
+	var ug = Globals.upgrades_queued[0]
+	
 	var possible_upgrades = []
-	for bp in BLUEPRINTS:
-		var found = false
-		for bp2 in Globals.player_hotbar:
-			if bp2 == null:
-				continue
-			if bp2.name == bp.name:
-				found = true
-				break
-		if found:
-			continue
-		
+	
+	skip_button.disabled = false
+	
+	if ug == Enums.Upgrades.STARTER:
 		var u = UpgradeBlueprint.new()
-		u.blueprint = bp
+		u.blueprint = preload("res://blueprints/goblin_spawner.tres")
 		possible_upgrades.append(u)
-	possible_upgrades.shuffle()
-	possible_upgrades.resize(2)
-	
-	var extra_upgrades = []
-	
-	var u1 = UpgradePlayer.new()
-	u1.kind = UpgradePlayer.Kind.values().pick_random()
-	extra_upgrades.append(u1)
-	
-	var dcFound = false
-	for b in Globals.player_hotbar:
-		if b != null && b.cost > 1:
-			dcFound = true
-			break
-	if dcFound:
-		var u2 = UpgradeEnhancement.new()
-		u2.kind = UpgradeEnhancement.Kind.DISCOUNT
-		extra_upgrades.append(u2)
-	
-	possible_upgrades.append(extra_upgrades.pick_random())
+		skip_button.disabled = true
+	else:
+		for bp: Blueprint in BLUEPRINTS:
+			match ug:
+				Enums.Upgrades.FORTIFICATIONS:
+					if bp.category != Enums.BlueprintCategory.FORTIFICATION:
+						continue
+			
+			var found = false
+			for bp2 in Globals.player_hotbar:
+				if bp2 == null:
+					continue
+				if bp2.name == bp.name:
+					found = true
+					break
+			if found:
+				continue
+			
+			var u = UpgradeBlueprint.new()
+			u.blueprint = bp
+			possible_upgrades.append(u)
+		possible_upgrades.shuffle()
+		possible_upgrades.resize(3)
+		
+		if ug == Enums.Upgrades.ANYTHING:
+			possible_upgrades.resize(2)
+			
+			var extra_upgrades = []
+			
+			var u1 = UpgradePlayer.new()
+			u1.kind = UpgradePlayer.Kind.values().pick_random()
+			extra_upgrades.append(u1)
+			
+			var dcFound = false
+			for b in Globals.player_hotbar:
+				if b != null && b.cost > 1:
+					dcFound = true
+					break
+			if dcFound:
+				var u2 = UpgradeEnhancement.new()
+				u2.kind = UpgradeEnhancement.Kind.DISCOUNT
+				extra_upgrades.append(u2)
+			
+			possible_upgrades.append(extra_upgrades.pick_random())
 	
 	for i in panels.size():
 		panels[i].show()
@@ -95,10 +119,13 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _on_panel_chosen(panel: Node) -> void:
 	if await panel.upgrade.try_apply(ui_canvas_layer):
-		done.emit()
+		_next()
 
 func _on_panel_mouse_entered(panel: Node) -> void:
-	description.text = panel.upgrade.get_description()
+	var d = panel.upgrade.get_description()
+	if description.text == d:
+		return
+	description.text = d
 	description.visible_ratio = 0.0
 	create_tween().tween_property(description, "visible_ratio", 1.0, 0.5)
 
@@ -110,8 +137,16 @@ func choose_hotbar_slot() -> int:
 	return i
 
 func _on_skip_button_pressed() -> void:
-	done.emit()
+	_next()
 
 
 func _on_cancel_button_pressed() -> void:
 	hotbar.hotbar_selected.emit(-1)
+
+
+func _next() -> void:
+	Globals.upgrades_queued.pop_front()
+	if Globals.upgrades_queued.is_empty():
+		done.emit()
+	else:
+		_reroll()
