@@ -54,19 +54,6 @@ func _process(delta: float) -> void:
 			if s.material != null:
 				s.material = mat
 	
-	var team_buildings = {
-		Enums.Team.BLUE: [],
-		Enums.Team.RED: [],
-	}
-	
-	var castles = get_tree().get_nodes_in_group("Castle")
-	if !castles.any(func(x): return x.team == Enums.Team.RED):
-		SceneGirl.change_scene("res://scenes/win_screen/win_screen.tscn")
-	elif !castles.any(func(x): return x.team == Enums.Team.BLUE):
-		SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
-	for b in castles:
-		team_buildings[b.team].append(b)
-	
 	if Globals.phase == Enums.Phase.FIGHT:
 		Globals.day_time += delta
 		if Globals.day_time >= Globals.DAY_DURATION:
@@ -89,6 +76,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Globals.selected_blueprint:
 			get_viewport().set_input_as_handled()
 			Globals.selected_blueprint = null
+	if OS.has_feature("debug"):
+		if event.is_action_pressed("debug_2"):
+			SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
+			Globals.phase = Enums.Phase.STANDBY
 
 func _on_globals_selected_blueprint_changed() -> void:
 	if is_instance_valid(blueprint_preview):
@@ -115,6 +106,15 @@ func _on_globals_phase_changed() -> void:
 				b.on_night()
 			Globals.blue_money += Globals.blue_income
 			Globals.red_money += Globals.red_income
+			
+			var castles = get_tree().get_nodes_in_group("Castle")
+			if !castles.any(func(x): return x.team == Enums.Team.RED):
+				SceneGirl.change_scene("res://scenes/upgrade_screen/upgrade_screen.tscn")
+				Globals.phase = Enums.Phase.STANDBY
+			elif !castles.any(func(x): return x.team == Enums.Team.BLUE):
+				SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
+				Globals.phase = Enums.Phase.STANDBY
+			
 		Enums.Phase.FIGHT:
 			for b: Building in get_tree().get_nodes_in_group("Building"):
 				b.on_day()

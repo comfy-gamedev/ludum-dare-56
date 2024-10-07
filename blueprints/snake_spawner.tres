@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("2_63g14")
+name = "SnakeSpawner"
+description = "Indescribable."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_up6bx")
 hotbar_scene = ExtResource("1_81p3b")

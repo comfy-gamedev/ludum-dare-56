@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://dntp4y0ncidxq"]
 
-[ext_resource type="PackedScene" path="res://objects/buildings/shotgun_turret/shotgun_hotbar.tscn" id="1_xxvfq"]
+[ext_resource type="PackedScene" uid="uid://kyc5x2g5hal0" path="res://objects/buildings/shotgun_turret/shotgun_hotbar.tscn" id="1_xxvfq"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_hhd1a"]
 [ext_resource type="PackedScene" uid="uid://snbi8asuovs5" path="res://objects/buildings/shotgun_turret/shotgun_turret.tscn" id="3_ap0nd"]
 
 [resource]
 script = ExtResource("2_hhd1a")
+name = "ShotgunTurret"
+description = "Indescribable."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_ap0nd")
 hotbar_scene = ExtResource("1_xxvfq")

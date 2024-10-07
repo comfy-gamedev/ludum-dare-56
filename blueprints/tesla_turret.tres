@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="Blueprint" load_steps=4 format=3 uid="uid://cj2lbultlmbvb"]
 
-[ext_resource type="PackedScene" path="res://objects/buildings/tesla_turret/tesla_hotbar.tscn" id="1_ihkxj"]
+[ext_resource type="PackedScene" uid="uid://bmt3v01oym0d7" path="res://objects/buildings/tesla_turret/tesla_hotbar.tscn" id="1_ihkxj"]
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_y74d0"]
 [ext_resource type="PackedScene" uid="uid://brfcq7g5e0ywk" path="res://objects/buildings/tesla_turret/tesla_turret.tscn" id="3_xm672"]
 
 [resource]
 script = ExtResource("2_y74d0")
+name = "TeslaTurret"
+description = "Indescribable."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_xm672")
 hotbar_scene = ExtResource("1_ihkxj")

@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("2_n0l81")
+name = "GoblinCage"
+description = "Indescribable."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_b4qdw")
 hotbar_scene = ExtResource("1_gsgoe")

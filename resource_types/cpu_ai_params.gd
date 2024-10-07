@@ -6,7 +6,8 @@ extends Resource
 @export var production_blueprints: Array[Blueprint] = []
 @export var spawner_blueprints: Array[Blueprint] = []
 
-@export var passive_income: int = 2
+@export var starting_money: int = 2
+@export var passive_income: int = 1
 
 ## production/fortifications (-1) vs turrets/spawners (+1)
 @export_range(-1.0, 1.0, 0.05) var militarism: float = 0.0

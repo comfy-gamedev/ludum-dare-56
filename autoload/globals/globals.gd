@@ -29,7 +29,7 @@ var red_money: int = 0:
 	set(v): red_money = v; changed.emit()
 
 signal phase_changed()
-var phase: Enums.Phase = Enums.Phase.BUILD:
+var phase: Enums.Phase = Enums.Phase.STANDBY:
 	set(v): phase = v; changed.emit(); phase_changed.emit()
 
 var cpu_acting: bool = false:
@@ -44,9 +44,11 @@ var day_time: float = 0.0
 func reset():
 	player_hotbar = [null, null, null, null, null, null]
 	selected_blueprint = null
+	blue_income = 5
 	blue_money = 0
+	red_income = 5
 	red_money = 0
-	phase = Enums.Phase.BUILD
+	phase = Enums.Phase.STANDBY
 
 
 #region Debug overlay

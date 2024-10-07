@@ -6,6 +6,8 @@
 
 [resource]
 script = ExtResource("2_4lqb2")
+name = "Autocannon"
+description = "Indescribable."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_uc3vr")
 hotbar_scene = ExtResource("1_fnkf1")

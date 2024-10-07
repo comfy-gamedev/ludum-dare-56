@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://caicum2oeyiqg"]
+
+[ext_resource type="Texture2D" uid="uid://byp1svcho45ma" path="res://objects/ui_canvas_layer/window2.png" id="1_o08i6"]
+[ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrade_panel.gd" id="2_yy6g8"]
+
+[node name="UpgradePanel" type="NinePatchRect"]
+custom_minimum_size = Vector2(65, 61)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -25.0
+offset_right = -178.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("1_o08i6")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+script = ExtResource("2_yy6g8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 12.0
+grow_horizontal = 2
+text = "(unknown)"
+horizontal_alignment = 1
+
+[node name="Center" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
