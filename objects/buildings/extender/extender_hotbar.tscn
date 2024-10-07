@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://421246k0cqtg"]
 
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_hk2di"]
-[ext_resource type="SpriteFrames" uid="uid://b2xeom5gen7p6" path="res://objects/buildings/extender/extender_frames.tres" id="1_srkc7"]
+[ext_resource type="SpriteFrames" uid="uid://bsfio7d7exujp" path="res://objects/buildings/extender/extender_frames.tres" id="1_srkc7"]
 
 [node name="ExtenderHotbar" type="AnimatedSprite2D"]
 material = ExtResource("1_hk2di")

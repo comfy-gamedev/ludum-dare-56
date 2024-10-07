@@ -19,7 +19,7 @@
 [node name="MeleeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_nc440")
 blackboard = NodePath("@Node@17497")
-actor = NodePath("")
+actor = NodePath("..")
 
 [node name="PrimarySequence" type="Node" parent="."]
 script = ExtResource("2_347q6")
@@ -35,6 +35,7 @@ script = ExtResource("2_347q6")
 [node name="DetectTargetAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("5_jguiy")]
 
 [node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("6_18e1b")]
+acceptance_radius = 12
 
 [node name="DamageTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence" instance=ExtResource("9_3jusp")]
 
@@ -45,6 +46,7 @@ script = ExtResource("7_0o4cw")
 script = ExtResource("2_347q6")
 
 [node name="MoveFromTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("8_jhtx0")]
+acceptance_radius = 40
 
 [node name="MoveToTargetOpponentAction" parent="PrimarySequence/SelectorReactiveComposite/DetectAndAttackNearestUnitSequence/UntilFailDecorator/AttackUnitSequence" instance=ExtResource("6_18e1b")]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_swfqn"]
 [ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_em71q"]
-[ext_resource type="SpriteFrames" uid="uid://my74i1pshoe" path="res://objects/buildings/spawner_mage/spawner_mage_frames.tres" id="3_ek1vt"]
+[ext_resource type="SpriteFrames" uid="uid://d0b5l0y5v2lmi" path="res://objects/buildings/spawner_mage/spawner_mage_frames.tres" id="3_ek1vt"]
 [ext_resource type="PackedScene" uid="uid://brfxkbq7b4brm" path="res://objects/spawner_node/spawner.tscn" id="3_ith2t"]
 [ext_resource type="PackedScene" uid="uid://bmulu8vonwlpq" path="res://objects/units/mage/mage.tscn" id="4_ip785"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_qn6tp"]
