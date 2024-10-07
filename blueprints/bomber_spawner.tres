@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("2_4tmrm")
 category = 2
-name = "Unnamed"
+name = "Bomber Spawner"
 description = "Train goblins in the art of explosive sapping."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_i1unh")

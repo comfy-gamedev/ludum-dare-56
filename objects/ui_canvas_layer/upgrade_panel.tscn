@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://caicum2oeyiqg"]
+[gd_scene load_steps=3 format=3 uid="uid://qgwug1connkg"]
 
 [ext_resource type="Texture2D" uid="uid://byp1svcho45ma" path="res://objects/ui_canvas_layer/window2.png" id="1_o08i6"]
 [ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrade_panel.gd" id="2_yy6g8"]
