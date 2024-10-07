@@ -16,4 +16,3 @@ func _on_bounce(collision: KinematicCollision2D) -> bool:
 # Called when colliding with something for any reason.
 func _collision(other: PhysicsBody2D) -> void:
 	pass
-
