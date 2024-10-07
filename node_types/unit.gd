@@ -56,6 +56,7 @@ func _update_collision_bits() -> void:
 		collision_mask =  0b00010
 
 func hit(damage_taken: float):
+	MusicMan.sfx(preload("res://assests/SFX/hit.wav"), "hit", 1)
 	health -= damage_taken
 	if health <= 0:
 		queue_free()
