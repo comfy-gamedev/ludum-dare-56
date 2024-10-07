@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfia6n6w1v7b3"]
+[gd_scene load_steps=11 format=3 uid="uid://cymj167olto5p"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_kbvtf"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_85kx5"]
-[ext_resource type="PackedScene" uid="uid://cpmnjf33tpiyk" path="res://behaviors/actions/select_building_target_action.tscn" id="3_c6bdc"]
+[ext_resource type="PackedScene" uid="uid://cqhep0qccb8fw" path="res://behaviors/actions/select_building_target_action.tscn" id="3_c6bdc"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="4_cwk1q"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/delayer.gd" id="6_vl1gx"]
-[ext_resource type="PackedScene" uid="uid://b0qivdqy0if6p" path="res://behaviors/actions/besiege_target_building_action.tscn" id="7_qb8k3"]
+[ext_resource type="PackedScene" path="res://behaviors/actions/besiege_target_building_action.tscn" id="7_qb8k3"]
 [ext_resource type="PackedScene" uid="uid://cmwkcp4ctds55" path="res://behaviors/actions/move_to_target_building_action.tscn" id="10_ltiep"]
 [ext_resource type="PackedScene" uid="uid://bxa6gkl6odb7m" path="res://behaviors/actions/pick_random_pos_action.tscn" id="13_c3huw"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="14_sd38b"]
@@ -13,7 +13,7 @@
 
 [node name="SiegeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_kbvtf")
-blackboard = NodePath("@Node@17482")
+blackboard = NodePath("@Node@34867")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]
