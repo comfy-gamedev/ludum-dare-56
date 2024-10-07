@@ -83,7 +83,7 @@ func _ready() -> void:
 	cpu.params.organization = randf_range(0.0, 1.0)
 	
 	cpu.params.starting_money = 1 + Globals.game_level + randi_range(0, 1)
-	cpu.params.passive_income = 2 + Globals.game_level / 3
+	cpu.params.passive_income = 2 + Globals.game_level / 2
 	
 	add_child(cpu)
 	
