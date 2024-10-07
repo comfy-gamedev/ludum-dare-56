@@ -15,7 +15,7 @@ func _on_start_game_button_pressed() -> void:
 
 
 func _on_how_to_play_button_pressed() -> void:
-	pass # Replace with function body.
+	SceneGirl.change_scene("res://scenes/help_screen/help_scene.tscn")
 
 func _on_options_button_pressed() -> void:
 	pass # Replace with function body.
