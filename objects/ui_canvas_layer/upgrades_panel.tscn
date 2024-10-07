@@ -1,0 +1,175 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4e325pps7cus"]
+
+[ext_resource type="Texture2D" uid="uid://cfdr3q2h3sx5t" path="res://objects/ui_canvas_layer/window1.png" id="1_5mrpr"]
+[ext_resource type="Theme" uid="uid://pn8tudlpqcyc" path="res://game_ui_theme.tres" id="1_yw8gc"]
+[ext_resource type="Script" path="res://objects/ui_canvas_layer/upgrades_panel.gd" id="2_6putl"]
+[ext_resource type="PackedScene" uid="uid://caicum2oeyiqg" path="res://objects/ui_canvas_layer/upgrade_panel.tscn" id="4_rff7k"]
+[ext_resource type="Texture2D" uid="uid://ddeilepg346ni" path="res://objects/ui_canvas_layer/arrow.png" id="5_in80y"]
+
+[node name="UpgradesPanel" type="NinePatchRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -99.0
+offset_right = 130.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yw8gc")
+texture = ExtResource("1_5mrpr")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("2_6putl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "VICTORY!
+Choose an upgrade!"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -57.5
+offset_bottom = 3.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="UpgradePanel1" parent="CenterContainer/HBoxContainer" instance=ExtResource("4_rff7k")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradePanel2" parent="CenterContainer/HBoxContainer" instance=ExtResource("4_rff7k")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="UpgradePanel3" parent="CenterContainer/HBoxContainer" instance=ExtResource("4_rff7k")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -79.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+autowrap_mode = 2
+
+[node name="Sorry" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -19.5
+offset_top = -79.0
+offset_right = 20.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "No more upgrades available, sorry :/"
+
+[node name="SkipButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -25.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -123.5
+offset_right = 142.0
+offset_bottom = 122.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="Label" type="Label" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -131.0
+offset_right = 60.0
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Choose a hotbar slot."
+
+[node name="TextureRect" type="TextureRect" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -54.0
+offset_right = 20.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_in80y")
+
+[node name="CancelButton" type="Button" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.5
+offset_top = -28.0
+offset_right = -7.5
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="Overlay/CancelButton" to="." method="_on_cancel_button_pressed"]

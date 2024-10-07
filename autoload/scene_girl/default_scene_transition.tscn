@@ -125,6 +125,7 @@ libraries = {
 speed_scale = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 visible = false

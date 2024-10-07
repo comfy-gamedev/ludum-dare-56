@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1ugnu2qn0ycj"]
+
+[ext_resource type="PackedScene" uid="uid://mfvkdqbf5p8r" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="1_p7xf6"]
+[ext_resource type="Script" path="res://scenes/upgrade_screen/upgrade_screen.gd" id="1_u0sp3"]
+[ext_resource type="Shader" path="res://materials/expensive_palette_swap.gdshader" id="2_jhlcq"]
+[ext_resource type="Texture2D" uid="uid://bvt4rkp8euckn" path="res://palette_night.png" id="3_o8q28"]
+[ext_resource type="Texture2D" uid="uid://b5jl3r10ypjqm" path="res://palette_night_transition2.png" id="4_iiv1s"]
+[ext_resource type="Texture2D" uid="uid://d0gdncj3ujd12" path="res://palette_night_transition.png" id="5_p4h2u"]
+[ext_resource type="Texture2D" uid="uid://bgrp5vhsqt8cu" path="res://palette.png" id="6_c0wod"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="7_h0oj5"]
+[ext_resource type="PackedScene" uid="uid://bocnscn2kxeon" path="res://objects/ui_canvas_layer/ui_canvas_layer.tscn" id="8_tb1ro"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/lights_sub_viewport.gd" id="9_17g4m"]
+[ext_resource type="Script" path="res://node_types/camera_shake.gd" id="10_7rk8l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stsfv"]
+shader = ExtResource("2_jhlcq")
+shader_parameter/lower_bound = 0.0
+shader_parameter/output_palettes = Array[Texture2D]([ExtResource("3_o8q28"), ExtResource("4_iiv1s"), ExtResource("5_p4h2u"), ExtResource("6_c0wod")])
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g1p6q"]
+viewport_path = NodePath("LightsSubViewport")
+
+[node name="UpgradeScreen" type="Node2D"]
+script = ExtResource("1_u0sp3")
+
+[node name="BackgroundCanvasLayer" parent="." instance=ExtResource("1_p7xf6")]
+
+[node name="EffectsCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="NightEffect" type="ColorRect" parent="EffectsCanvasLayer"]
+material = SubResource("ShaderMaterial_stsfv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_h0oj5")
+time = 1.0
+lightmap = SubResource("ViewportTexture_g1p6q")
+
+[node name="UICanvasLayer" parent="." instance=ExtResource("8_tb1ro")]
+is_upgrade_screen = true
+
+[node name="LightsSubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+canvas_cull_mask = 4294967294
+render_target_update_mode = 4
+script = ExtResource("9_17g4m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(284, 160)
+
+[node name="CameraShake" type="Node" parent="Camera2D"]
+script = ExtResource("10_7rk8l")
+
+[connection signal="upgrade_done" from="UICanvasLayer" to="." method="_on_ui_canvas_layer_upgrade_done"]

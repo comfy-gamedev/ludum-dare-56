@@ -7,8 +7,8 @@
 [ext_resource type="Resource" uid="uid://btu1nx75yo7h4" path="res://blueprints/farm.tres" id="5_1c3u5"]
 [ext_resource type="Script" path="res://resource_types/cpu_ai_params.gd" id="6_gqlam"]
 [ext_resource type="Resource" uid="uid://dvv0y8046s6eb" path="res://blueprints/goblin_spawner.tres" id="7_oe2or"]
-[ext_resource type="Resource" path="res://blueprints/rat_spawner.tres" id="8_e2sk7"]
-[ext_resource type="Resource" path="res://blueprints/mage_spawner.tres" id="9_dyta8"]
+[ext_resource type="Resource" uid="uid://ddut7wbnvapoq" path="res://blueprints/rat_spawner.tres" id="8_e2sk7"]
+[ext_resource type="Resource" uid="uid://i7iiv8uajels" path="res://blueprints/mage_spawner.tres" id="9_dyta8"]
 [ext_resource type="Resource" uid="uid://b0sxuofdu6j8d" path="res://blueprints/autocannon.tres" id="10_ylcse"]
 [ext_resource type="Resource" uid="uid://c8y4n18yl1fdb" path="res://blueprints/laser_turret.tres" id="11_idms7"]
 [ext_resource type="Resource" uid="uid://cyawrd6olq32q" path="res://blueprints/rock_turret.tres" id="12_ihvf6"]
@@ -22,6 +22,8 @@ fortification_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("2_hsyul")
 turret_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("10_ylcse"), ExtResource("11_idms7"), ExtResource("12_ihvf6"), ExtResource("13_v7xph"), ExtResource("14_7d85d"), ExtResource("15_hfotm")])
 production_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("5_1c3u5")])
 spawner_blueprints = Array[ExtResource("1_ubo1j")]([ExtResource("7_oe2or"), ExtResource("8_e2sk7"), ExtResource("9_dyta8")])
+starting_money = 2
+passive_income = 4
 militarism = 0.0
 economics = 0.0
 aggression = 0.0

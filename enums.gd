@@ -16,6 +16,7 @@ enum BuildingType {
 }
 
 enum Phase {
+	STANDBY,
 	BUILD,
 	FIGHT,
 }

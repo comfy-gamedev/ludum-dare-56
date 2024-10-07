@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://c27cjc23wfk0c"]
+
+[ext_resource type="Script" path="res://node_types/building.gd" id="1_rot6r"]
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_33n0j"]
+[ext_resource type="SpriteFrames" uid="uid://5fa0ko4lcgj3" path="res://objects/buildings/spawner_bomber/spawner_bomber_frames.tres" id="3_ts45b"]
+[ext_resource type="PackedScene" uid="uid://brfxkbq7b4brm" path="res://objects/spawner_node/spawner.tscn" id="4_457xc"]
+[ext_resource type="PackedScene" uid="uid://b4fedx0v1ihs8" path="res://objects/units/bomber/bomber.tscn" id="5_mxtjw"]
+[ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="6_cy6fl"]
+[ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="7_wq4cd"]
+
+[sub_resource type="Curve" id="Curve_k1008"]
+_data = [Vector2(0, 0.984906), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db0o8"]
+size = Vector2(16, 16)
+
+[node name="SpawnerBomber" type="StaticBody2D" groups=["Building"]]
+script = ExtResource("1_rot6r")
+building_type = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_33n0j")
+sprite_frames = ExtResource("3_ts45b")
+autoplay = "default"
+
+[node name="Spawner" parent="." instance=ExtResource("4_457xc")]
+spawn_scene = ExtResource("5_mxtjw")
+
+[node name="Healthbar" parent="." instance=ExtResource("6_cy6fl")]
+
+[node name="Smoke" parent="." instance=ExtResource("7_wq4cd")]
+scale_amount_curve = SubResource("Curve_k1008")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_db0o8")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://resource_types/blueprint.gd" id="1_li35r"]
 [ext_resource type="Script" path="res://resource_types/cpu_ai_params.gd" id="5_mo20i"]
-[ext_resource type="Resource" path="res://blueprints/rat_spawner.tres" id="8_yflbv"]
+[ext_resource type="Resource" uid="uid://ddut7wbnvapoq" path="res://blueprints/rat_spawner.tres" id="8_yflbv"]
 [ext_resource type="Resource" uid="uid://cyawrd6olq32q" path="res://blueprints/rock_turret.tres" id="12_6xbf8"]
 
 [resource]
@@ -11,7 +11,8 @@ fortification_blueprints = Array[ExtResource("1_li35r")]([])
 turret_blueprints = Array[ExtResource("1_li35r")]([ExtResource("12_6xbf8")])
 production_blueprints = Array[ExtResource("1_li35r")]([])
 spawner_blueprints = Array[ExtResource("1_li35r")]([ExtResource("8_yflbv")])
-passive_income = 15
+starting_money = 2
+passive_income = 1
 militarism = 0.5
 economics = 0.0
 aggression = 0.75

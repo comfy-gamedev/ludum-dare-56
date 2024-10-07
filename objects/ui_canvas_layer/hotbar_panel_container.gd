@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal hotbar_selected(i: int)
+
 @export var disabled: bool = false
 
 var current_hotbar: Array[Blueprint] = [null, null, null, null, null, null]
@@ -34,6 +36,9 @@ func _ready() -> void:
 	hotbar_costs[3] = $HBoxContainer/ColorRect4/Label
 	hotbar_costs[4] = $HBoxContainer/ColorRect5/Label
 	hotbar_costs[5] = $HBoxContainer/ColorRect6/Label
+	
+	_update_slots()
+	
 
 func _input(event: InputEvent) -> void:
 	if disabled:
@@ -41,7 +46,17 @@ func _input(event: InputEvent) -> void:
 	for i in 6:
 		if event.is_action_pressed("hotbar_" + str(i + 1)):
 			get_viewport().set_input_as_handled()
-			_select_hotbar(i)
+			if Globals.phase == Enums.Phase.BUILD:
+				_select_hotbar(i)
+			else:
+				hotbar_selected.emit(i)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Globals.phase != Enums.Phase.STANDBY:
+		return
+	if event.is_action_pressed("cancel_blueprint"):
+		get_viewport().set_input_as_handled()
+		hotbar_selected.emit(-1)
 
 func _on_color_rect_gui_input(event: InputEvent, i: int) -> void:
 	if disabled:
@@ -49,7 +64,10 @@ func _on_color_rect_gui_input(event: InputEvent, i: int) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			get_viewport().set_input_as_handled()
-			_select_hotbar(i)
+			if Globals.phase == Enums.Phase.BUILD:
+				_select_hotbar(i)
+			else:
+				hotbar_selected.emit(i)
 
 func _select_hotbar(i: int) -> void:
 	Globals.selected_blueprint = Globals.player_hotbar[i]
@@ -60,6 +78,9 @@ func _on_globals_selected_blueprint_changed() -> void:
 	hightlight.position = Vector2(10 + 20 * i, 10)
 
 func _on_globals_player_hotbar_changed() -> void:
+	_update_slots()
+
+func _update_slots() -> void:
 	for i in 6:
 		if current_hotbar[i] != Globals.player_hotbar[i]:
 			if is_instance_valid(hotbar_nodes[i]):
@@ -69,7 +90,7 @@ func _on_globals_player_hotbar_changed() -> void:
 			current_hotbar[i] = Globals.player_hotbar[i]
 			if current_hotbar[i]:
 				hotbar_nodes[i] = current_hotbar[i].hotbar_scene.instantiate()
-				hotbar_nodes[i].position = Vector2(10 + 20 * i, 10)
+				hotbar_nodes[i].position = Vector2(10 + 18 * i, 10)
 				hotbar_costs[i].text = str(current_hotbar[i].cost)
 				add_child(hotbar_nodes[i])
 
