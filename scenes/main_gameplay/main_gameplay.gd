@@ -177,6 +177,7 @@ func _on_globals_selected_blueprint_changed() -> void:
 func _on_globals_phase_changed() -> void:
 	match Globals.phase:
 		Enums.Phase.BUILD:
+			MusicMan.music(preload("res://assests/Music/building-time.ogg"))
 			for u in get_tree().get_nodes_in_group("Unit"):
 				u.queue_free()
 			for p in get_tree().get_nodes_in_group("Projectile"):
@@ -206,6 +207,7 @@ func _on_globals_phase_changed() -> void:
 				Globals.phase = Enums.Phase.STANDBY
 			
 		Enums.Phase.FIGHT:
+			MusicMan.music(preload("res://assests/Music/battle-time.ogg"))
 			for b in get_tree().get_nodes_in_group("Building"):
 				b.on_day()
 			Globals.day_time = 0.0
