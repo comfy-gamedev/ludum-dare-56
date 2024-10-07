@@ -8,7 +8,7 @@
 script = ExtResource("1_nyf60")
 category = 2
 name = "GoblinSpawner"
-description = "Indescribable."
+description = "A camp of your favorite gremlins."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_13ot0")
 hotbar_scene = ExtResource("1_xugxv")

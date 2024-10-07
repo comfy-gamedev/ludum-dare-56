@@ -12,6 +12,8 @@ var laser_visible = false
 func _process(delta: float) -> void:
 	var enemies := get_tree().get_nodes_in_group("Unit").filter(func(x): return x.team != team)
 	if !enemies:
+		laser_visible = false
+		queue_redraw()
 		return
 	
 	target_node = null

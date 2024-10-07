@@ -8,7 +8,7 @@
 script = ExtResource("2_whoak")
 category = 1
 name = "Repairer"
-description = "Indescribable."
+description = "Don't ask where all these spare parts are coming from."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_80j0p")
 hotbar_scene = ExtResource("1_nhpl2")

@@ -6,8 +6,9 @@
 
 [resource]
 script = ExtResource("2_vssft")
+category = 0
 name = "RockTurret"
-description = "Indescribable."
+description = "Anyone can throw a rock. Anyone is also pretty cheap."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_6ab8i")
 hotbar_scene = ExtResource("1_x55c3")

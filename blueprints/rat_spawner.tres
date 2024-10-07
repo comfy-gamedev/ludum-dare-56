@@ -8,7 +8,7 @@
 script = ExtResource("2_fsrkg")
 category = 2
 name = "RatSpawner"
-description = "Indescribable."
+description = "Trained eat wires and sniff out supplies, these Battle-Rats are great versus buildings."
 size = Vector2i(1, 1)
 spawned_scene = ExtResource("3_l5t5d")
 hotbar_scene = ExtResource("1_osnc7")
