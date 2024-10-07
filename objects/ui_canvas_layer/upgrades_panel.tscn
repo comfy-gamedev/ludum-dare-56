@@ -28,15 +28,26 @@ patch_margin_bottom = 4
 script = ExtResource("2_6putl")
 metadata/_edit_vertical_guides_ = [-56.0]
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 4.0
-offset_bottom = 31.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = 1.0
+offset_right = 52.0
+offset_bottom = 41.0
 grow_horizontal = 2
-text = "VICTORY!
-Choose an upgrade!"
+alignment = 1
+
+[node name="VictoryLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "VICTORY!"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Choose an upgrade!"
 horizontal_alignment = 1
 
 [node name="CountLabel" type="Label" parent="."]

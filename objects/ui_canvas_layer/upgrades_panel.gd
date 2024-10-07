@@ -37,11 +37,15 @@ const BLUEPRINTS = [
 @onready var sorry: Label = $Sorry
 @onready var count_label: Label = $CountLabel
 @onready var skip_button: Button = $SkipButton
+@onready var victory_label: Label = $VBoxContainer/VictoryLabel
 
 func _ready() -> void:
 	for p in panels:
 		p.chosen.connect(_on_panel_chosen.bind(p))
 		p.mouse_entered.connect(_on_panel_mouse_entered.bind(p))
+	
+	if Globals.game_level <= 0:
+		victory_label.hide()
 	
 	_reroll()
 
