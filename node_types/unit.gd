@@ -69,6 +69,28 @@ func set_team(v: Enums.Team) -> void:
 		_update_team_material()
 	_update_collision_bits()
 
+var esr_v = null
+
+func disable_unit_targeting() -> void:
+	var bb = get_node_or_null("Blackboard")
+	var esr = get_node_or_null("EnemySeekingRadius")
+	
+	if bb:
+		bb.set_value("nearby_opponents", [])
+	
+	if esr:
+		esr_v = esr.collision_mask
+		esr.collision_mask = 0
+
+func enable_unit_targeting() -> void:
+	if esr_v == null:
+		return
+	
+	var esr = get_node_or_null("EnemySeekingRadius")
+	
+	if esr:
+		esr.collision_mask = esr_v
+
 func _update_team_material():
 	var sprite = get_node_or_null(^"AnimatedSprite2D")
 	if sprite:

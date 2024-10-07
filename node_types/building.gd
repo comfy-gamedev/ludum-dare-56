@@ -67,7 +67,7 @@ func get_target_point(global_from: Vector2) -> Vector2:
 		Vector2(0, 0),
 		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE)
 	var c = rec.get_center() + global_position
-	c += rec.size.length() * (global_from - c).normalized()
+	c += rec.size.length() * (global_from - c).normalized() / 2.0
 	return c
 
 func set_reach(v: float) -> void:

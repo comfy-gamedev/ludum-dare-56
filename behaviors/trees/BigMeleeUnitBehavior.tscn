@@ -18,7 +18,7 @@
 
 [node name="BigMeleeUnitBehavior" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_71dqb")
-blackboard = NodePath("@Node@17505")
+blackboard = NodePath("@Node@228422")
 actor = NodePath("")
 
 [node name="PrimarySequence" type="Node" parent="."]

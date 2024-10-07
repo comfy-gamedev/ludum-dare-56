@@ -1,30 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://d320so74fmvcx"]
+[gd_scene load_steps=5 format=3 uid="uid://d320so74fmvcx"]
 
 [ext_resource type="Script" path="res://scenes/test_arena/test_arena.gd" id="1_paqsb"]
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="2_1rurq"]
 [ext_resource type="PackedScene" uid="uid://bmulu8vonwlpq" path="res://objects/units/mage/mage.tscn" id="2_4poop"]
 [ext_resource type="PackedScene" uid="uid://bp7t5y8tu3dde" path="res://objects/buildings/rock_turret/rock_turret.tscn" id="3_e12si"]
-[ext_resource type="PackedScene" uid="uid://b4fedx0v1ihs8" path="res://objects/units/bomber/bomber.tscn" id="6_2vxmx"]
 
 [node name="TestArena" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_paqsb")
 
 [node name="Goblin" parent="." instance=ExtResource("2_1rurq")]
-position = Vector2(-5, 161)
-
-[node name="Goblin2" parent="." instance=ExtResource("2_1rurq")]
-position = Vector2(110, 50)
-team = 1
+position = Vector2(0, 20)
 
 [node name="Mage" parent="." instance=ExtResource("2_4poop")]
-position = Vector2(123, 174)
+position = Vector2(1, -25)
+team = 1
+attack_points = 0
 
 [node name="RockTurret" parent="." instance=ExtResource("3_e12si")]
-position = Vector2(11, 88)
+position = Vector2(0, -15)
 team = 1
-
-[node name="Mage2" parent="." instance=ExtResource("2_4poop")]
-position = Vector2(237, 242)
-
-[node name="Bomber" parent="." instance=ExtResource("6_2vxmx")]
-position = Vector2(165, 99)
+reach = 0

@@ -31,5 +31,8 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		return SUCCESS
 	else:
 		# Otherwise, move towards the target
-		actor.move_and_slide()
+		if actor.move_and_slide():
+			actor.disable_unit_targeting()
+			return FAILURE
+		
 		return RUNNING
