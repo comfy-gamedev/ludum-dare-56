@@ -5,6 +5,7 @@ signal done()
 const BLUEPRINTS = [
 	preload("res://blueprints/autocannon.tres"),
 	preload("res://blueprints/barricade.tres"),
+	preload("res://blueprints/bomber_spawner.tres"),
 	preload("res://blueprints/buffer.tres"),
 	preload("res://blueprints/extender.tres"),
 	preload("res://blueprints/farm.tres"),
