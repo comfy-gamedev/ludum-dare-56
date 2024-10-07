@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcdtvma5neqrp"
-path="res://.godot/imported/turret_heal.png-8d3e12d502461264202fd8bdadf7812e.ctex"
+uid="uid://bycvawnm7a2f2"
+path="res://.godot/imported/turret_tesla.png-f9c5b08de97bd7ff5dc732389d374eaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/turret_heal.png"
-dest_files=["res://.godot/imported/turret_heal.png-8d3e12d502461264202fd8bdadf7812e.ctex"]
+source_file="res://objects/buildings/tesla_turret/turret_tesla.png"
+dest_files=["res://.godot/imported/turret_tesla.png-f9c5b08de97bd7ff5dc732389d374eaf.ctex"]
 
 [params]
 
