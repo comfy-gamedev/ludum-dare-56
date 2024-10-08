@@ -5,6 +5,7 @@ extends Building
 
 func _ready() -> void:
 	grid_manager.add_castle(global_position, 3, team, id)
+	super._ready()
 
 func hit(damage_taken: float):
 	health -= damage_taken
