@@ -64,8 +64,7 @@ func _ready() -> void:
 		allowed_bps[i] = allowed_bps[i].duplicate()
 	
 	for i in allowed_discounts:
-		assert(i < allowed_bps.size())
-		allowed_bps[i].cost = maxi(allowed_bps[i].cost - 1, 1)
+		allowed_bps[i % allowed_bps.size()].cost = maxi(allowed_bps[i % allowed_bps.size()].cost - 1, 1)
 	
 	for bp: Blueprint in allowed_bps:
 		match bp.category:
