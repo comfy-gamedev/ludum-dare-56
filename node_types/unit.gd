@@ -18,6 +18,8 @@ var push_area: Area2D
 
 var slowed: bool = false
 
+var sound_cooldown := 0.0
+
 @export var push_shape = preload("res://assests/push_shape.tres")
 
 func get_movement_speed() -> float:
@@ -39,6 +41,7 @@ func _ready() -> void:
 	add_child(push_area, false, Node.INTERNAL_MODE_BACK)
 
 func _physics_process(delta: float) -> void:
+	sound_cooldown -= delta
 	for b in push_area.get_overlapping_bodies():
 		var v = global_position - b.global_position
 		if not v.is_zero_approx():
@@ -56,7 +59,9 @@ func _update_collision_bits() -> void:
 		collision_mask =  0b00010
 
 func hit(damage_taken: float):
-	MusicMan.sfx(preload("res://assests/SFX/hit.wav"), "hit", 1)
+	if sound_cooldown <= 0.0:
+		MusicMan.sfx(preload("res://assests/SFX/hit.wav"), "hit", 1)
+		sound_cooldown = 0.1
 	health -= damage_taken
 	if health <= 0:
 		queue_free()

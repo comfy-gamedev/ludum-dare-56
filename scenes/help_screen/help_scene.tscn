@@ -52,6 +52,7 @@ time = 1.0
 lightmap = SubResource("GradientTexture2D_2kkpp")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 offset_right = 568.0
 offset_bottom = 320.0
 size_flags_vertical = 4

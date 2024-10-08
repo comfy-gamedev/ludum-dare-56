@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://objects/units/goblin/goblin.gd" id="1_ermbh"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_6r64d"]
-[ext_resource type="PackedScene" uid="uid://dijfue61t875n" path="res://behaviors/trees/BigMeleeUnitBehavior.tscn" id="3_s20q5"]
+[ext_resource type="PackedScene" path="res://behaviors/trees/BigMeleeUnitBehavior.tscn" id="3_s20q5"]
 [ext_resource type="Material" uid="uid://dbneyw5mid3p8" path="res://materials/team_red.tres" id="4_51ew1"]
 [ext_resource type="Texture2D" uid="uid://dxhcpl7u7wx3x" path="res://assests/wet_gobbo.png" id="5_bti25"]
 
@@ -51,7 +51,8 @@ radius = 35.0
 [node name="GiantGoblin" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_ermbh")
 max_health = 300.0
-attack_points = 25
+attack_points = 15
+movement_speed = 50.0
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_6r64d")
