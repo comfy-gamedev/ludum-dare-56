@@ -53,7 +53,7 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 				chosen_cell = c
 				break
 	else:
-		cells.sort_custom(func(a, b): 
+		cells.filter(func (c): return grid.can_place_building(c, bp.size, team)).sort_custom(func(a, b): 
 			var weighted_a = 0
 			var weighted_b = 0
 			if bp.category == Enums.BlueprintCategory.TURRET || bp.category == Enums.BlueprintCategory.FORTIFICATION:
