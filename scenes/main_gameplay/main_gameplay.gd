@@ -9,7 +9,7 @@ const BP_LEVELS = [
 	{ min_lvl = 2, cat = "fortification", bp = preload("res://blueprints/brambles.tres") },
 	{ min_lvl = 6, cat = "fortification", bp = preload("res://blueprints/autocannon.tres") },
 	{ min_lvl = 5, cat = "fortification", bp = preload("res://blueprints/buffer.tres") },
-	{ min_lvl = 4, cat = "fortification", bp = preload("res://blueprints/extender.tres") },
+	#{ min_lvl = 4, cat = "fortification", bp = preload("res://blueprints/extender.tres") },
 	{ min_lvl = 3, cat = "turret", bp = preload("res://blueprints/laser_turret.tres") },
 	{ min_lvl = 1, cat = "turret", bp = preload("res://blueprints/rock_turret.tres") },
 	{ min_lvl = 2, cat = "turret", bp = preload("res://blueprints/shotgun_turret.tres") },
@@ -83,7 +83,7 @@ func _ready() -> void:
 	cpu.params.aggression = randf_range(-0.8, 0.8)
 	cpu.params.economics = randf_range(-0.8, 0.8)
 	cpu.params.militarism = randf_range(-0.8, 0.8)
-	cpu.params.organization = randf_range(0.2, 0.8)
+	cpu.params.organization = randf_range(0.5, 1.0)
 	
 	cpu.params.starting_money = Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level % 10 == 0 else 0)
 	cpu.params.passive_income = 2 + ((2 * Globals.game_level) / 3)
