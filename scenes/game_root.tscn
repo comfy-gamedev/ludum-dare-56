@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0qdc4fpkw8f6" path="res://assests/mute.png" id="4_01nil"]
 [ext_resource type="Script" path="res://scenes/mute_button.gd" id="5_l41li"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tu2ey"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7fywl"]
 shader = ExtResource("2_n2ft6")
 shader_parameter/vertex_offset = null
 
@@ -18,7 +18,7 @@ metadata/test_scene = "res://scenes/main_gameplay/main_gameplay.tscn"
 [node name="SmoothPixelSubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 2
 texture_repeat = 1
-material = SubResource("ShaderMaterial_tu2ey")
+material = SubResource("ShaderMaterial_7fywl")
 offset_right = 512.0
 offset_bottom = 512.0
 script = ExtResource("3_3bd26")
