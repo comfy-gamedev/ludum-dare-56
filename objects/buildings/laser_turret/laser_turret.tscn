@@ -225,5 +225,4 @@ scale_amount_curve = SubResource("Curve_jetkp")
 [node name="Healthbar" parent="." instance=ExtResource("6_oue6e")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_roauy")

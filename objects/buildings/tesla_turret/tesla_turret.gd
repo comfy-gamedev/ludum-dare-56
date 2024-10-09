@@ -51,7 +51,7 @@ func _draw_bzzt(to: Array[Vector2], color: Color) -> void:
 		for i in range(1, n+1):
 			var b = a + (v - a) * float(i) / float(n)
 			b += Vector2.from_angle(randf_range(0.0, TAU)) * 4.0
-			draw_line(a, b, color, 2.0)
+			RectLine.draw(self, a, b, color, 2.0)
 			a = b
 
 func _draw() -> void:
