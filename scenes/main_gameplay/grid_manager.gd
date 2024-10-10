@@ -42,8 +42,6 @@ func add_castle(pos: Vector2, radius: int, team: Enums.Team, id: int = -1) -> vo
 			if (Vector2(cell_p) + Vector2(0.5, 0.5)).distance_squared_to(Vector2(p)) > radius*radius:
 				continue
 			for oc in castles:
-				if oc.team != team:
-					continue
 				if cell_p in oc.cells:
 					c.cells[cell_p] = oc.cells[cell_p]
 					break

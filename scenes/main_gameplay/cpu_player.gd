@@ -44,6 +44,9 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 	var cells = grid.get_available_cells(team)
 	#cells.shuffle()
 	
+	if not cells:
+		return false
+	
 	var chosen_cell = null
 	
 	if randf() > params.organization:
@@ -53,35 +56,53 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 				chosen_cell = c
 				break
 	else:
-		cells.filter(func (c): return grid.can_place_building(c, bp.size, team)).sort_custom(func(a, b): 
-			var weighted_a = 0
-			var weighted_b = 0
-			if bp.category == Enums.BlueprintCategory.TURRET || bp.category == Enums.BlueprintCategory.FORTIFICATION:
-				weighted_a -= (a / 16).x
-				weighted_a += (a / 16).y / 2
-				weighted_b -= (b / 16).x
-				weighted_b += (b / 16).y / 2
+		#var rr = [Rect2i(cells[0] / grid.CELL_SIZE, Vector2i.ONE)]
+		
+		var weighted_cells = cells.map(func (a):
+			var tile = a / grid.CELL_SIZE
+			var weight = 0
+			
+			#rr[0] = rr[0].expand(tile)
+			
+			if bp.category in [Enums.BlueprintCategory.TURRET, Enums.BlueprintCategory.FORTIFICATION]:
+				weight -= tile.x - tile.y / 2
 			else:
-				weighted_a += (a / 16).x
-				weighted_a -= (a / 16).y / 2
-				weighted_b += (b / 16).x
-				weighted_b -= (b / 16).y / 2
+				weight += tile.x - tile.y / 2
 			
-			weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(1, 0) * 16), Vector2i(1, 1), team) else 0
-			weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(-1, 0) * 16), Vector2i(1, 1), team) else 0
-			weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(0, 1) * 16), Vector2i(1, 1), team) else 0
-			weighted_a += 1 if !grid.can_place_building(((a / 16) + Vector2(0, -1) * 16), Vector2i(1, 1), team) else 0
+			for d in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
+				weight += 1 if !grid.can_place_building((tile + d) * grid.CELL_SIZE, Vector2i(1, 1), team) else 0
 			
-			weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(1, 0) * 16), Vector2i(1, 1), team) else 0
-			weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(-1, 0) * 16), Vector2i(1, 1), team) else 0
-			weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(0, 1) * 16), Vector2i(1, 1), team) else 0
-			weighted_b += 1 if !grid.can_place_building(((b / 16) + Vector2(0, -1) * 16), Vector2i(1, 1), team) else 0
-			
-			return weighted_a > weighted_b
+			return { cell = a, tile = tile, weight = weight }
 		)
-		chosen_cell = cells[0] #OPTIMAL
+		
+		var by_weight_desc = func(a, b): return a.weight > b.weight
+		
+		weighted_cells.sort_custom(by_weight_desc)
+		weighted_cells.resize(weighted_cells.bsearch_custom(weighted_cells[0], by_weight_desc, false))
+		weighted_cells.shuffle()
+		
+		chosen_cell = weighted_cells[0].cell #OPTIMAL
+		
+		#var rect = rr[0]
+		#var map = []
+		#map.resize(rect.size.y + 1)
+		#for i in rect.size.y + 1:
+			#map[i] = []
+			#map[i].resize(rect.size.x + 1)
+			#map[i].fill("[   . ]")
+		#
+		#for wc in weighted_cells:
+			#map[wc.tile.y - rect.position.y][wc.tile.x - rect.position.x] = "[%+02.1f]" % [wc.weight]
+		#
+		#var str = ""
+		#for m in map:
+			#str += "".join(m) + "\n"
+		#
+		#print("WEIGHTS: ")
+		#print(str)
 	
 	if chosen_cell == null:
+		breakpoint
 		return false
 	
 	var building = bp.spawned_scene.instantiate()
