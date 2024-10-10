@@ -78,9 +78,6 @@ func on_night() -> void:
 
 func on_day() -> void:
 	process_mode = PROCESS_MODE_INHERIT
-	if detection_area:
-		remove_child(detection_area)
-		add_child(detection_area)
 
 func set_team(v: Enums.Team) -> void:
 	if team == v:
