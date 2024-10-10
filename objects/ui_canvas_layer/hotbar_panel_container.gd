@@ -7,7 +7,7 @@ signal hotbar_selected(i: int)
 var current_hotbar: Array[Blueprint] = [null, null, null, null, null, null]
 
 var hotbar_nodes: Array[Node] = [null, null, null, null, null, null]
-var hotbar_costs: Array[Node] = [null, null, null, null, null, null]
+var hotbar_costs: Array[Label] = [null, null, null, null, null, null]
 
 @onready var hightlight: Sprite2D = $Hightlight
 
@@ -27,6 +27,7 @@ func _ready() -> void:
 	Globals.player_hotbar_changed.connect(_on_globals_player_hotbar_changed)
 	Globals.selected_blueprint_changed.connect(_on_globals_selected_blueprint_changed)
 	Globals.phase_changed.connect(_on_globals_phase_changed)
+	Globals.blue_money_changed.connect(_on_globals_blue_money_changed)
 	for i in 6:
 		color_rects[i].gui_input.connect(_on_color_rect_gui_input.bind(i))
 	
@@ -109,3 +110,11 @@ func _on_globals_phase_changed() -> void:
 		.tween_property(self, "position", target, 0.25)
 	
 	disabled = Globals.phase != Enums.Phase.BUILD
+
+func _on_globals_blue_money_changed() -> void:
+	for i in 6:
+		if hotbar_costs[i].text != "":
+			if Globals.blue_money >= int(hotbar_costs[i].text):
+				hotbar_costs[i].add_theme_color_override("font_color", Color.DARK_GREEN)
+			else:
+				hotbar_costs[i].add_theme_color_override("font_color", Color.DARK_RED)
