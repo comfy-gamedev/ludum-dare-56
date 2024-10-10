@@ -115,6 +115,6 @@ func _on_globals_blue_money_changed() -> void:
 	for i in 6:
 		if hotbar_costs[i].text != "":
 			if Globals.blue_money >= int(hotbar_costs[i].text):
-				hotbar_costs[i].add_theme_color_override("font_color", Color.DARK_GREEN)
+				hotbar_costs[i].add_theme_color_override("font_color", Color("6abe30"))
 			else:
-				hotbar_costs[i].add_theme_color_override("font_color", Color.DARK_RED)
+				hotbar_costs[i].add_theme_color_override("font_color", Color("d95763"))
