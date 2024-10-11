@@ -23,7 +23,7 @@ var sound_cooldown := 0.0
 @export var push_shape = preload("res://assests/push_shape.tres")
 
 func get_movement_speed() -> float:
-	return movement_speed * 0.5 if slowed else movement_speed
+	return movement_speed * 0.05 if slowed else movement_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

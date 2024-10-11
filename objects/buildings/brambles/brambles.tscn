@@ -9,7 +9,7 @@
 
 [node name="Brambles" type="Area2D" groups=["Building"]]
 script = ExtResource("1_vq3rf")
-max_health = 200
+max_health = 800
 reach = 10
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
