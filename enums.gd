@@ -34,3 +34,7 @@ enum Upgrades {
 	BLUEPRINTS,
 	ANYTHING,
 }
+
+const Palette = {
+	BLACK = Color("000000"),
+}

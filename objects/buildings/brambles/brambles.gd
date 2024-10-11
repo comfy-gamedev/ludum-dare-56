@@ -50,11 +50,11 @@ func _physics_process(delta: float) -> void:
 
 func _update_collision_bits() -> void:
 	if team == Enums.Team.BLUE:
-		collision_layer = 0b00000
-		collision_mask =  0b10000
+		collision_layer = 0
+		collision_mask = PhysicsLayers.RED_UNITS
 	elif team == Enums.Team.RED:
 		collision_layer = 0b00000
-		collision_mask =  0b01000
+		collision_mask =  PhysicsLayers.BLUE_UNITS
 
 func hit(damage_taken: float):
 	health -= damage_taken

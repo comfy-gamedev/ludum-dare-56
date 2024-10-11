@@ -44,7 +44,7 @@ func get_closest_any_range(actor: Node) -> Node2D:
 		.filter(func(x): return x.team != actor.team)
 	
 	if target_type == TargetType.BUILDING:
-		all_enemies = all_enemies.filter(func (x): x.is_targetable())
+		all_enemies = all_enemies.filter(func (x): return x.is_targetable())
 	
 	var target = null
 	var min_dist = INF
