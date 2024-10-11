@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://crvth1acdnxn3"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/until_fail.gd" id="1_5q0vi"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_e7gg0"]
+[ext_resource type="Script" path="res://behaviors/actions/move_to_target_action.gd" id="3_67g1i"]
+[ext_resource type="Script" path="res://behaviors/actions/damage_target_action.gd" id="4_753ci"]
+[ext_resource type="Script" path="res://behaviors/actions/recoil_from_target_action.gd" id="5_i1y6k"]
+
+[node name="AttackLoop" type="Node"]
+script = ExtResource("1_5q0vi")
+
+[node name="AttackUnitSequence" type="Node" parent="."]
+script = ExtResource("2_e7gg0")
+
+[node name="MoveToTargetAction" type="Node" parent="AttackUnitSequence"]
+script = ExtResource("3_67g1i")
+
+[node name="DamageTargetAction" type="Node" parent="AttackUnitSequence"]
+script = ExtResource("4_753ci")
+
+[node name="RecoilFromTargetAction" type="Node" parent="AttackUnitSequence"]
+script = ExtResource("5_i1y6k")

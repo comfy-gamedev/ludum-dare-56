@@ -1,3 +1,4 @@
+class_name RangeAttackAction
 extends ActionLeaf
 
 var range = 50

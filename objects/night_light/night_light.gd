@@ -9,7 +9,10 @@ extends Node2D
 
 func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
-	canvas_layer.custom_viewport = sub_viewport
+	if sub_viewport == null:
+		visible = false
+	else:
+		canvas_layer.custom_viewport = sub_viewport
 	timer.start(randf_range(0.1, 0.2))
 	light.global_transform = global_transform
 

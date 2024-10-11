@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0qivdqy0if6p"]
-
-[ext_resource type="Script" path="res://behaviors/actions/besiege_target_building_action.gd" id="1_6237s"]
-
-[node name="BesiegeTargetBuildingAction" type="Node"]
-script = ExtResource("1_6237s")

@@ -36,7 +36,7 @@ func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 	var light = NIGHT_LIGHT.instantiate()
 	light.radius = Vector2(bp_size).length() * 16
-	light.sub_viewport = $"../LightsSubViewport" # TODO: BAD VERY BAD OMG
+	light.sub_viewport = get_node_or_null("../LightsSubViewport") # TODO: BAD VERY BAD OMG
 	light.position = (Vector2(-1, -1) + Vector2(bp_size)) * GridManager.CELL_SIZE / 2.0
 	add_child(light)
 	
@@ -67,10 +67,11 @@ func is_targetable() -> bool:
 
 func get_target_point(global_from: Vector2) -> Vector2:
 	var rec = Rect2(
-		Vector2(0, 0),
-		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE)
+		Vector2.ZERO,
+		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE) \
+		.grow(4.0)
 	var c = rec.get_center() + global_position
-	c += rec.size.length() * (global_from - c).normalized() / 2.0
+	c += rec.size.length() * c.direction_to(global_from) / 2.0
 	return c
 
 func set_reach(v: float) -> void:

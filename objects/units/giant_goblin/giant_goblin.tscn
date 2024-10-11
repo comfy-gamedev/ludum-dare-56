@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d36xtchr1hs8o"]
+[gd_scene load_steps=12 format=3 uid="uid://d36xtchr1hs8o"]
 
 [ext_resource type="Script" path="res://objects/units/goblin/goblin.gd" id="1_ermbh"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_6r64d"]
-[ext_resource type="PackedScene" path="res://behaviors/trees/BigMeleeUnitBehavior.tscn" id="3_s20q5"]
+[ext_resource type="PackedScene" uid="uid://ddf31kmkx8d28" path="res://behaviors/trees/MeleeUnitBehavior.tscn" id="3_ko6yt"]
 [ext_resource type="Material" uid="uid://dbneyw5mid3p8" path="res://materials/team_red.tres" id="4_51ew1"]
 [ext_resource type="Texture2D" uid="uid://dxhcpl7u7wx3x" path="res://assests/wet_gobbo.png" id="5_bti25"]
 
@@ -45,19 +45,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq0tf"]
 size = Vector2(16, 16)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5reyq"]
-radius = 35.0
-
 [node name="GiantGoblin" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_ermbh")
 max_health = 300.0
 attack_points = 15
 movement_speed = 50.0
+attack_acceptance_range = 25.0
+push_radius = 10.0
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_6r64d")
 
-[node name="BigMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_s20q5")]
+[node name="MeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_ko6yt")]
 blackboard = NodePath("../Blackboard")
 actor = NodePath("..")
 
@@ -70,11 +69,3 @@ frame_progress = 0.372635
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uq0tf")
-
-[node name="EnemySeekingRadius" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 24
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySeekingRadius"]
-shape = SubResource("CircleShape2D_5reyq")
-debug_color = Color(0.563722, 0.551862, 0.248219, 0.42)

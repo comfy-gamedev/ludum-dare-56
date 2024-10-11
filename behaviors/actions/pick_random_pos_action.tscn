@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxa6gkl6odb7m"]
-
-[ext_resource type="Script" path="res://behaviors/actions/pick_random_pos_action.gd" id="1_0xegq"]
-
-[node name="PickRandomPosAction" type="Node"]
-script = ExtResource("1_0xegq")

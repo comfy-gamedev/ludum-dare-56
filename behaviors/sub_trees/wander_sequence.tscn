@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1o1ohfv8jo6g"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_f4niu"]
+[ext_resource type="Script" path="res://behaviors/actions/pick_random_pos_action.gd" id="2_sgp2p"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/time_limiter.gd" id="3_tsd0p"]
+[ext_resource type="Script" path="res://behaviors/actions/move_to_pos_action.gd" id="4_uj4jp"]
+
+[node name="WanderSequence" type="Node"]
+script = ExtResource("1_f4niu")
+
+[node name="PickRandomPosAction" type="Node" parent="."]
+script = ExtResource("2_sgp2p")
+
+[node name="TimeLimiterDecorator" type="Node" parent="."]
+script = ExtResource("3_tsd0p")
+wait_time = 2.0
+
+[node name="MoveToPosAction" type="Node" parent="TimeLimiterDecorator"]
+script = ExtResource("4_uj4jp")

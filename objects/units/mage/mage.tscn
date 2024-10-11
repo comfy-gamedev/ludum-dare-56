@@ -50,12 +50,15 @@ radius = 48.0104
 [node name="Mage" type="CharacterBody2D" groups=["Unit"]]
 script = ExtResource("1_guaxv")
 attack_points = 15
+detection_radius = 45.0
+attack_acceptance_range = 45.0
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_40l0s")
 
-[node name="RangedUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_al0aq")]
+[node name="RangedUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_al0aq")]
 blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s7gtv")

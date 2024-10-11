@@ -5,9 +5,6 @@ extends CPUParticles2D
 var damage = 25
 
 func _ready() -> void:
-	bomb_explosion_radius_area.collision_layer = 1
-	bomb_explosion_radius_area.collision_mask = 0b11111
-	
 	await get_tree().create_timer(0.05).timeout
 	
 	MusicMan.sfx(preload("res://assests/SFX/bomber-explode.wav"), "bomber")

@@ -13,6 +13,8 @@ const TEAM_MATERIALS = [
 @export var max_health := 50
 @export var reach := 0: set = set_reach
 
+@export var damage: float = 0.1
+
 var bp_size: Vector2i = Vector2i(1, 1) # set by blueprint
 
 var detection_area: Area2D = self
@@ -43,6 +45,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	for e in detected_enemy_units:
 		e.slowed = true
+		e.hit(damage, false)
 		hit(1)
 
 func _update_collision_bits() -> void:

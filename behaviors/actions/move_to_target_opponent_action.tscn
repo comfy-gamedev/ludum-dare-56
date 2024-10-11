@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjsft772bt537"]
-
-[ext_resource type="Script" path="res://behaviors/actions/move_to_target_opponent_action.gd" id="1_sm1c5"]
-
-[node name="MoveToTargetOpponentAction" type="Node"]
-script = ExtResource("1_sm1c5")

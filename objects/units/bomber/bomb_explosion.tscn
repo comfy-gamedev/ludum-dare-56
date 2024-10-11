@@ -36,6 +36,8 @@ anim_offset_curve = SubResource("Curve_h4bgn")
 script = ExtResource("2_h5c0g")
 
 [node name="bomb_explosion_radius_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bomb_explosion_radius_area"]
 shape = SubResource("CircleShape2D_f4q1a")
