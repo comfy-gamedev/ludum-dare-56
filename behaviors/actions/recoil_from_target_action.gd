@@ -12,7 +12,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if not is_instance_valid(target):
 		return FAILURE
 	
-	var target_pos = target.global_position
+	var target_pos = target.get_target_point(actor.global_position) if target is Building else target.global_position
 	
 	# Calculate the direction away from the target position
 	var direction = actor.position.direction_to(target_pos)
