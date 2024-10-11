@@ -32,4 +32,4 @@ func _on_visibility_timer_timeout() -> void:
 
 func _draw() -> void:
 	if laser_visible:
-		RectLine.draw(self, Vector2(0, 0), to_local(target_building.global_position), Color.MEDIUM_SEA_GREEN, 1.5)
+		RectLine.draw(self, Vector2(0, 0), to_local(target_building.global_position), Color("37946e"), 1.5)

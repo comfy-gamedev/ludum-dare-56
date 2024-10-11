@@ -15,6 +15,8 @@ const TEAM_MATERIALS = [
 @export var max_health := 50
 @export var reach := 0: set = set_reach
 
+@export var armor: float = 0.0
+
 var bp_size: Vector2i = Vector2i(1, 1) # set by blueprint
 
 var detection_area: Area2D
@@ -51,6 +53,9 @@ func _update_collision_bits() -> void:
 		collision_mask =  0b01010
 
 func hit(damage_taken: float):
+	damage_taken -= armor
+	if damage_taken < 1.0:
+		damage_taken = 1.0
 	health -= damage_taken
 	MusicMan.sfx(preload("res://assests/SFX/hit.wav"), "hit", 1)
 	if health <= 0:
@@ -94,6 +99,10 @@ func set_team(v: Enums.Team) -> void:
 
 func get_closest_enemy_unit() -> Node2D:
 	detected_enemy_units.sort_custom(func (a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
+	return detected_enemy_units[0] if detected_enemy_units else null
+
+func get_farthest_enemy_unit() -> Node2D:
+	detected_enemy_units.sort_custom(func (a, b): return a.global_position.distance_to(global_position) > b.global_position.distance_to(global_position))
 	return detected_enemy_units[0] if detected_enemy_units else null
 
 func _update_team_material():
