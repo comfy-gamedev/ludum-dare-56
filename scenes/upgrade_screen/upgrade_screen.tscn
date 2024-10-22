@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1ugnu2qn0ycj"]
+[gd_scene load_steps=13 format=3 uid="uid://d1ugnu2qn0ycj"]
 
 [ext_resource type="PackedScene" uid="uid://bt8p4a8oaj6cp" path="res://scenes/main_gameplay/background_canvas_layer.tscn" id="1_p7xf6"]
 [ext_resource type="Script" path="res://scenes/upgrade_screen/upgrade_screen.gd" id="1_u0sp3"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bgrp5vhsqt8cu" path="res://palette.png" id="6_c0wod"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="7_h0oj5"]
 [ext_resource type="PackedScene" uid="uid://bocnscn2kxeon" path="res://objects/ui_canvas_layer/ui_canvas_layer.tscn" id="8_tb1ro"]
-[ext_resource type="Script" path="res://scenes/main_gameplay/lights_sub_viewport.gd" id="9_17g4m"]
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="10_7rk8l"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g1p6q"]
@@ -39,18 +38,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_h0oj5")
 time = 1.0
-lightmap = SubResource("ViewportTexture_g1p6q")
 
 [node name="UICanvasLayer" parent="." instance=ExtResource("8_tb1ro")]
 is_upgrade_screen = true
-
-[node name="LightsSubViewport" type="SubViewport" parent="."]
-disable_3d = true
-transparent_bg = true
-canvas_item_default_texture_filter = 0
-canvas_cull_mask = 4294967294
-render_target_update_mode = 4
-script = ExtResource("9_17g4m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(284, 160)

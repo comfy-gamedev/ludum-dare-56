@@ -3,13 +3,12 @@ extends ColorRect
 
 @export_range(0.0, 1.0, 0.1) var time: float = 0.0: set = set_time
 
-@export var lightmap: Texture2D
-
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		Globals.phase_changed.connect(_on_globals_phase_changed)
 	(material as ShaderMaterial).set_shader_parameter("lower_bound", 1.0 - time)
-	(material as ShaderMaterial).set_shader_parameter("lightmap", lightmap)
+	if GameRoot.singleton:
+		(material as ShaderMaterial).set_shader_parameter("lightmap", GameRoot.singleton.lights_sub_viewport.get_texture())
 	visible = not is_zero_approx(time)
 
 func set_time(v: float) -> void:
@@ -17,7 +16,6 @@ func set_time(v: float) -> void:
 		return
 	time = v
 	(material as ShaderMaterial).set_shader_parameter("lower_bound", 1.0 - time)
-	(material as ShaderMaterial).set_shader_parameter("lightmap", lightmap)
 	visible = not is_zero_approx(time)
 
 func transition(t: float) -> Signal:

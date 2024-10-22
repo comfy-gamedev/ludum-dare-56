@@ -36,13 +36,8 @@ func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 	var light = NIGHT_LIGHT.instantiate()
 	light.radius = Vector2(bp_size).length() * 16
-	light.sub_viewport = get_node_or_null("../LightsSubViewport") # TODO: BAD VERY BAD OMG
 	light.position = (Vector2(-1, -1) + Vector2(bp_size)) * GridManager.CELL_SIZE / 2.0
 	add_child(light)
-	
-	if light.sub_viewport == null:
-		light.queue_free()
-	
 
 func _update_collision_bits() -> void:
 	if team == Enums.Team.BLUE:
@@ -65,13 +60,16 @@ func hit(damage_taken: float):
 func is_targetable() -> bool:
 	return true
 
-func get_target_point(global_from: Vector2) -> Vector2:
+func get_center_offset() -> Vector2:
 	var rec = Rect2(
 		Vector2.ZERO,
-		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE) \
-		.grow(4.0)
-	var c = rec.get_center() + global_position
-	c += rec.size.length() * c.direction_to(global_from) / 2.0
+		Vector2(bp_size - Vector2i.ONE) * GridManager.CELL_SIZE)
+	return rec.get_center()
+
+func get_target_point(global_from: Vector2) -> Vector2:
+	var size = GridManager.CELL_SIZE * (Vector2(bp_size) - Vector2(0.5, 0.5))
+	var c = get_center_offset() + global_position
+	c += size.length() * 0.5 * c.direction_to(global_from)
 	return c
 
 func set_reach(v: float) -> void:

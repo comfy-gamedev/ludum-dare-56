@@ -33,6 +33,10 @@ Fullscreener="res://autoload/fullscreener.gd"
 Debug="res://autoload/debug.gd"
 PhysicsLayers="*res://autoload/physics_layers.gd"
 
+[debug]
+
+gdscript/warnings/standalone_expression=2
+
 [display]
 
 window/size/viewport_width=568

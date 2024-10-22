@@ -32,7 +32,6 @@ func _ready() -> void:
 	process_mode = PROCESS_MODE_DISABLED
 	var light = NIGHT_LIGHT.instantiate()
 	light.radius = Vector2(bp_size).length() * 16
-	light.sub_viewport = $"../LightsSubViewport" # TODO: BAD VERY BAD OMG
 	light.position = (Vector2(-1, -1) + Vector2(bp_size)) * GridManager.CELL_SIZE / 2.0
 	add_child(light)
 	

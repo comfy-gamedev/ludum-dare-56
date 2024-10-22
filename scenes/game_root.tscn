@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://du76xo7bhdfk2"]
+[gd_scene load_steps=8 format=3 uid="uid://du76xo7bhdfk2"]
 
 [ext_resource type="Script" path="res://scenes/game_root.gd" id="1_waueg"]
 [ext_resource type="Shader" path="res://addons/smooth_pixel_subviewport_container/smooth_pixel_subviewport_container.gdshader" id="2_n2ft6"]
 [ext_resource type="Script" path="res://addons/smooth_pixel_subviewport_container/smooth_pixel_subviewport_container.gd" id="3_3bd26"]
 [ext_resource type="Texture2D" uid="uid://d0qdc4fpkw8f6" path="res://assests/mute.png" id="4_01nil"]
 [ext_resource type="Script" path="res://scenes/mute_button.gd" id="5_l41li"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/lights_sub_viewport.gd" id="6_7hsh6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3sloh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dp2hu"]
 shader = ExtResource("2_n2ft6")
 shader_parameter/vertex_offset = null
 
@@ -15,16 +16,26 @@ script = ExtResource("1_waueg")
 metadata/test_camera = &"disabled"
 metadata/test_scene = "res://scenes/main_gameplay/main_gameplay.tscn"
 
+[node name="LightsSubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+disable_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+canvas_cull_mask = 4293918722
+render_target_update_mode = 4
+script = ExtResource("6_7hsh6")
+
 [node name="SmoothPixelSubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 2
 texture_repeat = 1
-material = SubResource("ShaderMaterial_3sloh")
+material = SubResource("ShaderMaterial_dp2hu")
 offset_right = 512.0
 offset_bottom = 512.0
 script = ExtResource("3_3bd26")
 smoothcam_enabled = false
 
-[node name="SubViewport" type="SubViewport" parent="SmoothPixelSubViewportContainer"]
+[node name="WorldSubViewport" type="SubViewport" parent="SmoothPixelSubViewportContainer"]
+unique_name_in_owner = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
@@ -32,10 +43,10 @@ physics_object_picking = true
 canvas_cull_mask = 4294967293
 render_target_update_mode = 4
 
-[node name="PermanentCanvasLayer" type="CanvasLayer" parent="SmoothPixelSubViewportContainer/SubViewport"]
+[node name="PermanentCanvasLayer" type="CanvasLayer" parent="SmoothPixelSubViewportContainer/WorldSubViewport"]
 layer = 50
 
-[node name="Control" type="Control" parent="SmoothPixelSubViewportContainer/SubViewport/PermanentCanvasLayer"]
+[node name="Control" type="Control" parent="SmoothPixelSubViewportContainer/WorldSubViewport/PermanentCanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MuteButton" type="Button" parent="SmoothPixelSubViewportContainer/SubViewport/PermanentCanvasLayer/Control"]
+[node name="MuteButton" type="Button" parent="SmoothPixelSubViewportContainer/WorldSubViewport/PermanentCanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

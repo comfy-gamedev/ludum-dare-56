@@ -157,7 +157,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			Globals.selected_blueprint = null
 	if OS.has_feature("debug"):
-		if event.is_action_pressed("debug_2"):
+		if is_instance_valid(red_castle) and event.is_action_pressed("debug_2"):
 			red_castle.queue_free()
 			await get_tree().process_frame
 			Globals.phase = Enums.Phase.BUILD
