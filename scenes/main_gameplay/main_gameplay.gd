@@ -209,6 +209,8 @@ func _on_globals_phase_changed() -> void:
 				Globals.game_level -= 1
 				SceneGirl.change_scene("res://scenes/lose_screen/lose_screen.tscn")
 				Globals.phase = Enums.Phase.STANDBY
+			else:
+				Globals.rounds += 1
 			
 		Enums.Phase.FIGHT:
 			MusicMan.music(preload("res://assests/Music/battle-time.ogg"), 0.5)
@@ -216,6 +218,5 @@ func _on_globals_phase_changed() -> void:
 				b.on_day()
 			Globals.day_time = 0.0
 			Globals.selected_blueprint = null
-			Globals.rounds += 1
 			Globals.blue_temp_income = Globals.blue_income
 			Globals.red_temp_income = Globals.red_income

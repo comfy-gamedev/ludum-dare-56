@@ -13,12 +13,12 @@ var upgrades_panel: Control
 @onready var start_battle_button: Button = $Control/StartBattleButton
 @onready var ff_button: Button = $Control/FFButton
 @onready var mana_label: Control = $Control/ManaLabel
-@onready var round_label: Label = $Control/RoundLabel
+@onready var round_tracker: Node2D = $Control/RoundTracker
 
 func _ready() -> void:
 	if is_upgrade_screen:
 		mana_label.hide()
-		round_label.hide()
+		round_tracker.hide()
 		upgrades_panel = UPGRADES_PANEL.instantiate()
 		upgrades_panel.ui_canvas_layer = self
 		upgrades_panel.hotbar = hotbar_panel_container
@@ -47,7 +47,7 @@ func _on_phase_changed() -> void:
 func _on_ff_button_pressed() -> void:
 	if Engine.time_scale == 1.0:
 		ff_button.text = "FF <"
-		Engine.time_scale = 2.0
+		Engine.time_scale = 16.0
 	else:
 		ff_button.text = "FF >>"
 		Engine.time_scale = 1.0
