@@ -61,6 +61,7 @@ blackboard = NodePath("../Blackboard")
 actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_s7gtv")
 autoplay = "default"
 frame_progress = 0.0176529

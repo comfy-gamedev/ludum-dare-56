@@ -56,7 +56,7 @@ func _ready() -> void:
 		detection_area.input_pickable = false
 		add_child(detection_area, false, Node.INTERNAL_MODE_BACK)
 	
-	_update_team_material()
+	material = TeamMaterial.get_material(team)
 	_update_collision_bits()
 	
 
@@ -92,8 +92,7 @@ func set_team(v: Enums.Team) -> void:
 	if team == v:
 		return
 	team = v
-	if is_inside_tree():
-		_update_team_material()
+	material = TeamMaterial.get_material(team)
 	_update_collision_bits()
 
 func get_closest_detected_enemy_unit() -> Node2D:
@@ -123,12 +122,3 @@ func get_closest_detected_enemy_building() -> Node2D:
 	overlaps.sort_custom(func (a, b): return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
 	
 	return overlaps[0]
-
-func _update_team_material():
-	var sprite = get_node_or_null(^"AnimatedSprite2D")
-	if sprite:
-		match team:
-			Enums.Team.BLUE:
-				sprite.material = preload("res://materials/team_blue.tres")
-			Enums.Team.RED:
-				sprite.material = preload("res://materials/team_red.tres")

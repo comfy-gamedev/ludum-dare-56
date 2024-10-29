@@ -1,7 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://byhy28k1iynxf"]
+[gd_scene load_steps=23 format=3 uid="uid://byhy28k1iynxf"]
 
 [ext_resource type="Script" path="res://objects/buildings/castle/castle.gd" id="1_qb6m3"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_d24nf"]
 [ext_resource type="Texture2D" uid="uid://dtrntf3hmebht" path="res://objects/buildings/castle/castle.png" id="2_w1jcw"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="4_eoyoi"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="5_lgokp"]
@@ -135,7 +134,7 @@ building_type = 1
 max_health = 1500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_d24nf")
+use_parent_material = true
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_2klvi")
 autoplay = "default"

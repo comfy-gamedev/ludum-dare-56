@@ -1,7 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://brfcq7g5e0ywk"]
+[gd_scene load_steps=34 format=3 uid="uid://brfcq7g5e0ywk"]
 
 [ext_resource type="Script" path="res://objects/buildings/tesla_turret/tesla_turret.gd" id="1_11oyd"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_lgqhc"]
 [ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="3_e06p4"]
 [ext_resource type="Texture2D" uid="uid://bycvawnm7a2f2" path="res://objects/buildings/tesla_turret/turret_tesla.png" id="4_80llx"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="4_m5bob"]
@@ -208,7 +207,7 @@ reach = 100
 
 [node name="Base" type="AnimatedSprite2D" parent="."]
 z_index = -1
-material = ExtResource("2_lgqhc")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_fo7mk")
 autoplay = "default"
 

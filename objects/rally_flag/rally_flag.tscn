@@ -1,0 +1,167 @@
+[gd_scene load_steps=25 format=3 uid="uid://cnc8t7sbm4u2d"]
+
+[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_q51gi"]
+[ext_resource type="Texture2D" uid="uid://c2q22fdjn2220" path="res://assests/flag.png" id="1_rcojj"]
+[ext_resource type="Script" path="res://objects/rally_flag/rally_flag.gd" id="1_w25sl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ds0a"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s81oh"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7ybq"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gva7"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0dga"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5sw7"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcept"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiorn"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bckh7"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br8hj"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrcsj"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13kgs"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfxmg"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iml7"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc01u"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj7lo"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrrda"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g20km"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06uhg"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxhks"]
+atlas = ExtResource("1_rcojj")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1237w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ds0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s81oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7ybq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gva7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0dga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5sw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcept")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiorn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bckh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br8hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrcsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13kgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfxmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iml7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oc01u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj7lo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrrda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g20km")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06uhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxhks")
+}],
+"loop": true,
+"name": &"spawn",
+"speed": 20.0
+}]
+
+[node name="RallyFlag" type="Node2D"]
+material = ExtResource("1_q51gi")
+script = ExtResource("1_w25sl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_1237w")
+autoplay = "default"

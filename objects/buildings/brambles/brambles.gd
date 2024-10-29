@@ -2,11 +2,6 @@ extends Area2D
 
 const NIGHT_LIGHT = preload("res://objects/night_light/night_light.tscn")
 
-const TEAM_MATERIALS = [
-	preload("res://materials/team_blue.tres"),
-	preload("res://materials/team_red.tres"),
-]
-
 @export var team: Enums.Team = Enums.Team.BLUE: set = set_team
 @export var building_type: Enums.BuildingType = Enums.BuildingType.UNSPECIFIED
 
@@ -25,14 +20,14 @@ var detected_enemy_units: Array[Node2D] = []
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
-	_update_team_material()
+	material = TeamMaterial.get_material(team)
 	_update_collision_bits()
 	_update_reach()
 	
 	process_mode = PROCESS_MODE_DISABLED
 	var light = NIGHT_LIGHT.instantiate()
 	light.radius = Vector2(bp_size).length() * 16
-	light.position = (Vector2(-1, -1) + Vector2(bp_size)) * GridManager.CELL_SIZE / 2.0
+	light.position = (Vector2(bp_size) - Vector2.ONE) * GridManager.CELL_SIZE / 2.0
 	add_child(light)
 	
 	if light.sub_viewport == null:
@@ -85,18 +80,8 @@ func set_team(v: Enums.Team) -> void:
 	if team == v:
 		return
 	team = v
-	if is_inside_tree():
-		_update_team_material()
+	material = TeamMaterial.get_material(team)
 	_update_collision_bits()
-
-func _update_team_material():
-	var sprites = (
-		find_children("*", "Sprite2D", true, true) +
-		find_children("*", "AnimatedSprite2D", true, true))
-	
-	for sprite: CanvasItem in sprites:
-		if sprite.material in TEAM_MATERIALS:
-			sprite.material = TEAM_MATERIALS[team]
 
 func _update_reach() -> void:
 	collision_shape_2d.shape.radius = reach

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Blueprint" load_steps=3 format=3 uid="uid://cpprxo6ajslx7"]
+
+[ext_resource type="Script" path="res://resource_types/blueprint.gd" id="2_bfux4"]
+[ext_resource type="PackedScene" uid="uid://byhy28k1iynxf" path="res://objects/buildings/castle/castle.tscn" id="2_j3prc"]
+
+[resource]
+script = ExtResource("2_bfux4")
+category = 1
+name = "Castle"
+description = "IF YOU SEE THIS FILE A BUG REPORT"
+size = Vector2i(2, 2)
+spawned_scene = ExtResource("2_j3prc")
+cost = 2

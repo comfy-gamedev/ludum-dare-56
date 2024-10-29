@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhyrtqf8cqygs"]
+[gd_scene load_steps=11 format=3 uid="uid://dhyrtqf8cqygs"]
 
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="1_n2i6r"]
 [ext_resource type="PackedScene" uid="uid://ddf31kmkx8d28" path="res://behaviors/trees/MeleeUnitBehavior.tscn" id="1_t6j5r"]
 [ext_resource type="Script" path="res://objects/units/goblin/goblin.gd" id="1_yh6ya"]
 [ext_resource type="Texture2D" uid="uid://dxhcpl7u7wx3x" path="res://assests/wet_gobbo.png" id="2_0peo8"]
-[ext_resource type="Material" uid="uid://dbneyw5mid3p8" path="res://materials/team_red.tres" id="4_exgka"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxr1l"]
 atlas = ExtResource("2_0peo8")
@@ -57,7 +56,7 @@ blackboard = NodePath("../Blackboard")
 actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("4_exgka")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_btxmb")
 autoplay = "default"
 frame_progress = 0.372635

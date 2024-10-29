@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c27cjc23wfk0c"]
+[gd_scene load_steps=9 format=3 uid="uid://c27cjc23wfk0c"]
 
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_rot6r"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_33n0j"]
 [ext_resource type="SpriteFrames" uid="uid://5fa0ko4lcgj3" path="res://objects/buildings/spawner_bomber/spawner_bomber_frames.tres" id="3_ts45b"]
 [ext_resource type="PackedScene" uid="uid://brfxkbq7b4brm" path="res://objects/spawner_node/spawner.tscn" id="4_457xc"]
 [ext_resource type="PackedScene" uid="uid://b4fedx0v1ihs8" path="res://objects/units/bomber/bomber.tscn" id="5_mxtjw"]
@@ -20,7 +19,7 @@ script = ExtResource("1_rot6r")
 building_type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_33n0j")
+use_parent_material = true
 sprite_frames = ExtResource("3_ts45b")
 autoplay = "default"
 

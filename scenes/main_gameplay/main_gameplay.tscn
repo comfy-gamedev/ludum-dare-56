@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3rvm3rw6opg"]
+[gd_scene load_steps=15 format=3 uid="uid://c3rvm3rw6opg"]
 
 [ext_resource type="Script" path="res://node_types/camera_shake.gd" id="1_lrklj"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/main_gameplay.gd" id="1_wt4mr"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b5jl3r10ypjqm" path="res://palette_night_transition2.png" id="5_w75np"]
 [ext_resource type="Texture2D" uid="uid://d0gdncj3ujd12" path="res://palette_night_transition.png" id="6_elcrl"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/night_effect.gd" id="8_intth"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/camera.gd" id="10_se3fw"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/grid_manager.gd" id="11_fkpbp"]
+[ext_resource type="Script" path="res://scenes/main_gameplay/poi_marker.gd" id="12_qakqf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x8m7g"]
 shader = ExtResource("2_tu80g")
@@ -39,10 +41,25 @@ script = ExtResource("8_intth")
 [node name="UICanvasLayer" parent="." instance=ExtResource("2_xxslg")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(284, 160)
+position = Vector2(280, 160)
+editor_draw_limits = true
+script = ExtResource("10_se3fw")
+y_min = 160.0
+y_max = 160.0
 
 [node name="CameraShake" type="Node" parent="Camera2D"]
 script = ExtResource("1_lrklj")
 
 [node name="GridManager" type="Node2D" parent="."]
 script = ExtResource("11_fkpbp")
+
+[node name="BlueCastle" type="Marker2D" parent="." groups=["POI"]]
+position = Vector2(96, 208)
+script = ExtResource("12_qakqf")
+
+[node name="RedCastle" type="Marker2D" parent="." groups=["POI"]]
+position = Vector2(480, 112)
+script = ExtResource("12_qakqf")
+kind = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

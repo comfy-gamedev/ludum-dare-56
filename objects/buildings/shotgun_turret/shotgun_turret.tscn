@@ -1,7 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://snbi8asuovs5"]
+[gd_scene load_steps=34 format=3 uid="uid://snbi8asuovs5"]
 
 [ext_resource type="Script" path="res://objects/buildings/shotgun_turret/shotgun_turret.gd" id="1_upytn"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_dxa0f"]
 [ext_resource type="Texture2D" uid="uid://ckfn56kjbbse1" path="res://objects/buildings/turret_base.png" id="3_8mye5"]
 [ext_resource type="Texture2D" uid="uid://s1grv07ptu1x" path="res://objects/buildings/shotgun_turret/turret_shotgun.png" id="4_6lseo"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="4_m2pjy"]
@@ -206,7 +205,7 @@ max_health = 75
 reach = 100
 
 [node name="Base" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_dxa0f")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_s2bkl")
 autoplay = "default"
 

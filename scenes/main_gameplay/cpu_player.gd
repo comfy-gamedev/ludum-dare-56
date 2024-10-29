@@ -6,7 +6,7 @@ extends Node
 @export var grid: GridManager
 
 func _ready() -> void:
-	Globals.red_starting_mana = params.starting_money
+	Globals.red_starting_mana = params.starting_mana
 	Globals.red_income = params.passive_income
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 
@@ -52,15 +52,15 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 	if randf() > params.organization:
 		cells.shuffle()
 		for c in cells:
-			if grid.can_place_building(c, bp.size, team):
+			if grid.can_construct_blueprint(team, bp, c):
 				chosen_cell = c
 				break
 	else:
 		#var rr = [Rect2i(cells[0] / grid.CELL_SIZE, Vector2i.ONE)]
 		
-		var weighted_cells = cells.map(func (a):
-			var tile = a / grid.CELL_SIZE
-			var weight = 0
+		var weighted_cells = cells.map(func (a: Vector2):
+			var tile := a / grid.CELL_SIZE
+			var weight: float = 0
 			
 			#rr[0] = rr[0].expand(tile)
 			
@@ -69,8 +69,14 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 			else:
 				weight += tile.x - tile.y / 2
 			
-			for d in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
-				weight += 1 if !grid.can_place_building((tile + d) * grid.CELL_SIZE, Vector2i(1, 1), team) else 0
+			for d: Vector2 in [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]:
+				var p := (tile + d) * grid.CELL_SIZE
+				if not grid.has_claim(team, p):
+					continue
+				var o := grid.get_occupant(p)
+				if not o or o.team != team:
+					continue
+				weight += 1
 			
 			return { cell = a, tile = tile, weight = weight }
 		)
@@ -105,22 +111,16 @@ func _try_construct_blueprint(bp: Blueprint) -> bool:
 		breakpoint
 		return false
 	
-	var building = bp.spawned_scene.instantiate()
-	building.team = team
-	building.position = chosen_cell + grid.CELL_SIZE / 2.0
-	building.bp_size = bp.size
-	get_parent().add_child(building)
+	grid.construct_blueprint(team, bp, chosen_cell)
 	
 	MusicMan.sfx(preload("res://assests/SFX/build-building2.wav"), "build")
 	
-	grid.place_building(building.position, bp.size, building, team)
-	
-	Globals.red_money -= bp.cost
+	Globals.red_mana -= bp.cost
 	
 	return true
 
 func _can_afford(bp: Blueprint) -> bool:
-	return bp != null and Globals.red_money >= bp.cost
+	return bp != null and Globals.red_mana >= bp.cost
 
 func _choose(a, b, f: float) -> Variant:
 	if not a:

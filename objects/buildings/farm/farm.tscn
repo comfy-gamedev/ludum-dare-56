@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bno2s46dn5rxo"]
+[gd_scene load_steps=16 format=3 uid="uid://bno2s46dn5rxo"]
 
 [ext_resource type="Script" path="res://objects/buildings/farm/farm.gd" id="1_38mek"]
 [ext_resource type="Texture2D" uid="uid://4u8ue3jy5r4" path="res://objects/buildings/farm/gob_cauldron.png" id="2_5nn1q"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_wdgld"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_fvenh"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="4_11nuh"]
 
@@ -82,7 +81,7 @@ script = ExtResource("1_38mek")
 building_type = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_wdgld")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_4pqok")
 autoplay = "default"
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="apples.palette_sprite_importer"
+type="Texture2D"
+uid="uid://c2q22fdjn2220"
+path="res://.godot/imported/flag.png-50f0aff2af81c7fb25298ac36eb292da.res"
+
+[deps]
+
+source_file="res://assests/flag.png"
+dest_files=["res://.godot/imported/flag.png-50f0aff2af81c7fb25298ac36eb292da.res"]
+
+[params]
+
+palette_image="res://palette.png"

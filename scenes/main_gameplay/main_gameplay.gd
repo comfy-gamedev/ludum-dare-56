@@ -23,16 +23,16 @@ const BP_LEVELS = [
 	{ min_lvl = 4, cat = "spawner", bp = preload("res://blueprints/snake_spawner.tres") },
 ]
 
-@export var blue_castle_position: Vector2 = Vector2(6, 13) * 16
-@export var red_castle_position: Vector2 = Vector2(30, 6) * 16
-
 var blueprint_preview: Node2D = null
 
 var red_castle: Node
 
 @onready var camera_shake: CameraShake = $Camera2D/CameraShake
 @onready var night_effect: ColorRect = $EffectsCanvasLayer/NightEffect
-@onready var grid_manager = $GridManager
+@onready var grid_manager: GridManager = $GridManager
+
+@onready var points_of_interest: Dictionary = \
+	get_tree().get_nodes_in_group("POI").reduce(func (a, x): return a.merged({ x.kind: x }), {})
 
 func _ready() -> void:
 	Globals.game_level += 1
@@ -41,7 +41,7 @@ func _ready() -> void:
 	
 	# Enemy Setup
 	
-	Globals.red_money = 0
+	Globals.red_mana = 0
 	
 	var cpu = CpuPlayer.new()
 	cpu.team = Enums.Team.RED
@@ -85,14 +85,14 @@ func _ready() -> void:
 	cpu.params.militarism = randf_range(-0.8, 0.8)
 	cpu.params.organization = randf_range(0.5, 1.0)
 	
-	cpu.params.starting_money = Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level % 10 == 0 else 0)
+	cpu.params.starting_mana = Globals.game_level + randi_range(0, 1) + (10 if Globals.game_level % 10 == 0 else 0)
 	cpu.params.passive_income = 2 + ((2 * Globals.game_level) / 3)
 	
 	add_child(cpu)
 	
 	
-	Globals.blue_money = Globals.blue_starting_mana
-	Globals.red_money = Globals.red_starting_mana
+	Globals.blue_mana = Globals.blue_starting_mana
+	Globals.red_mana = Globals.red_starting_mana
 	Globals.blue_temp_income = Globals.blue_income
 	Globals.red_temp_income = Globals.red_income
 	
@@ -100,22 +100,10 @@ func _ready() -> void:
 	Globals.phase_changed.connect(_on_globals_phase_changed)
 	night_effect.transition(1.0)
 	
-	grid_manager.add_castle(blue_castle_position, 5, Enums.Team.BLUE)
-	grid_manager.add_castle(red_castle_position, 5, Enums.Team.RED)
+	const CASTLE = preload("res://blueprints/castle.tres")
 	
-	var blue_castle = CASTLE.instantiate()
-	blue_castle.team = Enums.Team.BLUE
-	blue_castle.position = blue_castle_position - grid_manager.CELL_SIZE / 2.0
-	blue_castle.bp_size = Vector2i(2, 2)
-	add_child(blue_castle)
-	grid_manager.place_building(blue_castle.position, Vector2i(2, 2), blue_castle, Enums.Team.BLUE)
-
-	red_castle = CASTLE.instantiate()
-	red_castle.team = Enums.Team.RED
-	red_castle.position = red_castle_position - grid_manager.CELL_SIZE / 2.0
-	red_castle.bp_size = Vector2i(2, 2)
-	add_child(red_castle)
-	grid_manager.place_building(red_castle.position, Vector2i(2, 2), red_castle, Enums.Team.RED)
+	grid_manager.construct_blueprint(Enums.Team.BLUE, CASTLE, points_of_interest[PoiMarker.Kind.BLUE_CASTLE].position - grid_manager.CELL_SIZE)
+	grid_manager.construct_blueprint(Enums.Team.RED, CASTLE, points_of_interest[PoiMarker.Kind.RED_CASTLE].position - grid_manager.CELL_SIZE)
 	
 	Globals.phase = Enums.Phase.BUILD
 
@@ -124,7 +112,7 @@ func _process(delta: float) -> void:
 		var p = get_viewport().canvas_transform.inverse() * get_viewport().get_mouse_position()
 		p = (p + grid_manager.CELL_SIZE / 2.0).snapped(grid_manager.CELL_SIZE) - grid_manager.CELL_SIZE / 2.0
 		blueprint_preview.global_position = p
-		var can_place = Globals.blue_money >= Globals.selected_blueprint.cost and grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size, Enums.Team.BLUE)
+		var can_place = Globals.blue_mana >= Globals.selected_blueprint.cost and grid_manager.can_construct_blueprint(Enums.Team.BLUE, Globals.selected_blueprint, blueprint_preview.position)
 		var mat = preload("res://materials/team_blue.tres") if can_place else preload("res://materials/invalid.tres")
 		var sprs = blueprint_preview.find_children("*", "Sprite2D") + blueprint_preview.find_children("*", "AnimatedSprite2D")
 		if blueprint_preview is Sprite2D or blueprint_preview is AnimatedSprite2D:
@@ -144,14 +132,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Globals.selected_blueprint:
 			assert(is_instance_valid(blueprint_preview))
 			get_viewport().set_input_as_handled()
-			if Globals.blue_money >= Globals.selected_blueprint.cost and grid_manager.can_place_building(blueprint_preview.position, Globals.selected_blueprint.size, Enums.Team.BLUE):
-				Globals.blue_money -= Globals.selected_blueprint.cost
-				var s = Globals.selected_blueprint.spawned_scene.instantiate()
-				s.position = blueprint_preview.position
-				s.bp_size = Globals.selected_blueprint.size
-				add_child(s)
+			if Globals.blue_mana >= Globals.selected_blueprint.cost and grid_manager.can_construct_blueprint(Enums.Team.BLUE, Globals.selected_blueprint, blueprint_preview.position):
+				Globals.blue_mana -= Globals.selected_blueprint.cost
+				grid_manager.construct_blueprint(Enums.Team.BLUE, Globals.selected_blueprint, blueprint_preview.position)
 				MusicMan.sfx(preload("res://assests/SFX/build-building2.wav"), "build")
-				grid_manager.place_building(s.position, s.bp_size, s, Enums.Team.BLUE)
 	if event.is_action_pressed("cancel_blueprint"):
 		if Globals.selected_blueprint:
 			get_viewport().set_input_as_handled()
@@ -186,8 +170,8 @@ func _on_globals_phase_changed() -> void:
 				p.queue_free()
 			for b in get_tree().get_nodes_in_group("Building"):
 				b.on_night()
-			Globals.blue_money += Globals.blue_temp_income
-			Globals.red_money += Globals.red_temp_income
+			Globals.blue_mana += Globals.blue_temp_income
+			Globals.red_mana += Globals.red_temp_income
 			Globals.blue_temp_income = 0
 			Globals.red_temp_income = 0
 			

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scenes/mute_button.gd" id="5_l41li"]
 [ext_resource type="Script" path="res://scenes/main_gameplay/lights_sub_viewport.gd" id="6_7hsh6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0m4dh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtuy4"]
 shader = ExtResource("2_n2ft6")
 shader_parameter/vertex_offset = null
 
@@ -28,7 +28,7 @@ script = ExtResource("6_7hsh6")
 [node name="SmoothPixelSubViewportContainer" type="SubViewportContainer" parent="."]
 texture_filter = 2
 texture_repeat = 1
-material = SubResource("ShaderMaterial_0m4dh")
+material = SubResource("ShaderMaterial_jtuy4")
 offset_right = 512.0
 offset_bottom = 512.0
 script = ExtResource("3_3bd26")

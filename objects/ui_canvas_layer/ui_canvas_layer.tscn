@@ -475,6 +475,7 @@ offset_right = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("5_a6p7n")
+metadata/_edit_group_ = true
 
 [node name="Bg" type="TextureRect" parent="Control/Clock"]
 layout_mode = 2
@@ -500,6 +501,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y87ti")
 script = ExtResource("2_dxr6g")
+metadata/_edit_group_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/HotbarPanelContainer"]
 layout_mode = 2
@@ -598,10 +600,10 @@ script = ExtResource("4_62fux")
 
 [node name="ManaLabel" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 135.0
-offset_top = 301.0
-offset_right = 221.0
-offset_bottom = 317.0
+offset_left = 360.0
+offset_top = 302.0
+offset_right = 446.0
+offset_bottom = 318.0
 script = ExtResource("8_6u28w")
 metadata/_edit_group_ = true
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://41vn2oygejwv"]
+[gd_scene load_steps=15 format=3 uid="uid://41vn2oygejwv"]
 
 [ext_resource type="Script" path="res://node_types/unit.gd" id="1_d76ug"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_t0cm7"]
 [ext_resource type="PackedScene" uid="uid://c8qvbe6qpagvn" path="res://behaviors/trees/AntipersonelUnitBehavior.tscn" id="3_ly4ob"]
-[ext_resource type="Material" uid="uid://dbneyw5mid3p8" path="res://materials/team_red.tres" id="4_ebccs"]
 [ext_resource type="Texture2D" uid="uid://d3306xenjl0mr" path="res://assests/snake_friend.png" id="5_lc5n7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_leuga"]
@@ -80,11 +79,12 @@ max_health = 30.0
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("2_t0cm7")
 
-[node name="AntipersonelUnitBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("3_ly4ob")]
-blackboard = NodePath("@Node@17499")
+[node name="AntipersonelUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_ly4ob")]
+blackboard = NodePath("@Node@186724")
+actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("4_ebccs")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_btxmb")
 autoplay = "default"
 frame_progress = 0.372635

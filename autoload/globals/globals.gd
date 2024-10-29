@@ -20,20 +20,20 @@ signal selected_blueprint_changed()
 var selected_blueprint: Blueprint = null:
 	set(v): selected_blueprint = v; changed.emit(); selected_blueprint_changed.emit()
 
-signal blue_money_changed()
+signal blue_mana_changed()
 var blue_starting_mana: int = 0
 var blue_income: int = 4
 signal blue_temp_income_changed()
 var blue_temp_income: int = 0:
 	set(v): blue_temp_income = v; changed.emit(); blue_temp_income_changed.emit()
-var blue_money: int = 0:
-	set(v): blue_money = v; changed.emit(); blue_money_changed.emit()
+var blue_mana: int = 0:
+	set(v): blue_mana = v; changed.emit(); blue_mana_changed.emit()
 
 var red_starting_mana: int = 0
 var red_income: int = 5
 var red_temp_income: int = 0
-var red_money: int = 0:
-	set(v): red_money = v; changed.emit()
+var red_mana: int = 0:
+	set(v): red_mana = v; changed.emit()
 
 signal phase_changed()
 var phase: Enums.Phase = Enums.Phase.STANDBY:
@@ -62,11 +62,11 @@ func reset():
 	blue_starting_mana = 0
 	blue_income = 4
 	blue_temp_income = 0
-	blue_money = 0
+	blue_mana = 0
 	red_starting_mana = 0
 	red_income = 4
 	red_temp_income = 0
-	red_money = 0
+	red_mana = 0
 	game_level = 0
 	day_time = 0.0
 	cpu_acting = false

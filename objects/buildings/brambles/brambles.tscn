@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://7j0txm0hwsys"]
+[gd_scene load_steps=5 format=3 uid="uid://7j0txm0hwsys"]
 
 [ext_resource type="Script" path="res://objects/buildings/brambles/brambles.gd" id="1_vq3rf"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_1tph6"]
 [ext_resource type="SpriteFrames" uid="uid://bsgl0as645loj" path="res://objects/buildings/brambles/brambles_frames.tres" id="3_l70pp"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="5_co75s"]
 
@@ -13,7 +12,7 @@ max_health = 800
 reach = 10
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_1tph6")
+use_parent_material = true
 position = Vector2(-2.38419e-07, 1.78814e-07)
 sprite_frames = ExtResource("3_l70pp")
 autoplay = "default"

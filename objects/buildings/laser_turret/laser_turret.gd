@@ -48,6 +48,6 @@ func _draw_bzzt(to: Vector2, color: Color) -> void:
 func _draw() -> void:
 	if target_node and laser_visible:
 		var d = to_local(target_node.global_position)
-		_draw_bzzt(d, Color("ac3232"))
-		_draw_bzzt(d, Color("d95763"))
-		_draw_bzzt(d, Color("d77bba"))
+		_draw_bzzt(d, Enums.COLOR_PINK2I)
+		_draw_bzzt(d, Enums.COLOR_PINK3I)
+		_draw_bzzt(d, Enums.COLOR_PINK4I)

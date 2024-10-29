@@ -10,7 +10,7 @@ var temp_amount: int: set = set_temp_amount
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Globals.blue_money_changed.connect(_on_mana_changed)
+	Globals.blue_mana_changed.connect(_on_mana_changed)
 	Globals.blue_temp_income_changed.connect(_on_temp_changed)
 	Globals.phase_changed.connect(_on_phase_changed)
 
@@ -23,7 +23,7 @@ func set_temp_amount(v: int):
 	incoming_label.text = "+" + str(temp_amount)
 
 func _on_mana_changed() -> void:
-	create_tween().tween_property(self, "amount", Globals.blue_money, 0.25)
+	create_tween().tween_property(self, "amount", Globals.blue_mana, 0.25)
 
 func _on_temp_changed() -> void:
 	create_tween().tween_property(self, "temp_amount", Globals.blue_temp_income, 0.25)

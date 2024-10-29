@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cctuk3jdnuphy"]
+[gd_scene load_steps=11 format=3 uid="uid://cctuk3jdnuphy"]
 
 [ext_resource type="Script" path="res://objects/units/rat/rat.gd" id="1_nwvp7"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="2_m0snn"]
 [ext_resource type="PackedScene" uid="uid://cwgjmu72i5ar8" path="res://behaviors/trees/SapperMeleeUnitBehavior.tscn" id="3_t3dac"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="4_nacag"]
 [ext_resource type="Texture2D" uid="uid://cvadm2rfv2sie" path="res://objects/units/rat/rat_friend.png" id="5_3ysjb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_veb4n"]
@@ -54,11 +53,11 @@ attack_points = 5
 script = ExtResource("2_m0snn")
 
 [node name="SapperMeleeUnitBehavior" parent="." node_paths=PackedStringArray("blackboard", "actor") instance=ExtResource("3_t3dac")]
-blackboard = NodePath("@Node@17502")
+blackboard = NodePath("@Node@185903")
 actor = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("4_nacag")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_4av7i")
 autoplay = "default"
 

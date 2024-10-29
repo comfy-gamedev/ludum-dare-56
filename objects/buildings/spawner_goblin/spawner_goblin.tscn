@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://dc6tramyh408m"]
+[gd_scene load_steps=18 format=3 uid="uid://dc6tramyh408m"]
 
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="1_cgljb"]
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_lemn3"]
 [ext_resource type="PackedScene" uid="uid://dhyrtqf8cqygs" path="res://objects/units/goblin/goblin.tscn" id="2_m4gnq"]
 [ext_resource type="Texture2D" uid="uid://lj88h87n35jc" path="res://objects/buildings/spawner_goblin/gob_house.png" id="2_rw1h5"]
@@ -84,7 +83,7 @@ script = ExtResource("1_lemn3")
 building_type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("1_cgljb")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_g4tcq")
 autoplay = "default"
 

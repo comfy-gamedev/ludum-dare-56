@@ -20,4 +20,5 @@ func _on_timer_timeout() -> void:
 	
 
 func _draw() -> void:
-	draw_circle(Vector2(0, 0), radius, Color(0, 1, 0, (reach/radius) - 1.0), false, 2.0)
+	if radius < reach:
+		draw_circle(Vector2(0, 0), radius, Enums.COLOR_GREEN3I, false, 2.0)

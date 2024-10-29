@@ -96,9 +96,9 @@ func _draw_bzzt(to: Array[Vector2], color: Color) -> void:
 func _draw() -> void:
 	if laser_visible:
 		for targets in target_arrays:
-			_draw_bzzt(targets, Color("76428a"))
-			_draw_bzzt(targets, Color("639bff"))
-			_draw_bzzt(targets, Color("5fcde4"))
+			_draw_bzzt(targets, Enums.COLOR_PINK1I)
+			_draw_bzzt(targets, Enums.COLOR_SKYBLUE2I)
+			_draw_bzzt(targets, Enums.COLOR_SKYBLUE3I)
 
 func on_night() -> void:
 	super()

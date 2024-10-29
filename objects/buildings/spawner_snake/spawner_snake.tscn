@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1c7m7ppoq04w"]
+[gd_scene load_steps=8 format=3 uid="uid://d1c7m7ppoq04w"]
 
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_luqaa"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_g6rbf"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="2_unlf5"]
 [ext_resource type="SpriteFrames" uid="uid://c3obvaatig1lf" path="res://objects/buildings/spawner_snake/spawner_snake_frames.tres" id="3_djqyy"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_xtfrm"]
@@ -16,7 +15,7 @@ script = ExtResource("1_luqaa")
 building_type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_g6rbf")
+use_parent_material = true
 sprite_frames = ExtResource("3_djqyy")
 autoplay = "default"
 

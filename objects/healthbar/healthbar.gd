@@ -15,5 +15,5 @@ func _process(delta: float) -> void:
 
 func _draw() -> void:
 	if health != max_health:
-		RectLine.draw(self, Vector2(-size / 2.0, size / 2.0), Vector2((size * (health / max_health)) - (size / 2), size / 2.0), Color("99e550"), 2.0)
-		RectLine.draw(self, Vector2(size / 2.0, size / 2.0), Vector2((size / 2.0) - (size * (1.0 - (health / max_health))), size / 2.0), Color("ac3232"), 2.0)
+		RectLine.draw(self, Vector2(-size / 2.0, size / 2.0), Vector2((size * (health / max_health)) - (size / 2), size / 2.0), Enums.COLOR_GREEN4, 2.0)
+		RectLine.draw(self, Vector2(size / 2.0, size / 2.0), Vector2((size / 2.0) - (size * (1.0 - (health / max_health))), size / 2.0), Enums.COLOR_PINK3, 2.0)

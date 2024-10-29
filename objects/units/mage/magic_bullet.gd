@@ -5,6 +5,7 @@ var velocity := Vector2(5, 0)
 var damage := 10
 
 func _ready() -> void:
+	material = TeamMaterial.get_material(team)
 	_update_collision_bits()
 
 func _update_collision_bits() -> void:
@@ -19,6 +20,7 @@ func set_team(t: Enums.Team) -> void:
 	if team == t:
 		return
 	team = t
+	material = TeamMaterial.get_material(team)
 	_update_collision_bits()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 @export var spriteframes: SpriteFrames
@@ -7,7 +8,8 @@ var step: int = 0: set = set_step # floori((step - 2) / 4) == round
 var _tween: Tween
 
 func _ready() -> void:
-	Globals.rounds_changed.connect(_on_rounds_changed)
+	if not Engine.is_editor_hint():
+		Globals.rounds_changed.connect(_on_rounds_changed)
 
 func _on_rounds_changed() -> void:
 	if _tween and _tween.is_running():

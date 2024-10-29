@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://xd3tbhjjo3gt"]
+[gd_scene load_steps=9 format=3 uid="uid://xd3tbhjjo3gt"]
 
 [ext_resource type="Script" path="res://node_types/building.gd" id="1_0uyvp"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_yh0pr"]
 [ext_resource type="PackedScene" uid="uid://brfxkbq7b4brm" path="res://objects/spawner_node/spawner.tscn" id="3_fe2g0"]
 [ext_resource type="SpriteFrames" uid="uid://1clap7m4r8p2" path="res://objects/buildings/spawner_rat/spawner_rat_frames.tres" id="3_npqmq"]
 [ext_resource type="PackedScene" uid="uid://cctuk3jdnuphy" path="res://objects/units/rat/rat.tscn" id="4_kkqcb"]
@@ -20,7 +19,7 @@ script = ExtResource("1_0uyvp")
 building_type = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_yh0pr")
+use_parent_material = true
 sprite_frames = ExtResource("3_npqmq")
 autoplay = "default"
 

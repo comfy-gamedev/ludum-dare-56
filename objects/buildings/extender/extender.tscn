@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxdjbb5utcr7v"]
+[gd_scene load_steps=6 format=3 uid="uid://bxdjbb5utcr7v"]
 
 [ext_resource type="Script" path="res://objects/buildings/extender/extender.gd" id="1_jsqf6"]
 [ext_resource type="PackedScene" uid="uid://bg65k1pq8wpju" path="res://objects/healthbar/healthbar.tscn" id="2_i0v66"]
-[ext_resource type="Material" uid="uid://b28y2v178wr8r" path="res://materials/team_blue.tres" id="2_mpary"]
 [ext_resource type="SpriteFrames" uid="uid://bsfio7d7exujp" path="res://objects/buildings/extender/extender_frames.tres" id="3_p3inl"]
 [ext_resource type="PackedScene" uid="uid://7t4at5tsxrvm" path="res://objects/smoke/smoke.tscn" id="3_rd1yy"]
 
@@ -14,7 +13,7 @@ script = ExtResource("1_jsqf6")
 building_type = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_mpary")
+use_parent_material = true
 sprite_frames = ExtResource("3_p3inl")
 autoplay = "default"
 
